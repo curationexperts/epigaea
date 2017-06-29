@@ -1,0 +1,32 @@
+// Place all the styles related to the Records controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-actions.floating {
+  position: fixed;
+  top: 210px;
+  right: 180px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+}
+
+#descriptions_display {
+  h3 {
+    small {
+      font-size: 17.5px;
+      clear: right; // make sure this appears below any thumbnails
+    }
+  }
+}
+
+.record_relationship_fields {
+  margin-bottom: 0.25em;
+}
+
+.radio {
+  display: inline;
+  padding-top: 5px;
+  font-weight: normal;
+}

@@ -1,0 +1,67 @@
+// Place all the styles related to the Catalog controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#check_all {
+  margin-right: 5px;
+}
+
+#selected_documents_count {
+  border-bottom: 1px dotted #CCCCCC;
+  padding: 0.5em 0 0.5em 2em;
+
+  /* Reserve space so that the page won't rearrange when the javascript adds the content to that div */
+  min-height: 20px;
+}
+
+.documentHeader {
+
+  .document-checkbox {
+    margin-right: 5px;
+    input[type="checkbox"] {
+      margin: 0;
+    }
+  }
+
+  .index-document-functions {
+    text-align: right;
+
+    .workflow-status {
+      margin-right: 2px;
+    }
+  }
+}
+
+.drop-target-hover {
+  background-color: lightgray;
+}
+
+
+.exportButtonWrapper {
+  ul.dropdown-menu {
+    width: 15em;
+    margin-top: 0.7em;
+    padding: 0.5em;
+
+    .btn.btn-primary {
+      margin-top: 1em;
+    }
+
+    li label {
+      font-weight: normal;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  a#exportButton {
+    padding: 10px 15px;
+    display: block;
+
+    &:hover {
+      background-color: #eee;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,165 @@
+
+$tufts_blue: #6699CC;
+$text_color: #404040;
+$error_color: #d22;
+$hint_color: #777;
+$tufts_bar: #EEEEEE;
+
+$main_padding: 20px 20px 20px 40px;
+
+
+/* ------------------------
+ *  HEADER / NAV
+ * ------------------------ */
+
+
+.navbar-fixed-top {
+  margin-bottom: 0;
+}
+
+.blueline {
+  background-color: $tufts_blue;
+  height: 8px;
+  width: 100%;
+}
+
+.navbar {
+  background-color: $tufts_bar;
+  background-image: -moz-linear-gradient(center top , #F5F5F5 0%, #EEEEEE 100%);
+  border-top: 1px solid #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+#sidebar {
+  margin-left: 0;
+}
+
+.container-fluid {  
+  padding-left: 8em;
+  padding-right: 8em;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+}
+
+nav.navbar-inverse {
+  padding-top:0;
+}
+
+body > div.image-masthead > .navbar {
+  background-color: $tufts_bar;
+}
+
+#logo img {
+  width: 150px;
+  margin-left: -15px;
+}
+
+/* ------------------------
+ *  BODY / CONTENT
+ * ------------------------ */
+
+body {
+  background: radial-gradient(ellipse farthest-corner at center center , #CEDCE7 0%, #596A72 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: $text_color;
+}
+
+h1 {
+  font-size: 24px;
+  line-height: 30px;
+  color: $text_color;
+}
+
+h2 {
+  color: #DE6020;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 3px;
+}
+
+h3 {
+  color: #0755AC;
+  font-size: 18px;
+  line-height: 24px;
+  margin-top: 1em;
+}
+
+#content-wrapper {
+  border-radius: 6px 6px 0 0;
+  background-color: #FFFFFF;
+  padding: $main_padding;
+}
+
+.box {
+  padding: 15px;
+  border-color: #ddd;
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  box-shadow: none;
+  margin-bottom: 45px;
+}
+
+.attachments {
+  form {
+    margin-bottom: 30px;
+
+    .file {
+      display: inline-block;
+    }
+  }
+}
+
+
+/* ------------------------
+ *  FORMS
+ * ------------------------ */
+
+form.button_to {
+  display: inline;
+
+  > div {
+    display: inline;
+  }
+
+}
+
+input.input-large {
+  width: 365px;
+}
+
+#error_explanation {
+  border: 3px solid $error_color;
+  background-color: #eee;
+  padding: 0.5em 1em 1em 1em;
+  margin-bottom: 1em;
+}
+
+.hint {
+  color: $hint_color;
+  font-weight: normal;
+}
+
+/* ------------------------
+ *  FOOTER
+ * ------------------------ */
+
+.blue-footer {
+  background-color: $tufts_blue;
+  padding: $main_padding;
+  margin-bottom: 20px;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+    border: 0;
+  }
+}
+
+#copyright {
+  color: #ffffff;
+  line-height: 150%;
+}
+
