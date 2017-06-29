@@ -5,6 +5,9 @@ Hyrax.config do |config|
   # Injected via `rails g hyrax:work GenericObject`
   config.register_curation_concern :generic_object
 
+  # Injected via `rails g hyrax:work Pdf`
+  config.register_curation_concern :pdf
+
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
   # @note there are magical roles as defined in Hyrax::RoleRegistry::MAGIC_ROLES
