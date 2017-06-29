@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      rcr:     'fa fa-file-text-o'
+    select_type:
+      rcr:
+        # TODO: translate `human_name` into Spanish
+        name:               "Rcr"
+        # TODO: translate `human_name` into Spanish
+        description:        "Rcr trabajos"
