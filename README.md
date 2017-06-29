@@ -1,24 +1,18 @@
-# README
+# Epigaea
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![ci](https://travis-ci.org/curationexperts/epigaea.svg?branch=master)
 
-Things you may want to cover:
+A [MIRA](https://github.com/TuftsUniversity/MIRA) replacement running on [Hyrax](https://github.com/samvera/hyrax) 2.0.
 
-* Ruby version
+## Development
 
-* System dependencies
+Get started by cloning the repository and installing the dependencies:
 
-* Configuration
+```sh
+git clone https://github.com/curationexperts/epigaea.git
+cd epigaea
 
-* Database creation
+bundle install
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You can run CI with `rake` (or `rake ci`). Or start a server with `rake hydra:server`
