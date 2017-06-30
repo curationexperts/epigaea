@@ -1,0 +1,8 @@
+de:
+  hyrax:
+    icons:
+      tei:     'fa fa-file-text-o'
+    select_type:
+      tei:
+        name:               "Tei"
+        description:        "Tei Werke"

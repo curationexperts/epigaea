@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      tei:     'fa fa-file-text-o'
+    select_type:
+      tei:
+        # TODO: translate `human_name` into Chinese
+        name:               "Tei"
+        # TODO: translate `human_name` into Chinese
+        description:        "Tei 作品"
