@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      ead:     'fa fa-file-text-o'
+    select_type:
+      ead:
+        # TODO: translate `human_name` into Chinese
+        name:               "Ead"
+        # TODO: translate `human_name` into Chinese
+        description:        "Ead 作品"
