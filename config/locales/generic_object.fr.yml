@@ -1,0 +1,8 @@
+fr:
+  hyrax:
+    icons:
+      generic_object:     'fa fa-file-text-o'
+    select_type:
+      generic_object:
+        name:               "Generic Object"
+        description:        "Generic object œuvres"
