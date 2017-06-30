@@ -1,0 +1,8 @@
+pt-BR:
+  hyrax:
+    icons:
+      pdf:     'fa fa-file-text-o'
+    select_type:
+      pdf:
+        name:               "Pdf"
+        description:        "Pdf trabalhos"
