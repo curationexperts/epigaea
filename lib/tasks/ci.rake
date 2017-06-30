@@ -7,7 +7,7 @@ unless Rails.env.production?
   require 'solr_wrapper/rake_task'
 
   desc "Run Continuous Integration"
-  task :ci do
+  task ci: [:rubocop] do
     ENV["environment"] = "test"
     solr_params = {
       port: 8985,
