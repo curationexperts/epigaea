@@ -1,9 +1,11 @@
-
 $tufts_blue: #6699CC;
 $text_color: #404040;
 $error_color: #d22;
 $hint_color: #777;
 $tufts_bar: #EEEEEE;
+
+$gradient_top: #f5f5f5;
+$gradient_bottom: #EEEEEE;
 
 $main_padding: 20px 20px 20px 40px;
 
@@ -16,42 +18,45 @@ $main_padding: 20px 20px 20px 40px;
 .navbar-fixed-top {
   margin-bottom: 0;
 }
-
-.blueline {
-  background-color: $tufts_blue;
-  height: 8px;
-  width: 100%;
+div.image-mastehead > .navbar {
+    border-bottom:0;
 }
-
-.navbar {
+nav#masthead.navbar {
   background-color: $tufts_bar;
-  background-image: -moz-linear-gradient(center top , #F5F5F5 0%, #EEEEEE 100%);
+  background: linear-gradient(0deg,$gradient_bottom,$gradient_top);
   border-top: 1px solid #E5E5E5;
   border-bottom: 1px solid #E5E5E5;
 }
 
+.image-masthead .navbar {
+    background: inherit;
+    border-bottom:none;
+}
+.image-masthead {
+    border-bottom:0;
+}
 #sidebar {
   margin-left: 0;
 }
 
 .container-fluid {  
-  padding-left: 8em;
-  padding-right: 8em;
-  padding-top: 1em;
-  padding-bottom: 0.5em;
+   margin-right: 2em;
+   margin-left: 2em;
 }
 
-nav.navbar-inverse {
-  padding-top:0;
-}
 
-body > div.image-masthead > .navbar {
-  background-color: $tufts_bar;
+
+div#content-wrapper > div.main-content {
+    background-color: inherit;
 }
 
 #logo img {
   width: 150px;
   margin-left: -15px;
+}
+
+#content-wrapper > h1 {
+  color: $tufts_bar;
 }
 
 /* ------------------------
@@ -84,10 +89,14 @@ h3 {
   margin-top: 1em;
 }
 
-#content-wrapper {
+#content-wrapper.container  {
   border-radius: 6px 6px 0 0;
   background-color: #FFFFFF;
   padding: $main_padding;
+}
+
+body.dashboard > div#content-wrapper {
+  margin-top:1.5em;
 }
 
 .box {
@@ -155,6 +164,8 @@ input.input-large {
 
   img {
     border: 0;
+    margin-left: -2em;
+    margin-top: 1em;
   }
 }
 
