@@ -62,6 +62,7 @@ gem 'devise-guests', '~> 0.6'
 gem 'rsolr', '>= 1.0'
 group :development, :test do
   gem 'bixby'
+  gem 'capybara'
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
 end
