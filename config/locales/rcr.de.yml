@@ -1,0 +1,8 @@
+de:
+  hyrax:
+    icons:
+      rcr:     'fa fa-file-text-o'
+    select_type:
+      rcr:
+        name:               "Rcr"
+        description:        "Rcr Werke"
