@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      voting_record:     'fa fa-file-text-o'
+    select_type:
+      voting_record:
+        # TODO: translate `human_name` into Chinese
+        name:               "Voting Record"
+        # TODO: translate `human_name` into Chinese
+        description:        "Voting record 作品"

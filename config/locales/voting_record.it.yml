@@ -1,0 +1,8 @@
+it:
+  hyrax:
+    icons:
+      voting_record:     'fa fa-file-text-o'
+    select_type:
+      voting_record:
+        name:               "Voting Record"
+        description:        "Voting record opere"
