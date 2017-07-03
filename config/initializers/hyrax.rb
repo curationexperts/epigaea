@@ -9,6 +9,8 @@ Hyrax.config do |config|
   config.register_curation_concern :pdf
   # Injected via `rails g hyrax:work Audio`
   config.register_curation_concern :audio
+  # Injected via `rails g hyrax:work Tei`
+  config.register_curation_concern :tei
 
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
