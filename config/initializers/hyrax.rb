@@ -7,8 +7,12 @@ Hyrax.config do |config|
 
   # Injected via `rails g hyrax:work Pdf`
   config.register_curation_concern :pdf
+
   # Injected via `rails g hyrax:work Audio`
   config.register_curation_concern :audio
+
+  # Injected via `rails g hyrax:work Ead`
+  config.register_curation_concern :ead
 
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.

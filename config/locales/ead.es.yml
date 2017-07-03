@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      ead:     'fa fa-file-text-o'
+    select_type:
+      ead:
+        # TODO: translate `human_name` into Spanish
+        name:               "Ead"
+        # TODO: translate `human_name` into Spanish
+        description:        "Ead trabajos"
