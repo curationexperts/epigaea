@@ -10,6 +10,8 @@ Hyrax.config do |config|
 
   # Injected via `rails g hyrax:work Audio`
   config.register_curation_concern :audio
+  # Injected via `rails g hyrax:work Tei`
+  config.register_curation_concern :tei
 
   # Injected via `rails g hyrax:work Rcr`
   config.register_curation_concern :rcr
