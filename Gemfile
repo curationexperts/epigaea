@@ -59,9 +59,15 @@ end
 
 gem 'devise'
 gem 'devise-guests', '~> 0.6'
+gem 'mysql2'
 gem 'rsolr', '>= 1.0'
+
 group :development, :test do
   gem 'bixby'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl'
   gem 'fcrepo_wrapper'
+  gem 'poltergeist'
   gem 'rspec-rails'
 end

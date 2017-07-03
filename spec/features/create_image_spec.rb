@@ -4,7 +4,7 @@ require 'rails_helper'
 include Warden::Test::Helpers
 
 # NOTE: If you generated more than one work, you have to set "js: true"
-RSpec.feature 'Create a Image', js: false do
+RSpec.feature 'Create a Image', :clean, js: true do
   context 'a logged in user' do
     let(:user_attributes) do
       { email: 'test@example.com' }
@@ -22,11 +22,12 @@ RSpec.feature 'Create a Image', js: false do
       visit '/dashboard'
       click_link "Works"
       click_link "Add new work"
-
+      sleep(1)
       # If you generate more than one work uncomment these lines
       choose "payload_concern", option: "Image"
+      sleep(1)
       click_button "Create work"
-
+      sleep(1)
       expect(page).to have_content "Add New Image"
     end
   end

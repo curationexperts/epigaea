@@ -5,7 +5,8 @@ Metrics/BlockLength:
   Exclude:
     - 'config/**/*'
     - 'app/controllers/catalog_controller.rb'
-
+    - 'spec/rails_helper.rb'
+    
 Metrics/ClassLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'
@@ -13,3 +14,5 @@ Metrics/ClassLength:
 RSpec/ExampleLength:
       Exclude:
         - 'spec/features/**/*'
+
+
