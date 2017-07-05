@@ -46,7 +46,6 @@ ActiveRecord::Migration.maintain_test_schema!
 
 # Uses faster rack_test driver when JavaScript support not needed
 Capybara.default_driver = :rack_test
-Capybara.javascript_driver = :poltergeist
 
 # Adding the below to deal with random Capybara-related timeouts in CI.
 # Found in this thread: https://github.com/teampoltergeist/poltergeist/issues/375
@@ -60,9 +59,12 @@ poltergeist_options = {
     '--ignore-ssl-errors=yes'
   ]
 }
+
 Capybara.register_driver(:poltergeist) do |app|
   Capybara::Poltergeist::Driver.new(app, poltergeist_options)
 end
+
+Capybara.javascript_driver = :poltergeist
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

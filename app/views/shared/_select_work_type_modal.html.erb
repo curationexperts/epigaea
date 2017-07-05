@@ -1,0 +1,26 @@
+<div class="modal worktypes fade" id="worktypes-to-create" tabindex="-1" role="dialog" aria-labelledby="select-worktype-label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="<%= t('hyrax.dashboard.heading_actions.close') %>"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="select-worktype-label"><%= t('hyrax.dashboard.heading_actions.select_type_of_work') %></h2>
+      </div>
+      <form class="new-work-select">
+        <div class="modal-body">
+          <label for="work-type-select-box">Select a work type from the dropdown</label><select class="new-work-select-box" id="work-type-select-box">
+            <% create_work_presenter.authorized_models.sort_by! { |obj| obj.name } %>
+            <% create_work_presenter.each do |row_presenter| %>
+            <option class="work-type-title" name="<%= row_presenter.concern %>" value="<%= row_presenter.concern %>"
+                    data-single="<%= new_polymorphic_path([main_app, row_presenter.concern]) %>"
+                    data-batch="<%= hyrax.new_batch_upload_path(payload_concern: row_presenter.concern) %>"><%= row_presenter.name.titleize %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><%= t('hyrax.dashboard.heading_actions.close') %></button>
+          <input type="submit" title="Select a work type from the dropdown" class="btn btn-primary" value="<%= t('hyrax.dashboard.heading_actions.create_work') %>">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
