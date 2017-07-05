@@ -20,6 +20,8 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 
-//= require_tree .
 //= require hyrax
+//= require almond
 
+//= require epigaea/select_work_type
+//= require app

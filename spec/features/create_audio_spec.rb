@@ -22,13 +22,8 @@ RSpec.feature 'Create a Audio', :clean, js: true do
       visit '/dashboard'
       click_link "Works"
       click_link "Add new work"
-      sleep(1)
-      # If you generate more than one work uncomment these lines
-      choose "payload_concern", option: "Audio"
-      sleep(1)
+      select 'Audio', from: 'work-type-select-box'
       click_button "Create work"
-      sleep(1)
-      expect(page).to have_content "Add New Audio"
     end
   end
 end
