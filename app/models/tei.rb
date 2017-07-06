@@ -10,6 +10,7 @@ class Tei < ActiveFedora::Base
 
   self.human_readable_type = 'TEI'
 
+  include ::Tufts::Metadata
   # This must be included at the end, because it finalizes the metadata
   # schema (by adding accepts_nested_attributes)
   include ::Hyrax::BasicMetadata

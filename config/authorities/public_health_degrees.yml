@@ -1,0 +1,23 @@
+terms:
+  - id: JDMPH
+    term: 'JD/MPH'
+  - id: MAUEPMPH
+    term: 'MA Urban & Environmental Policy/MPH'
+  - id: MSNMPH
+    term: 'MS Nutrition/MPH'
+  - id: MSBSMPH
+    term: 'MS Biomedical Sciences/MPH'
+  - id: DVMMPH
+    term: 'DVM/MPH'
+  - id: MDMPH
+    term: 'MD/MPH'
+  - id: DMDMPH
+    term: 'DMD/MPH'
+  - id: PAMPH
+    term: 'PA/MPH'
+  - id: MSHC
+    term: 'MS in Health Communications'
+  - id: MPH	
+    term: 'MPH'
+  - id: MSPREP
+    term: 'MS in Pain Research Education and Policy'

@@ -3,6 +3,7 @@
 module Hyrax
   class GenericObjectForm < Hyrax::Forms::WorkForm
     self.model_class = ::GenericObject
-    self.terms += [:resource_type]
+    self.terms += [:displays_in]
+    self.required_fields = [:title, :displays_in]
   end
 end
