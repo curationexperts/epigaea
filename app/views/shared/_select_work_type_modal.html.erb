@@ -12,7 +12,7 @@
             <% create_work_presenter.each do |row_presenter| %>
             <option class="work-type-title" name="<%= row_presenter.concern %>" value="<%= row_presenter.concern %>"
                     data-single="<%= new_polymorphic_path([main_app, row_presenter.concern]) %>"
-                    data-batch="<%= hyrax.new_batch_upload_path(payload_concern: row_presenter.concern) %>"><%= row_presenter.name.titleize %></option>
+                    data-batch="<%= hyrax.new_batch_upload_path(payload_concern: row_presenter.concern) %>"><%= row_presenter.name %></option>
             <% end %>
           </select>
         </div>

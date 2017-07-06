@@ -4,7 +4,7 @@ require 'rails_helper'
 include Warden::Test::Helpers
 
 # NOTE: If you generated more than one work, you have to set "js: true"
-RSpec.feature 'Create a Rcr', :clean, js: true do
+RSpec.feature 'Create an RCR', :clean, js: true do
   context 'a logged in user' do
     let(:user_attributes) do
       { email: 'test@example.com' }
@@ -22,7 +22,7 @@ RSpec.feature 'Create a Rcr', :clean, js: true do
       visit '/dashboard'
       click_link "Works"
       click_link "Add new work"
-      select 'Rcr', from: 'work-type-select-box'
+      select 'RCR', from: 'work-type-select-box'
       click_button "Create work"
     end
   end

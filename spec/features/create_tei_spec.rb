@@ -4,7 +4,7 @@ require 'rails_helper'
 include Warden::Test::Helpers
 
 # NOTE: If you generated more than one work, you have to set "js: true"
-RSpec.feature 'Create a Tei', :clean, js: true do
+RSpec.feature 'Create a TEI', :clean, js: true do
   context 'a logged in user' do
     let(:user_attributes) do
       { email: 'test@example.com' }
@@ -22,7 +22,7 @@ RSpec.feature 'Create a Tei', :clean, js: true do
       visit '/dashboard'
       click_link "Works"
       click_link "Add new work"
-      select 'Tei', from: 'work-type-select-box'
+      select 'TEI', from: 'work-type-select-box'
       click_button "Create work"
     end
   end
