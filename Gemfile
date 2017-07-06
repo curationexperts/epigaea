@@ -66,7 +66,7 @@ group :development, :test do
   gem 'bixby'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'fcrepo_wrapper'
   gem 'poltergeist'
   gem 'rspec-rails'
