@@ -32,4 +32,8 @@ class SolrDocument
   def geographic_name
     self[Solrizer.solr_name('geographic_name')]
   end
+
+  def held_by
+    self[Solrizer.solr_name('held_by')]
+  end
 end

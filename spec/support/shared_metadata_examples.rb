@@ -8,5 +8,9 @@ shared_examples 'a work with Tufts metadata attributes' do
       work.geographic_name = ['China']
       expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/spatial/)
     end
+    it 'has held by' do
+      work.held_by = ['United States']
+      expect(work.resource.dump(:ttl)).to match(/bibframe.org\/vocab\/heldBy/)
+    end
   end
 end

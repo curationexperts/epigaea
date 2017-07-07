@@ -10,7 +10,7 @@ shared_examples 'a Tufts presenter' do
       "human_readable_type_tesim" => ["Generic Work"],
       "has_model_ssim" => ["GenericWork"],
       "date_created_tesim" => ['an unformatted date'],
-      "depositor_tesim" => user_key }
+      "depositor_tesim" => user_keyspec }
   end
   let(:ability) { nil }
   let(:presenter) { described_class.new(solr_document, ability, request) }
@@ -20,6 +20,10 @@ shared_examples 'a Tufts presenter' do
   end
 
   describe "geographic_name" do
+    it { is_expected.to delegate_method(:to_s).to(:solr_document) }
+  end
+
+  describe "held_by" do
     it { is_expected.to delegate_method(:to_s).to(:solr_document) }
   end
 end
