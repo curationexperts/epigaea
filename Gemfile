@@ -53,10 +53,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-group :development, :test do
-  gem 'solr_wrapper', '>= 0.3'
-end
-
 gem 'devise'
 gem 'devise-guests', '~> 0.6'
 gem 'mysql2'
@@ -70,4 +66,6 @@ group :development, :test do
   gem 'fcrepo_wrapper'
   gem 'poltergeist'
   gem 'rspec-rails'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'solr_wrapper', '>= 0.3'
 end

@@ -3,7 +3,5 @@
 require 'rails_helper'
 
 RSpec.describe Hyrax::EadPresenter do
-  it "has tests" do
-    skip "Add your tests here"
-  end
+  it_behaves_like 'a Tufts presenter'
 end
