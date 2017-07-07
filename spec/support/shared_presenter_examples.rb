@@ -22,4 +22,8 @@ shared_examples 'a Tufts presenter' do
   describe "geographic_name" do
     it { is_expected.to delegate_method(:to_s).to(:solr_document) }
   end
+
+  describe "held_by" do
+    it { is_expected.to delegate_method(:to_s).to(:solr_document) }
+  end
 end
