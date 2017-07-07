@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Epigaea
   class Application < Rails::Application
+    config.active_job.queue_adapter = :inline
     config.autoload_paths << Rails.root.join('lib')
     config.autoload_paths << Rails.root.join('app', 'services')
     # Settings in config/environments/* take precedence over those specified here.

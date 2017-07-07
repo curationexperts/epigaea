@@ -1,6 +1,5 @@
 module Hyrax
   class GenericWorkPresenter < Hyrax::WorkShowPresenter
-    delegate :displays_in, to: :solr_document
-    delegate :geographic_name, to: :solr_document
+    Tufts::Terms.shared_terms.each { |term| delegate term, to: :solr_document }
   end
 end

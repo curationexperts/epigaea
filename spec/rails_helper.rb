@@ -51,7 +51,7 @@ Capybara.default_driver = :rack_test
 # Found in this thread: https://github.com/teampoltergeist/poltergeist/issues/375
 poltergeist_options = {
   js_errors: false,
-  timeout: 30,
+  timeout: 120,
   logger: nil,
   phantomjs_logger: StringIO.new,
   phantomjs_options: [
