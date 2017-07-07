@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Hyrax::AudioForm do
-  it "has tests" do
-    skip "Add your tests here"
-  end
+  let(:form) { described_class }
+  it_behaves_like 'a form with Tufts metadata attributes'
 end

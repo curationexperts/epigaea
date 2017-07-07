@@ -125,4 +125,12 @@ RSpec.configure do |config|
   config.after do
     DatabaseCleaner.clean
   end
+
+  Shoulda::Matchers.configure do |shoulda_config|
+    shoulda_config.integrate do |with|
+      # Choose a test framework:
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
 end

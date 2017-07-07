@@ -24,4 +24,12 @@ class SolrDocument
   # Do content negotiation for AF models.
 
   use_extension(Hydra::ContentNegotiation)
+
+  def displays_in
+    self[Solrizer.solr_name('displays_in')]
+  end
+
+  def geographic_name
+    self[Solrizer.solr_name('geographic_name')]
+  end
 end
