@@ -10,7 +10,7 @@ shared_examples 'a Tufts presenter' do
       "human_readable_type_tesim" => ["Generic Work"],
       "has_model_ssim" => ["GenericWork"],
       "date_created_tesim" => ['an unformatted date'],
-      "depositor_tesim" => user_key }
+      "depositor_tesim" => user_keyspec }
   end
   let(:ability) { nil }
   let(:presenter) { described_class.new(solr_document, ability, request) }

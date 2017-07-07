@@ -10,7 +10,7 @@ shared_examples 'a work with Tufts metadata attributes' do
     end
     it 'has held by' do
       work.held_by = ['United States']
-      expect(work.resource.dump(:ttl)).to match(/loc.gov\/mads\/rdf\/v1#HierarchicalGeographic/)
+      expect(work.resource.dump(:ttl)).to match(/bibframe.org\/vocab\/heldBy/)
     end
   end
 end
