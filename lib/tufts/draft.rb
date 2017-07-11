@@ -14,6 +14,8 @@ module Tufts
     #   @return [Tufts::Draftable]
     attr_accessor :changeset, :id, :model
 
+    STORAGE_DIR = Rails.root.join('tmp', 'drafts').freeze
+
     ##
     # @param model [ActiveFedora::Base]
     # @return [Draft] A draft including the unsaved changes from the model
@@ -213,7 +215,7 @@ module Tufts
       end
 
       def path
-        Rails.root.join('tmp', 'drafts', id)
+        STORAGE_DIR.join(id)
       end
   end
 end

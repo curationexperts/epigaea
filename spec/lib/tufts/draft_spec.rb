@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'tufts/draft'
+require 'fileutils'
 
 RSpec.describe Tufts::Draft do
   subject(:draft)   { described_class.new(model: model) }
@@ -12,6 +13,14 @@ RSpec.describe Tufts::Draft do
     fake_draftable.property(:subject, predicate: RDF::Vocab::DC.subject)
     fake_draftable
   end
+
+  before(:context) do
+    unless File.directory?(described_class::STORAGE_DIR)
+      FileUtils.mkdir_p(described_class::STORAGE_DIR)
+    end
+  end
+
+  after { draft.delete }
 
   define :have_changes do |expected|
     match do |actual|
