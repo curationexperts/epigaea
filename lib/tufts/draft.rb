@@ -123,28 +123,6 @@ module Tufts
       self
     end
 
-    ##
-    # An empty changeset
-    #
-    # @exmaple
-    #   cs = NullChangeSet.new(object, graph, changed_attributes)
-    #   cs.empty?  # => true
-    #   cs.changes # => {}
-    #
-    # @see https://en.wikipedia.org/wiki/Null_Object_pattern
-    # @see ActiveFedora::ChangeSet
-    class NullChangeSet
-      def initialize(*); end
-
-      def empty?
-        true
-      end
-
-      def changes
-        {}
-      end
-    end
-
     private
 
       ##
@@ -196,6 +174,8 @@ module Tufts
       ##
       # @return [Array<RDF::Statement>)
       def extract_insert_statements(update_string)
+        return [] if update_string.nil? || update_string.empty?
+
         inserts = SPARQL.parse(update_string, update: true).each_descendant.select do |op|
           op.is_a? SPARQL::Algebra::Operator::Insert
         end

@@ -178,7 +178,7 @@ RSpec.describe Tufts::Draft do
 
       it 'reloads saved changes' do
         saved_changes   = draft.changeset
-        draft.changeset = described_class::NullChangeSet.new
+        draft.changeset = Tufts::NullChangeSet.new
 
         expect { draft.load }
           .to change { draft.changeset }
