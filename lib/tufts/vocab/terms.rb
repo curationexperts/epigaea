@@ -19,6 +19,7 @@ module Tufts
       term :is_slides_of
       term :createdby
       term :template_name
+      term :internal_note
     end
   end
 end

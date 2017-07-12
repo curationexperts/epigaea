@@ -10,7 +10,8 @@ class Audio < ActiveFedora::Base
 
   self.human_readable_type = 'Audio'
 
-  include ::Tufts::Metadata
+  include ::Tufts::Metadata::Descriptive
+  include ::Tufts::Metadata::Adminstrative
   # This must be included at the end, because it finalizes the metadata
   # schema (by adding accepts_nested_attributes)
   include ::Hyrax::BasicMetadata

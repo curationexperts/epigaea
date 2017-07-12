@@ -7,7 +7,7 @@ Metrics/BlockLength:
     - 'app/controllers/catalog_controller.rb'
     - 'spec/rails_helper.rb'
     - 'spec/**/*'
-    
+    - 'app/models/concerns/tufts/**/*'
 Metrics/ClassLength:
   Exclude:
     - 'app/controllers/catalog_controller.rb'

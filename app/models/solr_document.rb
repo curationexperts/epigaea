@@ -5,7 +5,6 @@ class SolrDocument
 
   # Adds Hyrax behaviors to the SolrDocument.
   include Hyrax::SolrDocumentBehavior
-
   # self.unique_key = 'id'
 
   # Email uses the semantic field mappings below to generate the body of an email.
@@ -25,11 +24,9 @@ class SolrDocument
 
   use_extension(Hydra::ContentNegotiation)
 
-  def displays_in
-    self[Solrizer.solr_name('displays_in')]
-  end
-
-  def geographic_name
-    self[Solrizer.solr_name('geographic_name')]
+  Tufts::Terms.shared_terms.each do |term|
+    define_method(term) do
+      self[Solrizer.solr_name(term.to_s)]
+    end
   end
 end
