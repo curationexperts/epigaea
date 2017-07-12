@@ -50,9 +50,10 @@ Capybara.default_driver = :rack_test
 # Adding the below to deal with random Capybara-related timeouts in CI.
 # Found in this thread: https://github.com/teampoltergeist/poltergeist/issues/375
 poltergeist_options = {
-  js_errors: false,
-  timeout: 120,
-  logger: nil,
+  js_errors: true,
+  timeout: 30,
+  logger: false,
+  debug: false,
   phantomjs_logger: StringIO.new,
   phantomjs_options: [
     '--load-images=no',
@@ -63,6 +64,11 @@ poltergeist_options = {
 Capybara.register_driver(:poltergeist) do |app|
   Capybara::Poltergeist::Driver.new(app, poltergeist_options)
 end
+
+# Capybara.register_driver :chrome do |app|
+#  profile = Selenium::WebDriver::Chrome::Profile.new
+#  Capybara::Selenium::Driver.new(app, :browser => :chrome, profile: profile)
+# end
 
 Capybara.javascript_driver = :poltergeist
 

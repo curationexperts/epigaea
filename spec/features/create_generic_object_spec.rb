@@ -22,8 +22,12 @@ RSpec.feature 'Create a GenericObject', :clean, js: true do
       visit '/dashboard'
       click_link "Works"
       click_link "Add new work"
-      select 'Generic Object', from: 'work-type-select-box'
-      click_button "Create work"
+      # If you generate more than one work uncomment these lines
+      within('form.new-work-select') do
+        select 'Generic Object', from: 'work-type-select-box'
+        click_button "Create work"
+      end
+      expect(page).to have_content "Add New Generic Object"
     end
   end
 end

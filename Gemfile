@@ -57,6 +57,7 @@ gem 'devise'
 gem 'devise-guests', '~> 0.6'
 gem 'mysql2'
 gem 'rsolr', '>= 1.0'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'bixby'
