@@ -22,8 +22,13 @@ RSpec.feature 'Create an RCR', :clean, js: true do
       visit '/dashboard'
       click_link "Works"
       click_link "Add new work"
-      select 'RCR', from: 'work-type-select-box'
-      click_button "Create work"
+      sleep(1)
+      # If you generate more than one work uncomment these lines
+      within('form.new-work-select') do
+        select 'RCR', from: 'work-type-select-box'
+        click_button "Create work"
+      end
+      expect(page).to have_content "Add New RCR"
     end
   end
 end

@@ -27,8 +27,4 @@ shared_examples 'and has admin metadata attributes' do
     work.accrual_policy = 'an accrual policy'
     expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/accrualPolicy/)
   end
-  it 'has a license' do
-    work.license = 'a license'
-    expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/license/)
-  end
 end

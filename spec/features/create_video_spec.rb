@@ -22,8 +22,12 @@ RSpec.feature 'Create a Video', :clean, js: true do
       visit '/dashboard'
       click_link "Works"
       click_link "Add new work"
-      select 'Video', from: 'work-type-select-box'
-      click_button "Create work"
+      # If you generate more than one work uncomment these lines
+      within('form.new-work-select') do
+        select 'Video', from: 'work-type-select-box'
+        click_button "Create work"
+      end
+      expect(page).to have_content "Add New Video"
     end
   end
 end
