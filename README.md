@@ -13,6 +13,14 @@ git clone https://github.com/curationexperts/epigaea.git
 cd epigaea
 
 bundle install
+bundle exec rails db:setup
+bundle exec sidekiq -d -l tmp/sidekiq.log
+bundle exec rails hyrax:default_admin_set:create 
 ```
+Other services and settings required:
+* MySQL 
+* Redis 
+* Path to [FITS](https://projects.iq.harvard.edu/fits/downloads) in the [Hyrax initializer](https://github.com/curationexperts/epigaea/blob/master/config/initializers/hyrax.rb)
+* sidekiq as queue adapter in [application.rb](https://github.com/curationexperts/epigaea/blob/master/config/):        `config.active_job.queue_adapter = :sidekiq`
 
 You can run CI with `rake` (or `rake ci`). Or start a server with `rake hydra:server`
