@@ -1,5 +1,6 @@
 shared_examples 'a work with Tufts metadata attributes' do
   it_behaves_like 'and has admin metadata attributes'
+  it_behaves_like 'a work with custom Tufts validations'
   context 'and the list of metadata attributes' do
     it 'has displays_in' do
       work.displays_in = ['nowhere', 'trove']
