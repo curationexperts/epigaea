@@ -35,6 +35,6 @@ shared_examples 'a Tufts presenter' do
     it { is_expected.to delegate_method(:audience).to(:solr_document) }
     it { is_expected.to delegate_method(:end_date).to(:solr_document) }
     it { is_expected.to delegate_method(:accrual_policy).to(:solr_document) }
-    it { is_expected.to delegate_method(:license).to(:solr_document) }
+    it { is_expected.to delegate_method(:rights_note).to(:solr_document) }
   end
 end

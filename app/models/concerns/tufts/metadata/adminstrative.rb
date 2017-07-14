@@ -27,6 +27,12 @@ module Tufts
         property :accrual_policy, predicate: ::RDF::Vocab::DC.accrualPolicy, multiple: false do |index|
           index.as :stored_searchable
         end
+        property :rights_note, predicate: ::RDF::Vocab::DC.rights, multiple: false do |index|
+          index.as :stored_searchable
+        end
+        property :rights, predicate: ::RDF::Vocab::EDM.rights, multiple: false do |index|
+          index.as :stored_searchable
+        end
       end
     end
   end
