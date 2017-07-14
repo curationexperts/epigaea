@@ -45,5 +45,9 @@ shared_examples 'a work with Tufts metadata attributes' do
       work.date_issued = ['01/04/00']
       expect(work.resource.dump(:ttl)).to match(/ebu.ch\/metadata\/ontologies\/ebucore\/ebucore#dateIssued/)
     end
+    it 'has a resource type' do
+      work.resource_type = ['Collection']
+      expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/type/)
+    end
   end
 end

@@ -33,6 +33,9 @@ module Tufts
         property :rights, predicate: ::RDF::Vocab::EDM.rights, multiple: false do |index|
           index.as :stored_searchable
         end
+        property :resource_type, predicate: ::RDF::Vocab::DC.type do |index|
+          index.as :stored_searchable, :facetable
+        end
       end
     end
   end
