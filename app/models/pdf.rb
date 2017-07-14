@@ -8,6 +8,10 @@ class Pdf < ActiveFedora::Base
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }
 
+  validates :title, length: {
+    maximum: 1,
+    message: 'There can be only one title'
+  }
   self.human_readable_type = 'PDF'
 
   include ::Tufts::Metadata::Descriptive
