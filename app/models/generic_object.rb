@@ -2,7 +2,7 @@
 #  `rails generate hyrax:work GenericObject`
 class GenericObject < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
-
+  include ::Tufts::Draftable
   self.indexer = GenericObjectIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []

@@ -2,7 +2,7 @@
 #  `rails generate hyrax:work Tei`
 class Tei < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
-
+  include ::Tufts::Draftable
   self.indexer = TeiIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
