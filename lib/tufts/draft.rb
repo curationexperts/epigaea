@@ -14,7 +14,7 @@ module Tufts
     #   @return [Tufts::Draftable]
     attr_accessor :changeset, :id, :model
 
-    STORAGE_DIR = Rails.root.join('tmp', 'drafts').freeze
+    STORAGE_DIR = Pathname.new(Rails.configuration.drafts_storage_dir).freeze
 
     ##
     # @param model [ActiveFedora::Base]

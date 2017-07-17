@@ -53,4 +53,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.active_job.queue_adapter = :inline
+
+  # Configure the drafts strorage directory
+  config.drafts_storage_dir = Rails.root.join('tmp', 'drafts')
 end
