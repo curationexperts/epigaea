@@ -13,9 +13,14 @@ RSpec.shared_examples 'a draftable model' do
       raise 'Define `change_map` with `let(:change_map)` before using the ' \
             'draftable model shared examples'
     end
+    # The model has to be saved before drafts can be created
+    model.save
   end
 
-  after { model.delete_draft }
+  after do
+    model.delete_draft
+    model.delete
+  end
 
   define :have_changes do |expected|
     match do |actual|
@@ -66,8 +71,9 @@ RSpec.shared_examples 'a draftable model' do
       end
 
       it 'changes to the model attributes' do
-        expect { model.apply_draft }
-          .to change { model.attributes }
+        model.title = ['Another new title']
+        model.apply_draft
+        expect(model.title).not_to eq(['Another new title'])
       end
 
       it 'results in the correct changes' do

@@ -9,14 +9,12 @@ RSpec.describe Tufts::Draftable do
     klass.include described_class
     klass.property :subject,    predicate: RDF::URI('http://example.com/s')
     klass.property :characters, predicate: RDF::URI('http://example.com/c')
-    klass.property :title,
-                   predicate: RDF::URI('http://example.com/t'),
-                   multiple: false
+    klass.property :title,      predicate: RDF::URI('http://example.com/t')
     klass
   end
 
   let(:change_map) do
-    { title:      'Comet in Moominland',
+    { title:      ['Comet in Moominland'],
       subject:    ['Moomins', 'Snorks'],
       characters: ['Moomin', 'Moominpapa', 'Snorkmaiden', 'Little My'] }
   end
