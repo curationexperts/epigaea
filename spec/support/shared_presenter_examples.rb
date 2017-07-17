@@ -26,6 +26,7 @@ shared_examples 'a Tufts presenter' do
     it { is_expected.to delegate_method(:date_available).to(:solr_document) }
     it { is_expected.to delegate_method(:date_copyrighted).to(:solr_document) }
     it { is_expected.to delegate_method(:date_issued).to(:solr_document) }
+    it { is_expected.to delegate_method(:resource_type).to(:solr_document) }
   end
 
   describe "with admin attributes that are delegated to Solr" do
