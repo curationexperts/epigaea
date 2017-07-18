@@ -66,13 +66,10 @@ module Tufts
           end
         end
       end
-
-      delete
     end
 
     ##
-    # Deletes the draft and empties the changeset. Calling #apply after delete
-    # is a no-op.
+    # Deletes the draft and empties the changeset.
     #
     # @example
     #   draft = Draft.new(model: a_draftable)
@@ -119,7 +116,7 @@ module Tufts
     #
     # @return [Draft] self
     def save
-      File.open(path, 'w') { |f| f.write(to_sparql) }
+      File.open(path, 'w+') { |f| f.write(to_sparql) }
       self
     end
 

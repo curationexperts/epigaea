@@ -35,13 +35,29 @@ RSpec.describe Tufts::DraftController, type: :controller do
                                    "new_user_permission_skel" => "none", "new_group_name_skel" => "Select a group",
                                    "new_group_permission_skel" => "none", "agreement" => "1" }
 
-      expect(response.code).to eq("200")
+      parsed_body = JSON.parse(response.body)
+      expect(parsed_body["status"]).to eq("A draft was saved.")
     end
   end
   describe 'GET #apply_draft' do
     it "applies a draft" do
       get :apply_draft, params: { id: model.id }
-      expect(response.code).to eq("200")
+      parsed_body = JSON.parse(response.body)
+      expect(parsed_body["status"]).to eq("A draft was applied.")
+    end
+  end
+  describe 'POST #delete_draft' do
+    it "deletes a draft" do
+      post :delete_draft, params: { id: model.id }
+      parsed_body = JSON.parse(response.body)
+      expect(parsed_body["status"]).to eq("Deleted the draft.")
+    end
+  end
+  describe 'GET #draft_saved' do
+    it "returns the status of the draft" do
+      get :draft_saved, params: { id: model.id }
+      parsed_body = JSON.parse(response.body)
+      expect(parsed_body["status"]).to eq(false)
     end
   end
 end
