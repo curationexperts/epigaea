@@ -2,6 +2,7 @@
 #  `rails generate hyrax:work Rcr`
 class Rcr < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
+  include ::Tufts::Draftable
 
   self.indexer = RcrIndexer
   # Change this to restrict which works can be added as a child.

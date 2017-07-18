@@ -2,7 +2,7 @@
 #  `rails generate hyrax:work Video`
 class Video < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
-
+  include ::Tufts::Draftable
   self.indexer = VideoIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []

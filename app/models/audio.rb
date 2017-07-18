@@ -2,7 +2,7 @@
 #  `rails generate hyrax:work Audio`
 class Audio < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
-
+  include ::Tufts::Draftable
   self.indexer = AudioIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
