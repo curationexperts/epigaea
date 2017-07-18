@@ -24,4 +24,5 @@
 //= require almond
 
 //= require epigaea/select_work_type
+//= require epigaea/draft
 //= require app
