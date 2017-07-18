@@ -1,14 +1,34 @@
 var Draft = {
   saveDraft: function () {
+    Draft.deleteDraft()
     var request = new XMLHttpRequest()
     var form = document.querySelector('.simple_form')
-    request.open('PATCH', `/draft/save_draft/${this.getWorkId()}`)
-    request.setRequestHeader('X-CSRF-Token', document.querySelector('[name=csrf-token]').getAttribute('content'))
-    request.send(new FormData(form))
+    var formData = new FormData(form)
+    formData.delete('_method')
+
+    request.open('POST', `/draft/save_draft/${this.getWorkId()}`)
+    request.send(formData)
+
+    request.onreadystatechange = function () {
+      if (request.readyState == XMLHttpRequest.DONE) {
+        console.log(request.responseText)
+      }
+    }
   },
   applyDraft: function () {
     $.get('/draft/apply_draft/' + this.getWorkId(), (data) => {
       var formData = JSON.parse(data.draft)
+      console.log(formData)
+    })
+  },
+  deleteDraft: function () {
+    $.post('/draft/delete_draft/' + this.getWorkId(), (data) => {
+      console.log(data)
+    })
+  },
+  draftSaved: function () {
+    $.get('/draft/draft_saved/' + this.getWorkId(), (data) => {
+      console.log(data)
     })
   },
   getWorkId: function () {

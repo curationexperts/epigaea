@@ -4,11 +4,12 @@ module Tufts
     def apply_draft
       model = ActiveFedora::Base.find(params[:id])
       model.apply_draft
-      render json: { draft: model.attributes.to_json }
+      render json: { draft: model.attributes.to_json, status: "A draft was applied." }
     end
 
     def save_draft
       model = ActiveFedora::Base.find(params[:id])
+
       model_type = model_type(model)
       scalar_fix(model_type)
       delete_items.each do |item|
@@ -18,13 +19,18 @@ module Tufts
       model.assign_attributes(allowed_params(model_type))
       model.save_draft
 
-      render json: { status: "A draft was saved." }
+      render json: { status: "A draft was saved.", attributes: model.attributes }
     end
 
     def delete_draft
       model = ActiveFedora::Base.find(params[:id])
       model.delete_draft
-      render json: { status: "Deleted the draft" }
+      render json: { status: "Deleted the draft." }
+    end
+
+    def draft_saved
+      model = ActiveFedora::Base.find(params[:id])
+      render json: { status: model.draft_saved? }
     end
 
     private
@@ -37,7 +43,7 @@ module Tufts
         # Extra data in the form that's not needed for drafts
         ["admin_set_id", "member_of_collection_ids", "visibility_during_embargo",
          "embargo_release_date", "visibility_after_embargo", "visibility_during_lease",
-         "lease_expiration_date", "visibility_after_lease", "visibility", "version"]
+         "lease_expiration_date", "visibility_after_lease", "visibility", "version", "id"]
       end
 
       def scalar_fix(model_type)

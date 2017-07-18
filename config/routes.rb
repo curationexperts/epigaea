@@ -29,7 +29,8 @@ Rails.application.routes.draw do
 
   # Routes for managing drafts
   get '/draft/apply_draft/:id', to: 'tufts/draft#apply_draft'
-  patch '/draft/save_draft/:id', to: 'tufts/draft#save_draft'
-
+  post '/draft/save_draft/:id', to: 'tufts/draft#save_draft'
+  post '/draft/delete_draft/:id', to: 'tufts/draft#delete_draft'
+  get '/draft/draft_saved/:id', to: 'tufts/draft#draft_saved'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
