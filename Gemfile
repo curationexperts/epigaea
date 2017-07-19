@@ -67,6 +67,7 @@ group :development, :test do
   gem 'fcrepo_wrapper'
   gem 'poltergeist'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'solr_wrapper', '>= 0.3'
 end
