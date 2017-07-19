@@ -1,0 +1,22 @@
+.draft-bar {
+    background: #fff;
+    padding: 1em;
+    border-radius: 3px;
+    width: 50%;
+    margin-bottom: 1em;
+}
+
+.drafts {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+.draft-button {
+    display:inline-block
+}
+
+.draft-status {
+    margin-top: .6em;
+    display: block;
+}
