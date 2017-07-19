@@ -1,0 +1,20 @@
+<% provide :page_title, curation_concern_page_title(curation_concern) %>
+<% provide :page_header do %>
+<h1><%= t("hyrax.works.update.header") %></h1>
+<% end %>
+
+<nav class="draft-bar">
+  <ul class="drafts">
+    <li class="draft-button">
+      <button class="btn btn-primary save-draft">Save Draft</button>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  Blacklight.onLoad(function() {
+    Draft.init()
+  })
+</script>
+
+<%= render 'form' %>
