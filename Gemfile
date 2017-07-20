@@ -59,6 +59,7 @@ gem 'handle-system', '0.1.1'
 gem 'mysql2'
 gem 'rsolr', '>= 1.0'
 gem 'sidekiq'
+gem 'sanitize'
 
 group :development, :test do
   gem 'bixby'

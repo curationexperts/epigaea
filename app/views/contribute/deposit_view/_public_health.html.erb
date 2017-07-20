@@ -1,0 +1,19 @@
+<%# NOTE: this form uses bootstrap_form_for and bootstrap_forms helpers - see: https://github.com/sethvargo/bootstrap_forms %>
+
+<%= f.text_field :title, label: 'Capstone project title', help_block: 'Please limit titles to 250 characters or less.', class: 'form-control' %>
+
+<%= f.text_field :creator, value: current_user.display_name, label: 'Contributor'  %>
+
+<%= f.select :degree, options_for_select(public_health_degrees), {prompt: 'Please select a degree', label: 'Degree'}, {required: true} %>
+
+<%= f.select :embargo, standard_embargos,  label: 'Embargo'  %>
+
+<span class="help-block">An embargo will restrict all access to your work until the selected time has passed.</span>
+
+<%= f.text_area :description, label: 'Short description', help_block: 'Please limit description to 2000 characters or less.', rows: 5, class: 'col-sm-8'  %>
+
+<div class='well'>Technical questions? <a target="_blank" href="http://dca.tufts.edu/contact/">Contact DCA</a>.
+  Other questions?  Contact <a href="mailto:cynthia.dantas@tufts.edu">Public Health and Professional Degree Programs, Career Services</a>
+Public Health and Professional Degree Programs, Career Services” , emailing to cynthia.dantas@tufts.edu
+.</div>
+<div class='clearfix'></div>

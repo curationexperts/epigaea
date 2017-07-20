@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 20170629171168) do
     t.index ["user_id"], name: "index_curation_concerns_operations_on_user_id", using: :btree
   end
 
+  create_table "deposit_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "display_name"
+    t.text     "deposit_agreement", limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "deposit_view"
+    t.string   "license_name"
+  end
+
   create_table "featured_works", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "order",      default: 5
     t.string   "work_id"

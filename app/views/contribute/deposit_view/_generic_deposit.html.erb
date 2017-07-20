@@ -1,0 +1,11 @@
+<%# NOTE: this form uses bootstrap_form_for and bootstrap_forms helpers - see: https://github.com/sethvargo/bootstrap_forms %>
+
+<%= f.text_field :title, label: 'Title', help_block: 'Please limit titles to 250 characters or less.' %>
+
+<%= f.text_field :creator, value: current_user.display_name, label: 'Contributor'  %>
+
+<%= f.select :embargo, standard_embargos,  label: 'Embargo'  %>
+
+<span class="help-block">An embargo will restrict all access to your work until the selected time has passed.</span>
+
+<%= f.text_area :description, label: 'Short description', help_block: 'Please limit description to 2000 characters or less.', rows: 5, class: 'col-sm-8'  %>
