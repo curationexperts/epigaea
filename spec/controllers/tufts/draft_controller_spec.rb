@@ -10,9 +10,9 @@ RSpec.describe Tufts::DraftController, type: :controller do
     model.delete
   end
 
-  describe 'PATCH #save_draft' do
+  describe 'POST #save_draft' do
     it "saves a draft for the model" do
-      patch :save_draft, params: { "id" => model.id, "pdf" => { "title" => "another test thing ", "displays_in" => ["", "nowhere"],
+      patch :save_draft, params: { "id" => model.id, "pdf" => { "title" => "another test thing ", "displays_in" => ["nowhere"],
                                                                 "representative_id" => "0z708w40c", "thumbnail_id" => "0z708w40c",
                                                                 "creator" => [""], "contributor" => [""], "description" => [""], "keyword" => [""],
                                                                 "license" => "#<ActiveTriples::Relation:0x007faba5ea15c0>", "rights_statement" => "",
@@ -25,7 +25,7 @@ RSpec.describe Tufts::DraftController, type: :controller do
                                                                 "primary_date" => [""], "date_accepted" => [""], "date_available" => [""],
                                                                 "date_copyrighted" => [""], "date_issued" => [""], "steward" => "", "created_by" => "",
                                                                 "internal_note" => "", "audience" => "", "embargo_note" => "", "end_date" => "",
-                                                                "accrual_policy" => "", "rights_note" => "", "rights" => "", "resource_type" => [""],
+                                                                "accrual_policy" => "", "rights_note" => "", "resource_type" => [""],
                                                                 "admin_set_id" => "admin_set/default", "member_of_collection_ids" => [""],
                                                                 "visibility_during_embargo" => "restricted", "embargo_release_date" => "2017-07-19",
                                                                 "visibility_after_embargo" => "open", "visibility_during_lease" => "open",
