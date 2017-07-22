@@ -44,8 +44,8 @@ module Tufts
     #
     # @return [Handle::Record] the registered handle
     #
-    # @raise Handle::HandleError when the handle server fails to register
-    # @raise NullIdError when the object has no stable id
+    # @raise [Handle::HandleError] when the handle server fails to register
+    # @raise [NullIdError] when the object has no stable id
     def register!(object:)
       handle = @builder.build
       record = @connection.create_record(handle)
@@ -75,6 +75,7 @@ module Tufts
     #
     # @raise [Handle::NotFound] if the Conncetion returns not found
     # @raise [Handle::HandleError] for other server errors
+    # @raise [NullIdError] when the object has no stable id
     def update!(handle:, object:)
       record = @connection.resolve_handle(handle)
       update_record(object: object, record: record)
@@ -83,6 +84,8 @@ module Tufts
     end
 
     ##
+    # Aligns the fields of `record` with those of `object`.
+    #
     # @param object [ActiveFedora::Base]
     # @param record [Handle::Record]
     # @return [void]
