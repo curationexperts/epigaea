@@ -49,9 +49,7 @@ module Tufts
     def register!(object:)
       handle = @builder.build
       record = @connection.create_record(handle)
-      record.add(:URL, url_for(object: object)).index = 2
-      record.add(:Email, config['email']).index = 6
-      record << Handle::Field::HSAdmin.new(config['admin'])
+      update_record(object: object, record: record)
       record.save
       record
     rescue Handle::HandleError, NullIdError => err
@@ -59,6 +57,39 @@ module Tufts
                 "#{err.message}"
       LOGGER.log(nil, object.uri, message)
       raise err
+    end
+
+    ##
+    # Updates a the record for the given handle using the details of a given
+    # object.
+    #
+    # @note This does not attempt to validate that the object and the handle
+    #   are correctly paired. Clients should take care that updates are
+    #   intended.
+    # @todo Avoid save calls when the record is unchanged.
+    #
+    # @param handle [String]
+    # @param object [ActiveFedora::Base]
+    #
+    # @return [Handle::Record] the updated handle record
+    #
+    # @raise [Handle::NotFound] if the Conncetion returns not found
+    # @raise [Handle::HandleError] for other server errors
+    def update!(handle:, object:)
+      record = @connection.resolve_handle(handle)
+      update_record(object: object, record: record)
+      record.save
+      record
+    end
+
+    ##
+    # @param object [ActiveFedora::Base]
+    # @param record [Handle::Record]
+    # @return [void]
+    def update_record(object:, record:)
+      record.add(:URL, url_for(object: object)).index = 2
+      record.add(:Email, config['email']).index = 6
+      record << Handle::Field::HSAdmin.new(config['admin'])
     end
 
     class NullIdError < RuntimeError; end

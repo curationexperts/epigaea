@@ -29,10 +29,18 @@ describe Tufts::HandleRegistrar do
         @record = record
       end
 
+      # Always return the specified handle
       def create_record(handle)
         @record.handle     = handle
         @record.connection = self
         @record
+      end
+
+      # Resolve to the specified handle for `hdl/hdl1',
+      # raise NotFound otherwise
+      def resolve_handle(handle, *)
+        raise Handle::NotFound unless handle == 'hdl/hdl1'
+        create_record(handle)
       end
 
       # responnd to everything and do nothing.
@@ -137,7 +145,44 @@ describe Tufts::HandleRegistrar do
   end
 
   describe '#update!' do
-    it 'updates the email'
-    it 'updates the URL'
+    context 'when handle is not registered' do
+      it 'raises Handle::NotFound' do
+        expect { service.update!(handle: 'hdl/not_a_handle', object: object) }
+          .to raise_error Handle::NotFound
+      end
+    end
+
+    context 'without changes' do
+      let(:record) do
+        service.update_record(object: object, record: Handle::Record.new)
+      end
+
+      xit 'does not save the record' do
+        expect(record).not_to receive(:save)
+        service.update!(handle: 'hdl/hdl1', object: object)
+      end
+    end
+
+    context 'when changes have been made' do
+      it 'saves the record' do
+        expect(record).to receive(:save).and_return(true)
+        service.update!(handle: 'hdl/hdl1', object: object)
+      end
+
+      it 'updates hs_admin' do
+        expect(service.update!(handle: 'hdl/hdl1', object: object).to_batch)
+          .to include "100 HS_ADMIN 86400 1110 ADMIN 300:111111111111:#{admin}"
+      end
+
+      it 'updates the email' do
+        expect(service.update!(handle: 'hdl/hdl1', object: object).to_batch)
+          .to include "6 EMAIL 86400 1110 UTF8 #{email}"
+      end
+
+      it 'updates URL' do
+        expect(service.update!(handle: 'hdl/hdl1', object: object).to_batch)
+          .to include "2 URL 86400 1110 UTF8 #{url}"
+      end
+    end
   end
 end
