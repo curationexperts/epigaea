@@ -1,12 +1,16 @@
 require 'rails_helper'
 
-# rubocop:disable RSpec/MessageSpies, Lint/HandleExceptions
+# rubocop:disable RSpec/MessageSpies, Lint/HandleExceptions, RSpec/InstanceVariable
 describe Tufts::HandleRegistrar do
-  subject(:service) { described_class.new }
-  let(:object)      { build(:pdf) }
-  let(:admin)       { '0.NA/10427.TEST' }
-  let(:email)       { 'brian.goodmon@tufts.edu' }
-  let(:url)         { "http://dl.tufts.edu/catalog/#{object.id}" }
+  subject(:service) do
+    described_class.new(connection: stubbed_connection.new(record: record))
+  end
+
+  let(:object) { build(:pdf) }
+  let(:admin)  { '0.NA/10427.TEST' }
+  let(:email)  { 'brian.goodmon@tufts.edu' }
+  let(:record) { Handle::Record.new }
+  let(:url)    { "http://dl.tufts.edu/catalog/#{object.id}" }
 
   let(:fake_builder) do
     # a builder that always returns the same handle
@@ -17,38 +21,32 @@ describe Tufts::HandleRegistrar do
     end
   end
 
-  # rubocop:disable RSpec/InstanceVariable
-  describe '#register!' do
-    subject(:service) do
-      described_class.new(connection: spoonfed_connection.new(record: record))
-    end
+  # rubocop:disable Style/MethodMissing
+  let(:stubbed_connection) do
+    # A connection that returns the handle record given on initialzation
+    Class.new do
+      def initialize(*, record:)
+        @record = record
+      end
 
-    # rubocop:disable Style/MethodMissing
-    let(:spoonfed_connection) do
-      # A connection that returns the handle record given on initialzation
-      Class.new do
-        def initialize(*, record:)
-          @record = record
-        end
+      def create_record(handle)
+        @record.handle     = handle
+        @record.connection = self
+        @record
+      end
 
-        def create_record(handle)
-          @record.handle     = handle
-          @record.connection = self
-          @record
-        end
+      # responnd to everything and do nothing.
+      def method_missing(*); end # no-op
 
-        def method_missing(*); end # no-op
-
-        def respond_to_missing?(*)
-          true
-        end
+      def respond_to_missing?(*)
+        true
       end
     end
+  end
 
-    let(:record) { Handle::Record.new }
+  before { allow(record).to receive(:save).and_return(true) }
 
-    before { allow(record).to receive(:save).and_return(true) }
-
+  describe '#register!' do
     context 'when the object lacks a stable id' do
       let(:object) { Pdf.new }
 
@@ -136,5 +134,10 @@ describe Tufts::HandleRegistrar do
       expect(service.register!(object: object).to_batch)
         .to include "100 HS_ADMIN 86400 1110 ADMIN 300:111111111111:#{admin}"
     end
+  end
+
+  describe '#update!' do
+    it 'updates the email'
+    it 'updates the URL'
   end
 end

@@ -32,6 +32,12 @@ module Tufts
     end
 
     ##
+    # @return [Hash<String, Object>]
+    def config
+      Rails.application.config_for(:handle)
+    end
+
+    ##
     # Registers a Handle with the connected handle server.
     #
     # @param builder [#build] an object that returns a handle string from `#build`
@@ -44,8 +50,8 @@ module Tufts
       handle = @builder.build
       record = @connection.create_record(handle)
       record.add(:URL, url_for(object: object)).index = 2
-      record.add(:Email, email).index = 6
-      record << Handle::Field::HSAdmin.new(admin)
+      record.add(:Email, config['email']).index = 6
+      record << Handle::Field::HSAdmin.new(config['admin'])
       record.save
       record
     rescue Handle::HandleError, NullIdError => err
@@ -60,30 +66,13 @@ module Tufts
     private
 
       ##
-      # @todo make admin string configurable
-      #
-      # @return [String]
-      def admin
-        '0.NA/10427.TEST'
-      end
-
-      ##
       # @return [Array] the arguments for the default handle connection;
       def connection_args
-        [:handle_admin, 300, :handle_private_key, :handle_passphrase]
+        c = config
+        [c['admin'], c['index'], c['private_key'], c['passphrase']]
       end
 
       ##
-      # @todo make email configurable
-      #
-      # @return [String]
-      def email
-        'brian.goodmon@tufts.edu'
-      end
-
-      ##
-      # @todo make the base URL configurable
-      #
       # @return [String]
       #
       # @raise NullIdError
@@ -92,7 +81,7 @@ module Tufts
           raise NullIdError,
                 "Tried to assign a Handle to an object with nil `#id`: #{object}."
         end
-        "http://dl.tufts.edu/catalog/#{object.id}"
+        "#{config['base_url']}#{object.id}"
       end
   end
 end
