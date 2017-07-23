@@ -93,11 +93,11 @@ describe Tufts::HandleRegistrar do
 
       # rubocop:disable RSpec/ExampleLength
       it 'logs errors' do
-        message = "Unable to register handle hdl/hdl1 for #{object.uri}\n" \
+        message = "Unable to register handle hdl/hdl1 for #{object.id}\n" \
                   "Invalid admin"
 
         expect(described_class::LOGGER)
-          .to receive(:log).with(nil, object.uri, message)
+          .to receive(:log).with(nil, object.id, message)
 
         begin
           service.register!(object: object)

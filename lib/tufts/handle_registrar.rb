@@ -22,7 +22,7 @@ module Tufts
     LOGGER = Logger.new(Rails.root.join('log', 'handle.log'))
 
     ##
-    # @param object     [ActiveFedora::Base]
+    # @param object     [#id]
     # @param connection [Handle::Connection] defaults to a connection as
     #   configured in `Settings`
     def initialize(connection: Handle::Connection.new(*connection_args),
@@ -53,9 +53,9 @@ module Tufts
       record.save
       record
     rescue Handle::HandleError, NullIdError => err
-      message = "Unable to register handle #{handle} for #{object.uri}\n" \
+      message = "Unable to register handle #{handle} for #{object.id}\n" \
                 "#{err.message}"
-      LOGGER.log(nil, object.uri, message)
+      LOGGER.log(nil, object.id, message)
       raise err
     end
 
@@ -69,7 +69,7 @@ module Tufts
     # @todo Avoid save calls when the record is unchanged.
     #
     # @param handle [String]
-    # @param object [ActiveFedora::Base]
+    # @param object [#id]
     #
     # @return [Handle::Record] the updated handle record
     #
@@ -86,7 +86,7 @@ module Tufts
     ##
     # Aligns the fields of `record` with those of `object`.
     #
-    # @param object [ActiveFedora::Base]
+    # @param object [#id]
     # @param record [Handle::Record]
     # @return [void]
     def update_record(object:, record:)
