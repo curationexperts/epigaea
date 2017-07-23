@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'handle' # manually require handle to address gem name autoload mismatch
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
