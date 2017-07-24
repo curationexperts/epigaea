@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe DepositType do
-
   it 'has a valid factory' do
     FactoryGirl.create(:deposit_type).should be_valid
   end
@@ -24,7 +23,7 @@ describe DepositType do
     FactoryGirl.build(:deposit_type, deposit_view: nil).should_not be_valid
   end
 
-  it 'has a deposit_agreement'do
+  it 'has a deposit_agreement' do
     dt = FactoryGirl.create(:deposit_type)
     dt.deposit_agreement.should == 'legal jargon here...'
   end
