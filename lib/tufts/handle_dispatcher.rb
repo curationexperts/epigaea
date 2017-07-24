@@ -38,7 +38,7 @@ module Tufts
       # @return [AciveFedora::Base] the object
       def assign_for(object:,
                      attribute: :identifier,
-                     registrar: HandleRegistrar.new)
+                     registrar: Tufts::HandleRegistrar.new)
         new(registrar: registrar)
           .assign_for(object: object, attribute: attribute)
       end
@@ -52,7 +52,7 @@ module Tufts
       # @return [AciveFedora::Base] the object
       def assign_for!(object:,
                       attribute: :identifier,
-                      registrar: HandleRegistrar.new)
+                      registrar: Tufts::HandleRegistrar.new)
         new(registrar: registrar)
           .assign_for!(object: object, attribute: attribute)
       end
