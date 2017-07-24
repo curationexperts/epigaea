@@ -4,7 +4,15 @@ describe Tufts::HandleBuilder do
   subject(:builder) { described_class.new }
 
   describe '#prefix' do
-    it 'defaults to configured prefix'
+    it 'has a default prefix' do
+      expect(builder.prefix).not_to be_empty
+    end
+
+    it 'accepts a prefix' do
+      prefix = 'my_pfx'
+      builder = described_class.new(prefix: prefix)
+      expect(builder.prefix).to eq prefix
+    end
   end
 
   describe '#build' do

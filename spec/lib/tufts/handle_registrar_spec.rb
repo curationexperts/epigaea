@@ -118,9 +118,9 @@ describe Tufts::HandleRegistrar do
       end
     end
 
-    it 'returns a record with a handle' do
+    it 'returns a record with a handle using the configured prefix' do
       record = service.register!(object: object)
-      expect(record.handle).to match(/.+\/.+/)
+      expect(record.handle).to match(/tufts\.test\/.+/)
     end
 
     it 'saves the record' do

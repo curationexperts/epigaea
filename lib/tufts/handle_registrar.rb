@@ -26,7 +26,7 @@ module Tufts
     # @param connection [Handle::Connection] defaults to a connection as
     #   configured in `Settings`
     def initialize(connection: Handle::Connection.new(*connection_args),
-                   builder:    HandleBuilder.new)
+                   builder:    HandleBuilder.new(prefix: config['prefix']))
       @connection = connection
       @builder    = builder
     end

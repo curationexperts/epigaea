@@ -1,6 +1,7 @@
 development:
   base_url: "http://dl.tufts.edu/catalog/"
   email: "brian.goodmon@tufts.edu"
+  prefix: 'tufts.dev'
   admin: "0.NA/10427.TEST"
   index: 300
   private_key: 'path/to/key_file'
@@ -10,6 +11,7 @@ test:
   base_url: "http://dl.tufts.edu/catalog/"
   email: "brian.goodmon@tufts.edu"
   admin: "0.NA/10427.TEST"
+  prefix: 'tufts.test'
   index: 300
   private_key: 'path/to/key_file'
   handle_passphrase: 'passphrase'
@@ -17,6 +19,7 @@ test:
 production:
   base_url: "http://dl.tufts.edu/catalog/"
   email: "brian.goodmon@tufts.edu"
+  prefix: 'real.prefix'
   admin: "0.NA/10427.TEST"
   index: 300
   private_key: ENV["HANDLE_PKEY_FILE"]
