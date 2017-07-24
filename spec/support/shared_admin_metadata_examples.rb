@@ -27,16 +27,12 @@ shared_examples 'and has admin metadata attributes' do
     work.accrual_policy = 'an accrual policy'
     expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/accrualPolicy/)
   end
-  it 'has rights' do
-    work.rights = 'DCA Detailed Rights'
-    expect(work.resource.dump(:ttl)).to match(/europeana.eu\/schemas\/edm\/rights/)
-  end
   it 'has license' do
     work.license = ['A license DCA Detailed Rights']
     expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/rights/)
   end
   it 'has rights note' do
     work.rights_note = 'A note about DCA Detailed Rights'
-    expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/rights/)
+    expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/elements\/1.1\/rights/)
   end
 end
