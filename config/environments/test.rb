@@ -43,6 +43,8 @@ Rails.application.configure do
   # config.assets.compile = true
   # config.assets.js_compressor = :uglifier
   config.active_job.queue_adapter = :sidekiq
+
   # Configure the drafts strorage directory
-  config.drafts_storage_dir = Rails.root.join('tmp', 'drafts')
+  config.drafts_storage_dir    = Rails.root.join('tmp', 'drafts')
+  config.templates_storage_dir = Rails.root.join('tmp', 'templates')
 end
