@@ -33,6 +33,9 @@ module Tufts
         property :date_issued, predicate: ::RDF::Vocab::EBUCore.dateIssued do |index|
           index.as :stored_searchable
         end
+        property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation do |index|
+          index.as :stored_searchable
+        end
       end
     end
   end

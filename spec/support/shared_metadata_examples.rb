@@ -50,5 +50,9 @@ shared_examples 'a work with Tufts metadata attributes' do
       work.resource_type = ['Collection']
       expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/type/)
     end
+    it 'has a bilographic citation' do
+      work.bibliographic_citation = ['Collection']
+      expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/bibliographicCitation/)
+    end
   end
 end
