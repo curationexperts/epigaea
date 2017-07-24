@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629171168) do
+ActiveRecord::Schema.define(version: 20170721001717) do
 
   create_table "bookmarks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                     null: false
@@ -238,6 +238,17 @@ ActiveRecord::Schema.define(version: 20170629171168) do
     t.index ["uri"], name: "index_qa_local_authority_entries_on_uri", unique: true, using: :btree
   end
 
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+  end
+
+  create_table "roles_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+    t.index ["role_id", "user_id"], name: "index_roles_users_on_role_id_and_user_id", using: :btree
+    t.index ["user_id", "role_id"], name: "index_roles_users_on_user_id_and_role_id", using: :btree
+  end
+
   create_table "searches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.binary   "query_params", limit: 65535
     t.integer  "user_id"
@@ -245,6 +256,11 @@ ActiveRecord::Schema.define(version: 20170629171168) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["user_id"], name: "index_searches_on_user_id", using: :btree
+  end
+
+  create_table "sequences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "value", default: 0
+    t.string  "scope"
   end
 
   create_table "single_use_links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
