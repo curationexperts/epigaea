@@ -54,5 +54,9 @@ shared_examples 'a work with Tufts metadata attributes' do
       work.bibliographic_citation = ['Collection']
       expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/bibliographicCitation/)
     end
+    it 'has rights_holder' do
+      work.rights_holder = ['Someone']
+      expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/rightsHolder/)
+    end
   end
 end
