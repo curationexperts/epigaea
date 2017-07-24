@@ -32,6 +32,10 @@ class CatalogController < ApplicationController
       qf: "title_tesim description_tesim creator_tesim keyword_tesim"
     }
 
+    # Add larger pagination options to support Tufts batch
+    config.per_page = [10, 20, 50, 100, 500, 1000]
+    config.max_per_page = config.per_page.max
+
     # solr field configuration for document/show views
     config.index.title_field = solr_name("title", :stored_searchable)
     config.index.display_type_field = solr_name("has_model", :symbol)
