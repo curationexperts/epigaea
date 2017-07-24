@@ -45,7 +45,7 @@ class Contribution
 
   def save
     return false unless valid?
-    ArchivalStorageService.new(tufts_pdf, 'Archival.pdf', attachment).run
+    ArchivalStorageService.new(tufts_pdf, attachment).run
     tufts_pdf.save!
     tufts_pdf
   end
