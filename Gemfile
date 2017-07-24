@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'hydra-role-management'
 gem 'hyrax', github: 'samvera/hyrax', ref: '42d3a7b'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -58,8 +59,8 @@ gem 'devise-guests', '~> 0.6'
 gem 'handle-system', '0.1.1'
 gem 'mysql2'
 gem 'rsolr', '>= 1.0'
-gem 'sidekiq'
 gem 'sanitize'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'bixby'
@@ -68,6 +69,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'fcrepo_wrapper'
   gem 'poltergeist'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
