@@ -6,7 +6,7 @@
 
 <%= f.text_field :department, label: 'Department', class: 'typeahead', autocomplete: false, data: {provide:"typeahead", source: tufts_department_labels } %>
 
-<%= f.select :embargo, standard_embargos,  label: 'Embargo'  %>
+<%= f.select :embargo_note, standard_embargos,  label: 'Embargo'  %>
 
 <span class="help-block">An embargo will restrict all access to your work until the selected time has passed.</span>
 
