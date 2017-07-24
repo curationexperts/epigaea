@@ -153,17 +153,17 @@ describe Tufts::HandleRegistrar do
     end
 
     context 'without changes' do
-      let(:record) do
-        service.update_record(object: object, record: Handle::Record.new)
-      end
+      before { service.update_record(object: object, record: record) }
 
-      xit 'does not save the record' do
+      it 'does not save the record' do
         expect(record).not_to receive(:save)
         service.update!(handle: 'hdl/hdl1', object: object)
       end
     end
 
     context 'when changes have been made' do
+      before { record.add(:URL, 'http://example.com/fake').index = 2 }
+
       it 'saves the record' do
         expect(record).to receive(:save).and_return(true)
         service.update!(handle: 'hdl/hdl1', object: object)
@@ -182,6 +182,11 @@ describe Tufts::HandleRegistrar do
       it 'updates URL' do
         expect(service.update!(handle: 'hdl/hdl1', object: object).to_batch)
           .to include "2 URL 86400 1110 UTF8 #{url}"
+      end
+
+      it 'deletes old fields URL' do
+        expect(service.update!(handle: 'hdl/hdl1', object: object).to_batch)
+          .not_to include "2 URL 86400 1110 UTF8 http://example.com/fake"
       end
     end
   end

@@ -6,13 +6,14 @@ module Tufts
   #
   # @example Registering a Handle to Server from Settings
   #   pdf = Pdf.create(title: ['moomin'])
-  #   registrar = HandleRegistrar.new(pdf)
-  #   registrar.register!
+  #   registrar = HandleRegistrar.new
+  #   registrar.register(object: pdf)
   #
   # @example Registering a Handle to a custom server connection
   #   connection = Handle::Connection.new(admin, 300, pk, pass)
   #   pdf        = Pdf.create(title: ['moomin'])
-  #   registrar  = HandleRegistrar.new(pdf, connection: connection)
+  #   registrar  = HandleRegistrar.new(connection: connection)
+  #   registrar.register!(object: pdf)
   #
   # @see Handle::Connection
   # @see Tufts::HandleBuilder
@@ -66,7 +67,6 @@ module Tufts
     # @note This does not attempt to validate that the object and the handle
     #   are correctly paired. Clients should take care that updates are
     #   intended.
-    # @todo Avoid save calls when the record is unchanged.
     #
     # @param handle [String]
     # @param object [#id]
@@ -78,8 +78,9 @@ module Tufts
     # @raise [NullIdError] when the object has no stable id
     def update!(handle:, object:)
       record = @connection.resolve_handle(handle)
+      old_fields = record.to_a.dup
       update_record(object: object, record: record)
-      record.save
+      record.save unless record.to_a == old_fields
       record
     end
 
@@ -90,6 +91,10 @@ module Tufts
     # @param record [Handle::Record]
     # @return [void]
     def update_record(object:, record:)
+      record.fields.delete_if do |field|
+        ['URL', 'EMAIL', 'HS_ADMIN'].include?(field.class.value_type)
+      end
+
       record.add(:URL, url_for(object: object)).index = 2
       record.add(:Email, config['email']).index = 6
       record << Handle::Field::HSAdmin.new(config['admin'])
