@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+  <digitalObject>
+    <pid>draft:12440</pid>
+    <datastream id="DCA-META">
+      <dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:xlink="http://www.w3.org/1999/xlink" version="0.1">
+        <dc:title>test image</dc:title>
+      </dc>
+    </datastream>
+    <datastream id="DCA-ADMIN">
+      <admin xmlns:ac="http://purl.org/dc/dcmitype/" xmlns:local="http://nils.lib.tufts.edu/dcaadmin/">
+        <local:batchID>321</local:batchID>
+        <local:displays>dl</local:displays>
+        <local:editedAt>2015-05-22T21:00:41Z</local:editedAt>
+      </admin>
+    </datastream>
+    <datastream id="RELS-EXT">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="http://www.openarchives.org/OAI/2.0/">
+        <rdf:Description rdf:about="info:fedora/draft:12440">
+          <ns1:itemID>oai:draft:12440</ns1:itemID>
+          <ns0:hasModel rdf:resource="info:fedora/cm:Image.4DS" />
+        </rdf:Description>
+      </rdf:RDF>
+    </datastream>
+  </digitalObject>
+  <digitalObject>
+    <pid>draft:12439</pid>
+    <datastream id="DCA-META">
+      <dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:xlink="http://www.w3.org/1999/xlink" version="0.1">
+        <dc:title>test pdf</dc:title>
+      </dc>
+    </datastream>
+    <datastream id="DCA-ADMIN">
+      <admin xmlns:ac="http://purl.org/dc/dcmitype/" xmlns:local="http://nils.lib.tufts.edu/dcaadmin/">
+        <local:displays>dl</local:displays>
+        <local:editedAt>2015-05-22T21:00:40Z</local:editedAt>
+      </admin>
+    </datastream>
+    <datastream id="RELS-EXT">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="http://www.openarchives.org/OAI/2.0/">
+        <rdf:Description rdf:about="info:fedora/draft:12439">
+          <ns1:itemID>oai:draft:12439</ns1:itemID>
+          <ns0:hasModel rdf:resource="info:fedora/cm:Text.PDF" />
+        </rdf:Description>
+      </rdf:RDF>
+    </datastream>
+  </digitalObject>
+  <digitalObject>
+    <pid>draft:12438</pid>
+    <datastream id="DCA-META">
+      <dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:xlink="http://www.w3.org/1999/xlink" version="0.1">
+        <dc:title>test image</dc:title>
+      </dc>
+    </datastream>
+    <datastream id="DCA-ADMIN">
+      <admin xmlns:ac="http://purl.org/dc/dcmitype/" xmlns:local="http://nils.lib.tufts.edu/dcaadmin/">
+        <local:displays>dl</local:displays>
+        <local:editedAt>2015-05-22T20:55:08Z</local:editedAt>
+      </admin>
+    </datastream>
+    <datastream id="RELS-EXT">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="http://www.openarchives.org/OAI/2.0/">
+        <rdf:Description rdf:about="info:fedora/draft:12438">
+          <ns1:itemID>oai:draft:12438</ns1:itemID>
+          <ns0:hasModel rdf:resource="info:fedora/cm:Image.4DS" />
+        </rdf:Description>
+      </rdf:RDF>
+    </datastream>
+  </digitalObject>
+  <digitalObject>
+    <pid>draft:12437</pid>
+    <datastream id="DCA-META">
+      <dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:xlink="http://www.w3.org/1999/xlink" version="0.1">
+        <dc:title>test pdf</dc:title>
+      </dc>
+    </datastream>
+    <datastream id="DCA-ADMIN">
+      <admin xmlns:ac="http://purl.org/dc/dcmitype/" xmlns:local="http://nils.lib.tufts.edu/dcaadmin/">
+        <local:displays>dl</local:displays>
+        <local:editedAt>2015-05-22T20:55:06Z</local:editedAt>
+      </admin>
+    </datastream>
+    <datastream id="RELS-EXT">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="http://www.openarchives.org/OAI/2.0/">
+        <rdf:Description rdf:about="info:fedora/draft:12437">
+          <ns1:itemID>oai:draft:12437</ns1:itemID>
+          <ns0:hasModel rdf:resource="info:fedora/cm:Text.PDF" />
+        </rdf:Description>
+      </rdf:RDF>
+    </datastream>
+  </digitalObject>
+  <digitalObject>
+    <pid>draft:12436</pid>
+    <datastream id="DCA-META">
+      <dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:xlink="http://www.w3.org/1999/xlink" version="0.1">
+        <dc:title>audio test</dc:title>
+      </dc>
+    </datastream>
+    <datastream id="DCA-ADMIN">
+      <admin xmlns:ac="http://purl.org/dc/dcmitype/" xmlns:local="http://nils.lib.tufts.edu/dcaadmin/">
+        <local:editedAt>2015-05-20T16:28:30Z</local:editedAt>
+        <local:displays>dl</local:displays>
+        <local:createdby />
+        <local:creatordept />
+      </admin>
+    </datastream>
+    <datastream id="RELS-EXT">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="http://www.openarchives.org/OAI/2.0/">
+        <rdf:Description rdf:about="info:fedora/draft:12436">
+          <ns1:itemID>oai:draft:12436</ns1:itemID>
+          <ns0:hasModel rdf:resource="info:fedora/cm:Audio" />
+        </rdf:Description>
+      </rdf:RDF>
+    </datastream>
+  </digitalObject>
+  <digitalObject>
+    <pid>draft:12435</pid>
+    <datastream id="DCA-META">
+      <dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:xlink="http://www.w3.org/1999/xlink" version="0.1">
+        <dc:title>TEI sample</dc:title>
+      </dc>
+    </datastream>
+    <datastream id="DCA-ADMIN">
+      <admin xmlns:ac="http://purl.org/dc/dcmitype/" xmlns:local="http://nils.lib.tufts.edu/dcaadmin/">
+        <local:editedAt>2015-05-20T16:02:32Z</local:editedAt>
+        <local:displays>dl</local:displays>
+        <local:createdby />
+        <local:creatordept />
+      </admin>
+    </datastream>
+    <datastream id="RELS-EXT">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="http://www.openarchives.org/OAI/2.0/">
+        <rdf:Description rdf:about="info:fedora/draft:12435">
+          <ns1:itemID>oai:draft:12435</ns1:itemID>
+          <ns0:hasModel rdf:resource="info:fedora/cm:Text.TEI" />
+        </rdf:Description>
+      </rdf:RDF>
+    </datastream>
+  </digitalObject>
+  <digitalObject>
+    <pid>draft:12432</pid>
+    <datastream id="DCA-META" />
+    <datastream id="DCA-ADMIN">
+      <admin xmlns:ac="http://purl.org/dc/dcmitype/" xmlns:local="http://nils.lib.tufts.edu/dcaadmin/">
+        <local:editedAt>2015-05-18T15:40:59Z</local:editedAt>
+      </admin>
+    </datastream>
+    <datastream id="RELS-EXT">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns0="info:fedora/fedora-system:def/model#">
+        <rdf:Description rdf:about="info:fedora/draft:12432">
+          <ns0:hasModel rdf:resource="info:fedora/cm:Audio" />
+        </rdf:Description>
+      </rdf:RDF>
+    </datastream>
+  </digitalObject>
+  <digitalObject>
+    <pid>draft:12430</pid>
+    <datastream id="DCA-META" />
+    <datastream id="DCA-ADMIN">
+      <admin xmlns:ac="http://purl.org/dc/dcmitype/" xmlns:local="http://nils.lib.tufts.edu/dcaadmin/">
+        <local:editedAt>2015-05-15T21:50:13Z</local:editedAt>
+      </admin>
+    </datastream>
+    <datastream id="RELS-EXT">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns0="info:fedora/fedora-system:def/model#">
+        <rdf:Description rdf:about="info:fedora/draft:12430">
+          <ns0:hasModel rdf:resource="info:fedora/afmodel:TuftsVideo" />
+        </rdf:Description>
+      </rdf:RDF>
+    </datastream>
+  </digitalObject>
+  <digitalObject>
+    <pid>draft:12429</pid>
+    <datastream id="DCA-META" />
+    <datastream id="DCA-ADMIN">
+      <admin xmlns:ac="http://purl.org/dc/dcmitype/" xmlns:local="http://nils.lib.tufts.edu/dcaadmin/">
+        <local:editedAt>2015-05-15T21:50:01Z</local:editedAt>
+      </admin>
+    </datastream>
+    <datastream id="RELS-EXT">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns0="info:fedora/fedora-system:def/model#">
+        <rdf:Description rdf:about="info:fedora/draft:12429">
+          <ns0:hasModel rdf:resource="info:fedora/cm:Text.PDF" />
+        </rdf:Description>
+      </rdf:RDF>
+    </datastream>
+  </digitalObject>
+  <digitalObject>
+    <pid>draft:12428</pid>
+    <datastream id="DCA-META" />
+    <datastream id="DCA-ADMIN">
+      <admin xmlns:ac="http://purl.org/dc/dcmitype/" xmlns:local="http://nils.lib.tufts.edu/dcaadmin/">
+        <local:editedAt>2015-05-15T21:49:15Z</local:editedAt>
+      </admin>
+    </datastream>
+    <datastream id="RELS-EXT">
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns0="info:fedora/fedora-system:def/model#">
+        <rdf:Description rdf:about="info:fedora/draft:12428">
+          <ns0:hasModel rdf:resource="info:fedora/cm:Image.4DS" />
+        </rdf:Description>
+      </rdf:RDF>
+    </datastream>
+  </digitalObject>
+</items>
+
