@@ -22,6 +22,7 @@
 
 //= require hyrax
 //= require almond
-
-//= require epigaea/select_work_type
+//= require tufts/draft_ui
+//= require tufts/draft
+//= require tufts/select_work_type
 //= require app

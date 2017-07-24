@@ -80,12 +80,6 @@ RSpec.shared_examples 'a draftable model' do
         model.apply_draft
         expect(model).to have_unordered_attributes(change_map)
       end
-
-      it 'no longer has a draft' do
-        expect { model.apply_draft }
-          .to change { model.draft_saved? }
-          .from(true).to(false)
-      end
     end
 
     context 'when model has existing properties' do

@@ -31,10 +31,11 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       fill_in "Title", with: 'Example Title'
       find(:xpath, '//option[contains(text(), "nowhere")]').select_option
       click_link "Files"
-      execute_script("$('.fileinput-button input').css({'opacity':'1', 'display':'block', 'position':'relative'})")
-      attach_file('files[]', file_fixture('pdf-sample.pdf'))
+      execute_script("$('.fileinput-button input:first').css({'opacity':'1', 'display':'block', 'position':'relative'})")
+      attach_file('files[]', File.absolute_path(file_fixture('pdf-sample.pdf')))
       find('#agreement').click
-      click_button "Save"
+      sleep(1)
+      find('#with_files_submit').click
       expect(page).to have_content('Example Title')
     end
   end

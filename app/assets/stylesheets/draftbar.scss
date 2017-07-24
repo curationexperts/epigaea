@@ -1,0 +1,68 @@
+.draft-bar {
+    background: #fff;
+    padding: 1em;
+    border-radius: 3px;
+    width: 50%;
+    margin-bottom: 1em;
+}
+
+.drafts {
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+
+.draft-button {
+    display:inline-block
+}
+
+.draft-status {
+    margin-top: .6em;
+    display: block;
+}
+
+.workflow-status-container {
+    margin-top:.6em;
+}
+
+.workflow-status.edited {
+    background-color: #f0ad4e;
+}
+
+.workflow-status.published {
+    background-color: #5cb85c;
+}
+
+.workflow-status {
+    
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+/* Spinner */
+
+.save-draft .glyphicon {
+    margin-left:.4em;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}

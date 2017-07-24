@@ -92,28 +92,6 @@ RSpec.describe Tufts::Draft do
           .to include('title', 'subject')
       end
     end
-
-    context 'when saved' do
-      before { draft.save }
-
-      it 'deletes the draft' do
-        expect { draft.apply }
-          .to change { draft.exists? }
-          .from(true)
-          .to(false)
-      end
-    end
-
-    context 'with changes' do
-      include_context 'with changes'
-
-      it 'empties the changeset' do
-        expect { draft.apply }
-          .to change { draft.changeset.empty? }
-          .from(false)
-          .to(true)
-      end
-    end
   end
 
   describe '#changeset accessor' do

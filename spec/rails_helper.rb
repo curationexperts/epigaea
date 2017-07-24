@@ -10,6 +10,7 @@ require 'capybara/rails'
 require 'capybara/poltergeist'
 require 'database_cleaner'
 require 'active_fedora/cleaner'
+require 'selenium-webdriver'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -71,6 +72,12 @@ end
 # end
 
 Capybara.javascript_driver = :poltergeist
+
+Capybara.register_driver :chrome do |app|
+  profile = Selenium::WebDriver::Chrome::Profile.new
+  profile['extensions.password_manager_enabled'] = false
+  Capybara::Selenium::Driver.new(app, browser: :chrome, profile: profile)
+end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
