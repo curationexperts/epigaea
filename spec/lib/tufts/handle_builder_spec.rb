@@ -17,12 +17,7 @@ describe Tufts::HandleBuilder do
 
   describe '#build' do
     it 'uses the prefix' do
-      expect(builder.build).to start_with "#{builder.prefix}/"
-    end
-
-    xit 'builds different handle for sequential calls' do
-      handles = (0..2).map { builder.build }.uniq
-      expect(handles.count).to eq 3
+      expect(builder.build(hint: 'blah')).to start_with "#{builder.prefix}/"
     end
 
     context 'with a custom prefix' do
@@ -30,7 +25,7 @@ describe Tufts::HandleBuilder do
       let(:prefix)      { 'fake_prefix' }
 
       it 'uses the prefix' do
-        expect(builder.build).to start_with "#{prefix}/"
+        expect(builder.build(hint: 'blah')).to start_with "#{prefix}/"
       end
     end
   end

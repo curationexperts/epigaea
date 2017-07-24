@@ -48,7 +48,8 @@ module Tufts
     # @raise [Handle::HandleError] when the handle server fails to register
     # @raise [NullIdError] when the object has no stable id
     def register!(object:)
-      handle = @builder.build
+      check_id!(object)
+      handle = @builder.build(hint: object.id)
       record = @connection.create_record(handle)
       update_record(object: object, record: record)
       record.save
@@ -77,6 +78,7 @@ module Tufts
     # @raise [Handle::HandleError] for other server errors
     # @raise [NullIdError] when the object has no stable id
     def update!(handle:, object:)
+      check_id!(object)
       record = @connection.resolve_handle(handle)
       old_fields = record.to_a.dup
       update_record(object: object, record: record)
@@ -113,14 +115,18 @@ module Tufts
 
       ##
       # @return [String]
-      #
-      # @raise NullIdError
       def url_for(object:)
-        unless object.id
-          raise NullIdError,
-                "Tried to assign a Handle to an object with nil `#id`: #{object}."
-        end
         "#{config['base_url']}#{object.id}"
+      end
+
+      ##
+      # @param object [#id]
+      # @return [void]
+      # @raise NullIdError unless object's #id is truthy
+      def check_id!(object)
+        return if object.id
+        raise NullIdError, 'Tried to assign a Handle to an object ' \
+                           "with nil `#id`: #{object}."
       end
   end
 end

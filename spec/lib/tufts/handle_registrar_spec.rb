@@ -15,7 +15,7 @@ describe Tufts::HandleRegistrar do
   let(:fake_builder) do
     # a builder that always returns the same handle
     Class.new do
-      def build
+      def build(*)
         'hdl/hdl1'
       end
     end
@@ -121,6 +121,13 @@ describe Tufts::HandleRegistrar do
     it 'returns a record with a handle using the configured prefix' do
       record = service.register!(object: object)
       expect(record.handle).to match(/tufts\.test\/.+/)
+    end
+
+    it 'generates different handles for different objects' do
+      other = build(:pdf)
+
+      expect(service.register!(object: object).handle)
+        .not_to eq service.register!(object: other).handle
     end
 
     it 'saves the record' do
