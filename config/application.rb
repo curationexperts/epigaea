@@ -15,5 +15,9 @@ module Epigaea
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    config.to_prepare do
+      Hyrax::CurationConcern.actor_factory.use Hyrax::Actors::HandleAssuranceActor
+    end
   end
 end
