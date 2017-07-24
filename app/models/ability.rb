@@ -9,9 +9,10 @@ class Ability
     # Limits deleting objects to a the admin user
     #
     # if current_user.admin?
-    #   can [:destroy], ActiveFedora::Base
+    #  can [:destroy], ActiveFedora::Base
     # end
 
+    can [:create], Contribution if current_user
     # Limits creating new objects to a specific group
     #
     # if user_groups.include? 'special_group'
