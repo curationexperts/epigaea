@@ -1,6 +1,6 @@
 class DepositTypesController < ApplicationController
   before_action :load_deposit_type, only: :create
-  # load_and_authorize_resource
+  load_and_authorize_resource
 
   def index; end
 
