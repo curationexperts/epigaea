@@ -29,4 +29,14 @@ class SolrDocument
       self[Solrizer.solr_name(term.to_s)]
     end
   end
+
+  # There was a Hyrax PR in progress to fix this: https://github.com/samvera/hyrax/pull/1384
+  def itemtype
+    result = super
+    Logger.log(:warn, "Remove override in SolrDocumentBehavior#itemtype, it's no longer needed!")
+    result
+  rescue NameError
+    types = resource_type || []
+    ResourceTypesService.microdata_type(types.first)
+  end
 end
