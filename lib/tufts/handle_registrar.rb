@@ -110,7 +110,12 @@ module Tufts
       # @return [Array] the arguments for the default handle connection;
       def connection_args
         c = config
-        [c['admin'], c['index'], c['private_key'], c['passphrase']]
+
+        if c.fetch('secret_key', false)
+          [c['admin'], c['index'], c['secret_key']]
+        else
+          [c['admin'], c['index'], c['private_key'], c['passphrase']]
+        end
       end
 
       ##
