@@ -1,5 +1,3 @@
-require 'factory_girl'
-
 FactoryGirl.define do
   factory :deposit_type do
     sequence(:display_name) { |n| "Deposit Type No. #{n}" }

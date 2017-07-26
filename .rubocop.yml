@@ -18,7 +18,19 @@ RSpec/ExampleLength:
    Exclude:
     - 'spec/features/**/*'
     - 'spec/controllers/tufts/draft_controller_spec.rb'
-
-
-
-
+    - 'spec/lib/import_export/deposit_type_importer_spec.rb'
+    - 'spec/lib/import_export/deposit_type_exporter_spec.rb'
+    - 'spec/lib/deposit_types_controller_spec.rb'
+    - 'spec/controllers/contribute_controller_spec.rb'
+    - 'spec/controllers/deposit_types_controller_spec.rb'
+RSpec/NestedGroups:
+  Exclude:
+   - 'spec/controllers/deposit_types_controller_spec.rb'
+   - 'spec/controllers/contribute_controller_spec.rb'     
+RSpec/AnyInstance:
+  Exclude:
+   - 'spec/controllers/deposit_types_controller_spec.rb'
+   - 'spec/lib/deposit_types_controller_spec.rb'
+RSpec/MultipleExpectations:
+  Exclude:
+  - 'spec/controllers/contribute_controller_spec.rb'

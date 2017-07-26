@@ -43,7 +43,7 @@ module ContributeHelper
     content_tag :div, id: 'additional_other_authors_elements' do
       authors = Array(contribution.other_authors).delete_if(&:blank?)
       authors.inject(ActiveSupport::SafeBuffer.new) do |fields, auth|
-        fields += html_snippet_for_one_author(auth)
+        fields + html_snippet_for_one_author(auth)
       end
     end
   end

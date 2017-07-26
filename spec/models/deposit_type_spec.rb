@@ -19,13 +19,13 @@ describe DepositType do
 
   it 'requires a deposit_view' do
     dt = FactoryGirl.create(:deposit_type)
-    dt.deposit_view.should == 'generic_deposit'
+    dt.deposit_view.should eq('generic_deposit')
     FactoryGirl.build(:deposit_type, deposit_view: nil).should_not be_valid
   end
 
   it 'has a deposit_agreement' do
     dt = FactoryGirl.create(:deposit_type)
-    dt.deposit_agreement.should == 'legal jargon here...'
+    dt.deposit_agreement.should eq('legal jargon here...')
   end
 
   it 'must have unique display names' do

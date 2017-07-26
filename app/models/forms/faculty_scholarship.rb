@@ -1,7 +1,7 @@
 class FacultyScholarship < Contribution
   self.attributes += [:other_authors]
   self.ignore_attributes += [:other_authors]
-  attr_accessor *attributes
+  attr_accessor(*attributes)
 
   protected
 

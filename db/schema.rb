@@ -258,11 +258,6 @@ ActiveRecord::Schema.define(version: 20170721001717) do
     t.index ["user_id"], name: "index_searches_on_user_id", using: :btree
   end
 
-  create_table "sequences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "value", default: 0
-    t.string  "scope"
-  end
-
   create_table "single_use_links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "downloadKey"
     t.string   "path"

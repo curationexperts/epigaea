@@ -81,10 +81,7 @@ protected
 
   def insert_embargo_date
     return unless @tufts_pdf
-
-    unless (embargo_note || '0').eql? '0'
-      @tufts_pdf.embargo_note = (Time.zone.now + embargo_note.to_i.months).iso8601
-    end
+    @tufts_pdf.embargo_note = (Time.zone.now + embargo_note.to_i.months).iso8601 unless (embargo_note || '0').eql? '0'
   end
 
   def insert_rels_ext_relationships
@@ -95,12 +92,10 @@ protected
 
   def attachment_has_valid_content_type
     return unless attachment
-    unless attachment.content_type == 'application/pdf'
-      errors.add(:attachment, "is a #{attachment.content_type} file. It must be a PDF file.")
-    end
+    errors.add(:attachment, "is a #{attachment.content_type} file. It must be a PDF file.") unless attachment.content_type == 'application/pdf'
   end
 
   public
 
-  attr_accessor *attributes
+  attr_accessor(*attributes)
 end

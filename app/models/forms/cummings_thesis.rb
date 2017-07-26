@@ -4,7 +4,7 @@ class CummingsThesis < Contribution
     def copy_attributes
       super
       @tufts_pdf.creatordept = 'UA041.007'
-      end
+    end
 
   private
 

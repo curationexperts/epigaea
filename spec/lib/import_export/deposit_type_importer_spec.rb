@@ -18,7 +18,7 @@ describe DepositTypeImporter do
   end
 
   it 'raises an exception if the import file is not CSV' do
-    not_a_csv_file = File.join(fixture_path, 'tufts_RCR00001.foxml.xml')
+    not_a_csv_file = File.join(fixture_path, 'hello.pdf')
     importer = described_class.new(not_a_csv_file)
     expect do
       importer.import_from_csv
@@ -53,7 +53,7 @@ describe DepositTypeImporter do
     DepositType.count.should eq(3)
     pdf.reload
     pdf.deposit_agreement.should eq('Agreement for a PDF')
-    pdf.deposit_view.should == eq('capstone_project')
+    pdf.deposit_view.should eq('capstone_project')
   end
 
   it 'doesnt create duplicate deposit types' do

@@ -45,9 +45,7 @@ protected
   end
 
   def validate_import_file_format
-    unless @import_file =~ /^.*\.csv$/i
-      raise ImportFileFormatError, 'Must be a *.csv file'
-    end
+    raise ImportFileFormatError, 'Must be a *.csv file' unless @import_file =~ /^.*\.csv$/i
   end
 
   def strip_whitespace(hash)
