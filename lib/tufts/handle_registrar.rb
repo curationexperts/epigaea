@@ -121,7 +121,14 @@ module Tufts
       ##
       # @return [String]
       def url_for(object:)
-        "#{config['base_url']}#{object.id}"
+        ActionDispatch::Routing::PolymorphicRoutes::HelperMethodBuilder
+          .polymorphic_method(Rails.application.routes.url_helpers,
+                              object.class.model_name.singular_route_key,
+                              nil,
+                              :url,
+                              id:     object.id,
+                              host:   config['hostname'],
+                              anchor: nil)
       end
 
       ##

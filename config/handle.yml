@@ -1,5 +1,5 @@
 development:
-  base_url: "http://dl.tufts.edu/catalog/"
+  hostname: "dl.tufts.edu"
   email: "brian.goodmon@tufts.edu"
   prefix: 'tufts.dev'
   admin: "0.NA/10427.TEST"
@@ -8,7 +8,7 @@ development:
   handle_passphrase: 'passphrase'
 
 test:
-  base_url: "http://dl.tufts.edu/catalog/"
+  hostname: "dl.tufts.edu"
   email: "brian.goodmon@tufts.edu"
   admin: "0.NA/10427.TEST"
   prefix: 'tufts.test'
@@ -17,7 +17,7 @@ test:
   handle_passphrase: 'passphrase'
 
 production:
-  base_url: "http://dl.tufts.edu/catalog/"
+  hostname: "dl.tufts.edu"
   email: "brian.goodmon@tufts.edu"
   prefix: 'real.prefix'
   admin: "0.NA/10427.TEST"

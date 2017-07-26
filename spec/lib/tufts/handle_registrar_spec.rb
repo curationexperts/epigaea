@@ -10,7 +10,7 @@ describe Tufts::HandleRegistrar do
   let(:admin)  { '0.NA/10427.TEST' }
   let(:email)  { 'brian.goodmon@tufts.edu' }
   let(:record) { Handle::Record.new }
-  let(:url)    { "http://dl.tufts.edu/catalog/#{object.id}" }
+  let(:url)    { "http://dl.tufts.edu/concern/pdfs/#{object.id}" }
 
   let(:fake_builder) do
     # a builder that always returns the same handle
