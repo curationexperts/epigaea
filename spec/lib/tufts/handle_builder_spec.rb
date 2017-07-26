@@ -17,7 +17,7 @@ describe Tufts::HandleBuilder do
 
   describe '#build' do
     it 'uses the prefix' do
-      expect(builder.build(hint: 'blah')).to start_with "#{builder.prefix}/"
+      expect(builder.build(hint: 'blah')).to start_with "#{builder.prefix.upcase}/"
     end
 
     context 'with a custom prefix' do
@@ -25,8 +25,16 @@ describe Tufts::HandleBuilder do
       let(:prefix)      { 'fake_prefix' }
 
       it 'uses the prefix' do
-        expect(builder.build(hint: 'blah')).to start_with "#{prefix}/"
+        expect(builder.build(hint: 'blah')).to start_with "#{prefix.upcase}/"
       end
+    end
+
+    it 'raises an error with no hint' do
+      expect { builder.build }.to raise_error ArgumentError
+    end
+
+    it 'uses the hint exactly, cast to uppercase' do
+      expect(builder.build(hint: 'moomin')).to eq 'PFX/MOOMIN'
     end
   end
 end

@@ -29,7 +29,7 @@ module Tufts
       raise(ArgumentError, "No hint provided to #{self.class}#build") if
         hint.nil?
 
-      "#{prefix}/#{hint}"
+      "#{prefix}/#{hint}".upcase
     end
   end
 end

@@ -120,7 +120,7 @@ describe Tufts::HandleRegistrar do
 
     it 'returns a record with a handle using the configured prefix' do
       record = service.register!(object: object)
-      expect(record.handle).to match(/tufts\.test\/.+/)
+      expect(record.handle).to match(/TUFTS\.TEST\/.+/)
     end
 
     it 'generates different handles for different objects' do
