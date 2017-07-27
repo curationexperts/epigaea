@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Ead do
-  changes = { title: ['A new title'], description: ['test'], subject: ['Testing'] }
+  changes = { title: ['Another title'], displays_in: ['dca'], subject: ['Testing'] }
   subject(:model) {  FactoryGirl.build(:ead) }
   let(:work) { model }
   let(:change_map) { changes }

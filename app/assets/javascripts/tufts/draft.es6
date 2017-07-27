@@ -24,23 +24,8 @@ export default class Draft {
 
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
-          console.log(request.responseText)
           this.isSaved()
           DraftUI.removeRefreshButton()
-        }
-      }
-    })
-  }
-  apply () {
-    // Apply the draft to the Work and get the result, then
-    // serialize the result into the form on the front-end
-    $.get('/draft/apply_draft/' + this.getWorkId(), (data) => {
-      var formData = JSON.parse(data.draft)
-      for (var key in formData) {
-        // Filter out values that we don't want
-        if (formData[key] != [''] && formData[key] !== null && formData[key] !== [] && formData[key] && formData[key][0] !== '' && formData[key].length != 0) {
-          var inputField = $(`[id$=${key}]:first`)
-          inputField.val(formData[key])
         }
       }
     })
@@ -54,7 +39,6 @@ export default class Draft {
     $.get('/draft/draft_saved/' + this.getWorkId(), (data) => {
       if (data.status) {
         DraftUI.addEditedWorkflowStatus()
-        this.apply()
       } else {
         DraftUI.addPublishedWorkflowStatus()
       }

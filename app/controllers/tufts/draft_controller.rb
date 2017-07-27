@@ -1,11 +1,6 @@
 module Tufts
   class DraftController < ApplicationController
     protect_from_forgery with: :null_session
-    def apply_draft
-      model = ActiveFedora::Base.find(params[:id])
-      model.apply_draft
-      render json: { draft: model.attributes.except!(*delete_items).to_json, status: "A draft was applied." }
-    end
 
     def save_draft
       model = ActiveFedora::Base.find(params[:id])

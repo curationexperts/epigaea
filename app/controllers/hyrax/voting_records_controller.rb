@@ -10,5 +10,6 @@ module Hyrax
 
     # Use this line if you want to use a custom presenter
     self.show_presenter = Hyrax::VotingRecordPresenter
+    include Tufts::Drafts::Editable
   end
 end
