@@ -34,6 +34,8 @@ module Tufts
           index.as :stored_searchable
         end
         property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation do |index|
+        end
+        property :rights_holder, predicate: ::RDF::Vocab::DC.rightsHolder do |index|
           index.as :stored_searchable
         end
       end
