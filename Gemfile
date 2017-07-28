@@ -55,6 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'devise-guests', '~> 0.6'
+gem 'handle-system', '0.1.1'
 gem 'mysql2'
 gem 'rsolr', '>= 1.0'
 gem 'sidekiq'

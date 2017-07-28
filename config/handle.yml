@@ -1,0 +1,28 @@
+development:
+  hostname: "localhost:3000"
+  email: "contact@example.com"
+  prefix: '1234.DEV'
+  admin: "1234.TEST/ADMIN"
+  index: 301
+  secret_key: 'password'
+  # use secret_key for secret key auth;
+  # secret_key preempts pkey authentication if configured.
+
+test:
+  hostname: "dl.tufts.edu"
+  email: "brian.goodmon@tufts.edu"
+  admin: "0.NA/10427.TEST"
+  prefix: 'tufts.test'
+  index: 300
+  # this is a dummy entry, we use a fake connection in testing
+  private_key: '/path/to/pkey'
+  pkey_passphrase: ''
+
+production:
+  hostname: "dl.tufts.edu"
+  email: "brian.goodmon@tufts.edu"
+  prefix: 'real.prefix'
+  admin: "0.NA/10427.TEST"
+  index: 300
+  private_key: ENV["HANDLE_PKEY_FILE"]
+  pkey_passphrase: ENV["HANDLE_PKEY_PASSPHRASE"]
