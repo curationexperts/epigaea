@@ -114,7 +114,7 @@ module Tufts
         if c.fetch('secret_key', false)
           [c['admin'], c['index'], c['secret_key']]
         else
-          [c['admin'], c['index'], c['private_key'], c['passphrase']]
+          [c['admin'], c['index'], c['private_key'], c['pkey_passphrase']]
         end
       end
 
