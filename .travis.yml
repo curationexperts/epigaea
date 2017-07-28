@@ -9,11 +9,6 @@ rvm:
   - 2.3.3
   - 2.3.4
 before_script:
-  - pwd=$(pwd)
-  - wget https://projects.iq.harvard.edu/files/fits/files/fits-1.1.1.zip -O /tmp/fits-1.1.1.zip
-  - cd /tmp && unzip fits-1.1.1.zip
-  - chmod +x /tmp/fits-1.1.1/fits.sh
-  - cd $pwd
   - bundle exec sidekiq -d -l /tmp/sidekiq.log
   - bundle exec rails db:setup
 script:
