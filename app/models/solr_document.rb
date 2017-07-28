@@ -37,6 +37,6 @@ class SolrDocument
     result
   rescue NameError
     types = resource_type || []
-    ResourceTypesService.microdata_type(types.first)
+    Hyrax::ResourceTypesService.microdata_type(types.first)
   end
 end
