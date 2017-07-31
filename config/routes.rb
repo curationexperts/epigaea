@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+  mount Hydra::RoleManagement::Engine => '/'
+
   mount Qa::Engine => '/authorities'
   mount Hyrax::Engine, at: '/'
   resources :welcome, only: 'index'
@@ -32,5 +34,15 @@ Rails.application.routes.draw do
   post '/draft/save_draft/:id', to: 'tufts/draft#save_draft'
   post '/draft/delete_draft/:id', to: 'tufts/draft#delete_draft'
   get '/draft/draft_saved/:id', to: 'tufts/draft#draft_saved'
+
+  resources :deposit_types do
+    get 'export', on: :collection
+  end
+
+  resources :contribute, as: 'contributions', controller: :contribute, only: [:index, :new, :create] do
+    collection do
+      get 'license'
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

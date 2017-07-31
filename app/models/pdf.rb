@@ -3,6 +3,7 @@
 class Pdf < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
   include ::Tufts::Draftable
+
   self.indexer = PdfIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []

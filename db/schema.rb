@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629171168) do
+ActiveRecord::Schema.define(version: 20170721001717) do
 
   create_table "bookmarks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                     null: false
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(version: 20170629171168) do
     t.index ["parent_id"], name: "index_curation_concerns_operations_on_parent_id", using: :btree
     t.index ["rgt"], name: "index_curation_concerns_operations_on_rgt", using: :btree
     t.index ["user_id"], name: "index_curation_concerns_operations_on_user_id", using: :btree
+  end
+
+  create_table "deposit_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "display_name"
+    t.text     "deposit_agreement", limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "deposit_view"
+    t.string   "license_name"
   end
 
   create_table "featured_works", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -227,6 +236,17 @@ ActiveRecord::Schema.define(version: 20170629171168) do
     t.datetime "updated_at",         null: false
     t.index ["local_authority_id"], name: "index_qa_local_authority_entries_on_local_authority_id", using: :btree
     t.index ["uri"], name: "index_qa_local_authority_entries_on_uri", unique: true, using: :btree
+  end
+
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+  end
+
+  create_table "roles_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+    t.index ["role_id", "user_id"], name: "index_roles_users_on_role_id_and_user_id", using: :btree
+    t.index ["user_id", "role_id"], name: "index_roles_users_on_user_id_and_role_id", using: :btree
   end
 
   create_table "searches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
