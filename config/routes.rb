@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   end
 
   # Routes for managing drafts
-  get '/draft/apply_draft/:id', to: 'tufts/draft#apply_draft'
   post '/draft/save_draft/:id', to: 'tufts/draft#save_draft'
   post '/draft/delete_draft/:id', to: 'tufts/draft#delete_draft'
   get '/draft/draft_saved/:id', to: 'tufts/draft#draft_saved'
