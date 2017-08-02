@@ -4,8 +4,10 @@ export default class Draft {
   init () {
     this.isSaved()
     this.bindSaveDraftClick()
+    this.bindRevertDraftClick()
     this.deleteDraftOnSave()
     this.activateSaveButtonOnChange()
+    this.activateRevertButton()
   }
   save () {
     // Save the form's data as a draft
@@ -26,6 +28,7 @@ export default class Draft {
         if (request.readyState === XMLHttpRequest.DONE) {
           this.isSaved()
           DraftUI.removeRefreshButton()
+          this.activateRevertButton()
         }
       }
     })
@@ -39,6 +42,7 @@ export default class Draft {
     $.get('/draft/draft_saved/' + this.getWorkId(), (data) => {
       if (data.status) {
         DraftUI.addEditedWorkflowStatus()
+        this.activateRevertButton()
       } else {
         DraftUI.addPublishedWorkflowStatus()
       }
@@ -50,6 +54,14 @@ export default class Draft {
   bindSaveDraftClick () {
     $('.save-draft').on('click', () => {
       this.save()
+    })
+  }
+  bindRevertDraftClick () {
+    $('.revert-draft').on('click', () => {
+      var deleteDraft = this.delete()
+      deleteDraft.then(() => {
+        Turbolinks.visit(window.location.toString())
+      })
     })
   }
   deleteDraftOnSave () {
@@ -65,5 +77,10 @@ export default class Draft {
       $('.save-draft').prop('disabled', $(this).serialize() == $(this).data('serialized'))
     })
     $('.save-draft').prop('disabled', true)
+  }
+  activateRevertButton () {
+    if ($('.workflow-status').text() === 'edited') {
+       $('.revert-draft').prop('disabled', false)
+    }
   }
 }
