@@ -7,6 +7,7 @@ RSpec.describe Tufts::DraftController, type: :controller do
     model.save
   end
   after do
+    model.delete_draft
     model.destroy
   end
 
