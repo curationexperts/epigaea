@@ -7,10 +7,6 @@ module Tufts
   # @see https://www.w3.org/TR/sparql11-update/
   class ChangesetSerializer
     ##
-    # @param model [ActiveFedora::Base]
-    def initialize(**_opts); end
-    
-    ##
     # @param changeset [ActiveFedora::ChangeSet]
     #
     # @return [String] a SPARQL string
@@ -27,8 +23,8 @@ module Tufts
     # @param str   [String]
     # @param model [ActiveFedora::Base]
     # @return [ActiveFedora::ChangeSet]
-    def deserialize(str, model:) 
-      statements = extract_insert_statements(str)
+    def deserialize(str, model:)
+      statements = extract_insert_statements(str, model.rdf_subject)
 
       changeset =
         ActiveFedora::ChangeSet.new(model,
@@ -72,7 +68,7 @@ module Tufts
 
       ##
       # @return [Array<RDF::Statement>)
-      def extract_insert_statements(update_string)
+      def extract_insert_statements(update_string, subject)
         return [] if update_string.nil? || update_string.empty?
 
         inserts = SPARQL.parse(update_string, update: true).each_descendant.select do |op|
@@ -81,7 +77,7 @@ module Tufts
 
         inserts.flat_map do |insert|
           insert.operand.map do |pattern|
-            RDF::Statement(pattern.subject, pattern.predicate, pattern.object)
+            RDF::Statement(subject, pattern.predicate, pattern.object)
           end
         end
       end

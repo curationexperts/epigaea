@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe Tufts::Template do
   subject(:template) { described_class.new(name: name) }
   let(:name)         { 'test_template' }
+  let(:model)        { model_class.new }
+  let(:predicate)    { RDF::Vocab::DC.title }
+  let(:model_class)  { FakeWork }
 
   after { described_class.all.each(&:delete) }
 
@@ -46,6 +49,14 @@ RSpec.describe Tufts::Template do
 
   describe '#exists?' do
     it { is_expected.not_to be_exists }
+  end
+
+  describe '#load' do
+    it 'loads empty when unsaved' do
+      expect { template.load }
+        .not_to change { template.changeset.empty? }
+        .from true
+    end
   end
 
   describe '#save' do
