@@ -6,13 +6,21 @@ module Tufts
   # A set of draft metadata edits
   class Draft
     ##
+    # @!attribute [rw] apply_strategy
+    #   @return [Tufts::ChangesetOverwriteStrategy]
     # @!attribute [rw] changeset
     #   @return [ActiveFedora::Changeset]
     # @!attribute [rw] id
     #   @return [String]
     # @!attribute [rw] model
     #   @return [Tufts::Draftable]
-    attr_accessor :changeset, :id, :model
+    attr_accessor :apply_strategy, :changeset, :id, :model
+
+    ##
+    # @!method apply
+    #   @return [void] applies the changeset to the model
+    #   @see Tufts::ChangesetOverwriteStrategy#apply
+    delegate :apply, to: :apply_strategy
 
     STORAGE_DIR = Pathname.new(Rails.configuration.drafts_storage_dir).freeze
 
@@ -38,34 +46,11 @@ module Tufts
     # @param id        [String]
     # @param model     [ActiveFedora::Base]
     def initialize(model:, changeset: NullChangeSet.new, id: SecureRandom.uuid)
-      self.changeset = changeset
-      self.id        = id
-      self.model     = model
-    end
-
-    ##
-    # @return [void] applies the changeset to the model
-    def apply # rubocop:disable Metrics/MethodLength
-      changeset.changes.each do |predicate, graph|
-        config = config_for_predicate(predicate)
-
-        if config.nil?
-          raise "Invalid ChangeSet. Property for #{predicate} does not " \
-                "exist on #{model}"
-        end
-
-        property, config = config
-
-        graph.group_by(&:subject).each do |subject, statements|
-          if subject == model.rdf_subject
-            values = statements.map(&:object)
-            values = values.first unless config.multiple?
-            model.send("#{property}=".to_sym, values)
-          else
-            model.resource.insert(*statements)
-          end
-        end
-      end
+      self.changeset      = changeset
+      self.id             = id
+      self.model          = model
+      self.apply_strategy = Tufts::ChangesetOverwriteStrategy
+                            .new(model: model, changeset: changeset)
     end
 
     ##
