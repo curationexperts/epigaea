@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :templates,
+            controller: 'hyrax/templates', only: [:index]
   resources :template_updates,
             controller: 'hyrax/template_updates'
 

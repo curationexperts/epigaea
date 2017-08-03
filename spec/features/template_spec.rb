@@ -33,5 +33,10 @@ RSpec.feature 'Apply a Template', :clean, js: true do
       click_button 'Apply Template'
       expect(page).to have_content template.name
     end
+
+    scenario 'view templates' do
+      visit '/templates'
+      expect(page).to have_content template.name
+    end
   end
 end
