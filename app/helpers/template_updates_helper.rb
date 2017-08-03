@@ -1,0 +1,2 @@
+module TemplateUpdatesHelper
+end

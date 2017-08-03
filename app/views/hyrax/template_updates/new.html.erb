@@ -1,0 +1,28 @@
+<%= form_for [main_app, @update] do |f| %>
+  <%= f.hidden_field :ids, multiple: true, value: @update.ids %>
+
+  <%= f.select :template_name, options_from_collection_for_select(Tufts::Template.all, :name, :name, @update.template_name), prompt: 'Select a Template' %>
+
+  <%= f.label :behavior, 'Template Behavior' %>
+
+  <div class='well'>
+    <div class='form-group'>
+      <%= f.radio_button :behavior, TemplateUpdate::PRESERVE, checked: true %>
+      <div class='radio-label'>
+        <strong> Preserve: </strong> &nbsp;
+        Append template metadata to blank and multivalued fields.
+      </div>
+    </div>
+
+    <div class='form-group'>
+      <%= f.radio_button :behavior, TemplateUpdate::OVERWRITE %>
+      <div class='radio-label'>
+        <strong> Overwrite: </strong> &nbsp;
+        Apply the template and overwrite any exisiting data with data from the template. Use this option with caution.
+      </div>
+    </div>
+  </div>
+
+  <%= f.submit "Apply Template", class: 'btn btn-primary' %>
+  <%= link_to "Cancel", :back, :class=>'btn btn-default' %>
+<% end %>

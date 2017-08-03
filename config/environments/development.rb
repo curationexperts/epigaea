@@ -55,5 +55,6 @@ Rails.application.configure do
   config.active_job.queue_adapter = :inline
 
   # Configure the drafts strorage directory
-  config.drafts_storage_dir = Rails.root.join('tmp', 'drafts')
+  config.drafts_storage_dir    = Rails.root.join('tmp', 'drafts')
+  config.templates_storage_dir = Rails.root.join('tmp', 'templates')
 end

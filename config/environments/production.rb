@@ -83,4 +83,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Configure the drafts strorage directory
+  config.drafts_storage_dir    = Rails.root.join('tmp', 'drafts')
+  config.templates_storage_dir = Rails.root.join('tmp', 'templates')
 end

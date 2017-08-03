@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :template_updates,
+            controller: 'hyrax/template_updates'
+
   # Routes for managing drafts
   post '/draft/save_draft/:id', to: 'tufts/draft#save_draft'
   post '/draft/delete_draft/:id', to: 'tufts/draft#delete_draft'

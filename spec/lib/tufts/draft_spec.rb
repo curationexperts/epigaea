@@ -7,12 +7,7 @@ RSpec.describe Tufts::Draft do
   let(:model)       { model_class.new }
   let(:predicate)   { RDF::Vocab::DC.title }
 
-  let(:model_class) do
-    fake_draftable = Class.new(ActiveFedora::Base)
-    fake_draftable.property(:title,   predicate: predicate)
-    fake_draftable.property(:subject, predicate: RDF::Vocab::DC.subject)
-    fake_draftable
-  end
+  let(:model_class) { FakeWork }
 
   before(:context) do
     unless File.directory?(described_class::STORAGE_DIR)
