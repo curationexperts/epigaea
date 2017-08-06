@@ -1,6 +1,5 @@
 <tr>
   <td> TK: EDIT <!-- link_to "Edit", hydra_editor.edit_record_path(template[:id]), class: "btn" --> </td>
   <td> <%= template.name %> </td>
-  <td> TK: DELETE <!-- link_to "Delete", template_path(template[:id]), method: :delete, class: "btn btn-danger",  data: {confirm: "WARNING: this will permanently delete template #{template[:id]}! Are you sure you want to proceed?"} --> </td>
+  <td> <%= link_to "Delete", main_app.template_path(template.name), method: :delete, class: "btn btn-danger",  data: {confirm: "WARNING: this will permanently delete template #{template.name}! Are you sure you want to proceed?"} %> </td>
 </tr>
-
