@@ -41,6 +41,20 @@ RSpec.describe Tufts::Template do
     end
   end
 
+  describe '.from_object' do
+    before { model.title = ['moomin'] }
+
+    it 'creates a template with the name' do
+      expect(described_class.from_object(model, name: name))
+        .to have_attributes name: name
+    end
+
+    it 'creates a template with the changes' do
+      expect(described_class.from_object(model, name: name).changeset.changes)
+        .to have_key predicate
+    end
+  end
+
   describe '#changeset' do
     it 'is empty by default' do
       expect(template.changeset).to be_empty

@@ -5,7 +5,7 @@ RSpec.feature 'Apply a Template', :clean, js: true do
   let(:object)   { build(:pdf) }
   let(:template) { create(:template) }
 
-  after { template.delete }
+  after { Tufts::Template.all.each(&:delete) }
 
   context 'with logged in user' do
     let(:user_attributes) { { email: 'test@example.com' } }
@@ -39,11 +39,43 @@ RSpec.feature 'Apply a Template', :clean, js: true do
       expect(page).to have_content template.name
     end
 
+    scenario 'create a template' do
+      visit '/templates'
+      first(:link, 'New Template').click
+
+      fill_in 'Template name', with: 'Moomin Template'
+      fill_in 'Title', with: 'Moomin Title'
+
+      click_button 'Save'
+      expect(page).to have_content 'Moomin Template'
+    end
+
     scenario 'delete a template' do
       visit '/templates'
       click_link 'Delete'
 
       expect(page).not_to have_content template.name
+    end
+
+    scenario 'edit a template' do
+      visit '/templates'
+
+      click_link 'Edit', id: "edit-#{template.name}"
+
+      fill_in 'Title', with: 'Moomin Title'
+      click_button 'Save'
+
+      expect(Tufts::Template.for(name: template.name).changeset)
+        .not_to be_empty
+    end
+
+    scenario 'edit a template name' do
+      visit "/templates/#{URI.encode(template.name)}/edit"
+
+      fill_in 'Template name', with: 'Moomin Template'
+      click_button 'Save'
+
+      expect(template.name).to eq 'Moomin Template'
     end
   end
 end
