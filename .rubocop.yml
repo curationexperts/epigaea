@@ -35,3 +35,9 @@ RSpec/AnyInstance:
 RSpec/MultipleExpectations:
   Exclude:
   - 'spec/controllers/contribute_controller_spec.rb'
+Style/FileName:
+  Exclude:
+    - '**/Capfile'
+    - '**/Gemfile'
+    - '**/*.rake'
+    - 'config/deploy/*'
