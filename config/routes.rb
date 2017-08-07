@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   resources :templates,
-            controller: 'hyrax/templates', only: [:index]
+            controller: 'hyrax/templates', only: [:index, :destroy]
   resources :template_updates,
             controller: 'hyrax/template_updates'
 
