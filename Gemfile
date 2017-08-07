@@ -43,6 +43,9 @@ group :development, :test do
 end
 
 group :development do
+  # Include deployments scripting only in development environment
+  gem 'capistrano', '~> 3.9'
+  gem 'capistrano-rails', '~> 1.3'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.0.5'
   gem 'web-console', '>= 3.3.0'
