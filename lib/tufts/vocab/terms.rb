@@ -20,6 +20,12 @@ module Tufts
       term :createdby
       term :template_name
       term :internal_note
+      term :retention_period
+      term :admin_start_date
+      term :qr_status
+      term :rejection_reason
+      term :qr_note
+      term :creator_department
     end
   end
 end

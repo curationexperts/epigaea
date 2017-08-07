@@ -58,5 +58,61 @@ shared_examples 'a work with Tufts metadata attributes' do
       work.rights_holder = ['Someone']
       expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/rightsHolder/)
     end
+    it 'has format label' do
+      work.format_label = ['a format label']
+      expect(work.resource.dump(:ttl)).to match(/loc.gov\/premis\/rdf\/v1#hasFormatName/)
+    end
+    it 'has replaces' do
+      work.replaces = ['a replacement']
+      expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/replaces/)
+    end
+    it 'has "is replaced by"' do
+      work.is_replaced_by = ['Something that is replaced by']
+      expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/isReplacedBy/)
+    end
+    it 'has "has format"' do
+      work.has_format = ['a format']
+      expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/hasFormat/)
+    end
+    it 'has "is format of"' do
+      work.is_format_of = ['another format']
+      expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/isFormatOf/)
+    end
+    it 'has "has part"' do
+      work.has_part = ['a part']
+      expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/hasPart/)
+    end
+    it 'has extent' do
+      work.extent = ['12x12']
+      expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/extent/)
+    end
+    it 'has personal name' do
+      work.personal_name = ['Someone']
+      expect(work.resource.dump(:ttl)).to match(/loc.gov\/mads\/rdf\/v1#PersonalName/)
+    end
+    it 'has corporate name' do
+      work.corporate_name = ['Something']
+      expect(work.resource.dump(:ttl)).to match(/loc.gov\/mads\/rdf\/v1#CorporateName/)
+    end
+    it 'has genre' do
+      work.genre = ['a genre']
+      expect(work.resource.dump(:ttl)).to match(/loc.gov\/mads\/rdf\/v1#GenreForm/)
+    end
+    it 'has provenance' do
+      work.provenance = ['Someone']
+      expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/provenance/)
+    end
+    it 'has spatial' do
+      work.spatial = ['12,23']
+      expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/spatial/)
+    end
+    it 'has temporal' do
+      work.temporal = ['20th century']
+      expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/temporal/)
+    end
+    it 'has funder' do
+      work.funder = ['Viewers Like You']
+      expect(work.resource.dump(:ttl)).to match(/id.loc.gov\/vocabulary\/relators/)
+    end
   end
 end

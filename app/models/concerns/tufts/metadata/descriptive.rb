@@ -38,6 +38,51 @@ module Tufts
         property :rights_holder, predicate: ::RDF::Vocab::DC.rightsHolder do |index|
           index.as :stored_searchable
         end
+        property :format_label, predicate: ::RDF::Vocab::PREMIS.hasFormatName do |index|
+          index.as :stored_searchable
+        end
+        property :replaces, predicate: ::RDF::Vocab::DC.replaces do |index|
+          index.as :stored_searchable
+        end
+        property :is_replaced_by, predicate: ::RDF::Vocab::DC.isReplacedBy do |index|
+          index.as :stored_searchable
+        end
+        property :has_format, predicate: ::RDF::Vocab::DC.hasFormat do |index|
+          index.as :stored_searchable
+        end
+        property :is_format_of, predicate: ::RDF::Vocab::DC.isFormatOf do |index|
+          index.as :stored_searchable
+        end
+        property :has_part, predicate: ::RDF::Vocab::DC.hasPart do |index|
+          index.as :stored_searchable
+        end
+        property :extent, predicate: ::RDF::Vocab::DC.extent do |index|
+          index.as :stored_searchable
+        end
+        property :personal_name, predicate: ::RDF::Vocab::MADS.PersonalName do |index|
+          index.as :stored_searchable
+        end
+        property :corporate_name, predicate: ::RDF::Vocab::MADS.CorporateName do |index|
+          index.as :stored_searchable
+        end
+        property :genre, predicate: ::RDF::Vocab::MADS.GenreForm do |index|
+          index.as :stored_searchable
+        end
+        property :provenance, predicate: ::RDF::Vocab::DC.provenance do |index|
+          index.as :stored_searchable
+        end
+        property :spatial, predicate: ::RDF::Vocab::DC.provenance do |index|
+          index.as :stored_searchable
+        end
+        property :temporal, predicate: ::RDF::Vocab::DC.temporal do |index|
+          index.as :stored_searchable
+        end
+        property :spatial, predicate: ::RDF::Vocab::DC.spatial do |index|
+          index.as :stored_searchable
+        end
+        property :funder, predicate: ::RDF::Vocab::MARCRelators.fnd do |index|
+          index.as :stored_searchable
+        end
       end
     end
   end
