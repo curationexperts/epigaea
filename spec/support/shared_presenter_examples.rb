@@ -29,6 +29,20 @@ shared_examples 'a Tufts presenter' do
     it { is_expected.to delegate_method(:resource_type).to(:solr_document) }
     it { is_expected.to delegate_method(:bibliographic_citation).to(:solr_document) }
     it { is_expected.to delegate_method(:rights_holder).to(:solr_document) }
+    it { is_expected.to delegate_method(:format_label).to(:solr_document) }
+    it { is_expected.to delegate_method(:replaces).to(:solr_document) }
+    it { is_expected.to delegate_method(:is_replaced_by).to(:solr_document) }
+    it { is_expected.to delegate_method(:has_format).to(:solr_document) }
+    it { is_expected.to delegate_method(:is_format_of).to(:solr_document) }
+    it { is_expected.to delegate_method(:has_part).to(:solr_document) }
+    it { is_expected.to delegate_method(:extent).to(:solr_document) }
+    it { is_expected.to delegate_method(:personal_name).to(:solr_document) }
+    it { is_expected.to delegate_method(:corporate_name).to(:solr_document) }
+    it { is_expected.to delegate_method(:genre).to(:solr_document) }
+    it { is_expected.to delegate_method(:provenance).to(:solr_document) }
+    it { is_expected.to delegate_method(:spatial).to(:solr_document) }
+    it { is_expected.to delegate_method(:temporal).to(:solr_document) }
+    it { is_expected.to delegate_method(:funder).to(:solr_document) }
   end
 
   describe "with admin attributes that are delegated to Solr" do
@@ -39,5 +53,12 @@ shared_examples 'a Tufts presenter' do
     it { is_expected.to delegate_method(:end_date).to(:solr_document) }
     it { is_expected.to delegate_method(:accrual_policy).to(:solr_document) }
     it { is_expected.to delegate_method(:rights_note).to(:solr_document) }
+    it { is_expected.to delegate_method(:retention_period).to(:solr_document) }
+    it { is_expected.to delegate_method(:admin_start_date).to(:solr_document) }
+    it { is_expected.to delegate_method(:qr_status).to(:solr_document) }
+    it { is_expected.to delegate_method(:rejection_reason).to(:solr_document) }
+    it { is_expected.to delegate_method(:qr_note).to(:solr_document) }
+    it { is_expected.to delegate_method(:creator_department).to(:solr_document) }
+    it { is_expected.to delegate_method(:legacy_pid).to(:solr_document) }
   end
 end

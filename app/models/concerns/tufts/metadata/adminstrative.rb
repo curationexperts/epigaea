@@ -33,6 +33,27 @@ module Tufts
         property :resource_type, predicate: ::RDF::Vocab::DC.type do |index|
           index.as :stored_searchable, :facetable
         end
+        property :retention_period, predicate: ::Tufts::Vocab::Terms.retention_period do |index|
+          index.as :stored_searchable
+        end
+        property :admin_start_date, predicate: ::Tufts::Vocab::Terms.start_date do |index|
+          index.as :stored_searchable
+        end
+        property :qr_status, predicate: ::Tufts::Vocab::Terms.qr_status do |index|
+          index.as :stored_searchable
+        end
+        property :rejection_reason, predicate: ::Tufts::Vocab::Terms.rejection_reason do |index|
+          index.as :stored_searchable
+        end
+        property :qr_note, predicate: ::Tufts::Vocab::Terms.qr_note do |index|
+          index.as :stored_searchable
+        end
+        property :creator_department, predicate: ::Tufts::Vocab::Terms.creator_department do |index|
+          index.as :stored_searchable
+        end
+        property :legacy_pid, predicate: ::Tufts::Vocab::Terms.legacy_pid, multiple: false do |index|
+          index.as :stored_searchable
+        end
       end
     end
   end

@@ -52,7 +52,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.active_job.queue_adapter = :inline
+  config.active_job.queue_adapter = :sidekiq
 
   # Configure the drafts strorage directory
   config.drafts_storage_dir    = Rails.root.join('tmp', 'drafts')
