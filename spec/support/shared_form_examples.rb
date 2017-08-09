@@ -14,7 +14,7 @@ shared_examples 'a form with Tufts metadata attributes' do
       expect(form.terms).to include(:steward, :created_by, :internal_note, :audience, :end_date,
                                     :accrual_policy, :license, :retention_period, :admin_start_date, :qr_status,
                                     :rejection_reason, :qr_note, :creator_department, :legacy_pid, :personal_name,
-                                    :corporate_name, :provenance, :funder, :creator_department)
+                                    :corporate_name, :provenance, :funder, :creator_department, :createdby)
     end
   end
 end

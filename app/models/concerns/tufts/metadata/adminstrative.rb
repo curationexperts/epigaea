@@ -54,6 +54,9 @@ module Tufts
         property :legacy_pid, predicate: ::Tufts::Vocab::Terms.legacy_pid, multiple: false do |index|
           index.as :stored_searchable
         end
+        property :createdby, predicate: ::Tufts::Vocab::Terms.createdby, multiple: false do |index|
+          index.as :stored_searchable, :facetable
+        end
       end
     end
   end
