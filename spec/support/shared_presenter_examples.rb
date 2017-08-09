@@ -61,5 +61,6 @@ shared_examples 'a Tufts presenter' do
     it { is_expected.to delegate_method(:creator_department).to(:solr_document) }
     it { is_expected.to delegate_method(:legacy_pid).to(:solr_document) }
     it { is_expected.to delegate_method(:createdby).to(:solr_document) }
+    it { is_expected.to delegate_method(:tufts_is_part_of).to(:solr_document) }
   end
 end

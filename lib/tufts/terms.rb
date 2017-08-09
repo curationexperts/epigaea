@@ -9,7 +9,7 @@ module Tufts
                     :has_format, :is_format_of, :has_part, :license,
                     :retention_period, :admin_start_date, :qr_status, :rejection_reason,
                     :qr_note, :creator_department, :legacy_pid, :spatial, :temporal, :extent,
-                    :personal_name, :corporate_name, :genre, :provenance, :funder, :createdby].freeze
+                    :personal_name, :corporate_name, :genre, :provenance, :funder, :createdby, :tufts_is_part_of].freeze
     def self.shared_terms
       SHARED_TERMS
     end
