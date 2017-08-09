@@ -10,7 +10,7 @@ module Hyrax
       Tufts::Template.for(name: name).delete
 
       @templates = Tufts::Template.all
-      render action: :index
+      redirect_to main_app.templates_path notice: "Deleted #{name}"
     end
   end
 end
