@@ -26,7 +26,7 @@ class Contribution
     now = Time.zone.now
 
     note = "#{creator} self-deposited on #{now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
-    @tufts_pdf = Pdf.new(contributor: [creator], title: [title],
+    @tufts_pdf = Pdf.new(createdby: SELFDEP, contributor: [creator], title: [title],
                          steward: 'dca', displays_in: ['dl'],
                          publisher: ['Tufts University. Digital Collections and Archives.'],
                          rights_statement: ['http://dca.tufts.edu/ua/access/rights-creator.html'],

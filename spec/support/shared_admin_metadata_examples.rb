@@ -63,4 +63,12 @@ shared_examples 'and has admin metadata attributes' do
     work.creator_department = ['A creator department']
     expect(work.resource.dump(:ttl)).to match(/dl.tufts.edu\/terms#creator_department/)
   end
+  it 'createdby' do
+    work.createdby = 'self-deposit'
+    expect(work.resource.dump(:ttl)).to match(/dl.tufts.edu\/terms#createdby/)
+  end
+  it 'has tuft ispartof' do
+    work.tufts_is_part_of = ['A greater whole']
+    expect(work.resource.dump(:ttl)).to match(/dl.tufts.edu\/terms#tuftsIsPartOf/)
+  end
 end
