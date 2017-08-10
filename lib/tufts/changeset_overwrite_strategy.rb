@@ -1,20 +1,8 @@
 module Tufts
-  class ChangesetOverwriteStrategy
-    ##
-    # @!attribute changeset [rw]
-    #   @return [ActiveFedora::Changeset]
-    # @!attribute model [rw]
-    #   @return [ActiveFedora::Base]
-    attr_accessor :changeset, :model
-
-    ##
-    # @param changeset [ActiveFedora::ChangeSet]
-    # @param model     [ActiveFedora::Base]
-    def initialize(changeset: NullChangeSet.new, model:)
-      @changeset = changeset
-      @model     = model
-    end
-
+  ##
+  # A `ChangesetApplicationStrategy` that overwrites existing data in changed
+  # fields.
+  class ChangesetOverwriteStrategy < ChangesetApplicationStrategy
     ##
     # @return [void] applies the changeset to the model
     # @raise [RuntimeError] when the changeset is invalid for the model
