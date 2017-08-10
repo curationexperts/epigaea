@@ -10,8 +10,8 @@
 class TemplateUpdateJob < ApplicationJob
   queue_as :batch
 
-  def perform(_behavior, id, template_name)
-    template = Tufts::Template.for(name: template_name)
+  def perform(behavior, id, template_name)
+    template = Tufts::Template.for(name: template_name, behavior: behavior)
     model    = ActiveFedora::Base.find(id)
 
     template.apply_to(model: model)

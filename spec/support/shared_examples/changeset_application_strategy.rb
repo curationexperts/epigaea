@@ -22,8 +22,9 @@ RSpec.shared_context 'strategy with changes' do
   end
 
   let(:changeset) do
-    new_model = FakeWork.new(title: ['moomin', 'moominmama', 'snork'],
-                             subject: ['too-ticky'])
+    new_model = FakeWork.new(title:        ['moomin', 'moominmama', 'snork'],
+                             subject:      ['too-ticky'],
+                             single_value: 'moomin')
     ActiveFedora::ChangeSet
       .new(new_model, new_model.resource, new_model.changed_attributes.keys)
   end

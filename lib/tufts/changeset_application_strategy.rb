@@ -7,7 +7,30 @@ module Tufts
   #                                               changeset: changeset)
   #   strategy.apply
   #
+  # @example Using the factory method
+  #   ChangesetApplicationStrategy.for(:preserve, model: model)
+  #   # => #[ChangesetPreserveStrategy...]
+  #
   class ChangesetApplicationStrategy
+    SUBCLASSES = { overwrite: ChangesetOverwriteStrategy,
+                   preserve:  ChangesetPreserveStrategy }.freeze
+
+    class << self
+      ##
+      # @param name      [#to_sym]
+      # @param changeset [ActiveFedora::Changeset]
+      # @param model     [ActiveFedora::Base]
+      #
+      # @return [ChangesetApplicationStrategy] a strategy built from the symbol
+      def for(name, changeset: nil, model:)
+        opts = {}
+        opts[:changeset] = changeset if changeset
+        opts[:model]     = model
+
+        (SUBCLASSES[name.to_sym] || ChangesetApplicationStrategy).new(**opts)
+      end
+    end
+
     ##
     # @!attribute changeset [rw]
     #   @return [ActiveFedora::Changeset]

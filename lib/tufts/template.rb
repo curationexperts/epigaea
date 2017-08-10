@@ -1,22 +1,26 @@
 module Tufts
   class Template
     ##
+    # @!attribute behavior [rw]
+    #   @return [#to_sym]
     # @!attribute changeset [rw]
     #   @return [ActiveFedora::ChangeSet]
     # @!attribute name [rw]
     #   @return [String] the name of the template
     # @!attribute [rw] serializer
     #   @return [Tufts::ChangesetSerializer]
-    attr_accessor :changeset, :name, :serializer
+    attr_accessor :behavior, :changeset, :name, :serializer
 
     STORAGE_DIR = Pathname.new(Rails.configuration.templates_storage_dir).freeze
     TEMP_URI    = RDF::URI.intern('http://dl.tufts.edu/ns/TEMPORARY_URI').freeze
 
     ##
+    # @param behavior  [#to_sym]
     # @param changeset [ActiveFedora::ChangeSet]
     # @param name      [String]
-    def initialize(name:, changeset: NullChangeSet.new)
+    def initialize(name:, behavior: :overwrite, changeset: NullChangeSet.new)
       @name       = name
+      @behavior   = behavior
       @changeset  = changeset
       @serializer = Tufts::ChangesetSerializer.new
     end
@@ -35,13 +39,16 @@ module Tufts
       end
 
       ##
-      # @param name [String]
+      # @param behavior [#to_sym]
+      # @param name     [String]
       #
       # @return [Template] the template matching the parameters given
       # @raise [RuntimeError] when no template is found
-      def for(name:)
-        all.find { |template| template.name == name } ||
-          raise("No Template found for #{name}.")
+      def for(name:, behavior: nil)
+        template = all.find { |tmpl| tmpl.name == name } ||
+                   raise("No Template found for #{name}.")
+        template.behavior = behavior if behavior
+        template
       end
 
       ##
@@ -66,8 +73,8 @@ module Tufts
     def apply_to(model:)
       changeset_for_model = load_with_model(model)
 
-      Tufts::ChangesetOverwriteStrategy
-        .new(model: model, changeset: changeset_for_model)
+      Tufts::ChangesetApplicationStrategy
+        .for(behavior, model: model, changeset: changeset_for_model)
         .apply
     end
 

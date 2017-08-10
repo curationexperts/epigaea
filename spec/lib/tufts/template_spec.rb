@@ -33,10 +33,17 @@ RSpec.describe Tufts::Template do
     end
 
     context 'with saved templates' do
+      let(:behavior) { :preserve }
+
       before { template.save }
 
-      it 'raises an error for wrong name' do
+      it 'returns a template with the correct name' do
         expect(described_class.for(name: name).name).to eq template.name
+      end
+
+      it 'builds a template with the given behavior' do
+        expect(described_class.for(name: name, behavior: behavior).behavior)
+          .to eq behavior
       end
     end
   end
