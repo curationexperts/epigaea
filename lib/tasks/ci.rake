@@ -1,3 +1,3 @@
-namespace :epigaea do
-  task ci: ['epigaea:rubocop', 'epigaea:spec']
+namespace :tufts do
+  task ci: ['tufts:rubocop', 'tufts:spec']
 end
