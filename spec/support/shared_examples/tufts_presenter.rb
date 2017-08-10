@@ -1,19 +1,5 @@
 shared_examples 'a Tufts presenter' do
-  subject { described_class.new(double, double) }
-  let(:solr_document) { SolrDocument.new(attributes) }
-  let(:request) { double }
-  let(:user_key) { 'a_user_key' }
-
-  let(:attributes) do
-    { "id" => '888888',
-      "title_tesim" => ['foo', 'bar'],
-      "human_readable_type_tesim" => ["Generic Work"],
-      "has_model_ssim" => ["GenericWork"],
-      "date_created_tesim" => ['an unformatted date'],
-      "depositor_tesim" => user_key }
-  end
-  let(:ability) { nil }
-  let(:presenter) { described_class.new(solr_document, ability, request) }
+  subject(:presenter) { described_class.new(double, double) }
 
   describe "with custom attributes that are delegated to Solr and" do
     it { is_expected.to delegate_method(:geographic_name).to(:solr_document) }
