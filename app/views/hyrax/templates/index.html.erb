@@ -3,7 +3,7 @@
 <table class="table">
   <thead>
   <tr>
-    <th> "New Template" <!-- button_to "New Template", templates_path, class: "btn btn-primary" --></th>
+    <th><%= link_to "New Template", main_app.new_template_path, class: "btn btn-primary" %></th>
     <th>Template Name</th>
     <th></th>
   </tr>
@@ -14,7 +14,7 @@
   <%= render partial: 'template', collection: @templates, as: :template %>
 
   <tr>
-    <td> "New Template" <!-- button_to "New Template", templates_path, class: "btn btn-primary" --></td>
+    <td><%= link_to "New Template", main_app.new_template_path, class: "btn btn-primary" %></td>
     <td></td>
   </tr>
   </tbody>

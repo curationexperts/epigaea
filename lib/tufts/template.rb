@@ -43,6 +43,20 @@ module Tufts
         all.find { |template| template.name == name } ||
           raise("No Template found for #{name}.")
       end
+
+      ##
+      # @param object [ActiveFedora::Base]
+      # @param name   [String]
+      #
+      # @return [Template] a new template with a changeset generated from the
+      #   object given
+      def from_object(object, name:)
+        changeset = ActiveFedora::ChangeSet
+                    .new(object,
+                         object.resource,
+                         object.changed_attributes.keys)
+        new(name: name, changeset: changeset)
+      end
     end
 
     ##
