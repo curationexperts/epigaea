@@ -1,5 +1,5 @@
 require 'rubocop/rake_task'
-namespace :epigaea do
+namespace :tufts do
   desc 'Run style checker'
   RuboCop::RakeTask.new(:rubocop) do |task|
     task.requires << 'rubocop-rspec'

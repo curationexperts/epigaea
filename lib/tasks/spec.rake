@@ -1,6 +1,6 @@
 require 'solr_wrapper/rake_task'
 
-namespace :epigaea do
+namespace :tufts do
   task :spec do
     with_server 'test' do
       Rake::Task['spec'].invoke
