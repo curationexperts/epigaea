@@ -1,5 +1,6 @@
 require 'rake'
 
+# rubocop:disable Metrics/BlockLength
 namespace :tufts do
   namespace :handle do
     ##
