@@ -24,14 +24,29 @@ RSpec.feature 'Apply a Template', :clean, js: true do
     end
 
     scenario 'apply to a single object' do
+      ActiveJob::Base.queue_adapter = :test
       visit "/concern/pdfs/#{object.id}"
       click_link 'Apply Template'
 
       select template.name
       choose(option: TemplateUpdate::OVERWRITE)
 
-      click_button 'Apply Template'
-      expect(page).to have_content template.name
+      expect { click_button 'Apply Template' }
+        .to enqueue_job(described_class)
+        .with(TemplateUpdate::OVERWRITE, object.id, template.name)
+    end
+
+    scenario 'apply to a single object with preserve' do
+      ActiveJob::Base.queue_adapter = :test
+      visit "/concern/pdfs/#{object.id}"
+      click_link 'Apply Template'
+
+      select template.name
+      choose(option: TemplateUpdate::PRESERVE)
+
+      expect { click_button 'Apply Template' }
+        .to enqueue_job(described_class)
+        .with(TemplateUpdate::PRESERVE, object.id, template.name)
     end
 
     scenario 'view templates' do
