@@ -1,0 +1,10 @@
+<h2>Handle.net errors</h2>
+<div id="logs"></div>
+<script>
+  $.ajax({
+    url: window.location.origin + '/handle/log.txt' ,
+    success: function(data) {
+      $('#logs').html("<pre>"+data+"</pre>");
+    }
+  });
+</script>
