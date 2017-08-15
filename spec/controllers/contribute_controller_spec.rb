@@ -88,7 +88,7 @@ describe ContributeController do
         pending('waiting for role solution')
         get 'redirect'
 
-        response.should redirect_to contributions_path
+        expect(response).to redirect_to contributions_path
       end
     end
 

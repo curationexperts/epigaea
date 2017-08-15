@@ -9,29 +9,36 @@ describe DepositTypeExporter do
     it 'sets the export_dir' do
       dir = '/path/to/my/export/dir'
       exporter = described_class.new(dir)
-      exporter.export_dir.should eq(dir)
+
+      expect(exporter.export_dir).to eq dir
     end
 
     it 'sets the filename' do
       filename = 'my_export_file.csv'
       exporter = described_class.new('/tmp', filename)
-      exporter.filename.should eq(filename)
+
+      expect(exporter.filename).to eq filename
     end
 
     it 'sets a default filename' do
       time = Time.zone.local(2012, 1, 1, 5, 15, 45)
       Time.stub(:now).and_return(time)
       exporter = described_class.new
-      exporter.filename.should eq('deposit_type_export_2012_01_01_051545.csv')
+
+      expect(exporter.filename)
+        .to eq 'deposit_type_export_2012_01_01_051545.csv'
     end
   end
 
   it 'creates the export dir if it doesnt already exist' do
     dir = test_export_dir
     exporter = described_class.new(dir)
-    File.exist?(dir).should be_falsey
-    exporter.create_export_dir
-    File.exist?(dir).should be_truthy
+
+    expect { exporter.create_export_dir }
+      .to change { File.exist?(dir) }
+      .from(be_falsey)
+      .to(be_truthy)
+
     FileUtils.rm_rf(dir, secure: true)
   end
 
@@ -41,7 +48,8 @@ describe DepositTypeExporter do
     expected_cols = column_names - excluded_columns
 
     cols = described_class.columns_to_include_in_export
-    expected_cols.sort.should eq(cols.sort)
+
+    expect(expected_cols.sort).to eq cols.sort
   end
 
   it 'exports the deposit types to a csv file' do
@@ -55,7 +63,8 @@ describe DepositTypeExporter do
     contents = File.readlines(file).map(&:strip)
 
     expected_headers = ['license_name', 'display_name', 'deposit_agreement', 'deposit_view']
-    contents[0].split(',').sort.should eq(expected_headers.sort)
+
+    expect(contents[0].split(',').sort).to eq expected_headers.sort
 
     FileUtils.rm_rf(dir, secure: true)
   end

@@ -6,7 +6,8 @@ describe DepositTypeImporter do
     it 'sets the import_file' do
       file = test_import_file
       importer = described_class.new(file)
-      importer.import_file.should eq(file)
+
+      expect(importer.import_file).to eq file
     end
   end
 
@@ -25,44 +26,59 @@ describe DepositTypeImporter do
     end.to raise_error(ImportFileFormatError)
   end
 
+  # rubocop:disable RSpec/MultipleExpectations
   it 'imports CSV data' do
     DepositType.delete_all
 
     importer = described_class.new(test_import_file)
     importer.import_from_csv
 
-    DepositType.count.should eq(3)
+    expect(DepositType.count).to eq 3
 
     pdf = DepositType.where(display_name: 'PDF Document').first
-    pdf.deposit_agreement.should eq('Agreement for a PDF')
-    pdf.deposit_view.should eq('capstone_project')
+    expect(pdf)
+      .to have_attributes(deposit_agreement: 'Agreement for a PDF',
+                          deposit_view:      'capstone_project')
+
     audio = DepositType.where(display_name: 'Audio File').first
-    audio.deposit_agreement.should eq('Agreement for Audio')
-    audio.deposit_view.should eq('honors_thesis')
+    expect(audio)
+      .to have_attributes(deposit_agreement: 'Agreement for Audio',
+                          deposit_view:      'honors_thesis')
+
     photo = DepositType.where(display_name: 'Photograph').first
-    photo.deposit_agreement.should eq('Agreement for a Photo')
-    photo.deposit_view.should eq('generic_deposit')
+    expect(photo)
+      .to have_attributes(deposit_agreement: 'Agreement for a Photo',
+                          deposit_view:      'generic_deposit')
   end
 
   it 'updates existing deposit types' do
     DepositType.delete_all
     importer = described_class.new(test_import_file)
-    pdf = FactoryGirl.create(:deposit_type, display_name: 'PDF Document', deposit_agreement: 'old text')
-    DepositType.count.should eq(1)
-    importer.import_from_csv
-    DepositType.count.should eq(3)
+    pdf = FactoryGirl.create(:deposit_type,
+                             display_name:      'PDF Document',
+                             deposit_agreement: 'old text')
+
+    expect { importer.import_from_csv }
+      .to change { DepositType.count }
+      .from(1).to(3)
+
     pdf.reload
-    pdf.deposit_agreement.should eq('Agreement for a PDF')
-    pdf.deposit_view.should eq('capstone_project')
+
+    expect(pdf)
+      .to have_attributes(deposit_agreement: 'Agreement for a PDF',
+                          deposit_view:      'capstone_project')
   end
 
   it 'doesnt create duplicate deposit types' do
     DepositType.delete_all
-    importer = described_class.new(File.join(fixture_path, 'import', 'deposit_types_with_duplicate_entries.csv'))
+    importer =
+      described_class.new(File.join(fixture_path,
+                                    'import',
+                                    'deposit_types_with_duplicate_entries.csv'))
     importer.import_from_csv
 
-    DepositType.count.should eq(1)
-    DepositType.first.deposit_agreement.should eq('Agreement 3')
+    expect(DepositType.count).to eq 1
+    expect(DepositType.first.deposit_agreement).to eq 'Agreement 3'
   end
 
   def test_import_file
