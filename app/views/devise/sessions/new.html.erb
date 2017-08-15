@@ -1,0 +1,21 @@
+<h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label 'Tufts Username' %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Tufts Password' %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Log in" , class: 'btn btn-primary'  %>
+  </div>
+
+  <p class="forgot">
+    <a href="https://tuftstools.tufts.edu" class="forgot">Forgot your Tufts Username or Password?</a>
+  </p>
+<% end %>
