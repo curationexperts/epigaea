@@ -22,7 +22,6 @@
 
 //= require hyrax
 //= require almond
-//= require tufts/batch_select_all
 //= require tufts/draft_ui
 //= require tufts/draft
 //= require tufts/select_work_type

@@ -23,4 +23,11 @@ RSpec.feature 'Apply a Template', :clean, js: true do
 
     find("#document_#{object.id}").check "batch_document_#{object.id}"
   end
+
+  scenario 'select all' do
+    visit '/catalog'
+    check 'check_all'
+
+    expect(find('#selected_documents_count')).to have_content objects.count
+  end
 end
