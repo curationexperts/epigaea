@@ -40,6 +40,14 @@ Rails.application.routes.draw do
   post '/draft/delete_draft/:id', to: 'tufts/draft#delete_draft'
   get '/draft/draft_saved/:id', to: 'tufts/draft#draft_saved'
 
+  # Routes for managing QR status
+  resources :qr_statuses, controller: 'tufts/qr_status', only: [:set_status, :status] do
+    member do
+      post 'set_status'
+      get 'status'
+    end
+  end
+
   resources :deposit_types do
     get 'export', on: :collection
   end
@@ -49,5 +57,7 @@ Rails.application.routes.draw do
       get 'license'
     end
   end
+
+  # Routes for managing QR status
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
