@@ -60,4 +60,6 @@ Rails.application.routes.draw do
 
   # Routes for managing QR status
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get '/handle/log/', to: 'tufts/handle_log#index'
 end

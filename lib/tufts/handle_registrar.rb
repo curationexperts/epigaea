@@ -20,7 +20,7 @@ module Tufts
   class HandleRegistrar
     ##
     # A logger for handle errors
-    LOGGER = Logger.new(Rails.root.join('log', 'handle.log'))
+    LOGGER = Tufts::HandleLogService
 
     ##
     # @param object     [#id]
