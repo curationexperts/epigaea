@@ -13,6 +13,7 @@
         $('#batch-edit').addClass('hidden');
     }
     updateCheckedCounter(n);
+    updateButtonDisabledState(n);
     $("body").css("cursor", "auto");
   }
 
@@ -37,6 +38,10 @@
 
   function updateCheckedCounter(count){
     $('#selected_documents_count').text("Number of documents selected: " + count);
+  }
+
+  function updateButtonDisabledState(count){
+    $('.submits-batches').prop("disabled", (count < 1))
   }
 
   // check all the check boxes on the page

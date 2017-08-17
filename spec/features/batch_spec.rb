@@ -21,7 +21,13 @@ RSpec.feature 'Apply a Template', :clean, js: true do
   scenario 'select items for batch' do
     visit '/catalog'
 
-    find("#document_#{object.id}").check "batch_document_#{object.id}"
+    objects.each do |obj|
+      find("#document_#{obj.id}").check "batch_document_#{obj.id}"
+    end
+
+    click_on 'Apply Template'
+
+    expect(page).to have_content 'Template Behavior'
   end
 
   scenario 'select all' do
