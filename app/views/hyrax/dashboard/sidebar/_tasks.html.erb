@@ -7,6 +7,15 @@
 <span class="sidebar-action-text">Contribute new self-deposit item</span>
 <% end %>
 
+<li class="h5">Handle.net</li>
+<%= menu.nav_link('/handle/log.html') do %>
+<span class="sidebar-action-text">Handle.net Error Log</span>
+<% end %>
+
+<li class="h5">Templates</li>
+<%= menu.nav_link('/templates') do %>
+<span class="sidebar-action-text">Manage Metadata Templates</span>
+<% end %>
 
 <% if can? :review, :submissions %>
 <li class="h5"><%= t('hyrax.admin.sidebar.tasks') %></li>
