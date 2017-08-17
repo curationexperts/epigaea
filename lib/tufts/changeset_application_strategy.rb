@@ -12,9 +12,6 @@ module Tufts
   #   # => #[ChangesetPreserveStrategy...]
   #
   class ChangesetApplicationStrategy
-    SUBCLASSES = { overwrite: ChangesetOverwriteStrategy,
-                   preserve:  ChangesetPreserveStrategy }.freeze
-
     class << self
       ##
       # @param name      [#to_sym]
@@ -27,7 +24,17 @@ module Tufts
         opts[:changeset] = changeset if changeset
         opts[:model]     = model
 
-        (SUBCLASSES[name.to_sym] || ChangesetApplicationStrategy).new(**opts)
+        (@registry[name.to_sym] || ChangesetApplicationStrategy).new(**opts)
+      end
+
+      ##
+      # @param name  [#to_sym]
+      # @param klass [Class]
+      #
+      # @return [void]
+      def register(name, klass)
+        @registry ||= {}
+        @registry[name.to_sym] = klass
       end
     end
 
@@ -62,4 +69,7 @@ module Tufts
     # An error class for errors occurring during application of the chnageset
     class ApplicationError < RuntimeError; end
   end
+
+  require 'tufts/changeset_overwrite_strategy'
+  require 'tufts/changeset_preserve_strategy'
 end
