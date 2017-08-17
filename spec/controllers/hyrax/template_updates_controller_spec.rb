@@ -26,6 +26,13 @@ RSpec.describe Hyrax::TemplateUpdatesController, type: :controller do
         expect(assigns(:update))
           .to have_attributes(ids: a_collection_containing_exactly(*ids))
       end
+
+      it 'assigns update with batch_document_ids' do
+        get :new, params: { batch_document_ids: ids }
+
+        expect(assigns(:update))
+          .to have_attributes(ids: a_collection_containing_exactly(*ids))
+      end
     end
 
     describe 'POST #create' do

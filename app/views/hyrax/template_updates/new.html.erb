@@ -1,5 +1,7 @@
 <%= form_for [main_app, @update] do |f| %>
-  <%= f.hidden_field :ids, multiple: true, value: @update.ids %>
+  <% @update.ids.each do |id| %>
+    <%= f.hidden_field :ids, multiple: true, value: id %>
+  <% end %>
 
   <%= f.select :template_name, options_from_collection_for_select(Tufts::Template.all, :name, :name, @update.template_name), prompt: 'Select a Template' %>
 

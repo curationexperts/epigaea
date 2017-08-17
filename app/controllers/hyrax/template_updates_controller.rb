@@ -8,7 +8,7 @@ module Hyrax
     end
 
     def new
-      ids = params[:ids] || []
+      ids = params[:ids] || params[:batch_document_ids] || []
       @update = TemplateUpdate.new(ids: ids)
     end
 
@@ -19,7 +19,9 @@ module Hyrax
     private
 
       def template_update_params
-        params.require(:template_update).permit(:behavior, :template_name, ids: [])
+        params
+          .require(:template_update)
+          .permit(:behavior, :template_name, ids: [])
       end
   end
 end
