@@ -11,6 +11,8 @@ module Tufts
   # | multi  | value1 | value2 | **value1+value2** |
   #
   class ChangesetPreserveStrategy < ChangesetApplicationStrategy
+    ChangesetApplicationStrategy.register(:preserve, self)
+
     ##
     # @see ChangesetApplicationStrategy#apply
     # rubocop:disable Metrics/MethodLength, Metrics/AbcSize

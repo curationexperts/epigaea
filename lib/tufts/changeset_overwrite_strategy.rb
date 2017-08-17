@@ -16,6 +16,8 @@ module Tufts
   #   not allow cardinality mismatches.
   #
   class ChangesetOverwriteStrategy < ChangesetApplicationStrategy
+    ChangesetApplicationStrategy.register(:overwrite, self)
+
     ##
     # @return [void] applies the changeset to the model
     # @raise [RuntimeError] when the changeset is invalid for the model
