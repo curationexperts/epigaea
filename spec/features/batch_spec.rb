@@ -37,3 +37,26 @@ RSpec.feature 'Apply a Template', :clean, js: true do
     expect(find('#selected_documents_count')).to have_content objects.count
   end
 end
+
+RSpec.feature 'Manage batches', :clean, js: true do
+  let(:batch)  { create(:batch, ids: [pdf.id]) }
+  let(:user)   { create(:admin) }
+  let(:pdf)    { create(:pdf) }
+
+  before do
+    login_as user
+    batch
+  end
+
+  scenario 'list batches' do
+    visit '/batches'
+
+    expect(page).to have_content batch.creator
+  end
+
+  scenario 'show batch' do
+    visit "/batches/#{batch.id}"
+
+    expect(page).to have_content batch.creator
+  end
+end
