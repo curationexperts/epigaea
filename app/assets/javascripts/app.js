@@ -5,8 +5,3 @@ Hyrax.selectWorkType = function () {
             new TuftsSelectWorkType($(this))
         })
 }
-
-var DraftUI = require('tufts/draft_ui')
-var DraftUI = new DraftUI()
-var Draft = require('tufts/draft')
-var Draft = new Draft()

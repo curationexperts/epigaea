@@ -1,7 +1,10 @@
+import DraftUI from 'tufts/draft_ui'
+
 export default class Draft {
   contructor () {
   }
   init () {
+    this.draftUI = new DraftUI()  
     this.isSaved()
     this.bindSaveDraftClick()
     this.bindRevertDraftClick()
@@ -11,7 +14,7 @@ export default class Draft {
   }
   save () {
     // Save the form's data as a draft
-    DraftUI.addRefreshToButton()
+    this.draftUI.addRefreshToButton()
     // Clear out existing draft
     var deleteDraft = this.delete()
     deleteDraft.then(() => {
@@ -27,7 +30,7 @@ export default class Draft {
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
           this.isSaved()
-          DraftUI.removeRefreshButton()
+          this.draftUI.removeRefreshButton()
           this.activateRevertButton()
         }
       }
@@ -41,10 +44,10 @@ export default class Draft {
     // Check to see if the work has a saved draft
     $.get('/draft/draft_saved/' + this.getWorkId(), (data) => {
       if (data.status) {
-        DraftUI.addEditedWorkflowStatus()
+        this.draftUI.addEditedWorkflowStatus()
         this.activateRevertButton()
       } else {
-        DraftUI.addPublishedWorkflowStatus()
+        this.draftUI.addPublishedWorkflowStatus()
       }
     })
   }
