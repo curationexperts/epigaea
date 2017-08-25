@@ -8,12 +8,15 @@
 # @see Tufts::Template
 # @see TemplateUpdateJob
 class TemplateUpdate < ApplicationRecord
+  # @!attribute batch [rw]
+  #   @return [Batch]
   # @!attribute behavior [rw]
   #   @return [String]
   # @!attribute ids [rw]
   #   @return [Array<String>]
   # @!attribute template_name [rw]
   #   @return [String]
+  has_one :batch, as: :batchable
 
   serialize :ids, Array
 

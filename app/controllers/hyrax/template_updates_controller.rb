@@ -1,10 +1,14 @@
 module Hyrax
   class TemplateUpdatesController < ApplicationController
     def create
-      update = TemplateUpdate.create(template_update_params)
+      update       = TemplateUpdate.new(template_update_params)
+      update.batch = Batch.create(batchable: update,
+                                  creator:   current_user,
+                                  ids:       update.ids)
+      update.save
       update.enqueue!
 
-      render plain: "OK: #{update.template_name}" # redirect_to action: 'show'
+      redirect_to main_app.batch_path(update.batch)
     end
 
     def new

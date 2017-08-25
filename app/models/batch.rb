@@ -6,6 +6,11 @@ class Batch < ApplicationRecord
   alias_attribute :creator, :user
 
   ##
+  # @!attribute batchable [r]
+  #   @return [TemplateUpdate]
+  belongs_to :batchable, polymorphic: true
+
+  ##
   # @!attribute ids [rw]
   #   @return [Array<String>]
   serialize :ids, Array

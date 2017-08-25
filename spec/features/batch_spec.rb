@@ -18,7 +18,9 @@ RSpec.feature 'Apply a Template', :clean, js: true do
     login_as user
   end
 
-  scenario 'select items for batch' do
+  scenario 'apply a template to selected items' do
+    template = create(:template)
+
     visit '/catalog'
 
     objects.each do |obj|
@@ -27,10 +29,14 @@ RSpec.feature 'Apply a Template', :clean, js: true do
 
     click_on 'Apply Template'
 
-    expect(page).to have_content 'Template Behavior'
+    select template.name, from: 'template_update_template_name'
+    choose id: 'template_update_behavior_overwrite'
+
+    click_on 'Apply Template'
+    expect(page).to have_content 'Batch'
   end
 
-  scenario 'select all' do
+  scenario 'using select all' do
     visit '/catalog'
     check 'check_all'
 
