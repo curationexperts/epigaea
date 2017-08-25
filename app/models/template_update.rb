@@ -23,6 +23,8 @@ class TemplateUpdate < ApplicationRecord
   OVERWRITE = 'overwrite'.freeze
   PRESERVE  = 'preserve'.freeze
 
+  TYPE_STRING = 'Template Update'.freeze
+
   ##
   # A struct representing a single item
   #
@@ -32,6 +34,12 @@ class TemplateUpdate < ApplicationRecord
   #   item.id            # => 'abc123'
   #   item.template_name # => 'My Template'
   Item = Struct.new(:behavior, :id, :template_name)
+
+  ##
+  # @return [String]
+  def batch_type
+    TYPE_STRING
+  end
 
   ##
   # Configurations for the update of each item in ids.

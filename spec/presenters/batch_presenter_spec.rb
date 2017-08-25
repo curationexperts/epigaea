@@ -23,4 +23,29 @@ RSpec.describe BatchPresenter do
       expect(presenter.count).to eq ids.count.to_s
     end
   end
+
+  describe '#type' do
+    let(:type) { 'Moomin Batch' }
+
+    before do
+      allow(batch.batchable).to receive(:batch_type).and_return(type)
+    end
+
+    it 'gives the type for the batchable' do
+      expect(presenter.type).to eq type
+    end
+
+    context 'when batchable#batch_type is unimplemented' do
+      before do
+        allow(batch.batchable)
+          .to receive(:respond_to?)
+          .with(:batch_type)
+          .and_return(false)
+      end
+
+      it 'gives a fallback string' do
+        expect(presenter.type).to be_a String
+      end
+    end
+  end
 end

@@ -52,6 +52,9 @@ class BatchPresenter
   ##
   # @return [String]
   def type
-    'Template Update'
+    batchable = object.batchable
+
+    return batchable.batch_type if batchable.respond_to?(:batch_type)
+    batchable.class.to_s
   end
 end
