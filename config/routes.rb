@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     concerns :exportable
   end
 
+  resources :batches, controller: 'hyrax/batches', only: [:index, :show]
+
   resources :bookmarks do
     concerns :exportable
 

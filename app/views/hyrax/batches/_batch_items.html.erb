@@ -1,0 +1,21 @@
+  <div class="batch-items">
+    <table class="table">
+      <tr>
+        <th>Item ID</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Review Status</th>
+      </tr>
+
+      <% batch.items.each do |item| %>
+        <tr>
+          <!-- <td class="record_id">%= link_to item.title, catalog_path(item.item_id) %></td> -->
+          <!-- <td class="record_title">%= item.record_title %></td> -->
+          <!-- <td class="record_status">%= item.status %></td> -->
+          <!-- <td class="record_reviewed_status"> -->
+          <!--   %= check_box_tag :reviewed, :reviewed, item.reviewed?, type: :checkbox, disabled: true  %> -->
+          <!-- </td> -->
+        </tr>
+      <% end %>
+    </table>
+  </div>

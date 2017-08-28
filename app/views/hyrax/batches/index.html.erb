@@ -1,0 +1,26 @@
+<div class="col-sm-12">
+  <h1>Batches</h1>
+
+  <div class="batches">
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Batch Type</th>
+        <th>Creator</th>
+        <th>Created at</th>
+        <th>Items</th>
+        <th>Status</th>
+      </tr>
+      <% @batches.each do |batch| %>
+        <tr>
+          <td class="batch_id"><%= link_to batch.id, main_app.batch_path(id: batch.id) %></td>
+          <td class="type"><%= batch.type%></td>
+          <td class="creator"><%= batch.creator %></td>
+          <td class="created_at"><%= batch.created_at %> ago</td>
+          <td class="count"><%= batch.count %></td>
+          <td class="status"><%= batch.status %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
