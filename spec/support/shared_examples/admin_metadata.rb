@@ -1,4 +1,15 @@
 shared_examples 'and has admin metadata attributes' do
+  describe '#reviewed?' do
+    before { work.qr_status = ['qr status'] }
+
+    it 'is true when qr_status is set to "Batch Reviewed"' do
+      expect { work.qr_status << 'Batch Reviewed' }
+        .to change { work.reviewed? }
+        .from(false)
+        .to(true)
+    end
+  end
+
   it 'has steward' do
     work.steward = 'A steward'
     expect(work.resource.dump(:ttl)).to match(/dl.tufts.edu\/terms#steward/)

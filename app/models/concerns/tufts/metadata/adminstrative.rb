@@ -2,6 +2,9 @@ module Tufts
   module Metadata
     module Adminstrative
       extend ActiveSupport::Concern
+
+      REVIEWED_STRING = 'Batch Reviewed'.freeze
+
       included do
         property :displays_in, predicate: ::Tufts::Vocab::Terms.displays_in do |index|
           index.as :stored_searchable, :facetable
@@ -57,6 +60,10 @@ module Tufts
         property :createdby, predicate: ::Tufts::Vocab::Terms.createdby, multiple: false do |index|
           index.as :stored_searchable, :facetable
         end
+      end
+
+      def reviewed?
+        qr_status.include?(REVIEWED_STRING)
       end
     end
   end

@@ -32,10 +32,34 @@ class Batch < ApplicationRecord
     attr_accessor :job, :object
 
     ##
+    # @!method id
+    #   @return [String]
+    delegate :id, to: :object
+
+    ##
     # @param id [#to_s]
     def initialize(id)
       @object = ActiveFedora::Base.find(id)
       @job    = :no_job
+    end
+
+    ##
+    # @return [String]
+    def status
+      'Queued'
+    end
+
+    ##
+    # @return [String]
+    def title
+      object.title.first
+    end
+
+    ##
+    # @return [Boolean]
+    def reviewed?
+      return object.reviewed? if object.respond_to?(:reviewed?)
+      false
     end
   end
 end

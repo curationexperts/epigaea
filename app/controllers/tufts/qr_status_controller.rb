@@ -11,12 +11,7 @@ module Tufts
 
     def status
       model = ActiveFedora::Base.find(params[:id])
-      status = if model.qr_status == ['Batch Reviewed']
-                 true
-               else
-                 false
-               end
-      render json: { batch_reviewed: status }
+      render json: { batch_reviewed: model.reviewed? }
     end
   end
 end
