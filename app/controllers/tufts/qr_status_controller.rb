@@ -4,8 +4,7 @@ module Tufts
 
     def set_status
       model = ActiveFedora::Base.find(params[:id])
-      model.qr_status = ['Batch Reviewed']
-      model.save
+      model.mark_reviewed!
       render json: { batch_reviewed: true }
     end
 

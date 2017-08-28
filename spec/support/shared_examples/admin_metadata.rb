@@ -1,4 +1,13 @@
 shared_examples 'and has admin metadata attributes' do
+  describe '#mark_reviewed!' do
+    it 'sets #reviewed?' do
+      expect { work.mark_reviewed! }
+        .to change { work.reviewed? }
+        .from(false)
+        .to(true)
+    end
+  end
+
   describe '#reviewed?' do
     before { work.qr_status = ['qr status'] }
 

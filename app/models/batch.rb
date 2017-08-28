@@ -26,21 +26,23 @@ class Batch < ApplicationRecord
   # and its corresponding job.
   class Item
     ##
-    # @!attribute job    [rw]
+    # @!attribute id [rw]
+    #   @return [String]
     # @!attribute object [rw]
     #   @return [ActiveFedora::Base]
-    attr_accessor :job, :object
-
-    ##
-    # @!method id
-    #   @return [String]
-    delegate :id, to: :object
+    attr_accessor :id, :object
 
     ##
     # @param id [#to_s]
     def initialize(id)
+      @id     = id
       @object = ActiveFedora::Base.find(id)
-      @job    = :no_job
+    end
+
+    ##
+    # @return [ApplicationJob]
+    def job
+      :no_job
     end
 
     ##

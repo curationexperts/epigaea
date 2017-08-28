@@ -62,6 +62,15 @@ module Tufts
         end
       end
 
+      def mark_reviewed
+        self.qr_status = [REVIEWED_STRING]
+      end
+
+      def mark_reviewed!
+        mark_reviewed
+        save
+      end
+
       def reviewed?
         qr_status.include?(REVIEWED_STRING)
       end
