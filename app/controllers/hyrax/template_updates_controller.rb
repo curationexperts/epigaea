@@ -6,7 +6,7 @@ module Hyrax
                                   creator:   current_user,
                                   ids:       update.ids)
       update.save
-      update.enqueue!
+      update.batch.enqueue!
 
       redirect_to main_app.batch_path(update.batch)
     end

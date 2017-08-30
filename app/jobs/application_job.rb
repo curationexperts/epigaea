@@ -1,2 +1,2 @@
-class ApplicationJob < ActiveJobStatus::TrackableJob
+class ApplicationJob < ActiveJob::Base
 end

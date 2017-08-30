@@ -135,6 +135,14 @@ RSpec.configure do |config|
     page.driver.reset!
   end
 
+  config.before(:context, batch: true) do
+    ActiveJobStatus.store = ActiveSupport::Cache::MemoryStore.new
+  end
+
+  config.after(:each, batch: true) do
+    ActiveJobStatus.store.clear
+  end
+
   config.after do
     DatabaseCleaner.clean
   end

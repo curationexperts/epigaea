@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe TemplateUpdateJob, type: :job do
   subject(:job) { described_class }
-  let(:item)    { update.items.first }
-  let(:update)  { FactoryGirl.create(:template_update) }
+  let(:item)    { TemplateUpdate::Item.new('behavior', 'id', 'Template') }
 
   describe '#perform_later' do
     it 'enqueues the job' do
