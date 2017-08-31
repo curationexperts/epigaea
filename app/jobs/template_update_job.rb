@@ -7,9 +7,7 @@
 #     HandleRegisterJob.perform_later()
 #
 # @see ActiveJob::Base, HandleDispatcher.assign_for!
-class TemplateUpdateJob < ApplicationJob
-  queue_as :batch
-
+class TemplateUpdateJob < BatchableJob
   def perform(behavior, id, template_name)
     template = Tufts::Template.for(name: template_name, behavior: behavior)
     model    = ActiveFedora::Base.find(id)

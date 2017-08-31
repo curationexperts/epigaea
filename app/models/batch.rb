@@ -7,7 +7,7 @@ class Batch < ApplicationRecord
 
   ##
   # @!attribute batchable [r]
-  #   @return [TemplateUpdate]
+  #   @return [#enqueue!]
   belongs_to :batchable, polymorphic: true
 
   ##
@@ -16,9 +16,27 @@ class Batch < ApplicationRecord
   serialize :ids, Array
 
   ##
+  # @!method job_ids
+  #   @return [Array<String>]
+  delegate :job_ids, to: :job_batch
+
+  ##
+  # @return [void]
+  def enqueue!
+    id_map = batchable.enqueue!
+    return unless id_map.any?
+
+    id_map.each { |o, j| add_job_for_object(object_id: o, job_id: j) }
+
+    ActiveJobStatus::JobBatch.new(batch_id:   id,
+                                  job_ids:    id_map.values,
+                                  store_data: true)
+  end
+
+  ##
   # @return [Enumerator<ActiveFedora::Base>]
   def items
-    ids.lazy.map { |id| Item.new(id) }
+    ids.lazy.map { |obj_id| Item.new(obj_id, id) }
   end
 
   ##
@@ -26,29 +44,34 @@ class Batch < ApplicationRecord
   # and its corresponding job.
   class Item
     ##
+    # @!attribute batch [rw]
+    #   @return [String]
     # @!attribute id [rw]
     #   @return [String]
     # @!attribute object [rw]
     #   @return [ActiveFedora::Base]
-    attr_accessor :id, :object
+    attr_accessor :batch_id, :id, :object
 
     ##
     # @param id [#to_s]
-    def initialize(id)
-      @id     = id
-      @object = ActiveFedora::Base.find(id)
+    def initialize(id, batch_id)
+      @id       = id
+      @batch_id = batch_id
+      @object   = ActiveFedora::Base.find(id)
     end
 
     ##
-    # @return [ApplicationJob]
-    def job
-      :no_job
+    # @return [String, nil]
+    def job_id
+      Tufts::JobItemStore.fetch(object_id: id, batch_id: batch_id)
     end
 
     ##
-    # @return [String]
+    # @return [Symbol]
     def status
-      'Queued'
+      return :unavailable if job_id.nil?
+
+      ActiveJobStatus.get_status(job_id)
     end
 
     ##
@@ -64,4 +87,24 @@ class Batch < ApplicationRecord
       false
     end
   end
+
+  private
+
+    ##
+    # @private
+    # @note Don't expose clients to `ActiveJobStatus::JobBatch`
+    # @return [ActiveJobStatus::JobBatch]
+    def job_batch
+      ActiveJobStatus::JobBatch.find(batch_id: id) ||
+        ActiveJobStatus::JobBatch.new(batch_id:   id,
+                                      job_ids:    [],
+                                      store_data: false)
+    end
+
+    ##
+    # @private
+    def add_job_for_object(object_id:, job_id:)
+      Tufts::JobItemStore
+        .add(object_id: object_id, job_id: job_id, batch_id: id)
+    end
 end

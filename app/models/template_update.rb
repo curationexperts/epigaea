@@ -42,20 +42,24 @@ class TemplateUpdate < ApplicationRecord
   end
 
   ##
-  # Configurations for the update of each item in ids.
-  #
-  # @return [Enumerable<TemplateUpdate::Item>]
-  def items
-    Enumerator.new do |yielder|
-      ids.each do |id|
-        yielder << Item.new(behavior, id, template_name)
-      end
+  # @return [Hash<String, String>] a hash associating object ids to job ids
+  def enqueue!
+    items.each_with_object({}) do |item, hsh|
+      hsh[item.values[1]] = TemplateUpdateJob.perform_later(*item.values).job_id
     end
   end
 
   ##
-  # @return [void]
-  def enqueue!
-    items.each { |item| TemplateUpdateJob.perform_later(*item.values) }
+  # Configurations for the update of each item in ids.
+  #
+  # @return [Enumerable<TemplateUpdate::Item>]
+  def items
+    object_ids.map { |id| Item.new(behavior, id, template_name) }
+  end
+
+  ##
+  # @return [Array<String>]
+  def object_ids
+    batch ? batch.ids : []
   end
 end

@@ -5,6 +5,13 @@ class BatchPresenter
   # Review Statuses
   REVIEW_STATUSES = { complete:   'Complete'.freeze,
                       incomplete: 'Incomplete'.freeze }.freeze
+
+  ##
+  # Job Statuses
+  JOB_STATUSES = { unavailable: 'Unavailable'.freeze,
+                   queued:      'Queued'.freeze,
+                   working:     'In Progress'.freeze,
+                   completed:   'Completed'.freeze }.freeze
   ##
   # @!attribute object [rw]
   #   @return [Batch]
@@ -51,7 +58,16 @@ class BatchPresenter
   ##
   # @return [String]
   def status
-    'Queued'
+    return JOB_STATUSES[:unavailable] if
+      items.any? { |i| i.status == :unavailable }
+
+    return JOB_STATUSES[:queued] unless
+      items.any? { |i| [:completed, :working].include? i.status }
+
+    return JOB_STATUSES[:working] unless
+      items.all? { |i| i.status == :completed }
+
+    JOB_STATUSES[:completed]
   end
 
   ##

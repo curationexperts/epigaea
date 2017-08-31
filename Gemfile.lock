@@ -103,6 +103,9 @@ GEM
       active-fedora (>= 9.7, < 12)
       noid (~> 0.9)
       rails (>= 5.0.0, < 6)
+    active_job_status (1.2.1)
+      activejob (> 4.2)
+      activesupport (> 4.2)
     activejob (5.0.4)
       activesupport (= 5.0.4)
       globalid (>= 0.3.6)
@@ -634,8 +637,13 @@ GEM
     redic (1.5.0)
       hiredis
     redis (3.3.3)
+    redis-activesupport (5.0.3)
+      activesupport (>= 3, < 6)
+      redis-store (~> 1.3.0)
     redis-namespace (1.5.3)
       redis (~> 3.0, >= 3.0.4)
+    redis-store (1.3.0)
+      redis (>= 2.2)
     redlock (0.2.0)
       redis (~> 3, >= 3.0.0)
     representable (3.0.4)
@@ -803,6 +811,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_job_status (~> 1.2.1)
   bixby
   byebug
   capistrano (~> 3.9)
@@ -826,6 +835,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.4)
   rails-controller-testing
+  redis-activesupport
   rsolr (>= 1.0)
   rspec-rails
   sanitize
