@@ -67,9 +67,9 @@ class Batch < ApplicationRecord
     end
 
     ##
-    # @return [String]
+    # @return [Symbol]
     def status
-      return 'Unavailable' if job_id.nil?
+      return :unavailable if job_id.nil?
 
       ActiveJobStatus.get_status(job_id)
     end
