@@ -9,12 +9,12 @@
 
       <% batch.items.each do |item| %>
         <tr>
-          <!-- <td class="record_id">%= link_to item.title, catalog_path(item.item_id) %></td> -->
-          <!-- <td class="record_title">%= item.record_title %></td> -->
-          <!-- <td class="record_status">%= item.status %></td> -->
-          <!-- <td class="record_reviewed_status"> -->
-          <!--   %= check_box_tag :reviewed, :reviewed, item.reviewed?, type: :checkbox, disabled: true  %> -->
-          <!-- </td> -->
+          <td class="record_id"><%= link_to item.id, polymorphic_path([main_app, item.object]) %></td>
+          <td class="record_title"><%= item.title %></td>
+          <td class="record_status"><%= item.status %></td>
+          <td class="record_reviewed_status">
+            <%= check_box_tag :reviewed, :reviewed, item.reviewed?, type: :checkbox, disabled: true  %>
+          </td> 
         </tr>
       <% end %>
     </table>

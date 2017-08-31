@@ -2,6 +2,10 @@
 # A presenter for the Batch model
 class BatchPresenter
   ##
+  # Review Statuses
+  REVIEW_STATUSES = { complete:   'Complete'.freeze,
+                      incomplete: 'Incomplete'.freeze }.freeze
+  ##
   # @!attribute object [rw]
   #   @return [Batch]
   attr_accessor :object
@@ -40,7 +44,8 @@ class BatchPresenter
   ##
   # @return [String]
   def review_status
-    'Incomplete'
+    return REVIEW_STATUSES[:complete] if items.all?(&:reviewed?)
+    REVIEW_STATUSES[:incomplete]
   end
 
   ##
@@ -52,6 +57,9 @@ class BatchPresenter
   ##
   # @return [String]
   def type
-    'Template Update'
+    batchable = object.batchable
+
+    return batchable.batch_type if batchable.respond_to?(:batch_type)
+    batchable.class.to_s
   end
 end

@@ -26,16 +26,42 @@ class Batch < ApplicationRecord
   # and its corresponding job.
   class Item
     ##
-    # @!attribute job    [rw]
+    # @!attribute id [rw]
+    #   @return [String]
     # @!attribute object [rw]
     #   @return [ActiveFedora::Base]
-    attr_accessor :job, :object
+    attr_accessor :id, :object
 
     ##
     # @param id [#to_s]
     def initialize(id)
+      @id     = id
       @object = ActiveFedora::Base.find(id)
-      @job    = :no_job
+    end
+
+    ##
+    # @return [ApplicationJob]
+    def job
+      :no_job
+    end
+
+    ##
+    # @return [String]
+    def status
+      'Queued'
+    end
+
+    ##
+    # @return [String]
+    def title
+      object.title.first
+    end
+
+    ##
+    # @return [Boolean]
+    def reviewed?
+      return object.reviewed? if object.respond_to?(:reviewed?)
+      false
     end
   end
 end
