@@ -16,6 +16,33 @@ RSpec.describe Hyrax::BatchesController, type: :controller do
       end
     end
 
+    describe 'POST #create' do
+      let(:ids) { ['abc', '123'] }
+
+      let(:params) do
+        {
+          batch: {
+            ids: ids,
+            batchable_attributes: {
+              batch_type: 'Publish'
+            }
+          }
+        }
+      end
+
+      it 'creates a batch' do
+        expect { post :create, params: params }.to change { Batch.count }.by(1)
+      end
+
+      it 'enqueues jobs' do
+        ActiveJob::Base.queue_adapter = :test
+
+        expect { post :create, params: params }
+          .to enqueue_job(PublishJob)
+          .exactly(:twice)
+      end
+    end
+
     describe 'GET #show' do
       let(:batch) { FactoryGirl.create(:batch) }
 

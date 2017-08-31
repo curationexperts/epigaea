@@ -9,6 +9,7 @@ class Batch < ApplicationRecord
   # @!attribute batchable [r]
   #   @return [#enqueue!]
   belongs_to :batchable, polymorphic: true
+  accepts_nested_attributes_for :batchable
 
   ##
   # @!attribute ids [rw]
