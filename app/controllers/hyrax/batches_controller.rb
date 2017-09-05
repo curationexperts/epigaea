@@ -1,10 +1,14 @@
 module Hyrax
   class BatchesController < ApplicationController
+    before_action :check_permissions
+
     def index
       @batches = Batch.all.map { |batch| BatchPresenter.for(object: batch) }
     end
 
     def create
+      params['batch']['ids'] ||= params[:batch_document_ids]
+
       batch           = Batch.new(params.require(:batch).permit(ids: []))
       batch.batchable = BatchTask.new(batchable_params)
       batch.save
@@ -31,6 +35,10 @@ module Hyrax
           .require(:batch)
           .require(:batchable_attributes)
           .permit(:batch_type)
+      end
+
+      def check_permissions
+        authorize! :create, Batch
       end
   end
 end

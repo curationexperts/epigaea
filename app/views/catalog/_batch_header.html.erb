@@ -1,4 +1,4 @@
 <%= check_box_tag 'check_all', 'yes', @all_checked %>
 <%= button_to "Apply Template", new_template_update_path, method: :get, class: "btn btn-primary submits-batches" %>
-
+<%= button_to "Publish", batches_path, method: :post, params: { batch: { batchable_attributes: { batch_type: "Publish" } } }, class: "btn btn-primary submits-batches" %>
 <div id="selected_documents_count">Number of documents selected: 0</div>
