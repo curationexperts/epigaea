@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Warden::Test::Helpers
 
-RSpec.feature 'Apply a Template', :clean, js: true do
+RSpec.feature 'Create a Batch', :clean, js: true do
   let(:objects) { [object, other] }
   let(:object)  { build(:pdf) }
   let(:other)   { build(:pdf) }
@@ -34,6 +34,21 @@ RSpec.feature 'Apply a Template', :clean, js: true do
 
     click_on 'Apply Template'
     expect(page).to have_content 'Batch'
+  end
+
+  scenario 'publish selected items' do
+    ActiveJob::Base.queue_adapter = :test
+
+    visit '/catalog'
+
+    objects.each do |obj|
+      find("#document_#{obj.id}").check "batch_document_#{obj.id}"
+    end
+
+    expect { click_on 'Publish' }
+      .to enqueue_job(PublishJob)
+      .exactly(objects.count)
+      .times
   end
 
   scenario 'using select all' do

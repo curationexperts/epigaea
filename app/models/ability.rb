@@ -13,7 +13,8 @@ class Ability
     # end
 
     can [:create], Contribution if current_user
-    can [:manage], DepositType if current_user
+    can [:create], Batch        if current_user
+    can [:manage], DepositType  if current_user
     # Limits creating new objects to a specific group
     #
     # if user_groups.include? 'special_group'

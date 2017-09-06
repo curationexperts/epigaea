@@ -45,7 +45,7 @@ class BatchPresenter
   ##
   # @return [String]
   def creator
-    object.creator.email
+    object.creator.try(:email) || 'No Creator'
   end
 
   ##
