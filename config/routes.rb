@@ -35,7 +35,8 @@ Rails.application.routes.draw do
             controller: 'hyrax/templates',
             only:       [:index, :destroy, :edit, :update, :new]
   resources :template_updates,
-            controller: 'hyrax/template_updates'
+            controller: 'hyrax/template_updates',
+            only:       [:new, :create]
 
   # Routes for managing drafts
   post '/draft/save_draft/:id', to: 'tufts/draft#save_draft'
