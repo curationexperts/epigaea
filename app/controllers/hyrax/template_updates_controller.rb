@@ -16,10 +16,6 @@ module Hyrax
       @update = TemplateUpdate.new(ids: ids)
     end
 
-    def show
-      @update = TemplateUpdate.find(param[:id])
-    end
-
     private
 
       def template_update_params
