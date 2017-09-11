@@ -673,6 +673,7 @@ GEM
       faraday
     fcrepo_wrapper (0.8.0)
       ruby-progressbar
+    ffaker (2.6.0)
     ffi (1.9.18)
     flipflop (2.3.1)
       activesupport (>= 4.0)
@@ -1254,6 +1255,7 @@ DEPENDENCIES
   devise-guests (~> 0.6)
   factory_girl_rails
   fcrepo_wrapper
+  ffaker
   handle-system (= 0.1.1)
   hydra-role-management
   hyrax (= 2.0.0.beta1)
