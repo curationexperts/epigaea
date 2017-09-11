@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'hydra-role-management'
-gem 'hyrax', github: 'samvera/hyrax', ref: '42d3a7b'
+gem 'hyrax', '2.0.0.beta1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.4'

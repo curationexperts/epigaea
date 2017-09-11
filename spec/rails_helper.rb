@@ -29,18 +29,6 @@ require 'selenium-webdriver'
 #
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
-# Ensure the Hyrax::Admin constant is loaded. Because testing is done using autoloading,
-# the order of the test run determines where the constants are loaded from.  Prior to
-# this change we were seeing intermittent errors like:
-#   uninitialized constant Admin::UserActivityPresenter
-# This can probably be removed once https://github.com/projecthydra-labs/hyrax/pull/440
-# is merged
-# rubocop:disable Lint/Void
-Hyrax::Admin
-# rubocop:enable Lint/Void
-
-Hyrax::PermissionTemplate.create!(admin_set_id: AdminSet::DEFAULT_ID)
-
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
