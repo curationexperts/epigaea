@@ -1,7 +1,6 @@
 class ContributeController < ApplicationController
   include GisHelper
 
-  # skip_before_filter :authenticate_user!, only: [:index, :license, :redirect]
   before_action :load_deposit_type, only: [:new, :create]
 
   def index; end
@@ -13,12 +12,10 @@ class ContributeController < ApplicationController
   def license; end
 
   def new
-    # authorize! :create, Contribution
     @contribution = @deposit_type.contribution_class.new
   end
 
   def create
-    # authorize! :create, Contribution
     @contribution = @deposit_type.contribution_class.new(params[:contribution].merge(deposit_type: @deposit_type))
 
     if @contribution.save
@@ -28,8 +25,6 @@ class ContributeController < ApplicationController
       render :new
     end
   end
-
-  def authenticate_user!; end
 
 protected
 

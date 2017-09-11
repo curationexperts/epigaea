@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+
+  unauthenticated do
+    root to: 'contribute#redirect'
+  end
+
   mount Hydra::RoleManagement::Engine => '/'
 
   mount Qa::Engine => '/authorities'
@@ -55,7 +60,7 @@ Rails.application.routes.draw do
     get 'export', on: :collection
   end
 
-  resources :contribute, as: 'contributions', controller: :contribute, only: [:index, :new, :create] do
+  resources :contribute, as: 'contributions', controller: :contribute, only: [:index, :new, :create, :redirect] do
     collection do
       get 'license'
     end
