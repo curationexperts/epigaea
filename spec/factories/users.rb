@@ -6,6 +6,7 @@ FactoryGirl.define do
       "person#{User.count}_#{n}@example.com"
     end
     password 'password'
+    display_name FFaker::Name.name
 
     factory :admin do
       roles { [Role.where(name: 'admin').first_or_create] }

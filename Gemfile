@@ -74,6 +74,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'fcrepo_wrapper'
+  gem 'ffaker'
   gem 'poltergeist'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
