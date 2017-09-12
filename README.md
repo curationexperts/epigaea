@@ -15,6 +15,7 @@ cd epigaea
 bundle install
 bundle exec rails db:setup
 bundle exec sidekiq -d -l tmp/sidekiq.log
+# open a separate session and run bundle exec rails hydra:server
 bundle exec rails hyrax:default_admin_set:create 
 ```
 Other services and settings required:
