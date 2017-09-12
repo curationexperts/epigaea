@@ -1,0 +1,23 @@
+.batch-controls {
+    list-style:none;
+    display:inline-block;
+    margin-left:0;
+    padding-left:0;
+    width:100%;
+    li {
+        float:left;
+        margin-right:1em;
+    }
+    .batch-check {
+        margin-top:.5em;
+    }
+    .selected-documents {
+        float:none;
+        margin-top:3em;
+        margin-left:.6em;
+    }
+}
+
+.batch_document_selector {
+    float:left;
+}
