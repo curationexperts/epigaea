@@ -47,6 +47,7 @@ group :development do
   gem 'capistrano', '~> 3.9'
   gem 'capistrano-passenger'
   gem 'capistrano-rails', '~> 1.3'
+  gem 'capistrano-sidekiq', '~> 0.20.0'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.0.5'
   gem 'web-console', '>= 3.3.0'
