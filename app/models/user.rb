@@ -24,4 +24,16 @@ class User < ApplicationRecord
   def to_s
     email
   end
+
+  def add_role(role)
+    role = Role.find_by(name: role)
+    role = Role.create(name: role) if role.nil?
+    role.users << self
+    role.save
+  end
+
+  def remove_role(role)
+    roles = Role.find_by(name: role)
+    roles.users.delete(self) if roles && roles.users && roles.users.include?(self)
+  end
 end

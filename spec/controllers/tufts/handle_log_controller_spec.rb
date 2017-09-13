@@ -20,9 +20,8 @@ describe Tufts::HandleLogController do
 
   context 'a non-admin' do
     it "redirects" do
-      pending('Waiting for LDAP')
       get :index
-      expect(flash[:alert]).to eq 'You need to sign in or sign up before continuing.'
+      expect(flash[:alert]).to eq 'You are not authorized to access this page.'
     end
   end
 end
