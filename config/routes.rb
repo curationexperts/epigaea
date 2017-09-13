@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
+  # Admin constraint
+  admin_constraint = lambda do |request|
+    request.env['warden'].authenticate? && request.env['warden'].user.admin?
+  end
+
   mount Blacklight::Engine => '/'
 
   concern :searchable, Blacklight::Routes::Searchable.new
 
-  resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
-    concerns :searchable
+  constraints admin_constraint do
+    # Only admin users should be able to search
+    resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
+      concerns :searchable
+    end
   end
 
   devise_for :users
