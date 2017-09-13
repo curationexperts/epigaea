@@ -28,9 +28,21 @@ append :linked_files, "config/fedora.yml"
 append :linked_files, "config/redis.yml"
 append :linked_files, "config/secrets.yml"
 append :linked_files, "config/solr.yml"
+append :linked_files, "config/handle.yml"
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_dirs, "public/assets"
+append :linked_dirs, "tmp/pids"
+append :linked_dirs, "tmp/cache"
+append :linked_dirs, "tmp/sockets"
+append :linked_dirs, "log"
+
+# link the draft dir specified in config/environments/produciton.rb config.drafts_storage_dir
+append :linked_dirs, "tmp/drafts"
+
+# link the template dir specified in config/environments/produciton.rb config.templates_storage_dir
+append :linked_dirs, "tmp/templates"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
