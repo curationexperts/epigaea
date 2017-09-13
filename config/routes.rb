@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   admin_constraint = lambda do |request|
     request.env['warden'].authenticate? && request.env['warden'].user.admin?
   end
+  non_admin_constraint = lambda do |request|
+    request.env['warden'].authenticate? && !request.env['warden'].user.admin?
+  end
 
   mount Blacklight::Engine => '/'
 
@@ -21,13 +24,19 @@ Rails.application.routes.draw do
     root to: 'contribute#redirect'
   end
 
+  constraints non_admin_constraint do
+    get '/dashboard', to: 'contribute#redirect'
+  end
+
   mount Hydra::RoleManagement::Engine => '/'
 
   mount Qa::Engine => '/authorities'
   mount Hyrax::Engine, at: '/'
   resources :welcome, only: 'index'
   root 'hyrax/homepage#index'
+
   curation_concerns_basic_routes
+
   concern :exportable, Blacklight::Routes::Exportable.new
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
@@ -78,4 +87,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/handle/log/', to: 'tufts/handle_log#index'
+
+  # needs to be last to redirect /bad/paths
+  get '*path', to: 'contribute#redirect'
 end

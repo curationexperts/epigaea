@@ -8,11 +8,7 @@ RSpec.feature 'Apply a Template', :clean, js: true do
   after { Tufts::Template.all.each(&:delete) }
 
   context 'with logged in user' do
-    let(:user_attributes) { { email: 'test@example.com' } }
-
-    let(:user) do
-      User.new(user_attributes) { |u| u.save(validate: false) }
-    end
+    let(:user) { FactoryGirl.create(:admin) }
 
     before do
       template # create the template
