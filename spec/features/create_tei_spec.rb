@@ -1,6 +1,7 @@
 # Generated via
 #  `rails generate hyrax:work Tei`
 require 'rails_helper'
+require 'tufts/workflow_setup'
 include Warden::Test::Helpers
 
 # NOTE: If you generated more than one work, you have to set "js: true"
@@ -9,7 +10,7 @@ RSpec.feature 'Create a TEI', :clean, js: true do
     let(:user) { FactoryGirl.create(:admin) }
 
     before do
-      AdminSet.find_or_create_default_admin_set_id
+      Tufts::WorkflowSetup.setup
       login_as user
     end
 

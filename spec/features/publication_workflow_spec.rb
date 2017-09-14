@@ -12,7 +12,7 @@ RSpec.feature 'deposit and publication' do
   context 'a logged in user' do
     before do
       allow(CharacterizeJob).to receive(:perform_later) # There is no fits installed on travis-ci
-      Tufts::WorkflowSetup.new.setup
+      Tufts::WorkflowSetup.setup
       current_ability = ::Ability.new(depositing_user)
       attributes = {}
       env = Hyrax::Actors::Environment.new(work, current_ability, attributes)

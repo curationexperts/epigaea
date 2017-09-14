@@ -11,11 +11,10 @@ require 'import_export/deposit_type_importer'
 puts
 puts "== Setting mira publication workflow =="
 puts
+# Ensure default admin set and its associated permission template exist,
+# and load the mira_publication_workflow
 require 'tufts/workflow_setup'
-# Our database has just been reset, so you MUST destroy and
-# re-create all AdminSets too
-w = Tufts::WorkflowSetup.new
-w.setup
+Tufts::WorkflowSetup.setup
 
 # DepositType.create!(display_name: 'Initial Seed', deposit_view: 'generic_deposit', license_name: 'N/A')
 importer = DepositTypeImporter.new('./config/deposit_type_seed.csv')

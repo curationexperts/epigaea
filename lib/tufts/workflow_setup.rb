@@ -1,6 +1,11 @@
 module Tufts
   class WorkflowSetup
     MIRA_WORKFLOW_NAME = 'mira_publication_workflow'.freeze
+
+    def self.setup
+      Tufts::WorkflowSetup.new.setup
+    end
+
     def setup
       set_default_workflow
       grant_publish_role_to_admins
@@ -10,7 +15,11 @@ module Tufts
       # This is the non-destructive way to ensure the default admin set and its
       # associated PermissionTemplate exist, even if the database has been reset
       # Cribbed from hyrax/lib/tasks/default_admin_set.rake
-      AdminSet.find_or_create_default_admin_set_id
+      begin
+        AdminSet.find_or_create_default_admin_set_id
+      rescue ActiveRecord::RecordNotUnique
+        Rails.logger.debug "Tried to make default permission template but it already exists"
+      end
       Hyrax::PermissionTemplate.create!(admin_set_id: AdminSet::DEFAULT_ID) unless Hyrax::PermissionTemplate.find_by(admin_set_id: AdminSet::DEFAULT_ID)
       permission_template = Hyrax::PermissionTemplate.find_by(admin_set_id: AdminSet::DEFAULT_ID)
       load_workflows unless permission_template.available_workflows.where(name: Tufts::WorkflowSetup::MIRA_WORKFLOW_NAME).first
