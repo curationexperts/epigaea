@@ -18,6 +18,25 @@
     }
 }
 
-.batch_document_selector {
+#search-results input.batch_document_selector {
+    position: absolute;
+    left: 0;
+    margin-left: 25px;
+    margin-top: 11px;
+    height: 13px;
+    line-height: normal;
+}
+
+#search-results ol {
+    list-style:none;
+    counter-reset: item;
+}
+  
+#search-results ol li:before {
+    content: counter(item) ".";  
+    counter-increment: item;
+    display: inline-block;
     float:left;
+    margin-right:1em;
+    margin-top:.5em;
 }
