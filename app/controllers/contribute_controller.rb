@@ -31,6 +31,9 @@ protected
   def load_deposit_type
     @deposit_type = DepositType.where(id: params[:deposit_type]).first
     # Redirect the user to the selection page if the deposit type is invalid or missing
-    redirect_to contributions_path unless @deposit_type
+    unless @deposit_type # rubocop:disable Style/GuardClause
+      flash[:error] = "Please select a deposit type from the dropdown menu."
+      redirect_to contributions_path
+    end
   end
 end

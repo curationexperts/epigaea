@@ -35,7 +35,7 @@
         <%= form_tag({controller: :contribute, action: :new}, method: :get, class: 'well') do %>
           <div class="form-group">
             <%= label_tag(:deposit_type, "Please select a deposit type") -%>
-            <%= select_tag :deposit_type, options_from_collection_for_select(DepositType.all.sort_by{|dt| dt.display_name.downcase}, :id, :display_name), class: 'form-control' %><br/>
+            <%= select_tag :deposit_type, options_from_collection_for_select(DepositType.all.sort_by{|dt| dt.display_name.downcase}, :id, :display_name), prompt: 'Select a deposit type', class: 'form-control' %><br/>
           </div>
           <%= submit_tag "Begin", class: 'btn-primary btn'  %>
         <% end %>
