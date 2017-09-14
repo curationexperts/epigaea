@@ -8,6 +8,15 @@ require 'import_export/deposit_type_importer'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts
+puts "== Setting mira publication workflow =="
+puts
+require 'tufts/workflow_setup'
+# Our database has just been reset, so you MUST destroy and
+# re-create all AdminSets too
+w = Tufts::WorkflowSetup.new
+w.setup
+
 # DepositType.create!(display_name: 'Initial Seed', deposit_view: 'generic_deposit', license_name: 'N/A')
 importer = DepositTypeImporter.new('./config/deposit_type_seed.csv')
 importer.import_from_csv

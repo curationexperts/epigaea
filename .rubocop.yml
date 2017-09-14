@@ -17,6 +17,7 @@ RSpec/ExampleLength:
     - 'spec/lib/import_export/deposit_type_importer_spec.rb'
     - 'spec/lib/import_export/deposit_type_exporter_spec.rb'
     - 'spec/lib/deposit_types_controller_spec.rb'
+    - 'spec/lib/tufts/workflow_setup_spec.rb'
     - 'spec/controllers/contribute_controller_spec.rb'
     - 'spec/controllers/deposit_types_controller_spec.rb'
 RSpec/NestedGroups:
@@ -31,6 +32,7 @@ RSpec/MultipleExpectations:
   Exclude:
   - 'spec/controllers/contribute_controller_spec.rb'
   - 'spec/features/publication_workflow_spec.rb'
+  - 'spec/lib/tufts/workflow_setup_spec.rb'
 Style/FileName:
   Exclude:
     - '**/Capfile'
