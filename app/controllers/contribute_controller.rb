@@ -19,7 +19,7 @@ class ContributeController < ApplicationController
     @contribution = @deposit_type.contribution_class.new(params[:contribution].merge(deposit_type: @deposit_type))
 
     if @contribution.save
-      flash[:notice] = "Your file has been saved!"
+      flash[:notice] = "Your deposit has been submitted for approval."
       redirect_to contributions_path
     else
       render :new
