@@ -5,13 +5,8 @@ include Warden::Test::Helpers
 
 # NOTE: If you generated more than one work, you have to set "js: true"
 RSpec.feature 'Create a TEI', :clean, js: true do
-  context 'a logged in user' do
-    let(:user_attributes) do
-      { email: 'test@example.com' }
-    end
-    let(:user) do
-      User.new(user_attributes) { |u| u.save(validate: false) }
-    end
+  context 'a logged in admin user' do
+    let(:user) { FactoryGirl.create(:admin) }
 
     before do
       AdminSet.find_or_create_default_admin_set_id
