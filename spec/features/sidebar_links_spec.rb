@@ -1,11 +1,12 @@
 require 'rails_helper'
+require 'tufts/workflow_setup'
 include Warden::Test::Helpers
 
 RSpec.feature 'Manage Deposit Types link in dashboard sidebar', :clean do
   context 'a logged in user' do
     let(:admin) { FactoryGirl.create(:admin) }
     before do
-      AdminSet.find_or_create_default_admin_set_id
+      Tufts::WorkflowSetup.setup
       login_as admin
     end
 

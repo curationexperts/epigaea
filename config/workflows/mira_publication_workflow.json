@@ -9,41 +9,40 @@
                 {
                     "name": "deposit",
                     "from_states": [],
-                    "transition_to": "pending_review",
+                    "transition_to": "unpublished",
                     "notifications": [
                         {
                             "notification_type": "email",
                             "name": "Hyrax::Workflow::PendingReviewNotification",
-                            "to": ["approving"]
+                            "to": ["publishing"]
                         }
                     ],
                     "methods": [
                         "Hyrax::Workflow::DeactivateObject"
                     ]
                 }, {
-                    "name": "request_changes",
-                    "from_states": [{"names": ["published", "pending_review"], "roles": ["approving"]}],
-                    "transition_to": "changes_required",
+                    "name": "unpublish",
+                    "from_states": [{"names": ["published"], "roles": ["publishing"]}],
+                    "transition_to": "unpublished",
                     "notifications": [
                         {
                             "notification_type": "email",
                             "name": "Hyrax::Workflow::ChangesRequiredNotification",
-                            "to": ["approving"]
+                            "to": ["publishing"]
                         }
                     ],
                     "methods": [
-                        "Hyrax::Workflow::DeactivateObject",
-                        "Hyrax::Workflow::GrantEditToDepositor"
+                        "Hyrax::Workflow::DeactivateObject"
                     ]
                 }, {
-                    "name": "approve",
-                    "from_states": [{"names": ["pending_review"], "roles": ["approving"]}],
+                    "name": "publish",
+                    "from_states": [{"names": ["unpublished"], "roles": ["publishing"]}],
                     "transition_to": "published",
                     "notifications": [
                         {
                             "notification_type": "email",
                             "name": "Hyrax::Workflow::DepositedNotification",
-                            "to": ["approving"]
+                            "to": ["publishing"]
                         }
                     ],
                     "methods": [
@@ -52,21 +51,9 @@
                         "Hyrax::Workflow::ActivateObject"
                     ]
                 }, {
-                    "name": "request_review",
-                    "from_states": [{"names": ["changes_required"], "roles": ["depositing"]}],
-                    "transition_to": "pending_review",
-                    "notifications": [
-                        {
-                            "notification_type": "email",
-                            "name": "Hyrax::Workflow::PendingReviewNotification",
-                            "to": ["approving"]
-                        }
-                    ]
-                }, {
                     "name": "comment_only",
                     "from_states": [
-                        { "names": ["pending_review", "published"], "roles": ["approving"] },
-                        { "names": ["changes_required"], "roles": ["depositing"] }
+                        { "names": ["unpublished", "published"], "roles": ["publishing"] }
                     ]
                 }
             ]
