@@ -16,7 +16,9 @@ class ContributeController < ApplicationController
   end
 
   def create
-    @contribution = @deposit_type.contribution_class.new(params[:contribution].merge(deposit_type: @deposit_type))
+    @contribution = @deposit_type.contribution_class.new(
+      params[:contribution].merge(deposit_type: @deposit_type).merge(depositor: current_user.user_key)
+    )
 
     if @contribution.save
       flash[:notice] = "Your deposit has been submitted for approval."

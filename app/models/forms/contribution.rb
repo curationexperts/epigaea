@@ -24,13 +24,20 @@ class Contribution
   def tufts_pdf
     return @tufts_pdf if @tufts_pdf
     now = Time.zone.now
-
     note = "#{creator} self-deposited on #{now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
-    @tufts_pdf = Pdf.new(createdby: SELFDEP, contributor: [creator], title: [title],
-                         steward: 'dca', displays_in: ['dl'],
-                         publisher: ['Tufts University. Digital Collections and Archives.'],
-                         rights_statement: ['http://dca.tufts.edu/ua/access/rights-creator.html'],
-                         date_available: [now.to_s], date_uploaded: now.to_s, internal_note: note)
+    @tufts_pdf = Pdf.new(
+      createdby: SELFDEP,
+      depositor: @depositor,
+      contributor: [creator],
+      title: [title],
+      steward: 'dca',
+      displays_in: ['dl'],
+      publisher: ['Tufts University. Digital Collections and Archives.'],
+      rights_statement: ['http://dca.tufts.edu/ua/access/rights-creator.html'],
+      date_available: [now.to_s],
+      date_uploaded: now.to_s,
+      internal_note: note
+    )
 
     copy_attributes
     @tufts_pdf
@@ -38,6 +45,7 @@ class Contribution
 
   def initialize(data = {})
     @deposit_type = data.delete(:deposit_type)
+    @depositor = data.delete(:depositor)
     self.class.attributes.each do |attribute|
       send("#{attribute}=", data[attribute])
     end

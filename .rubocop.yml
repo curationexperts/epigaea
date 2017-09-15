@@ -10,6 +10,9 @@ Metrics/BlockLength:
 Metrics/LineLength:
    Exclude:
     - 'spec/controllers/tufts/draft_controller_spec.rb'
+Metrics/MethodLength:
+   Exclude:
+    - 'app/models/forms/contribution.rb'
 RSpec/ExampleLength:
    Exclude:
     - 'spec/features/**/*'
@@ -31,7 +34,7 @@ RSpec/AnyInstance:
 RSpec/MultipleExpectations:
   Exclude:
   - 'spec/controllers/contribute_controller_spec.rb'
-  - 'spec/features/publication_workflow_spec.rb'
+  - 'spec/features/**/*'
   - 'spec/lib/tufts/workflow_setup_spec.rb'
 Style/FileName:
   Exclude:

@@ -19,7 +19,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       login_as user
     end
 
-    scenario do
+    scenario "a new user contributes a capstone project" do
       visit '/contribute'
       select 'Fletcher School Capstone Project', from: 'deposit_type'
       click_button "Begin"
@@ -32,6 +32,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       created_pdf = Pdf.last
       expect(created_pdf.title.first).to eq title
       expect(created_pdf.contributor.first).to eq user.display_name
+      expect(created_pdf.depositor).to eq user.user_key
       # expect(page).to have_content(title)
     end
   end
