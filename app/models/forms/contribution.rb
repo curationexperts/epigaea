@@ -39,8 +39,11 @@ class Contribution
       internal_note: note
     )
     copy_attributes
-    attributes = {}
-    current_ability = ::Ability.new(User.where(email: @depositor).first)
+    user = User.find_by(email: @depositor)
+    current_ability = ::Ability.new(user)
+    uploaded_file = Hyrax::UploadedFile.create(user: user, file: @attachment)
+    byebug
+    attributes = { uploaded_files: [uploaded_file.id] }
     env = Hyrax::Actors::Environment.new(@tufts_pdf, current_ability, attributes)
     Hyrax::CurationConcern.actor.create(env)
     @tufts_pdf
@@ -56,7 +59,7 @@ class Contribution
 
   def save
     return false unless valid?
-    ArchivalStorageService.new(tufts_pdf, attachment).run
+    # ArchivalStorageService.new(tufts_pdf, attachment).run
     tufts_pdf.save!
     tufts_pdf
   end

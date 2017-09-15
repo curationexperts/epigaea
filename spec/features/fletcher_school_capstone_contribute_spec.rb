@@ -16,6 +16,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       importer = DepositTypeImporter.new('./config/deposit_type_seed.csv')
       importer.import_from_csv
       Pdf.delete_all
+      Hyrax::UploadedFile.delete_all
       login_as user
     end
 
@@ -35,6 +36,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       expect(created_pdf.depositor).to eq user.user_key
       expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"
+      byebug
       # expect(page).to have_content(title)
     end
   end
