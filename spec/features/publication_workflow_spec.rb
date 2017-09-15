@@ -7,12 +7,12 @@ include Warden::Test::Helpers
 
 RSpec.feature 'deposit and publication' do
   let(:depositing_user) { FactoryGirl.create(:user) }
-  let(:approving_user) { FactoryGirl.create(:admin) }
+  let(:publishing_user) { FactoryGirl.create(:admin) }
   let(:work) { FactoryGirl.create(:image) }
   context 'a logged in user' do
     before do
       allow(CharacterizeJob).to receive(:perform_later) # There is no fits installed on travis-ci
-      Tufts::WorkflowSetup.new.set_default_workflow
+      Tufts::WorkflowSetup.setup
       current_ability = ::Ability.new(depositing_user)
       attributes = {}
       env = Hyrax::Actors::Environment.new(work, current_ability, attributes)
@@ -23,7 +23,7 @@ RSpec.feature 'deposit and publication' do
       expect(work.active_workflow.name).to eq "mira_publication_workflow"
 
       # Upon submission, works are in the "pending review" workflow state
-      expect(work.to_sipity_entity.reload.workflow_state_name).to eq "pending_review"
+      expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
 
       # Upon submission, works are not visible to the public
       visit("/concern/images/#{work.id}")
@@ -42,32 +42,30 @@ RSpec.feature 'deposit and publication' do
       visit("/notifications?locale=en")
       expect(page).to have_content "Deposit needs review #{work.title.first} (#{work.id}) was deposited by #{depositing_user.email} and is awaiting approval"
 
-      # Check notifications for approving user
+      # Check notifications for publishing user
       logout
-      login_as approving_user
+      login_as publishing_user
       visit("/notifications?locale=en")
       # expect(page).to have_content "#{work.title.first} (#{work.id}) was deposited by #{depositing_user.display_name} and is awaiting approval."
       # expect(page).to have_content "Deposit needs review #{work.title.first} (#{work.id}) was deposited by #{depositing_user.email} and is awaiting approval"
 
-      # Check workflow permissions for approving user
+      # Check workflow permissions for publishing user
       available_workflow_actions = Hyrax::Workflow::PermissionQuery.scope_permitted_workflow_actions_available_for_current_state(
-        user: approving_user,
+        user: publishing_user,
         entity: work.to_sipity_entity
       ).pluck(:name)
       expect(available_workflow_actions).to contain_exactly(
-        # "mark_reviewed",
-        "approve",
-        "request_changes",
+        "publish",
         "comment_only"
       )
 
       # The admin user approves the work, changing its status to "published"
-      subject = Hyrax::WorkflowActionInfo.new(work, approving_user)
-      sipity_workflow_action = PowerConverter.convert_to_sipity_action("approve", scope: subject.entity.workflow) { nil }
+      subject = Hyrax::WorkflowActionInfo.new(work, publishing_user)
+      sipity_workflow_action = PowerConverter.convert_to_sipity_action("publish", scope: subject.entity.workflow) { nil }
       Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Approved in publication_workflow_spec.rb")
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
 
-      #     # Check notifications for approving user
+      #     # Check notifications for publishing user
       #     visit("/notifications?locale=en")
       #     expect(page).to have_content "#{etd.title.first} (#{etd.id}) has been approved by"
 
@@ -75,13 +73,23 @@ RSpec.feature 'deposit and publication' do
       logout
       login_as depositing_user
       visit("/notifications?locale=en")
-      expect(page).to have_content "#{work.title.first} (#{work.id}) was approved by #{approving_user.email}. Approved in publication_workflow_spec.rb"
+      expect(page).to have_content "#{work.title.first} (#{work.id}) was approved by #{publishing_user.email}. Approved in publication_workflow_spec.rb"
 
       # After publication, works are visible to the public
       # Visit the ETD as a public user. It should be visible.
       logout
       visit("/concern/images/#{work.id}")
       expect(page).not_to have_content "The work is not currently available"
+
+      # After publication, an admin can unpublish a work.
+      subject = Hyrax::WorkflowActionInfo.new(work, publishing_user)
+      sipity_workflow_action = PowerConverter.convert_to_sipity_action("unpublish", scope: subject.entity.workflow) { nil }
+      Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Unpublished in publication_workflow_spec.rb")
+      expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
+
+      # After being unpublished, the work will no longer be visible to the public.
+      visit("/concern/images/#{work.id}")
+      expect(page).to have_content "The work is not currently available"
     end
   end
 end

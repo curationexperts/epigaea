@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'tufts/workflow_setup'
 include Warden::Test::Helpers
 
 RSpec.feature 'Apply a Template', :clean, js: true do
@@ -11,11 +12,10 @@ RSpec.feature 'Apply a Template', :clean, js: true do
     let(:user) { FactoryGirl.create(:admin) }
 
     before do
+      Tufts::WorkflowSetup.setup
       template # create the template
-
       object.visibility = 'open'
       object.save!
-      AdminSet.find_or_create_default_admin_set_id
       login_as user
     end
 
