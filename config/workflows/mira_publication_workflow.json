@@ -13,7 +13,7 @@
                     "notifications": [
                         {
                             "notification_type": "email",
-                            "name": "Hyrax::Workflow::PendingReviewNotification",
+                            "name": "Hyrax::Workflow::SelfDepositNotification",
                             "to": ["publishing"]
                         }
                     ],
@@ -27,7 +27,7 @@
                     "notifications": [
                         {
                             "notification_type": "email",
-                            "name": "Hyrax::Workflow::ChangesRequiredNotification",
+                            "name": "Hyrax::Workflow::UnpublishedNotification",
                             "to": ["publishing"]
                         }
                     ],
@@ -41,7 +41,7 @@
                     "notifications": [
                         {
                             "notification_type": "email",
-                            "name": "Hyrax::Workflow::DepositedNotification",
+                            "name": "Hyrax::Workflow::PublishedNotification",
                             "to": ["publishing"]
                         }
                     ],

@@ -24,20 +24,34 @@ class Contribution
   def tufts_pdf
     return @tufts_pdf if @tufts_pdf
     now = Time.zone.now
-
     note = "#{creator} self-deposited on #{now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
-    @tufts_pdf = Pdf.new(createdby: SELFDEP, contributor: [creator], title: [title],
-                         steward: 'dca', displays_in: ['dl'],
-                         publisher: ['Tufts University. Digital Collections and Archives.'],
-                         rights_statement: ['http://dca.tufts.edu/ua/access/rights-creator.html'],
-                         date_available: [now.to_s], date_uploaded: now.to_s, internal_note: note)
-
+    @tufts_pdf = Pdf.new(
+      createdby: SELFDEP,
+      depositor: @depositor,
+      visibility: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC,
+      contributor: [creator],
+      title: [title],
+      steward: 'dca',
+      displays_in: ['dl'],
+      publisher: ['Tufts University. Digital Collections and Archives.'],
+      rights_statement: ['http://dca.tufts.edu/ua/access/rights-creator.html'],
+      date_available: [now.to_s],
+      date_uploaded: now.to_s,
+      internal_note: note
+    )
     copy_attributes
+    user = User.find_by(email: @depositor)
+    current_ability = ::Ability.new(user)
+    uploaded_file = Hyrax::UploadedFile.create(user: user, file: @attachment)
+    attributes = { uploaded_files: [uploaded_file.id] }
+    env = Hyrax::Actors::Environment.new(@tufts_pdf, current_ability, attributes)
+    Hyrax::CurationConcern.actor.create(env)
     @tufts_pdf
   end
 
   def initialize(data = {})
     @deposit_type = data.delete(:deposit_type)
+    @depositor = data.delete(:depositor)
     self.class.attributes.each do |attribute|
       send("#{attribute}=", data[attribute])
     end
@@ -45,7 +59,9 @@ class Contribution
 
   def save
     return false unless valid?
-    ArchivalStorageService.new(tufts_pdf, attachment).run
+    # Attaching file to work now handled by AttachFilesToWorkJob,
+    # called via the Hyrax actor stack, when @tufts_pdf is created.
+    # ArchivalStorageService.new(tufts_pdf, attachment).run
     tufts_pdf.save!
     tufts_pdf
   end
