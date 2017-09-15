@@ -51,8 +51,7 @@ module ContributeHelper
   def html_snippet_for_one_author(author = nil)
     content_tag :div, class: 'controls'  do
       field = text_field_tag 'contribution[other_authors][]', author, class: 'input-large'
-      button = author.nil? ? add_field(:other_authors) : subtract_field(:other_authors)
-      field + button + authors_are_optional
+      field + authors_are_optional
     end
   end
 
