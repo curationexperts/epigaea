@@ -33,6 +33,8 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       expect(created_pdf.title.first).to eq title
       expect(created_pdf.contributor.first).to eq user.display_name
       expect(created_pdf.depositor).to eq user.user_key
+      expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
+      expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"
       # expect(page).to have_content(title)
     end
   end

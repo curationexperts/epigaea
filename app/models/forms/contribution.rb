@@ -38,8 +38,11 @@ class Contribution
       date_uploaded: now.to_s,
       internal_note: note
     )
-
     copy_attributes
+    attributes = {}
+    current_ability = ::Ability.new(User.where(email: @depositor).first)
+    env = Hyrax::Actors::Environment.new(@tufts_pdf, current_ability, attributes)
+    Hyrax::CurationConcern.actor.create(env)
     @tufts_pdf
   end
 
