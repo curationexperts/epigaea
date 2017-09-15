@@ -53,12 +53,16 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :xml_imports,
+            controller: 'hyrax/xml_imports',
+            only:       [:show, :create, :new, :edit, :update]
+
   resources :templates,
             controller: 'hyrax/templates',
             only:       [:index, :destroy, :edit, :update, :new]
   resources :template_updates,
             controller: 'hyrax/template_updates',
-            only:       [:new, :create]
+            only:       [:index, :new, :create]
 
   # Routes for managing drafts
   post '/draft/save_draft/:id', to: 'tufts/draft#save_draft'

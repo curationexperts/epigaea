@@ -11,19 +11,17 @@ module Tufts
   #
   # @see http://www.openarchives.org/OAI/openarchivesprotocol.html#ListRecords
   #   for the OAI ListRecords format.
-  class MiraXmlImporter
+  class MiraXmlImporter < Importer
     ##
-    # @!ottribute file [rw]
-    #   @return [IO]
-    attr_accessor :file
-
-    ##
-    # @param [IO] file
-    def initialize(file:)
-      raise(ArgumentError, "file must be an IO, got a #{file.class}") unless
-        file.respond_to? :read
-
-      @file = file
+    # @note This class matches all files. If new import formats are added, the
+    #   logic of this method should change.
+    #
+    # @param   opts [Hash]
+    # @options filename [String]
+    #
+    # @return [Boolean]
+    def self.match?(**_opts)
+      true
     end
 
     ##
@@ -49,8 +47,8 @@ module Tufts
     private
 
       def doc
-        file.rewind
-        Nokogiri::XML(file)
+        file.rewind if file.respond_to? :rewind
+        Nokogiri::XML(file.read)
       end
 
       def metadata_nodes
