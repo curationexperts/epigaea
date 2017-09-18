@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831005450) do
+ActiveRecord::Schema.define(version: 20170915095608) do
 
   create_table "batch_tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "batch_type"
@@ -128,6 +128,20 @@ ActiveRecord::Schema.define(version: 20170831005450) do
     t.boolean  "enabled",    default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "job_io_wrappers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "uploaded_file_id"
+    t.string   "file_set_id"
+    t.string   "mime_type"
+    t.string   "original_name"
+    t.string   "path"
+    t.string   "relation"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["uploaded_file_id"], name: "index_job_io_wrappers_on_uploaded_file_id", using: :btree
+    t.index ["user_id"], name: "index_job_io_wrappers_on_user_id", using: :btree
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
