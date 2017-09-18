@@ -75,7 +75,7 @@ RSpec.feature 'redirection' do
     describe 'viewing an item page' do
       scenario do
         visit "/concern/pdfs/#{pdf.id}"
-        expect(page).to have_content 'Test'
+        expect(page).to have_content pdf.title[0]
       end
     end
   end
