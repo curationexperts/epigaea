@@ -37,7 +37,7 @@ module Hyrax
         redirect_to main_app.edit_xml_import_path(@import)
       else
         @import.uploaded_file_ids.concat(new_files)
-        @import.save
+        @import.save!
 
         redirect_to main_app.xml_import_path(@import),
                     notice: "Added files: #{new_files}"

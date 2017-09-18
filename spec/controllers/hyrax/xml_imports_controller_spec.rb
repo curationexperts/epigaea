@@ -61,14 +61,47 @@ RSpec.describe Hyrax::XmlImportsController, type: :controller do
   end
 
   describe 'PATCH #update' do
-    let(:file_ids) { ['38', '91', '1234'] }
-    let(:params)   { { id: import.id, uploaded_files: file_ids } }
+    let(:params) { { id: import.id, uploaded_files: file_ids } }
 
-    it 'adds uploaded files to the import' do
-      import.uploaded_file_ids = ['1']
+    context 'when files cannot be found' do
+      let(:file_ids) { ['38', '91', '1234'] }
 
-      expect { patch :update, params: params }
-        .to change { import.reload.uploaded_file_ids }
+      it 'raises an error when files cannot be found' do
+        import.uploaded_file_ids = ['1']
+
+        expect { patch :update, params: params }
+          .to raise_error { ActiveRecord::RecordInvalid }
+      end
+    end
+
+    context 'with no files' do
+      let(:file_ids) { [] }
+
+      it 'alerts that no files are provided' do
+        patch :update, params: params
+
+        expect(flash[:alert]).to be_present
+      end
+    end
+
+    context 'when files match metadata' do
+      let(:file_ids) { uploads.map(&:id) }
+      let(:uploads)  { [FactoryGirl.create(:hyrax_uploaded_file)] }
+
+      before { ActiveJob::Base.queue_adapter = :test }
+
+      it 'enqueues jobs for the matching file' do
+        expect { patch :update, params: params }
+          .to enqueue_job(ImportJob)
+          .with(import, uploads.first)
+          .exactly(:once)
+      end
+
+      it 'updates file ids' do
+        expect { patch :update, params: params }
+          .to change { import.reload.uploaded_file_ids }
+          .to contain_exactly(*file_ids.map(&:to_s))
+      end
     end
   end
 end

@@ -13,6 +13,7 @@ RSpec.describe XmlImport, type: :model do
         .to contain_exactly(an_instance_of(Tufts::ImportRecord),
                             an_instance_of(Tufts::ImportRecord))
     end
+
     it 'has the correct records' do
       expect(import.records.map(&:file)).to contain_exactly('pdf-sample.pdf', '2.pdf')
     end
@@ -30,12 +31,21 @@ RSpec.describe XmlImport, type: :model do
   end
 
   describe '#uploaded_file_ids' do
-    let(:ids) { ['1', '2'] }
+    let(:ids)    { ['1', '2'] }
+    let(:upload) { FactoryGirl.create(:hyrax_uploaded_file) }
 
     it 'sets uploaded file ids' do
-      expect { import.uploaded_file_ids = ids }
+      expect { import.uploaded_file_ids.concat(ids) }
         .to change { import.uploaded_file_ids }
         .to contain_exactly(*ids)
+    end
+
+    it 'validates existence of file ids' do
+      import.uploaded_file_ids = [upload.id]
+
+      expect { import.uploaded_file_ids.concat(ids) }
+        .to change { import.valid? }
+        .from(true).to(false)
     end
   end
 

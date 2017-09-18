@@ -8,6 +8,7 @@ class XmlImport < ApplicationRecord
 
   validates :metadata_file, presence: true
   validate :file_is_correctly_formatted
+  validate :uploaded_files_exist
 
   ##
   # @!attribute batch [rw]
@@ -64,5 +65,16 @@ class XmlImport < ApplicationRecord
       return unless metadata_file_changed?
 
       parser.validate!.each { |err| errors.add(:base, err.message) }
+    end
+
+    ##
+    # @note this is a little hacky, but gets us out of having to monkeypatch
+    #   Hyrax::UploadedFile to have polymorphic relations. There may be a
+    #   better solution.
+    def uploaded_files_exist
+      return unless uploaded_file_ids_changed?
+      Hyrax::UploadedFile.find(*uploaded_file_ids)
+    rescue ActiveRecord::RecordNotFound => err
+      errors.add(:uploaded_file_ids, err.message)
     end
 end
