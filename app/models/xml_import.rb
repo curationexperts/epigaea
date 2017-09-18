@@ -16,9 +16,11 @@ class XmlImport < ApplicationRecord
   has_one :batch, as: :batchable
 
   ##
+  # @!method record_for
+  #   @see Tufts::Importer#record_for
   # @!method records
   #   @see Tufts::Importer#records
-  delegate :records, to: :parser
+  delegate :record_for, :records, to: :parser
 
   ##
   # @!attribute uploaded_file_ids [rw]

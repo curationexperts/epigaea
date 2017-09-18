@@ -22,6 +22,9 @@ RSpec.feature 'Create an XML Import', :clean, js: true do
 
     click_link 'add additional files to this batch'
 
+    # We don't directly test the Hyrax file upload behavior, so no files are
+    # attached here.
+
     click_button 'Add Files to Batch'
 
     expect(page).to have_content 'pdf-sample.pdf'

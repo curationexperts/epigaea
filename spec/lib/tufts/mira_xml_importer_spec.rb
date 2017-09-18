@@ -6,6 +6,18 @@ RSpec.describe Tufts::MiraXmlImporter do
 
   it_behaves_like 'an importer'
 
+  describe '#record_for' do
+    let(:filename) { 'pdf-sample.pdf' }
+
+    it 'gives the record matching the filename' do
+      expect(importer.record_for(file: filename).file).to eq filename
+    end
+
+    it 'gives an empty ImportRecord when no record matches' do
+      expect(importer.record_for(file: 'not-a-real-file.fake').file).to be_empty
+    end
+  end
+
   describe '#records' do
     it 'yields correct number of records' do
       # yield once for each record in the sample file, excluding deleted records

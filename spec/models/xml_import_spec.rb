@@ -87,16 +87,23 @@ RSpec.describe XmlImport, type: :model do
 
     let(:file) { FactoryGirl.create(:hyrax_uploaded_file) }
 
-    it 'enqueues the correct job type' do
-      ActiveJob::Base.queue_adapter = :test
+    before { ActiveJob::Base.queue_adapter = :test }
 
+    it 'enqueues the correct job type' do
       expect { import.enqueue! }
         .to enqueue_job(ImportJob)
         .with(import, file)
         .on_queue('batch')
+        .once
     end
 
-    context 'when empty' do
+    it 'does not enqueue jobs for records with no files' do
+      expect { import.enqueue! }
+        .not_to enqueue_job(ImportJob)
+        .with(import, import.records.to_a.last.file)
+    end
+
+    context 'when no files have been uploaded' do
       subject(:import) do
         FactoryGirl.create(:xml_import, uploaded_file_ids: [])
       end

@@ -39,6 +39,8 @@ module Hyrax
         @import.uploaded_file_ids.concat(new_files)
         @import.save!
 
+        @import.enqueue!
+
         redirect_to main_app.xml_import_path(@import),
                     notice: "Added files: #{new_files}"
       end
