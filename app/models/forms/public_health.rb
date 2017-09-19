@@ -10,12 +10,12 @@ class PublicHealth < Contribution
       super
       @tufts_pdf.description = ["Submitted in partial fulfillment of the degree #{long_degree} at Tufts Public Health and Professional Degree Program. Abstract: #{description}"]
       @tufts_pdf.subject = [long_degree]
-      @tufts_pdf.creatordept = creatordept
+      @tufts_pdf.creator_department = [creator_dept]
     end
 
   private
 
-    def creatordept
+    def creator_dept
       'UA187.005'
     end
 

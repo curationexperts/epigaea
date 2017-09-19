@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'ffaker'
 include Warden::Test::Helpers
 
-RSpec.feature 'submit a Faculty Scholarship contribution' do
+RSpec.feature 'submit a GIS Expo Student Winners contribution', js: true do
   let(:user) { FactoryGirl.create(:user) }
   let(:csv_path) { Rails.root.join('config', 'deposit_type_seed.csv').to_s }
   let(:importer) { DepositTypeImporter.new(csv_path) }
@@ -13,13 +13,17 @@ RSpec.feature 'submit a Faculty Scholarship contribution' do
   end
   scenario do
     visit '/contribute'
-    find('#deposit_type').find(:xpath, 'option[2]').select_option
+    find('#deposit_type').find(:xpath, 'option[5]').select_option
     click_button 'Begin'
     attach_file('PDF to upload', pdf_path)
     fill_in 'Title', with: FFaker::Book.title
     fill_in 'Contributor', with: FFaker::Book.author
-    fill_in 'Bibliographic citation', with: FFaker::Book.title
-    fill_in 'Short description', with: FFaker::Book.description
+    check 'Masters'
+    check 'The Fletcher School'
+    check 'Food Policy & Applied Nutr'
+    check 'CEE 194A: Introduction to Remote Sensing'
+    fill_in 'Place', with: "Washington"
+    check 'Remote Sensing'
     click_button 'Agree & Deposit'
     expect(page).to have_content 'Your deposit has been submitted for approval.'
   end
