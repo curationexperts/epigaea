@@ -25,8 +25,8 @@
           <option <%= 'selected="selected"' if @contribution.term == "Spring"%>>Spring</option>
           <option <%= 'selected="selected"' if @contribution.term == "Summer"%>>Summer</option>
       </select>
-      <select data-selection="<%= @contribution.year %>" class="form-control double-selection" name="contribution[year]" id="year">
-      </select>
+      <%= select_year Date.today, {}, {id: 'contribute_year', name: 'contribution[year]' } %>
+</select>
   </div>
   <span class="help-block">Semester in which this poster was completed.</span>
 </div>
