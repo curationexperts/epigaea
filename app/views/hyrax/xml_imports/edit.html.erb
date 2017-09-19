@@ -1,0 +1,25 @@
+<h1>Upload files</h1>
+
+<% if missing = @import.missing_files %>
+  <div class="well">
+    The following files in this import still need to be uploaded:<br/>
+    <ul class="missing_files">
+      <% missing.sort_by { |a| [a.upcase, a] }.each do |file| %>
+        <li><%= file %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= link_to "Import Summary", [main_app, @import.xml_import], class: 'btn btn-primary', id: 'next_button' %>
+
+<%= form_for [main_app, @import.xml_import], html: { id: 'fileupload' } do |f| %>
+  <%= render 'hyrax/base/form_files' %>
+
+  <div id="file-submit">
+    <%= f.button type: 'submit', id: 'start_upload', class: 'btn btn-primary start' do %>
+      <i class="icon-upload icon-white"></i>
+      Add Files to Batch
+    <% end %>
+  </div>
+<% end %>

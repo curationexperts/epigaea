@@ -31,8 +31,8 @@ RSpec/AnyInstance:
 RSpec/MultipleExpectations:
   Exclude:
   - 'spec/controllers/contribute_controller_spec.rb'
-  - 'spec/features/publication_workflow_spec.rb'
   - 'spec/lib/tufts/workflow_setup_spec.rb'
+  - 'spec/features/**/*'
 Style/FileName:
   Exclude:
     - '**/Capfile'
