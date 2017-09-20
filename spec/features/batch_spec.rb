@@ -8,8 +8,6 @@ RSpec.feature 'Create a Batch', :clean, js: true do
   let(:user)    { create(:admin) }
 
   before do
-    AdminSet.find_or_create_default_admin_set_id
-
     objects.each do |obj|
       obj.visibility = 'open'
       obj.save!
