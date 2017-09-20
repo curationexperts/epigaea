@@ -13,12 +13,12 @@ describe DepositTypesController do
     before { sign_in user }
 
     def assert_access_denied(http_command, action, opts = {})
-      send(http_command, action, opts)
+      send(http_command, action, params: opts)
       expect(flash[:alert]).to eq 'You are not authorized to access this page.'
     end
 
     def assert_unauthorized(http_command, action, opts = {})
-      send(http_command, action, opts)
+      send(http_command, action, params: opts)
       expect(response.code).to eq('401')
     end
 
