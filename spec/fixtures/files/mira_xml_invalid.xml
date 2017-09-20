@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/
+                             http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2017-09-01T19:20:30Z</responseDate>
+  <request verb="ListRecords" from="1998-01-15"
+           set="any:set"
+           metadataPrefix="mira_import">
+  http://example.com/OAI</request>
+  <ListRecords>
+    <record>
+      <header>
+        <identifier>oai:arXiv.org:hep-th/9901001</identifier>
+        <datestamp>1999-12-25</datestamp>
+        <setSpec>any:set</setSpec>
+        <setSpec>another_set</setSpec>
+      </header>
+      <metadata>
+        <mira_import xmlns:dc="http://purl.org/dc/elements/1.1/"
+                     xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/"
+                     xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/"
+                     xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/"
+                     xmlns:dcterms="http://purl.org/dc/terms/"
+                     xmlns:admin="http://nils.lib.tufts.edu/dcaadmin/"
+                     xmlns:xlink="http://www.w3.org/TR/xlink">
+          <dc:title>No File</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+  </ListRecords>
+</OAI-PMH>

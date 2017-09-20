@@ -11,19 +11,18 @@ class GisPoster < GenericTischDeposit
 
   def copy_attributes
     self.class.attributes
-    @tufts_pdf.title = title
+    @tufts_pdf.title = [title]
     @tufts_pdf.description = description
     @tufts_pdf.creator = [(send(:creator) unless send(:creator).nil?)]
     @tufts_pdf.license = license_data(@tufts_pdf)
-    @tufts_pdf.corpname = corpname
+    @tufts_pdf.corporate_name = corpname
     @tufts_pdf.subject = (send(:topics).nil? ? [] : Array(send(:topics))) + (send(:methodological_keywords).nil? ? [] : Array(send(:methodological_keywords)))
     @tufts_pdf.geogname = Array(send(:geonames)) unless send(:geonames).nil?
-    @tufts_pdf.type = ['text']
-
+    @tufts_pdf.format_label = ['text']
     date_created = assign_date_created(@term)
-
-    @tufts_pdf.date_created = date_created
-    insert_rels_ext_relationships
+    @tufts_pdf.date_created = [date_created]
+    # TODO: refactor this for Hyrax collections
+    # insert_rels_ext_relationships
   end
 
   attr_accessor(*attributes)
@@ -41,10 +40,6 @@ class GisPoster < GenericTischDeposit
       else
         @year + '-01-01 00:00:00 -0500'
       end
-    end
-
-    def title
-      send(:title) unless send(:title).nil?
     end
 
     def description

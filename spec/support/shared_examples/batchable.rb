@@ -24,12 +24,12 @@ shared_examples 'a batchable' do
     end
 
     context 'with ids in batch' do
-      let(:ids) { ['abc', '123'] }
+      let(:ids) { ['123', '124'] }
 
       it 'gives a hash associating ids to jobs' do
         expect(batchable.enqueue!)
-          .to include('abc' => an_instance_of(String),
-                      '123' => an_instance_of(String))
+          .to include('123' => an_instance_of(String),
+                      '124' => an_instance_of(String))
       end
     end
   end

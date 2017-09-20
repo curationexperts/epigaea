@@ -1,0 +1,22 @@
+<div class="col-sm-12">
+  <h1>Batch Status</h1>
+
+  <%= link_to "All batches", main_app.batches_path %>
+
+  <% missing = @import.missing_files %>
+  <% unless missing.empty? %>
+    <div class="alert alert-warning">
+      <strong>Warning:</strong> Metadata exists for the following files that have not been updated:<br/>
+      <ul>
+        <% missing.each do |file| %>
+          <li class="missing-file"><%= file %></li>
+        <% end %>
+      </ul>
+      <%= link_to "add additional files to this batch", main_app.edit_xml_import_path(@import.xml_import) %>
+    </div>
+  <% end %>
+
+  <%= render "hyrax/batches/batch_info",  batch: @import %>
+  <!-- %= render "batches/batch_actions", batch: @batch % -->
+  <%= render "hyrax/batches/batch_items", batch: @import %>
+</div>

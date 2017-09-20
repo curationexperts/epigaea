@@ -100,12 +100,6 @@ protected
     @tufts_pdf.embargo_note = (Time.zone.now + embargo_note.to_i.months).iso8601 unless (embargo_note || '0').eql? '0'
   end
 
-  def insert_rels_ext_relationships
-    return unless @tufts_pdf
-    @tufts_pdf.stored_collection_id = parent_collection
-    @tufts_pdf.rels_ext.serialize!
-  end
-
   def attachment_has_valid_content_type
     return unless attachment
     errors.add(:attachment, "is a #{attachment.content_type} file. It must be a PDF file.") unless attachment.content_type == 'application/pdf'
