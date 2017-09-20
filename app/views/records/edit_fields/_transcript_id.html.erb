@@ -1,0 +1,16 @@
+<% if @form.transcript_files.length  %>
+<div id="transcript">
+ <div class="row">
+    <div class="col-md-12">
+      <fieldset id="transcript-selection">
+        <legend>
+           Transcription
+        </legend>
+        <p>You will need to attach an XML file to to this work to select a transcript.</p>
+        <p>Select the file to be used as the transcription for this <%= f.object.human_readable_type %>.</p>
+        <%= f.select :transcript_id, @form.transcript_files, {}, { class: 'form-control' } %>
+      </fieldset>
+    </div>
+</div>
+</div>
+<% end %>

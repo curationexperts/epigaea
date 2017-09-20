@@ -2,8 +2,10 @@
 #  `rails generate hyrax:work Audio`
 module Hyrax
   class AudioForm < Hyrax::Forms::WorkForm
+    include Tufts::HasTranscriptForm
     self.model_class = ::Audio
     self.terms += Tufts::Terms.shared_terms
+    self.terms += [:transcript_id]
     self.required_fields = [:title, :displays_in]
     self.field_metadata_service = Tufts::MetadataService
 

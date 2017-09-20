@@ -2,8 +2,10 @@
 #  `rails generate hyrax:work Video`
 module Hyrax
   class VideoForm < Hyrax::Forms::WorkForm
+    include Tufts::HasTranscriptForm
     self.model_class = ::Video
     self.terms += Tufts::Terms.shared_terms
+    self.terms += [:transcript_id]
     self.required_fields = [:title, :displays_in]
     self.field_metadata_service = Tufts::MetadataService
 
