@@ -22,7 +22,7 @@ describe DepositTypeExporter do
 
     it 'sets a default filename' do
       time = Time.zone.local(2012, 1, 1, 5, 15, 45)
-      Time.stub(:now).and_return(time)
+      allow(Time).to receive(:now).and_return(time)
       exporter = described_class.new
 
       expect(exporter.filename)

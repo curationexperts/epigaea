@@ -13,12 +13,12 @@ describe DepositTypesController do
     before { sign_in user }
 
     def assert_access_denied(http_command, action, opts = {})
-      send(http_command, action, opts)
+      send(http_command, action, params: opts)
       expect(flash[:alert]).to eq 'You are not authorized to access this page.'
     end
 
     def assert_unauthorized(http_command, action, opts = {})
-      send(http_command, action, opts)
+      send(http_command, action, params: opts)
       expect(response.code).to eq('401')
     end
 
@@ -148,7 +148,10 @@ describe DepositTypesController do
     describe 'create with bad inputs' do
       it 'renders the form' do
         # Make it fail to validate:
-        DepositType.any_instance.stub(:valid?).and_return(false)
+        allow_any_instance_of(DepositType)
+          .to receive(:valid?)
+          .and_return(false)
+
         post :create, params: { deposit_type: { display_name: 'New Type' } }
 
         expect(response).to render_template(:new)
@@ -183,7 +186,9 @@ describe DepositTypesController do
       it 'renders the form' do
         pending 'not sure why this is failing'
         # Make it fail to validate:
-        DepositType.any_instance.stub(:valid?).and_return(false)
+        allow_any_instance_of(DepositType)
+          .to receive(:valid?)
+          .and_return(false)
 
         expect(dt.display_name).to eq('DT')
 
