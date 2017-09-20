@@ -7,10 +7,12 @@ RSpec.feature 'submit an Undergraduate Honors Thesis contribution' do
   let(:csv_path) { Rails.root.join('config', 'deposit_type_seed.csv').to_s }
   let(:importer) { DepositTypeImporter.new(csv_path) }
   let(:pdf_path) { Rails.root.join('spec', 'fixtures', 'hello.pdf') }
+
   before do
     login_as user
     importer.import_from_csv
   end
+
   scenario do
     visit '/contribute'
     find('#deposit_type').find(:xpath, 'option[10]').select_option

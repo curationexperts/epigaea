@@ -2,7 +2,6 @@
 #  `rails generate hyrax:work Pdf`
 require 'rails_helper'
 require 'ffaker'
-require 'tufts/workflow_setup'
 require 'import_export/deposit_type_importer.rb'
 include Warden::Test::Helpers
 
@@ -12,7 +11,6 @@ RSpec.feature 'Create a PDF', :clean, js: true do
     let(:user) { FactoryGirl.create(:user) }
     let(:title) { FFaker::Movie.title }
     before do
-      Tufts::WorkflowSetup.setup
       importer = DepositTypeImporter.new('./config/deposit_type_seed.csv')
       importer.import_from_csv
       Pdf.delete_all

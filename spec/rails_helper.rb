@@ -103,6 +103,7 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
+    Tufts::WorkflowSetup.setup
   end
 
   config.before(:each) do |example|
@@ -115,6 +116,9 @@ RSpec.configure do |config|
       DatabaseCleaner.strategy = :transaction
       DatabaseCleaner.start
     end
+
+    Tufts::WorkflowSetup.setup if
+      example.metadata[:type] == :feature || example.metadata[:workflow]
   end
 
   config.after(:each, type: :feature) do
