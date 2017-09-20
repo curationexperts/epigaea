@@ -9,14 +9,14 @@ class HonorsThesis < Contribution
     def copy_attributes
       super
       @tufts_pdf.subject = [department]
-      @tufts_pdf.creatordept = creatordept
+      @tufts_pdf.creator_department = [creator_dept]
     end
 
   private
 
-    def creatordept
+    def creator_dept
       terms = Qa::Authorities::Local.subauthority_for('departments').all
-      if term == terms.find { |t| t[:label] == department }
+      if department == terms.find { |t| t[:label] == department }
         term[:id]
       else
         'NEEDS FIXING'

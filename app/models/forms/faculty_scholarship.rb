@@ -7,7 +7,8 @@ class FacultyScholarship < Contribution
 
     def copy_attributes
       super
-      @tufts_pdf.creator += [other_authors] if other_authors
+      @tufts_pdf.creator
+      @tufts_pdf.creator += [other_authors] if other_authors && other_authors != [""]
     end
 
     def parent_collection
