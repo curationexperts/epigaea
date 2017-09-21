@@ -8,6 +8,7 @@ class XmlImport < ApplicationRecord
 
   validates :metadata_file, presence: true
   validate :file_is_correctly_formatted
+  validate :uploaded_files_exist
 
   ##
   # @!attribute batch [rw]
@@ -15,9 +16,11 @@ class XmlImport < ApplicationRecord
   has_one :batch, as: :batchable
 
   ##
+  # @!method record_for
+  #   @see Tufts::Importer#record_for
   # @!method records
   #   @see Tufts::Importer#records
-  delegate :records, to: :parser
+  delegate :record_for, :records, to: :parser
 
   ##
   # @!attribute uploaded_file_ids [rw]
@@ -39,9 +42,13 @@ class XmlImport < ApplicationRecord
   #
   # @return [Hash<String, String> a hash associating file ids with job ids
   def enqueue!
-    uploaded_files.each_with_object({}) do |file, hsh|
+    job_map = uploaded_files.each_with_object({}) do |file, hsh|
+      batch.ids << file.id.to_s
       hsh[file.id.to_s] = ImportJob.perform_later(self, file).job_id
     end
+
+    batch.save
+    job_map
   end
 
   ##
@@ -64,5 +71,16 @@ class XmlImport < ApplicationRecord
       return unless metadata_file_changed?
 
       parser.validate!.each { |err| errors.add(:base, err.message) }
+    end
+
+    ##
+    # @note this is a little hacky, but gets us out of having to monkeypatch
+    #   Hyrax::UploadedFile to have polymorphic relations. There may be a
+    #   better solution.
+    def uploaded_files_exist
+      return unless uploaded_file_ids_changed?
+      Hyrax::UploadedFile.find(*uploaded_file_ids)
+    rescue ActiveRecord::RecordNotFound => err
+      errors.add(:uploaded_file_ids, err.message)
     end
 end

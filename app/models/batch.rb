@@ -52,7 +52,7 @@ class Batch < ApplicationRecord
     # @!attribute id [rw]
     #   @return [String]
     # @!attribute object [rw]
-    #   @return [ActiveFedora::Base]
+    #   @return [ActiveFedora::Base, String]
     attr_accessor :batch_id, :id, :object, :store
 
     ##
@@ -62,8 +62,12 @@ class Batch < ApplicationRecord
     def initialize(id, batch_id, store: Tufts::JobItemStore)
       @id       = id
       @batch_id = batch_id
-      @object   = ActiveFedora::Base.find(id)
       @store    = store
+      @object   = begin
+        ActiveFedora::Base.find(id)
+      rescue ActiveFedora::ObjectNotFoundError
+        nil
+      end
     end
 
     ##
@@ -83,7 +87,7 @@ class Batch < ApplicationRecord
     ##
     # @return [String]
     def title
-      object.title.first || 'Title Not Found'
+      (object.try(:title) && object.title.first) || 'Title Not Found'
     end
 
     ##

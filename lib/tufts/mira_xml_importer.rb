@@ -25,6 +25,15 @@ module Tufts
     end
 
     ##
+    # @param file [String]
+    #
+    # @return [ImportRecord] a record from the import matching the file;
+    #   A new empty ImportRecord is returned if none match
+    def record_for(file:)
+      records.find { |record| record.file == file } || ImportRecord.new
+    end
+
+    ##
     # @yield Gives each record to the block
     # @yieldparam [ImportRecord]
     #

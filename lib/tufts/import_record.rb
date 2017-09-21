@@ -22,5 +22,13 @@ module Tufts
     def initialize(file: '')
       @file = file
     end
+
+    ##
+    # @return [ActiveFedora::Core] a tufts model
+    def build_object
+      visibility =
+        Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+      GenericObject.new(title: [file], visibility: visibility)
+    end
   end
 end

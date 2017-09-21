@@ -4,6 +4,8 @@ RSpec.describe Tufts::ImportRecord do
   subject(:record) { described_class.new(file: filename) }
   let(:filename)   { '1.pdf' }
 
+  describe '#build_record'
+
   describe '#file' do
     it 'has a filename' do
       expect(record.file).to eq filename

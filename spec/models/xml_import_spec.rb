@@ -13,6 +13,7 @@ RSpec.describe XmlImport, type: :model do
         .to contain_exactly(an_instance_of(Tufts::ImportRecord),
                             an_instance_of(Tufts::ImportRecord))
     end
+
     it 'has the correct records' do
       expect(import.records.map(&:file)).to contain_exactly('pdf-sample.pdf', '2.pdf')
     end
@@ -30,12 +31,21 @@ RSpec.describe XmlImport, type: :model do
   end
 
   describe '#uploaded_file_ids' do
-    let(:ids) { ['1', '2'] }
+    let(:ids)    { ['1', '2'] }
+    let(:upload) { FactoryGirl.create(:hyrax_uploaded_file) }
 
     it 'sets uploaded file ids' do
-      expect { import.uploaded_file_ids = ids }
+      expect { import.uploaded_file_ids.concat(ids) }
         .to change { import.uploaded_file_ids }
         .to contain_exactly(*ids)
+    end
+
+    it 'validates existence of file ids' do
+      import.uploaded_file_ids = [upload.id]
+
+      expect { import.uploaded_file_ids.concat(ids) }
+        .to change { import.valid? }
+        .from(true).to(false)
     end
   end
 
@@ -77,16 +87,23 @@ RSpec.describe XmlImport, type: :model do
 
     let(:file) { FactoryGirl.create(:hyrax_uploaded_file) }
 
-    it 'enqueues the correct job type' do
-      ActiveJob::Base.queue_adapter = :test
+    before { ActiveJob::Base.queue_adapter = :test }
 
+    it 'enqueues the correct job type' do
       expect { import.enqueue! }
         .to enqueue_job(ImportJob)
         .with(import, file)
         .on_queue('batch')
+        .once
     end
 
-    context 'when empty' do
+    it 'does not enqueue jobs for records with no files' do
+      expect { import.enqueue! }
+        .not_to enqueue_job(ImportJob)
+        .with(import, import.records.to_a.last.file)
+    end
+
+    context 'when no files have been uploaded' do
       subject(:import) do
         FactoryGirl.create(:xml_import, uploaded_file_ids: [])
       end
