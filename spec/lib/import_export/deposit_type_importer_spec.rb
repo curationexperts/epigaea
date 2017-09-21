@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative '../../../lib/import_export/deposit_type_importer'
 
 describe DepositTypeImporter do
   describe 'initialize' do

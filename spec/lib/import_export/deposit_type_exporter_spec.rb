@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative '../../../lib/import_export/deposit_type_exporter'
 
 describe DepositTypeExporter do
   let(:pdf_type) { FactoryGirl.create(:deposit_type, display_name: pdf_name, deposit_agreement: pdf_agreement, deposit_view: pdf_view, license_name: pdf_license) }
