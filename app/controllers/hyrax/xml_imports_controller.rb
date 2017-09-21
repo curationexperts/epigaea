@@ -6,9 +6,9 @@ module Hyrax
 
     def create
       @import       = XmlImport.new(import_params)
-      @import.batch = Batch.new(batchable: @import,
-                                creator:   current_user,
-                                ids:       [])
+      @import.batch = Batch.create(batchable: @import,
+                                   creator:   current_user,
+                                   ids:       [])
       if @import.save
         redirect_to main_app.xml_import_path(@import)
       else
@@ -39,7 +39,7 @@ module Hyrax
         @import.uploaded_file_ids.concat(new_files)
         @import.save!
 
-        @import.enqueue!
+        @import.batch.enqueue!
 
         redirect_to main_app.xml_import_path(@import),
                     notice: "Added files: #{new_files}"

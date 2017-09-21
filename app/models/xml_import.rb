@@ -42,9 +42,13 @@ class XmlImport < ApplicationRecord
   #
   # @return [Hash<String, String> a hash associating file ids with job ids
   def enqueue!
-    uploaded_files.each_with_object({}) do |file, hsh|
+    job_map = uploaded_files.each_with_object({}) do |file, hsh|
+      batch.ids << file.id.to_s
       hsh[file.id.to_s] = ImportJob.perform_later(self, file).job_id
     end
+
+    batch.save
+    job_map
   end
 
   ##
