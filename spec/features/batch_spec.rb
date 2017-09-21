@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'tufts/workflow_setup'
 include Warden::Test::Helpers
 
 RSpec.feature 'Create a Batch', :clean, js: true do
@@ -9,8 +8,6 @@ RSpec.feature 'Create a Batch', :clean, js: true do
   let(:user)    { create(:admin) }
 
   before do
-    Tufts::WorkflowSetup.setup
-
     objects.each do |obj|
       obj.visibility = 'open'
       obj.save!

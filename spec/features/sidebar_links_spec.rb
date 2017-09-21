@@ -5,10 +5,8 @@ include Warden::Test::Helpers
 RSpec.feature 'Manage Deposit Types link in dashboard sidebar', :clean do
   context 'a logged in user' do
     let(:admin) { FactoryGirl.create(:admin) }
-    before do
-      Tufts::WorkflowSetup.setup
-      login_as admin
-    end
+
+    before { login_as admin }
 
     scenario do
       visit '/dashboard'

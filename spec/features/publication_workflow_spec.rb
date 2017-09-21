@@ -2,7 +2,6 @@
 #  `rails generate hyrax:work Etd`
 require 'rails_helper'
 require 'active_fedora/cleaner'
-require 'tufts/workflow_setup'
 include Warden::Test::Helpers
 
 RSpec.feature 'deposit and publication' do
@@ -12,7 +11,6 @@ RSpec.feature 'deposit and publication' do
   context 'a logged in user' do
     before do
       allow(CharacterizeJob).to receive(:perform_later) # There is no fits installed on travis-ci
-      Tufts::WorkflowSetup.setup
       publishing_user # Make sure publishing user exists before the work is submitted
       current_ability = ::Ability.new(depositing_user)
       attributes = {}

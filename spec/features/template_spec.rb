@@ -12,7 +12,6 @@ RSpec.feature 'Apply a Template', :clean, js: true do
     let(:user) { FactoryGirl.create(:admin) }
 
     before do
-      Tufts::WorkflowSetup.setup
       template # create the template
       object.visibility = 'open'
       object.save!
