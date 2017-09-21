@@ -3,6 +3,7 @@
 class Video < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
   include ::Tufts::Draftable
+  include ::Tufts::HasTranscription
   self.indexer = VideoIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
