@@ -47,6 +47,14 @@ class XmlImportPresenter
 
   ##
   # @return [String]
+  # @see BatchPresenter#status
+  def status
+    return batch_presenter::JobStatuses[:new] unless batch_presenter.items.any?
+    batch_presenter.status
+  end
+
+  ##
+  # @return [String]
   def type
     xml_import.batch_type
   end

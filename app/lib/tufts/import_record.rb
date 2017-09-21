@@ -15,7 +15,9 @@ module Tufts
     ##
     # @!attribute file [rw]
     #   @return [String]
-    attr_accessor :file
+    # @!attribute title [rw]
+    #   @return [String]
+    attr_accessor :file, :title
 
     ##
     # @param file [String]
@@ -25,10 +27,13 @@ module Tufts
 
     ##
     # @return [ActiveFedora::Core] a tufts model
-    def build_object
+    def build_object(id: nil)
       visibility =
         Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
-      GenericObject.new(title: [file], visibility: visibility)
+
+      GenericObject.new(id:         id,
+                        title:      Array.wrap(title),
+                        visibility: visibility)
     end
   end
 end

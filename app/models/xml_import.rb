@@ -3,12 +3,15 @@ class XmlImport < ApplicationRecord
   # @!attribute metadata_file [rw]
   #   @return [Tufts::MetadataFileUploader]
   #   @see CarrierWave::Uploader::Base
-  #   @note Set with `import.metadata_file = File.open('path/to/file'`)
+  #   @note Set with `import.metadata_file = File.open('path/to/file')`
   mount_uploader :metadata_file, Tufts::MetadataFileUploader
 
   validates :metadata_file, presence: true
   validate :file_is_correctly_formatted
   validate :uploaded_files_exist
+
+  NOID_SERVICE = ActiveFedora::Noid::Service.new.freeze
+  TYPE_STRING  = 'XML Import'.freeze
 
   ##
   # @!attribute batch [rw]
@@ -25,9 +28,12 @@ class XmlImport < ApplicationRecord
   ##
   # @!attribute uploaded_file_ids [rw]
   #   @return [Array<String>]
+  # @!attribute record_ids [rw]
+  #   @return [Hash<String, String>]
   serialize :uploaded_file_ids, Array
+  serialize :record_ids,        Hash
 
-  TYPE_STRING = 'XML Import'.freeze
+  before_save :mint_ids
 
   ##
   # @return [String]
@@ -36,19 +42,25 @@ class XmlImport < ApplicationRecord
   end
 
   ##
-  # @note Unlike other `Batchable`s, `XmlImport` feeds the batch a
-  #   `Hyrax::UploadedFile#id`, rather than an object id to identify jobs in the
-  #   batch. The object id is not yet minted at the time of enqueuing.
-  #
-  # @return [Hash<String, String> a hash associating file ids with job ids
+  # @return [Hash<String, String> a hash associating object ids with job ids
   def enqueue!
-    job_map = uploaded_files.each_with_object({}) do |file, hsh|
-      batch.ids << file.id.to_s
-      hsh[file.id.to_s] = ImportJob.perform_later(self, file).job_id
-    end
+    files = uploaded_files
 
-    batch.save
-    job_map
+    object_ids.each_with_object({}) do |id, hsh|
+      file = files.shift
+      next if file.nil?
+
+      filename = file.file.file.filename
+      next unless record_ids.key?(filename)
+
+      hsh[id] = ImportJob.perform_later(self, file, record_ids[filename]).job_id
+    end
+  end
+
+  ##
+  # @return [Array<String>]
+  def object_ids
+    batch ? batch.ids : []
   end
 
   ##
@@ -82,5 +94,23 @@ class XmlImport < ApplicationRecord
       Hyrax::UploadedFile.find(*uploaded_file_ids)
     rescue ActiveRecord::RecordNotFound => err
       errors.add(:uploaded_file_ids, err.message)
+    end
+
+    ##
+    # @private Mint ids for items ready to enqueue
+    def mint_ids
+      return unless uploaded_file_ids_changed?
+
+      uploaded_files.each do |file|
+        next if record_ids.key?(file.file.file.filename)
+
+        id = NOID_SERVICE.mint
+        record_ids[file.file.file.filename] = id
+        batch.ids << id
+      end
+
+      batch.save if batch.ids_changed?
+
+      true
     end
 end

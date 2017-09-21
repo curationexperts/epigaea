@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918235305) do
+ActiveRecord::Schema.define(version: 20170922200243) do
 
   create_table "batch_tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "batch_type"
@@ -563,6 +563,7 @@ ActiveRecord::Schema.define(version: 20170918235305) do
     t.text     "uploaded_file_ids", limit: 65535
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.text     "record_ids",        limit: 65535
   end
 
   add_foreign_key "curation_concerns_operations", "users"

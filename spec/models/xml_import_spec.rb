@@ -3,9 +3,13 @@ require 'rails_helper'
 RSpec.describe XmlImport, type: :model do
   subject(:import) { FactoryGirl.build(:xml_import) }
 
-  # `it_behaves_like 'a batchable'` tests are pending due to oddities in
-  # #enqueue!'s behavior. We need to loosen `batchable` expectations by
-  # reworking the tests.
+  it_behaves_like 'a batchable' do
+    subject(:batchable) do
+      FactoryGirl.create(:xml_import, uploaded_file_ids: uploads.map(&:id))
+    end
+
+    let(:uploads) { FactoryGirl.create_list(:hyrax_uploaded_file, 5) }
+  end
 
   describe '#records' do
     it 'returns ImportRecords' do
@@ -15,7 +19,8 @@ RSpec.describe XmlImport, type: :model do
     end
 
     it 'has the correct records' do
-      expect(import.records.map(&:file)).to contain_exactly('pdf-sample.pdf', '2.pdf')
+      expect(import.records.map(&:file))
+        .to contain_exactly('pdf-sample.pdf', '2.pdf')
     end
   end
 
@@ -40,7 +45,7 @@ RSpec.describe XmlImport, type: :model do
         .to contain_exactly(*ids)
     end
 
-    it 'validates existence of file ids' do
+    it 'validates existence of files for ids' do
       import.uploaded_file_ids = [upload.id]
 
       expect { import.uploaded_file_ids.concat(ids) }
@@ -114,6 +119,40 @@ RSpec.describe XmlImport, type: :model do
 
       it 'does not enqueue jobs' do
         expect { import.enqueue! }.not_to enqueue_job(ImportJob)
+      end
+    end
+  end
+
+  describe '#record_ids' do
+    let(:ids)    { [upload.id] }
+    let(:upload) { FactoryGirl.create(:hyrax_uploaded_file) }
+
+    before { import.uploaded_file_ids = ids }
+
+    it 'is empty' do
+      expect(import.record_ids).to be_empty
+    end
+
+    context 'when saved' do
+      it 'mints ids for an upload file' do
+        expect { import.save }
+          .to change { import.record_ids }
+          .to include(upload.file.file.filename => an_instance_of(String))
+      end
+
+      it 'skips duplicated filenames' do
+        import.save
+        same_filename = FactoryGirl.create(:hyrax_uploaded_file)
+        import.uploaded_file_ids.concat([same_filename.id])
+
+        expect { import.save }.not_to change { import.record_ids }
+      end
+
+      it 'does not assign ids twice' do
+        import.save
+
+        expect { import.save }
+          .not_to change { import.record_ids[upload.file.file.filename] }
       end
     end
   end

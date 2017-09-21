@@ -50,7 +50,7 @@ module Tufts
     end
 
     ##
-    # @param [IO] file
+    # @param file [IO]
     def initialize(file:)
       raise(ArgumentError, "file must be an IO, got a #{file.class}") unless
         file.respond_to? :read
