@@ -43,11 +43,11 @@ var DraftSaveButton = React.createClass ({
         draftSaveButton.setState({isSaving: true})
         deleteDraft.then(function() {
             var request = new XMLHttpRequest()
+              // Hyrax has a hidden field on the edit form that switches it to PATCH, we don't want to PATCH -- that's weird
+            $('[name="_method"]').remove()
             var form = document.querySelector('.simple_form')
             var formData = new FormData(form)
-            // Hyrax has a hidden field on the edit form that switches it to PATCH, we don't want to PATCH -- that's weird
-            formData.delete('_method')
-
+          
             request.open('POST', '/draft/save_draft/'+draftSaveButton.props.curationConcernId)
             request.send(formData)
 
