@@ -20,11 +20,13 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 
+//= require react
+//= require react_ujs
+//= require components
 //= require hyrax
 //= require almond
-//= require tufts/draft_ui
-//= require tufts/draft
 //= require tufts/select_work_type
 //= require tufts/qr_status
 //= require tufts
 //= require app
+
