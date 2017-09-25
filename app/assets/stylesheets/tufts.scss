@@ -13,7 +13,10 @@ $main_padding: 20px 20px 20px 40px;
 /* ------------------------
  *  HEADER / NAV
  * ------------------------ */
-
+.turbolinks-progress-bar {
+ 
+  background-color: $tufts_blue;
+}
 
 .navbar-fixed-top {
   margin-bottom: 0;
@@ -25,7 +28,7 @@ nav#masthead.navbar {
   background-color: $tufts_bar;
   background: linear-gradient(0deg,$gradient_bottom,$gradient_top);
   border-top: 1px solid #E5E5E5;
-  border-bottom: 1px solid #E5E5E5;
+  border-bottom: 5px solid $tufts_blue;
   height: 71px;
 }
 
@@ -63,6 +66,16 @@ div#content-wrapper > div.main-content {
   color: $tufts_bar;
 }
 
+.image-masthead {
+  .navbar-static-top {
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;  
+  }
+}
+
+#search-form-header {
+  margin-left: 1.7em; 
+}
 /* ------------------------
  *  BODY / CONTENT
  * ------------------------ */
@@ -137,6 +150,30 @@ body.dashboard > div#content-wrapper {
     display:none;
 }
 
+.contribute-form {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 0;
+    max-width: 600px;
+}
+.contribute-header {
+   margin-left: 8.5%;
+   margin-bottom: 1em;
+   
+}
+
+.contribute-alert {
+   margin: 0;  
+   max-width: 370px;   
+}
+.contribute-file-upload {
+  max-width: 370px;
+  max-height: 85px;
+  padding-left: 30px; 
+  margin-bottom: 3em;
+}
 /* ------------------------
  *  FOOTER
  * ------------------------ */
@@ -160,5 +197,38 @@ body.dashboard > div#content-wrapper {
 #copyright {
   color: #ffffff;
   line-height: 150%;
+  margin-top: 3.5%;
+}
+
+
+.canonical-image {   
+  float: left;  
+  max-width: 100%;
+}
+
+.show-actions {
+  margin:0;
+  padding:0;
+  max-width: 52%; 
+  padding-top: 1em; 
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  h4 {
+    padding: 0; 
+    margin: 0;
+    margin-left: .5em;
+    margin-bottom: 1em;  
+  }
+}
+
+.show-action-buttons {
+  list-style: none;
+  margin:0;
+  padding: 0;
+  li {
+  list-style:none;
+  margin-bottom:.5em;
+  margin-left:.5em;
+  }
 }
 
