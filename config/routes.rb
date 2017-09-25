@@ -20,9 +20,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  unauthenticated do
-    root to: 'contribute#redirect'
-  end
+  root to: 'contribute#redirect'
 
   constraints non_admin_constraint do
     get '/dashboard', to: 'contribute#redirect'
