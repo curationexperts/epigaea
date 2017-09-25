@@ -4,19 +4,7 @@
 <% end %>
 
 <nav class="draft-bar">
-  <ul class="drafts">
-    <li class="draft-button">
-      <button class="btn btn-primary save-draft">Save Draft</button>
-      <button class="btn btn-primary revert-draft" disabled>Revert Draft</button>
-    </li>
-  </ul>
+<%= react_component('DraftControls', {curation_concern_id: curation_concern.id, draft_saved: curation_concern.draft_saved?}, {camelize_props: true}) %>
 </nav>
-
-<script>
-  Blacklight.onLoad(function() {
-  var draft = Tufts.draft()
-  draft.init()
-  })
-</script>
 
 <%= render 'form' %>
