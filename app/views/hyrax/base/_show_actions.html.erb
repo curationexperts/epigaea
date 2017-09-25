@@ -1,35 +1,55 @@
-<div class="show-actions">
-  <span class="work-id" data-work-id="<%= presenter.id %>"></span>
-  <% if Hyrax.config.analytics? %>
+<span class="work-id" data-work-id="<%= presenter.id %>"></span>
+  <script>
+    Tufts.qrStatus()
+  </script>
+  <div class="show-actions well">
+    <h4>Work Actions</h4>
+  <ul class="show-action-buttons">
+    <% if Hyrax.config.analytics? %>
+    <li>
     <%= link_to "Analytics", presenter.stats_path, id: 'stats', class: 'btn btn-default' %>
-  <% end %>
+    </li>
+    <% end %>
   <% if presenter.editor? %>
-      <%= link_to "Edit", edit_polymorphic_path([main_app, presenter]), class: 'btn btn-default' %>
+    <li>
+  <%= link_to "Edit", edit_polymorphic_path([main_app, presenter]), class: 'btn btn-default' %>
+    </li>
+    <li>
       <%= link_to "Delete", [main_app, presenter], class: 'btn btn-danger', data: { confirm: "Delete this #{presenter.human_readable_type}?" }, method: :delete %>
-      <% if presenter.member_presenters.size > 1 %>
-          <%= link_to t("hyrax.file_manager.link_text"), polymorphic_path([main_app, :file_manager, presenter]), class: 'btn btn-default' %>
-          <% end %>
+    </li>
+    <% if presenter.member_presenters.size > 1 %>
+    <li>
+      <%= link_to t("hyrax.file_manager.link_text"), polymorphic_path([main_app, :file_manager, presenter]), class: 'btn btn-default' %>
+      </li>
+    <% end %>
+    <li>
           <%= link_to 'Mark as Reviewed', "/qr_statuses/#{presenter.id}/set_status", class: 'btn btn-default mark-as-reviewed' , method: :post, remote: true %>
-          <script>
-            Tufts.qrStatus()
-          </script>
+        </li>
   <% end %>
 
   <!-- if presenter.work_templatable? && presenter.editor? -->
   <% if presenter.work_templatable? %>
+  <li>
     <%= link_to "Apply Template", main_app.new_template_update_path(ids: [presenter.id]), class: 'btn btn-default' %>
+  </li>
+  
   <% end %>
 
   <% if presenter.work_featurable? %>
+  <li>
       <%= link_to "Feature", hyrax.featured_work_path(presenter, format: :json),
           data: { behavior: 'feature' },
           class: presenter.display_unfeature_link? ? 'btn btn-default collapse' : 'btn btn-default' %>
+      </li>
+      <li>
 
       <%= link_to "Unfeature", hyrax.featured_work_path(presenter, format: :json),
           data: { behavior: 'unfeature' },
           class: presenter.display_feature_link? ? 'btn btn-default collapse' : 'btn btn-default' %>
+      </li>
   <% end %>
 
+  </ul>
 <!-- COinS hook for Zotero -->
   <span class="Z3988" title="<%= export_as_openurl_ctx_kev(presenter) %>"></span>
 </div>
