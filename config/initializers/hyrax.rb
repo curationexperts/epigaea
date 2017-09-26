@@ -226,6 +226,8 @@ end
 
 Date::DATE_FORMATS[:standard] = "%m/%d/%Y"
 
+Qa::Authorities::Geonames.username = 'mkorcy'
+
 Qa::Authorities::Local.register_subauthority('subjects', 'Qa::Authorities::Local::TableBasedAuthority')
 Qa::Authorities::Local.register_subauthority('languages', 'Qa::Authorities::Local::TableBasedAuthority')
 Qa::Authorities::Local.register_subauthority('genres', 'Qa::Authorities::Local::TableBasedAuthority')

@@ -33,6 +33,9 @@
 
 <%= f.hidden_field :description, value: 'throw away' %>
 <%= f.text_field :geonames_placeholder, label: 'Place Keywords', help_block: 'Pick some keywords', class: 'geonames', help: 'Please select places this poster pertains to. Note: field with autocomplete with values via GeoNames API' %>
+<script>
+  Tufts.autocomplete()
+</script>
 
 <div id="geotextarea" contenteditable="false">
   <% unless @contribution.geonames.nil? %>
