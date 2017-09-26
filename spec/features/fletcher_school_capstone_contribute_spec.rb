@@ -23,10 +23,10 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       select 'Fletcher School Capstone Project', from: 'deposit_type'
       click_button "Begin"
       attach_file('contribution_attachment', File.absolute_path(file_fixture('pdf-sample.pdf')))
-      fill_in "Capstone project title", with: title
+      fill_in "Capstone Project Title", with: title
       fill_in "Contributor", with: user.display_name
       select 'Master of Arts', from: 'contribution_degree'
-      fill_in "Short description", with: FFaker::Lorem.paragraph
+      fill_in "Short Description", with: FFaker::Lorem.paragraph
       click_button "Agree & Deposit"
       created_pdf = Pdf.last
       expect(created_pdf.title.first).to eq title

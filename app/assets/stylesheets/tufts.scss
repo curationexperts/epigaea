@@ -150,30 +150,38 @@ body.dashboard > div#content-wrapper {
     display:none;
 }
 
-.contribute-form {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    padding: 0;
+#new_contribution {
     max-width: 600px;
-}
-.contribute-header {
-   margin-left: 8.5%;
-   margin-bottom: 1em;
-   
+
+    h1 {
+        margin-bottom: 1em;   
+    }
+    
+    .form-group {
+        margin: 0;
+        margin-bottom:1em;
+    }
+
+    .contribute-alert {
+        margin: 0;  
+    }
+
+    #contribution_other_authors_ {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+    ul {
+        margin:0;
+        padding:0;
+        margin-top:1em;
+        list-style-type: none;
+        li {
+            margin-right:1em;
+            display: inline-block;
+        }
+    }
 }
 
-.contribute-alert {
-   margin: 0;  
-   max-width: 370px;   
-}
-.contribute-file-upload {
-  max-width: 370px;
-  max-height: 85px;
-  padding-left: 30px; 
-  margin-bottom: 3em;
-}
 /* ------------------------
  *  FOOTER
  * ------------------------ */
