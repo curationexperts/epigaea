@@ -6,7 +6,11 @@ class ContributeController < ApplicationController
   def index; end
 
   def redirect # normal users calling '/' should be redirected to ''/contribute'
-    redirect_to contributions_path
+    if current_user.admin?
+      redirect_to '/dashboard'
+    else
+      redirect_to contributions_path
+    end
   end
 
   def license; end
