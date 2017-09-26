@@ -16,10 +16,10 @@ RSpec.feature 'submit a PHPD Field Experience/Capstone contribution' do
     find('#deposit_type').find(:xpath, 'option[8]').select_option
     click_button 'Begin'
     attach_file('PDF to upload', pdf_path)
-    fill_in 'Capstone project title', with: FFaker::Book.title
+    fill_in 'Capstone Project Title', with: FFaker::Book.title
     fill_in 'Contributor', with: FFaker::Book.author
     select 'MPH', from: 'Degree'
-    fill_in 'Short description', with: FFaker::Book.description
+    fill_in 'Short Description', with: FFaker::Book.description
     click_button 'Agree & Deposit'
     expect(page).to have_content 'Your deposit has been submitted for approval.'
   end

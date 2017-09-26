@@ -21,7 +21,7 @@ RSpec.feature 'submit an Undergraduate Honors Thesis contribution' do
     fill_in 'Thesis title', with: FFaker::Book.title
     fill_in 'Contributor', with: FFaker::Book.author
 
-    fill_in 'Short description', with: FFaker::Book.description
+    fill_in 'Short Description', with: FFaker::Book.description
     fill_in 'Department', with: 'Dept. of Geology'
     click_button 'Agree & Deposit'
     expect(page).to have_content 'Your deposit has been submitted for approval.'

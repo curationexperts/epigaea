@@ -28,7 +28,7 @@ module ContributeHelper
   end
 
   def other_authors_fields(contribution, form)
-    label = form.label :other_authors, class: "control-label"
+    label = form.label 'Other Authors', class: "control-label"
     elements = label + blank_author_field + existing_author_fields(contribution)
     content_tag :div, elements, class: 'control-group'
   end

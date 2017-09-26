@@ -1,5 +1,6 @@
+<div class="col-sm-12">
 <h1 class='contribute-header'>Contribute a new document</h1>
-
+<h5><%= @deposit_type.display_name %></h5>
 <%# NOTE: this form uses bootstrap_form_for and bootstrap_forms helpers - see: https://github.com/sethvargo/bootstrap_forms %>
 
 <%= bootstrap_form_for @contribution, url: contributions_path, as: 'contribution', multipart: true, :html=>{ class: 'form-horizontal editor contribute-form', novalidate: true } do |f| %>
@@ -20,11 +21,18 @@
     <% end %>
     <%= render "contribute/deposit_view/#{@deposit_type.deposit_view}", :f => f  %>
     <%= hidden_field_tag 'deposit_type', @deposit_type.id %>
-
+    <div class="well">
     <h4>Deposit Agreement</h4>
     <p><%= raw @deposit_type.deposit_agreement %></p>
-
-    <p><%= f.submit 'Agree & Deposit', class: 'btn btn-primary' %></p>
-    <p><%= link_to 'Cancel', contributions_path,  class: 'btn btn-warning' %></p>
+    </div>
+    <ul>
+      <li>
+        <%= f.submit 'Agree & Deposit', class: 'btn btn-primary' %>
+      </li>
+      <li>
+        <%= link_to 'Cancel', contributions_path,  class: 'btn btn-warning' %>
+      </li>
+    </ul>
 
 <% end %>
+</div>
