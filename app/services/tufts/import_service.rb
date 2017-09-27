@@ -11,7 +11,9 @@ module Tufts
     #   @return [Hyrax::UploadedFile]
     # @!attribute import [rw]
     #   @return [XmlImport]
-    attr_accessor :file, :import
+    # @!attribute object_id [rw]
+    #   @return [String]
+    attr_accessor :file, :import, :object_id
 
     ##
     # @param file   [Hyrax::UploadedFile]
@@ -19,16 +21,17 @@ module Tufts
     #
     # @return [ActiveFedora::Core]
     # @see #import_object!
-    def self.import_object!(import:, file:)
-      new(import: import, file: file).import_object!
+    def self.import_object!(import:, file:, object_id: nil)
+      new(import: import, file: file, object_id: object_id).import_object!
     end
 
     ##
     # @param file   [Hyrax::UploadedFile]
     # @param import [XmlImport]
-    def initialize(file:, import:)
-      @file   = file
-      @import = import
+    def initialize(file:, import:, object_id: nil)
+      @file      = file
+      @import    = import
+      @object_id = object_id
     end
 
     ##
@@ -36,7 +39,7 @@ module Tufts
     #
     # @return [ActiveFedora::Core]
     def import_object!
-      object     = record.build_object
+      object     = record.build_object(id: object_id)
       creator    = User.find(file.user_id)
       ability    = ::Ability.new(creator)
       attributes = { uploaded_files: [file.id] }
@@ -50,9 +53,7 @@ module Tufts
     # @return [ImportRecord]
     def record
       # UploadedFile -> Uploader -> CarrierWave::SanitizedFile -> String
-      filename = file.file.file.filename
-
-      import.record_for(file: filename)
+      import.record_for(file: file.file.file.filename)
     end
   end
 end

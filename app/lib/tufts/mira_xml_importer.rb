@@ -43,9 +43,10 @@ module Tufts
         metadata_nodes.each do |node|
           record      = ImportRecord.new
           record.file = node.xpath('./dcterms:source', node.namespaces)
-                            .children
-                            .map(&:content)
-                            .first || ''
+                            .children.map(&:content).first || ''
+          record.title = node.xpath('./dc:title', node.namespaces)
+                             .children.map(&:content).first || record.file
+
           yield record
         end
       end

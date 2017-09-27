@@ -25,13 +25,13 @@
                      xmlns:admin="http://nils.lib.tufts.edu/dcaadmin/"
                      xmlns:xlink="http://www.w3.org/TR/xlink">
           <dcterms:source>pdf-sample.pdf</dcterms:source>
-          <dc:title>President Jean Mayer speakin0g at commencement, 1987</dc:title>
+          <dc:title>President Jean Mayer speaking at commencement, 1987</dc:title>
           <dc:description>5x7</dc:description>
           <dc:source>UA136</dc:source>
           <dc:coverage>Medford;7014023;42.417;-71.100</dc:coverage>
           <dc:temporal>1987</dc:temporal>
           <dc:creator>Unknown</dc:creator>
-          <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher
+          <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
           <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
           <dc:identifier>http://hdl.handle.net/10427/448</dc:identifier>
           <dcterms:isPartOf>UA136</dcterms:isPartOf>
@@ -79,7 +79,7 @@
           <dc:coverage>Medford;7014023;42.417;-71.100</dc:coverage>
           <dc:temporal>1987</dc:temporal>
           <dc:creator>Unknown</dc:creator>
-          <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher
+          <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
           <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
           <dc:identifier>http://hdl.handle.net/10427/448</dc:identifier>
           <dcterms:isPartOf>UA136</dcterms:isPartOf>
