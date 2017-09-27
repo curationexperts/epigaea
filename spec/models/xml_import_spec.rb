@@ -148,6 +148,18 @@ RSpec.describe XmlImport, type: :model do
         expect { import.save }.not_to change { import.record_ids }
       end
 
+      it 'skips non-matching filenames' do
+        file = FactoryGirl
+                 .create(:hyrax_uploaded_file,
+                         file: File.open('spec/fixtures/files/mira_xml.xml'))
+
+        import.uploaded_file_ids = [file.id]
+
+        expect { import.save }
+          .not_to change { import.record_ids }
+          .from(be_empty)
+      end
+
       it 'does not assign ids twice' do
         import.save
 

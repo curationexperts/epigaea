@@ -19,11 +19,13 @@ class XmlImport < ApplicationRecord
   has_one :batch, as: :batchable
 
   ##
+  # @!method record?
+  #   @see Tufts::Importer#has_record?
   # @!method record_for
   #   @see Tufts::Importer#record_for
   # @!method records
   #   @see Tufts::Importer#records
-  delegate :record_for, :records, to: :parser
+  delegate :record?, :record_for, :records, to: :parser
 
   ##
   # @!attribute uploaded_file_ids [rw]
@@ -102,10 +104,13 @@ class XmlImport < ApplicationRecord
       return unless uploaded_file_ids_changed?
 
       uploaded_files.each do |file|
-        next if record_ids.key?(file.file.file.filename)
+        filename = file.file.file.filename
 
+        next if record_ids.key?(filename) || !record?(file: filename)
+        
         id = NOID_SERVICE.mint
-        record_ids[file.file.file.filename] = id
+
+        record_ids[filename] = id
         batch.ids << id
       end
 

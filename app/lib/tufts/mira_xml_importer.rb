@@ -34,6 +34,14 @@ module Tufts
     end
 
     ##
+    # @param file [String]
+    #
+    # @return [Boolean]
+    def record?(file:)
+      records.any? { |record| record.file == file }
+    end
+
+    ##
     # @yield Gives each record to the block
     # @yieldparam [ImportRecord]
     #
