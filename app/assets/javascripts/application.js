@@ -16,10 +16,10 @@
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require jquery_ujs
 //= require turbolinks
-//
 // Required by Blacklight
 //= require blacklight/blacklight
-
+//= require typeahead.bundle
+//= require tufts/gis_poster
 //= require react
 //= require react_ujs
 //= require components
@@ -29,4 +29,3 @@
 //= require tufts/qr_status
 //= require tufts
 //= require app
-
