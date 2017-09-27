@@ -97,7 +97,7 @@ RSpec.describe XmlImport, type: :model do
     it 'enqueues the correct job type' do
       expect { import.enqueue! }
         .to enqueue_job(ImportJob)
-        .with(import, file)
+        .with(import, file, an_instance_of(String))
         .on_queue('batch')
         .once
     end
@@ -105,7 +105,7 @@ RSpec.describe XmlImport, type: :model do
     it 'does not enqueue jobs for records with no files' do
       expect { import.enqueue! }
         .not_to enqueue_job(ImportJob)
-        .with(import, import.records.to_a.last.file)
+        .with(import, import.records.to_a.last.file, an_instance_of(String))
     end
 
     context 'when no files have been uploaded' do

@@ -93,7 +93,7 @@ RSpec.describe Hyrax::XmlImportsController, type: :controller do
       it 'enqueues jobs for the matching file' do
         expect { patch :update, params: params }
           .to enqueue_job(ImportJob)
-          .with(import, uploads.first)
+          .with(import, uploads.first, an_instance_of(String))
           .exactly(:once)
       end
 

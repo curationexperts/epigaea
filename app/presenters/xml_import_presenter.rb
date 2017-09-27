@@ -29,7 +29,7 @@ class XmlImportPresenter
     @batch_presenter = BatchPresenter.for(object: batch)
   end
 
-  delegate :creator, :created_at, :id, :items, :review_status, :status,
+  delegate :creator, :created_at, :id, :items, :review_status,
            to: :batch_presenter
 
   ##
@@ -49,7 +49,7 @@ class XmlImportPresenter
   # @return [String]
   # @see BatchPresenter#status
   def status
-    return batch_presenter::JobStatuses[:new] unless batch_presenter.items.any?
+    return BatchPresenter::JOB_STATUSES[:new] unless batch_presenter.items.any?
     batch_presenter.status
   end
 

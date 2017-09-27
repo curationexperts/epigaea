@@ -8,7 +8,8 @@ class BatchPresenter
 
   ##
   # Job Statuses
-  JOB_STATUSES = { unavailable: 'Unavailable'.freeze,
+  JOB_STATUSES = { new:         'New'.freeze,
+                   unavailable: 'Unavailable'.freeze,
                    queued:      'Queued'.freeze,
                    working:     'In Progress'.freeze,
                    completed:   'Completed'.freeze }.freeze

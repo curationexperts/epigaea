@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe XmlImportPresenter do
   subject(:presenter) { described_class.new(import) }
-  let(:import)        { FactoryGirl.build(:xml_import) }
+  let(:batch)         { FactoryGirl.build(:batch, ids: []) }
+  let(:import)        { FactoryGirl.build(:xml_import, batch: batch) }
 
   it { is_expected.to delegate_method(:batch).to(:xml_import) }
 
@@ -11,7 +12,6 @@ RSpec.describe XmlImportPresenter do
   it { is_expected.to delegate_method(:id).to(:batch_presenter) }
   it { is_expected.to delegate_method(:items).to(:batch_presenter) }
   it { is_expected.to delegate_method(:review_status).to(:batch_presenter) }
-  it { is_expected.to delegate_method(:status).to(:batch_presenter) }
 
   describe '#count' do
     it 'reflects the count of records in the import file' do
@@ -42,6 +42,29 @@ RSpec.describe XmlImportPresenter do
         remaining_files = import.parser.records.map(&:file).to_a - [filename]
 
         expect(presenter.missing_files).to contain_exactly(*remaining_files)
+      end
+    end
+  end
+
+  describe '#status' do
+    context 'before queued' do
+      it 'is new' do
+        expect(presenter.status).to eq 'New'
+      end
+    end
+
+    context 'when queued' do
+      let(:import) do
+        FactoryGirl
+          .create(:xml_import, batch: batch, uploaded_file_ids: [file.id])
+      end
+
+      let(:file) { FactoryGirl.create(:hyrax_uploaded_file) }
+
+      it 'changes to queued' do
+        expect { import.batch.enqueue! }
+          .to change { presenter.status }
+          .to('Queued')
       end
     end
   end
