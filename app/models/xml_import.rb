@@ -100,14 +100,19 @@ class XmlImport < ApplicationRecord
 
     ##
     # @private Mint ids for items ready to enqueue
-    def mint_ids
+    # @todo refactor for internal complexity. Should there be a service
+    #   responsible for handling ids?
+    def mint_ids # rubocop:disable Metrics/CyclomaticComplexity
       return unless uploaded_file_ids_changed?
 
       uploaded_files.each do |file|
         filename = file.file.file.filename
 
-        next if record_ids.key?(filename) || !record?(file: filename)
-        
+        next if record_ids.key?(filename)
+
+        (uploaded_file_ids.delete(file.id) && file.destroy! && next) unless
+          record?(file: filename)
+
         id = NOID_SERVICE.mint
 
         record_ids[filename] = id
