@@ -29,13 +29,20 @@ class XmlImportPresenter
     @batch_presenter = BatchPresenter.new(batch)
   end
 
-  delegate :creator, :created_at, :id, :items, :review_status,
-           to: :batch_presenter
+  delegate :creator, :created_at, :id, :review_status, to: :batch_presenter
 
   ##
   # @return [Integer]
   def count
     xml_import.records.to_a.size
+  end
+
+  ##
+  # @return [Array<>]
+  def items
+    batch_presenter.items.map do |item|
+      Item.new(item: item, import: xml_import)
+    end
   end
 
   ##
@@ -55,7 +62,7 @@ class XmlImportPresenter
   # @return [String]
   # @see BatchPresenter#status
   def status
-    return BatchPresenter::JOB_STATUSES[:new] unless batch_presenter.items.any?
+    return BatchPresenter::JOB_STATUSES[:new] unless items.any?
     batch_presenter.status
   end
 
@@ -63,5 +70,32 @@ class XmlImportPresenter
   # @return [String]
   def type
     xml_import.batch_type
+  end
+
+  ##
+  # Presenter for the batch items.
+  class Item
+    ##
+    # @param item [Batch::Item]
+    def initialize(item:, import:)
+      @item   = item
+      @import = import
+    end
+
+    ##
+    # @return [String]
+    def id
+      return @item.id if object.present?
+      "Awaiting Assignment: #{@item.id}"
+    end
+
+    ##
+    # @return [String]
+    def title
+      return @item.title if object.present?
+      'TBD'
+    end
+
+    delegate :reviewed?, :status, :object, to: :@item
   end
 end
