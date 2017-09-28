@@ -1,22 +1,16 @@
 require 'rails_helper'
-require 'tufts/workflow_setup'
 include Warden::Test::Helpers
 
 RSpec.feature 'Apply a Template', :clean, js: true do
-  let(:object)   { build(:pdf) }
-  let(:template) { create(:template) }
+  let(:object)    { create(:pdf) }
+  let!(:template) { create(:template) }
 
   after { Tufts::Template.all.each(&:delete) }
 
   context 'with logged in user' do
     let(:user) { FactoryGirl.create(:admin) }
 
-    before do
-      template # create the template
-      object.visibility = 'open'
-      object.save!
-      login_as user
-    end
+    before { login_as user }
 
     scenario 'apply to a single object' do
       ActiveJob::Base.queue_adapter = :test
