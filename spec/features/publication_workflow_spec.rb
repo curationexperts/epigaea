@@ -60,18 +60,18 @@ RSpec.feature 'deposit and publication' do
       # The admin user approves the work, changing its status to "published"
       subject = Hyrax::WorkflowActionInfo.new(work, publishing_user)
       sipity_workflow_action = PowerConverter.convert_to_sipity_action("publish", scope: subject.entity.workflow) { nil }
-      Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Approved in publication_workflow_spec.rb")
+      Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Published in publication_workflow_spec.rb")
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
 
       # Check notifications for publishing user
       visit("/notifications?locale=en")
-      expect(page).to have_content "#{work.title.first} (#{work.id}) has been published by #{publishing_user.display_name}. Approved in publication_workflow_spec.rb"
+      expect(page).to have_content "#{work.title.first} (#{work.id}) has been published by #{publishing_user.display_name} (#{publishing_user.user_key}). Published in publication_workflow_spec.rb"
 
       # Check notifications for depositor again
       logout
       login_as depositing_user
       visit("/notifications?locale=en")
-      expect(page).to have_content "#{work.title.first} (#{work.id}) has been published by #{publishing_user.display_name}. Approved in publication_workflow_spec.rb"
+      expect(page).to have_content "#{work.title.first} (#{work.id}) has been published by #{publishing_user.display_name} (#{publishing_user.user_key}). Published in publication_workflow_spec.rb"
 
       # After publication, works are visible to the public
       # Visit the ETD as a public user. It should be visible.
@@ -88,7 +88,7 @@ RSpec.feature 'deposit and publication' do
       # Check unpublished notifications for admin user
       login_as publishing_user
       visit("/notifications?locale=en")
-      expect(page).to have_content "#{work.title.first} (#{work.id}) has been unpublished by #{publishing_user.display_name}. Unpublished in publication_workflow_spec.rb"
+      expect(page).to have_content "#{work.title.first} (#{work.id}) has been unpublished by #{publishing_user.display_name} (#{publishing_user.user_key}). Unpublished in publication_workflow_spec.rb"
       logout
 
       # After being unpublished, the work will no longer be visible to the public.
