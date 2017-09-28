@@ -14,7 +14,7 @@ module Hyrax
         end
 
         def message
-          "#{title} (#{link_to work_id, document_path}) has been unpublished by #{user.display_name}.  #{comment}"
+          "#{title} (#{link_to work_id, document_path}) has been unpublished by #{user.display_name} (#{user.user_key}).  #{comment}"
         end
     end
   end
