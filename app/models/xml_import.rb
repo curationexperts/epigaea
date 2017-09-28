@@ -19,11 +19,13 @@ class XmlImport < ApplicationRecord
   has_one :batch, as: :batchable
 
   ##
+  # @!method record?
+  #   @see Tufts::Importer#has_record?
   # @!method record_for
   #   @see Tufts::Importer#record_for
   # @!method records
   #   @see Tufts::Importer#records
-  delegate :record_for, :records, to: :parser
+  delegate :record?, :record_for, :records, to: :parser
 
   ##
   # @!attribute uploaded_file_ids [rw]
@@ -98,14 +100,22 @@ class XmlImport < ApplicationRecord
 
     ##
     # @private Mint ids for items ready to enqueue
-    def mint_ids
+    # @todo refactor for internal complexity. Should there be a service
+    #   responsible for handling ids?
+    def mint_ids # rubocop:disable Metrics/CyclomaticComplexity
       return unless uploaded_file_ids_changed?
 
       uploaded_files.each do |file|
-        next if record_ids.key?(file.file.file.filename)
+        filename = file.file.file.filename
+
+        next if record_ids.key?(filename)
+
+        (uploaded_file_ids.delete(file.id) && file.destroy! && next) unless
+          record?(file: filename)
 
         id = NOID_SERVICE.mint
-        record_ids[file.file.file.filename] = id
+
+        record_ids[filename] = id
         batch.ids << id
       end
 

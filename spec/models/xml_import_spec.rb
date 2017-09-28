@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable RSpec/NestedGroups
 RSpec.describe XmlImport, type: :model do
   subject(:import) { FactoryGirl.build(:xml_import) }
 
@@ -146,6 +147,27 @@ RSpec.describe XmlImport, type: :model do
         import.uploaded_file_ids.concat([same_filename.id])
 
         expect { import.save }.not_to change { import.record_ids }
+      end
+
+      context 'with non-matching filenames' do
+        let(:ids) { [non_matching_file.id] }
+        let(:non_matching_file) do
+          FactoryGirl
+            .create(:hyrax_uploaded_file,
+                    file: File.open('spec/fixtures/files/mira_xml.xml'))
+        end
+
+        it 'skips non-matching filenames' do
+          expect { import.save }
+            .not_to change { import.record_ids }
+            .from(be_empty)
+        end
+
+        it 'cleans up unmatched files' do
+          expect { import.save }
+            .to change { non_matching_file.class.exists?(non_matching_file.id) }
+            .to(false)
+        end
       end
 
       it 'does not assign ids twice' do

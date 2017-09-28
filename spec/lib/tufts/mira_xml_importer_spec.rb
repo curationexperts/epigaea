@@ -6,6 +6,18 @@ RSpec.describe Tufts::MiraXmlImporter do
 
   it_behaves_like 'an importer'
 
+  describe '#record?' do
+    let(:filename) { 'pdf-sample.pdf' }
+
+    it 'is true when a record matches the filename' do
+      expect(importer.record?(file: filename)).to be true
+    end
+
+    it 'is false when no record matches' do
+      expect(importer.record?(file: 'not-a-real-file.fake')).to be false
+    end
+  end
+
   describe '#record_for' do
     let(:filename) { 'pdf-sample.pdf' }
 
