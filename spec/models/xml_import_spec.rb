@@ -9,7 +9,11 @@ RSpec.describe XmlImport, type: :model do
       FactoryGirl.create(:xml_import, uploaded_file_ids: uploads.map(&:id))
     end
 
-    let(:uploads) { FactoryGirl.create_list(:hyrax_uploaded_file, 5) }
+    let(:uploads) do
+      [FactoryGirl.create(:hyrax_uploaded_file),
+       FactoryGirl.create(:hyrax_uploaded_file,
+                          file: File.open('spec/fixtures/files/2.pdf'))]
+    end
   end
 
   describe '#records' do
@@ -57,13 +61,21 @@ RSpec.describe XmlImport, type: :model do
 
   describe '#uploaded_files' do
     subject(:import) do
-      FactoryGirl.create(:xml_import, uploaded_file_ids: files.map(&:id))
+      FactoryGirl.build(:xml_import, uploaded_file_ids: files.map(&:id))
     end
 
     let(:files) { FactoryGirl.create_list(:hyrax_uploaded_file, 3) }
 
     it 'has the correct files' do
       expect(import.uploaded_files).to contain_exactly(*files)
+    end
+
+    context 'when saved' do
+      it 'removes duplicate files' do
+        expect { import.save }
+          .to change { import.uploaded_files }
+          .to contain_exactly(files.first)
+      end
     end
 
     context 'when empty' do

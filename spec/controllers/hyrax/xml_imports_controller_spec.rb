@@ -84,13 +84,16 @@ RSpec.describe Hyrax::XmlImportsController, type: :controller do
       end
     end
 
-    context 'when files match metadata' do
+    context 'when files do not match metadata' do
       let(:file_ids) { uploads.map(&:id) }
-      let(:uploads)  { [FactoryGirl.create(:hyrax_uploaded_file)] }
 
-      before { ActiveJob::Base.queue_adapter = :test }
+      let(:uploads) do
+        [FactoryGirl.create(:hyrax_uploaded_file),
+         FactoryGirl.create(:hyrax_uploaded_file,
+                            file: File.open('spec/fixtures/hello.pdf'))]
+      end
 
-      it 'enqueues jobs for the matching file' do
+      it 'enqueues jobs only for matching files' do
         expect { patch :update, params: params }
           .to enqueue_job(ImportJob)
           .with(import, uploads.first, an_instance_of(String))
@@ -100,7 +103,37 @@ RSpec.describe Hyrax::XmlImportsController, type: :controller do
       it 'updates file ids' do
         expect { patch :update, params: params }
           .to change { import.reload.uploaded_file_ids }
-          .to contain_exactly(*file_ids.map(&:to_s))
+          .to contain_exactly(file_ids.first)
+      end
+
+      it 'flashes an alert' do
+        patch :update, params: params
+
+        expect(flash[:alert]).to be_present
+      end
+    end
+
+    context 'when files match metadata' do
+      let(:file_ids) { uploads.map(&:id) }
+
+      let(:uploads) do
+        [FactoryGirl.create(:hyrax_uploaded_file),
+         FactoryGirl.create(:hyrax_uploaded_file,
+                            file: File.open('spec/fixtures/files/2.pdf'))]
+      end
+
+      before { ActiveJob::Base.queue_adapter = :test }
+
+      it 'enqueues jobs for the matching file' do
+        expect { patch :update, params: params }
+          .to enqueue_job(ImportJob)
+          .exactly(:twice)
+      end
+
+      it 'updates file ids' do
+        expect { patch :update, params: params }
+          .to change { import.reload.uploaded_file_ids }
+          .to contain_exactly(*file_ids)
       end
     end
   end

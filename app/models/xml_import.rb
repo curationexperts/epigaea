@@ -108,10 +108,8 @@ class XmlImport < ApplicationRecord
       uploaded_files.each do |file|
         filename = file.file.file.filename
 
-        next if record_ids.key?(filename)
-
-        (uploaded_file_ids.delete(file.id) && file.destroy! && next) unless
-          record?(file: filename)
+        (uploaded_file_ids.delete(file.id) && file.destroy! && next) if
+          record_ids.key?(filename) || !record?(file: filename)
 
         id = NOID_SERVICE.mint
 
