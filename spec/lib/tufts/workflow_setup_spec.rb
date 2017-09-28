@@ -28,8 +28,6 @@ RSpec.describe Tufts::WorkflowSetup do
     )
     role_names = roles.map { |r| Sipity::Role.find(r.role_id).name }
 
-    expect(role_names).to contain_exactly(
-      "publishing"
-    )
+    expect(role_names.include?("publishing")).to eq true
   end
 end
