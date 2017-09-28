@@ -7,6 +7,7 @@ end
 
 gem 'hydra-role-management'
 gem 'hyrax', '2.0.0.beta1'
+gem 'nokogiri', '>=1.8.1' # 1.8.1 fixes security issue https://github.com/sparklemotion/nokogiri/issues/1673
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.4'

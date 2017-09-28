@@ -914,7 +914,7 @@ GEM
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
     mini_magick (4.8.0)
-    mini_portile2 (2.2.0)
+    mini_portile2 (2.3.0)
     minitest (5.10.3)
     multi_json (1.12.1)
     multi_xml (0.6.0)
@@ -928,8 +928,8 @@ GEM
     net-ssh (4.1.0)
     nio4r (2.1.0)
     noid (0.9.0)
-    nokogiri (1.8.0)
-      mini_portile2 (~> 2.2.0)
+    nokogiri (1.8.1)
+      mini_portile2 (~> 2.3.0)
     nokogumbo (1.4.13)
       nokogiri
     oauth (0.5.3)
@@ -1273,6 +1273,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   mysql2
+  nokogiri (>= 1.8.1)
   poltergeist
   puma (~> 3.0)
   rails (~> 5.0.4)
