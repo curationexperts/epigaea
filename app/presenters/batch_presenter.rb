@@ -13,6 +13,7 @@ class BatchPresenter
                    queued:      'Queued'.freeze,
                    working:     'In Progress'.freeze,
                    completed:   'Completed'.freeze }.freeze
+
   ##
   # @!attribute object [rw]
   #   @return [Batch]
@@ -25,13 +26,18 @@ class BatchPresenter
   end
 
   class << self
+    REGISTRY = { XmlImport => XmlImportPresenter }.freeze
+
     ##
     # @param object [Batch]
     #
     # @return [BatchPresenter] a batch presenter or subclass for the given
     #   object.
     def for(object:)
-      new(object)
+      batchable = object.batchable
+      klass     = REGISTRY[batchable.class]
+
+      klass ? klass.new(batchable) : new(object)
     end
   end
 
@@ -47,6 +53,12 @@ class BatchPresenter
   # @return [String]
   def creator
     object.creator.try(:email) || 'No Creator'
+  end
+
+  ##
+  # @return [String]
+  def path
+    "batches/#{id}"
   end
 
   ##

@@ -10,15 +10,17 @@
         <th>Created at</th>
         <th>Items</th>
         <th>Status</th>
+        <th>Class</th>
       </tr>
       <% @batches.each do |batch| %>
         <tr>
-          <td class="batch_id"><%= link_to batch.id, main_app.batch_path(id: batch.id) %></td>
+          <td class="batch_id"><%= link_to batch.id, batch.path %></td>
           <td class="type"><%= batch.type%></td>
           <td class="creator"><%= batch.creator %></td>
-          <td class="created_at"><%= batch.created_at %> ago</td>
+          <td class="created_at"><%= time_ago_in_words(batch.created_at) %> ago</td>
           <td class="count"><%= batch.count %></td>
           <td class="status"><%= batch.status %></td>
+          <td class="class"><%= batch.class %></td>
         </tr>
       <% end %>
     </table>

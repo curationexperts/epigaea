@@ -10,7 +10,6 @@ RSpec.describe XmlImportPresenter do
   it { is_expected.to delegate_method(:creator).to(:batch_presenter) }
   it { is_expected.to delegate_method(:created_at).to(:batch_presenter) }
   it { is_expected.to delegate_method(:id).to(:batch_presenter) }
-  it { is_expected.to delegate_method(:items).to(:batch_presenter) }
   it { is_expected.to delegate_method(:review_status).to(:batch_presenter) }
 
   describe '#count' do
