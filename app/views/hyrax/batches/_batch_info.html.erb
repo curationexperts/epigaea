@@ -5,6 +5,10 @@
       <dt>Record Count</dt><dd><%= batch.count %></dd>
       <dt>Creator</dt><dd><%= batch.creator %></dd>
       <dt>Created At</dt><dd><%= batch.created_at %></dd>
+      <% if batch.respond_to?(:download) %>
+      <dt>Download</dt>
+        <dd><%= batch.download_ready? ? link_to(batch.download, "/metadata_exports/#{batch.export.id}/download", id: "download", data: { turbolinks: false }) : batch.download %></dd>
+      <% end %>
       <dt>Status</dt><dd><%= batch.status %></dd>
     </dl>
   </div>

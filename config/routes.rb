@@ -51,16 +51,20 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :metadata_exports,
+            controller: 'hyrax/metadata_exports',
+            only:       [:create]
   resources :xml_imports,
             controller: 'hyrax/xml_imports',
             only:       [:show, :create, :new, :edit, :update]
-
   resources :templates,
             controller: 'hyrax/templates',
             only:       [:index, :destroy, :edit, :update, :new]
   resources :template_updates,
             controller: 'hyrax/template_updates',
             only:       [:index, :new, :create]
+
+  get '/metadata_exports/:id/download', to: 'hyrax/metadata_exports#download'
 
   # Routes for managing drafts
   post '/draft/save_draft/:id', to: 'tufts/draft#save_draft'

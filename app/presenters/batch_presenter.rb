@@ -27,7 +27,8 @@ class BatchPresenter
   end
 
   class << self
-    REGISTRY = { XmlImport => XmlImportPresenter }.freeze
+    REGISTRY = { XmlImport      => XmlImportPresenter,
+                 MetadataExport => MetadataExportPresenter }.freeze
 
     ##
     # @param object [Batch]
