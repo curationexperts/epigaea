@@ -26,7 +26,7 @@ class XmlImportPresenter
   ##
   # @return [BatchPresenter]
   def batch_presenter
-    @batch_presenter = BatchPresenter.for(object: batch)
+    @batch_presenter = BatchPresenter.new(batch)
   end
 
   delegate :creator, :created_at, :id, :items, :review_status,
@@ -43,6 +43,12 @@ class XmlImportPresenter
   def missing_files
     xml_import.records.map(&:file).to_a -
       xml_import.uploaded_files.map { |file| File.basename(file.file.path) }
+  end
+
+  ##
+  # @return [String]
+  def path
+    "xml_imports/#{xml_import.id}"
   end
 
   ##
