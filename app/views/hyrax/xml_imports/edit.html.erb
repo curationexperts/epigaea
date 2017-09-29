@@ -11,15 +11,16 @@
   </div>
 <% end %>
 
-<%= link_to "Import Summary", [main_app, @import.xml_import], class: 'btn btn-primary', id: 'next_button' %>
-
 <%= form_for [main_app, @import.xml_import], html: { id: 'fileupload' } do |f| %>
   <%= render 'hyrax/base/form_files' %>
 
-  <div id="file-submit">
+  <br/>
+  <span id="file-submit">
     <%= f.button type: 'submit', id: 'start_upload', class: 'btn btn-primary start' do %>
       <i class="icon-upload icon-white"></i>
       Add Files to Batch
     <% end %>
-  </div>
+  </span>
+
+  <%= link_to "Cancel", [main_app, @import.xml_import], class: 'btn btn-info', id: 'next_button' %>
 <% end %>
