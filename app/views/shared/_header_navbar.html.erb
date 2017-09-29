@@ -5,11 +5,6 @@
         <%= link_to application_name, root_path, class: "navbar-brand" %>
       </div>
       <div class="navbar-right">
-        <div class="nav navbar-nav" id="searchbar">
-          <% unless controller_name.in?(['contribute', 'templates', 'records', 'sessions']) %>
-            <%= render_search_bar %>
-          <% end %>
-        </div>
         <div class="nav navbar-nav">
         <%= render '/user_util_links' %>
         </div>

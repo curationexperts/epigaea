@@ -58,10 +58,24 @@ RSpec.feature 'redirection' do
     let(:user) { FactoryGirl.create(:admin) }
     before { login_as user }
 
-    describe 'getting redirected to contribute when logging in' do
+    describe 'being able to access the dashboard' do
       scenario do
         visit '/dashboard'
         expect(page).to have_content 'Manage'
+      end
+    end
+
+    describe 'getting redirected to the dashboard when visiting root' do
+      scenario do
+        visit '/'
+        expect(page).to have_content 'Administration'
+      end
+    end
+
+    describe 'having access to search when on dashboard' do
+      scenario do
+        visit '/dashboard'
+        expect(page).to have_selector '#search-field-header'
       end
     end
 

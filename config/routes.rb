@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   concern :searchable, Blacklight::Routes::Searchable.new
 
   constraints admin_constraint do
+    root to: 'hyrax/dashboard#show'
     # Only admin users should be able to search
     resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
       concerns :searchable
@@ -20,9 +21,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root to: 'contribute#redirect'
-
   constraints non_admin_constraint do
+    root to: 'contribute#redirect'
     get '/dashboard', to: 'contribute#redirect'
   end
 
