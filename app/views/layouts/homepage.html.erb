@@ -1,9 +1,3 @@
-<% content_for(:navbar) do %>
-  <div class="image-masthead">
-    <%= render '/controls' %>
-  </div>
-<% end %>
-
 <% content_for(:precontainer_content) do %>
   <%= render 'hyrax/homepage/announcement' if controller_name == 'homepage' %>
 <% end %>
