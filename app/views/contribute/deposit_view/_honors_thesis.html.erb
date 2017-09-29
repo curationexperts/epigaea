@@ -8,7 +8,11 @@
 <% end %>
 <%= f.text_field :creator, label: 'Contributor', value: contributor, required: true  %>
 
-<%= f.text_field :department, label: 'Department', class: 'typeahead', autocomplete: false, data: {provide:"typeahead", source: tufts_department_labels } %>
+<%= f.text_field :department, label: 'Department', 'data-autocomplete': '/authorities/search/local/departments'  %>
+
+<script>
+  Tufts.autocomplete()
+</script>
 
 <%= f.select :embargo_note, standard_embargos,  label: 'Embargo'  %>
 
