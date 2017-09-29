@@ -86,14 +86,14 @@ class XmlImportPresenter
     # @return [String]
     def id
       return @item.id if object.present?
-      "Awaiting Assignment: #{@item.id}"
+      'Awaiting Assignment'
     end
 
     ##
     # @return [String]
     def title
       return @item.title if object.present?
-      'TBD'
+      @import.record_for(file: @import.record_ids.key(@item.id)).title
     end
 
     delegate :reviewed?, :status, :object, to: :@item
