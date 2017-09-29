@@ -63,7 +63,13 @@ class XmlImportPresenter
   # @see BatchPresenter#status
   def status
     return BatchPresenter::JOB_STATUSES[:new] unless items.any?
-    batch_presenter.status
+    items_status = batch_presenter.status
+
+    return items_status unless
+      items_status == BatchPresenter::JOB_STATUSES[:completed]
+
+    return 'Partially Completed' if missing_files.any?
+    items_status
   end
 
   ##
