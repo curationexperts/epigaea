@@ -26,7 +26,7 @@ class XmlImportPresenter
   ##
   # @return [BatchPresenter]
   def batch_presenter
-    @batch_presenter = BatchPresenter.new(batch)
+    @batch_presenter ||= BatchPresenter.new(batch)
   end
 
   delegate :creator, :created_at, :id, :review_status, to: :batch_presenter
@@ -63,7 +63,13 @@ class XmlImportPresenter
   # @see BatchPresenter#status
   def status
     return BatchPresenter::JOB_STATUSES[:new] unless items.any?
-    batch_presenter.status
+    items_status = batch_presenter.status
+
+    return items_status unless
+      items_status == BatchPresenter::JOB_STATUSES[:completed]
+
+    return 'Partially Completed' if missing_files.any?
+    items_status
   end
 
   ##

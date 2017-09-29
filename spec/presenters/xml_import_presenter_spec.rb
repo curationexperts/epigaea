@@ -65,6 +65,18 @@ RSpec.describe XmlImportPresenter do
           .to change { presenter.status }
           .to('Queued')
       end
+
+      context 'and all enqueued jobs are completed' do
+        before do
+          allow(presenter.batch_presenter)
+            .to receive(:status)
+            .and_return(BatchPresenter::JOB_STATUSES[:completed])
+        end
+
+        it 'has a partially completed status' do
+          expect(presenter.status).to eq BatchPresenter::JOB_STATUSES[:partial]
+        end
+      end
     end
   end
 

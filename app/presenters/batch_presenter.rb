@@ -12,6 +12,7 @@ class BatchPresenter
                    unavailable: 'Unavailable'.freeze,
                    queued:      'Queued'.freeze,
                    working:     'In Progress'.freeze,
+                   partial:     'Partially Completed'.freeze,
                    completed:   'Completed'.freeze }.freeze
 
   ##
