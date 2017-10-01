@@ -13,6 +13,7 @@ Metrics/LineLength:
 Metrics/MethodLength:
    Exclude:
     - 'app/models/forms/contribution.rb'
+    - 'app/models/forms/generic_tisch_deposit.rb'
 RSpec/ExampleLength:
    Exclude:
     - 'spec/features/**/*'
