@@ -35,7 +35,7 @@ RSpec.describe Hyrax::TemplatesController, type: :controller do
         delete :destroy, params: { id: template.name }
 
         expect(response)
-          .to redirect_to "/templates?locale=en&notice=Deleted+#{template.name}"
+          .to redirect_to "/templates?notice=Deleted+#{template.name}"
       end
 
       it 'deletes the template' do

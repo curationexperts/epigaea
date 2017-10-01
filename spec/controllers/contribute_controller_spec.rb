@@ -7,14 +7,14 @@ describe ContributeController do
     describe 'GET #new' do
       it 'redirects to sign in' do
         get :new
-        expect(response).to redirect_to contributions_path(locale: :en)
+        expect(response).to redirect_to contributions_path
       end
     end
 
     describe 'POST #create' do
       it 'redirects to sign in' do
         post :create
-        expect(response).to redirect_to contributions_path(locale: :en)
+        expect(response).to redirect_to contributions_path
       end
     end
   end
@@ -41,7 +41,7 @@ describe ContributeController do
     describe 'GET #new' do
       it 'redirects to contribute home when no deposit type is specified' do
         get 'new'
-        expect(response).to redirect_to contributions_path(locale: :en)
+        expect(response).to redirect_to contributions_path
       end
 
       describe 'with valid deposit_type' do
@@ -79,7 +79,7 @@ describe ContributeController do
     describe 'GET #redirect' do
       it 'redirects to contribute' do
         get 'redirect'
-        expect(response).to redirect_to contributions_path(locale: :en)
+        expect(response).to redirect_to contributions_path
       end
     end
 
@@ -94,7 +94,7 @@ describe ContributeController do
       it 'redirects when no deposit type is specified' do
         post :create, params: params
 
-        expect(response).to redirect_to contributions_path(locale: :en)
+        expect(response).to redirect_to contributions_path
       end
 
       describe 'with valid deposit_type' do
