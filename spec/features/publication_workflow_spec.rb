@@ -38,13 +38,13 @@ RSpec.feature 'deposit and publication' do
 
       # Check notifications for depositing user
       login_as depositing_user
-      visit("/notifications?locale=en")
+      visit("/notifications")
       expect(page).to have_content "#{work.title.first} (#{work.id}) has been deposited by #{depositing_user.display_name} (#{depositing_user.user_key}) and is awaiting publication."
 
       # Check notifications for publishing user
       logout
       login_as publishing_user
-      visit("/notifications?locale=en")
+      visit("/notifications")
       expect(page).to have_content "#{work.title.first} (#{work.id}) has been deposited by #{depositing_user.display_name} (#{depositing_user.user_key}) and is awaiting publication."
 
       # Check workflow permissions for publishing user
@@ -64,13 +64,13 @@ RSpec.feature 'deposit and publication' do
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
 
       # Check notifications for publishing user
-      visit("/notifications?locale=en")
+      visit("/notifications")
       expect(page).to have_content "#{work.title.first} (#{work.id}) has been published by #{publishing_user.display_name} (#{publishing_user.user_key}). Published in publication_workflow_spec.rb"
 
       # Check notifications for depositor again
       logout
       login_as depositing_user
-      visit("/notifications?locale=en")
+      visit("/notifications")
       expect(page).to have_content "#{work.title.first} (#{work.id}) has been published by #{publishing_user.display_name} (#{publishing_user.user_key}). Published in publication_workflow_spec.rb"
 
       # After publication, works are visible to the public
@@ -87,7 +87,7 @@ RSpec.feature 'deposit and publication' do
 
       # Check unpublished notifications for admin user
       login_as publishing_user
-      visit("/notifications?locale=en")
+      visit("/notifications")
       expect(page).to have_content "#{work.title.first} (#{work.id}) has been unpublished by #{publishing_user.display_name} (#{publishing_user.user_key}). Unpublished in publication_workflow_spec.rb"
       logout
 
