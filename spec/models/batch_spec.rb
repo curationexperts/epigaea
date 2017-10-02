@@ -14,7 +14,6 @@ RSpec.describe Batch, type: :model, batch: true do
     end
   end
 
-  # rubocop:disable RSpec/NestedGroups
   describe '#job_ids' do
     it { is_expected.to have_attributes(job_ids: be_empty) }
 

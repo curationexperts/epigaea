@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-# rubocop:disable RSpec/NestedGroups
 RSpec.describe Hyrax::XmlImportsController, type: :controller do
   let(:import) { FactoryGirl.create(:xml_import) }
 

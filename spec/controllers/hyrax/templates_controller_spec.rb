@@ -68,7 +68,6 @@ RSpec.describe Hyrax::TemplatesController, type: :controller do
       end
     end
 
-    # rubocop:disable RSpec/NestedGroups
     describe 'PUT #update' do
       let(:params) do
         { id:             template.name,
