@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-# rubocop:disable RSpec/NestedGroups
 RSpec.describe XmlImport, type: :model do
   subject(:import) { FactoryGirl.build(:xml_import) }
 

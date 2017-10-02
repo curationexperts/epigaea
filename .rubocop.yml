@@ -1,6 +1,8 @@
 inherit_gem:
   bixby: bixby_default.yml
 
+RSpec/NestedGroups:
+  Max: 4
 Metrics/BlockLength:
   Exclude:
     - 'config/**/*'
@@ -23,10 +25,6 @@ RSpec/ExampleLength:
     - 'spec/lib/tufts/workflow_setup_spec.rb'
     - 'spec/controllers/contribute_controller_spec.rb'
     - 'spec/controllers/deposit_types_controller_spec.rb'
-RSpec/NestedGroups:
-  Exclude:
-   - 'spec/controllers/deposit_types_controller_spec.rb'
-   - 'spec/controllers/contribute_controller_spec.rb'
 RSpec/AnyInstance:
   Exclude:
    - 'spec/controllers/deposit_types_controller_spec.rb'
