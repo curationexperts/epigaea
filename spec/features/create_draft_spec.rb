@@ -23,7 +23,6 @@ RSpec.feature 'Create and revert a draft', :clean, js: true do
       click_link "Files"
       execute_script("$('.fileinput-button input:first').css({'opacity':'1', 'display':'block', 'position':'relative'})")
       attach_file('files[]', File.absolute_path(file_fixture('pdf-sample.pdf')))
-      find('#agreement').click
       sleep(1)
       find('#with_files_submit').click
       expect(page).to have_content('Example Title')
