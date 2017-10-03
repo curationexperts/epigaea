@@ -17,8 +17,8 @@ var DraftSaveButton = React.createClass ({
         <li className='draft-button'>
         <button className='btn btn-default' onClick={this.revertDraft} disabled={!this.state.isSaved}>Revert Draft</button>
         </li>
-        { !this.state.isSaved && <DraftWorkflowStatusEdited /> }
-        { this.state.isSaved && <DraftWorkflowStatusPublished /> }
+        { !this.state.isSaved && <DraftWorkflowStatusPublished /> }
+        { this.state.isSaved && <DraftWorkflowStatusEdited /> }
         { this.state.error && <DraftError/> }
         </ul>
     },
