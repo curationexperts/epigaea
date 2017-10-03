@@ -20,6 +20,6 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    {}
+    super.except(:locale)
   end
 end
