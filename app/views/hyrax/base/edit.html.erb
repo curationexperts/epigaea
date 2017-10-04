@@ -3,8 +3,5 @@
 <h1><%= t("hyrax.works.update.header") %></h1>
 <% end %>
 
-<nav class="draft-bar">
-<%= react_component('DraftControls', {curation_concern_id: curation_concern.id, draft_saved: curation_concern.draft_saved?}, {camelize_props: true}) %>
-</nav>
 
 <%= render 'form' %>

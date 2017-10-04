@@ -1,3 +1,12 @@
+<aside class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Manage Draft</h3>
+  </div>
+  <div class="list-group-item">
+    <%= react_component('DraftControls', {curation_concern_id: curation_concern.id, draft_saved: curation_concern.draft_saved?}, {camelize_props: true}) %>
+  </div>
+</aside>
+
 <aside id="form-progress" class="form-progress panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><%= t("hyrax.works.progress.header") %></h3>
