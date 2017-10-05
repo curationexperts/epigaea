@@ -40,6 +40,7 @@ module Tufts
     #
     # @return [IO]
     def export
+      populate_builder
       StringIO.new(builder.build)
     end
 
@@ -49,6 +50,7 @@ module Tufts
     # @return [File] a file handle open for read
     # @see #export
     def export!
+      populate_builder
       File.open(path, 'w') do |file|
         file.write(builder.build)
       end
@@ -76,5 +78,18 @@ module Tufts
     def path
       self.class.path_for(filename: filename)
     end
+
+    private
+
+      ##
+      # @private
+      # @return [void]
+      def populate_builder
+        active_ids = ids.select { |r| ActiveFedora::Base.exists?(r) }
+
+        ActiveFedora::Base.find(active_ids).each do |object|
+          builder.add(object)
+        end
+      end
   end
 end
