@@ -28,9 +28,9 @@ RSpec.feature 'Create and revert a draft', :clean, js: true do
       expect(page).to have_content('Example Title')
       click_on 'Edit'
       click_on 'Save Draft'
-      expect(page).to have_content('published')
-      click_on 'Revert Draft'
       expect(page).to have_content('edited')
+      click_on 'Revert Draft'
+      expect(page).to have_content('published')
     end
   end
 end

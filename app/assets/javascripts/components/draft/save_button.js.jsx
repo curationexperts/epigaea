@@ -10,15 +10,15 @@ var DraftSaveButton = React.createClass ({
     render: function () {
         return <ul className='drafts'>
         <li className='draft-button'>
-        <button className='btn btn-primary' onClick={this.saveDraft}>Save Draft
+        <button type='button' className='btn btn-primary' onClick={this.saveDraft}>Save Draft
         { this.state.isSaving && <DraftIsSaving /> }
         </button>
         </li>
         <li className='draft-button'>
-        <button className='btn btn-default' onClick={this.revertDraft} disabled={!this.state.isSaved}>Revert Draft</button>
+        <button  type='button' className='btn btn-default' onClick={this.revertDraft} disabled={!this.state.isSaved}>Revert Draft</button>
         </li>
-        { !this.state.isSaved && <DraftWorkflowStatusEdited /> }
-        { this.state.isSaved && <DraftWorkflowStatusPublished /> }
+        { !this.state.isSaved && <DraftWorkflowStatusPublished /> }
+        { this.state.isSaved && <DraftWorkflowStatusEdited /> }
         { this.state.error && <DraftError/> }
         </ul>
     },
