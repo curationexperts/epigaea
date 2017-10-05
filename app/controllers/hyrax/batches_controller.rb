@@ -15,9 +15,7 @@ module Hyrax
 
       batch.enqueue!
 
-      redirect_to main_app.batches_path action: 'show',
-                                        id:     batch.id,
-                                        notice: 'Batch Enqueued!'
+      redirect_to main_app.batch_path(batch)
     end
 
     def show

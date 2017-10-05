@@ -41,6 +41,9 @@ append :linked_dirs, "log"
 # link the draft dir specified in config/environments/produciton.rb config.drafts_storage_dir
 append :linked_dirs, "tmp/drafts"
 
+# link the draft dir specified in config/environments/production.rb config.exports_storage_dir
+append :linked_dirs, "tmp/exports"
+
 # link the template dir specified in config/environments/produciton.rb config.templates_storage_dir
 append :linked_dirs, "tmp/templates"
 

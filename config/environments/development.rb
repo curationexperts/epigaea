@@ -56,5 +56,6 @@ Rails.application.configure do
 
   # Configure the drafts strorage directory
   config.drafts_storage_dir    = Rails.root.join('tmp', 'drafts')
+  config.exports_storage_dir   = Rails.root.join('tmp', 'exports')
   config.templates_storage_dir = Rails.root.join('tmp', 'templates')
 end
