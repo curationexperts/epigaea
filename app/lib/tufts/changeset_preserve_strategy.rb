@@ -14,8 +14,11 @@ module Tufts
     ChangesetApplicationStrategy.register(:preserve, self)
 
     ##
+    # @todo Refactor me!
     # @see ChangesetApplicationStrategy#apply
-    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/BlockLength
+    # rubocop:disable Metrics/BlockNesting, Metrics/PerceivedComplexity
+    # rubocop:disable Metrics/CyclomaticComplexity
     def apply
       changeset.changes.each do |predicate, graph|
         config = config_for(predicate: predicate)
@@ -27,13 +30,20 @@ module Tufts
 
         property, config = config
 
+        # Sorry about this terrible code. See the chart in the class docs for
+        # a behavior spec.
         graph.group_by(&:subject).each do |subject, statements|
           if subject == model.rdf_subject
             values = statements.map(&:object).to_a
 
             if config.multiple?
               values += model.public_send(property).to_a
-              model.public_send("#{property}=".to_sym, values)
+              if config.term == :title
+                model.public_send("#{property}=".to_sym, [values.first]) if
+                  model.public_send(property).empty?
+              else
+                model.public_send("#{property}=".to_sym, values)
+              end
             else
               old_value = model.public_send(property)
               model.public_send("#{property}=".to_sym, values.first) unless
