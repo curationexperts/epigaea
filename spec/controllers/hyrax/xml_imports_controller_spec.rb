@@ -62,6 +62,8 @@ RSpec.describe Hyrax::XmlImportsController, type: :controller do
   describe 'PATCH #update' do
     let(:params) { { id: import.id, uploaded_files: file_ids } }
 
+    before { ActiveJob::Base.queue_adapter = :test }
+
     context 'when files cannot be found' do
       let(:file_ids) { ['38', '91', '1234'] }
 
@@ -120,8 +122,6 @@ RSpec.describe Hyrax::XmlImportsController, type: :controller do
          FactoryGirl.create(:hyrax_uploaded_file,
                             file: File.open('spec/fixtures/files/2.pdf'))]
       end
-
-      before { ActiveJob::Base.queue_adapter = :test }
 
       it 'enqueues jobs for the matching file' do
         expect { patch :update, params: params }
