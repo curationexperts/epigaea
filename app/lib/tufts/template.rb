@@ -73,6 +73,11 @@ module Tufts
     def apply_to(model:)
       changeset_for_model = load_with_model(model)
 
+      # ActiveTriples::RDFSource#dup isn't good enough to keep us to prevent
+      # changes from being applied, so we reload.
+      # @see https://github.com/ActiveTriples/ActiveTriples/issues/265
+      model.reload if model.persisted?
+
       Tufts::ChangesetApplicationStrategy
         .for(behavior, model: model, changeset: changeset_for_model)
         .apply
