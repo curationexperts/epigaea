@@ -12,6 +12,8 @@ RSpec.describe Tufts::MetadataExporter do
         'some super fake metadata'
       end
 
+      def add(*); end
+
       def build
         fake_metadata
       end
