@@ -12,8 +12,8 @@ RSpec.describe Tufts::ChangesetPreserveStrategy do
 
       it 'applies the changes to empty field' do
         expect { strategy.apply }
-          .to change { model.title.to_a }
-          .to contain_exactly('moomin', 'moominmama', 'snork')
+          .to change { model.subject.to_a }
+          .to contain_exactly('too-ticky', 'snufkin')
       end
 
       it 'updates changed attributes' do
@@ -23,11 +23,11 @@ RSpec.describe Tufts::ChangesetPreserveStrategy do
       end
 
       it 'merges existing values' do
-        model.title = ['snufkin']
+        model.subject = ['hobgoblin']
 
         expect { strategy.apply }
-          .to change { model.title.to_a }
-          .to contain_exactly('moomin', 'moominmama', 'snork', 'snufkin')
+          .to change { model.subject.to_a }
+          .to contain_exactly('hobgoblin', 'too-ticky', 'snufkin')
       end
 
       it 'leaves existing values unchanged for fields not in the changeset' do
@@ -50,6 +50,20 @@ RSpec.describe Tufts::ChangesetPreserveStrategy do
         expect { strategy.apply }
           .not_to change { model.single_value }
           .from 'snufkin'
+      end
+
+      it 'applies one value to empty title field' do
+        expect { strategy.apply }
+          .to change { model.title.to_a.count }
+          .to eq 1
+      end
+
+      it 'retains the value in an existing title field' do
+        model.title = ['snufkin']
+
+        expect { strategy.apply }
+          .not_to change { model.title.to_a }
+          .from a_collection_containing_exactly('snufkin')
       end
     end
   end

@@ -36,6 +36,8 @@ module Tufts
           if subject == model.rdf_subject
             values = statements.map(&:object)
             values = values.first unless config.multiple?
+            values = [values.first] if config.term == :title
+
             model.send("#{property}=".to_sym, values)
           else
             model.resource.insert(*statements)

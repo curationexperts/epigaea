@@ -77,8 +77,8 @@ RSpec.describe Tufts::Draft do
 
       it 'applies the changes' do
         expect { draft.apply }
-          .to change { model.title.to_a }
-          .to contain_exactly('moomin', 'moominmama', 'snork')
+          .to change { model.subject.to_a }
+          .to contain_exactly('too-ticky')
       end
 
       it 'updates changed attributes' do
