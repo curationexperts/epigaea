@@ -37,11 +37,11 @@ module Tufts
             values = statements.map(&:object).to_a
 
             if config.multiple?
-              values += model.public_send(property).to_a
               if config.term == :title
                 model.public_send("#{property}=".to_sym, [values.first]) if
                   model.public_send(property).empty?
               else
+                values += model.public_send(property).to_a
                 model.public_send("#{property}=".to_sym, values)
               end
             else

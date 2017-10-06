@@ -53,12 +53,14 @@ module Tufts
       # @return [RDF::Graph]
       def changed_graph(statements, model)
         graph = model.resource.dup
+        graph.set_persistence_strategy(ActiveTriples::RepositoryStrategy)
+        graph.persistence_strategy.graph = model.resource.graph.dup
 
         grouped = statements.group_by do |statement|
           statement.subject.to_base + statement.predicate.to_base
         end
 
-        grouped.each do |_, sts|
+        grouped.each_value do |sts|
           graph.update(sts.pop)
           graph.insert(*sts)
         end
