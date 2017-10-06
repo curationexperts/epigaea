@@ -10,7 +10,7 @@
 
 <%= f.text_field :bibliographic_citation, label: 'Bibliographic Citation', help_block: '<b>Optional</b> - the bibliographic citation field may be left blank'.html_safe %>
 
-<%= other_authors_fields(@contribution, f) %>
+<%= react_component('ContributeOtherAuthors', {}, {camelize_props: true}) %>
 
 <%= f.select :embargo_note, standard_embargos,  label: 'Embargo'  %>
 

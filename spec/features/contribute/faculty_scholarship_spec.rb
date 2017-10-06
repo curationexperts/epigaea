@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'ffaker'
 include Warden::Test::Helpers
 
-RSpec.feature 'submit a Faculty Scholarship contribution' do
+RSpec.feature 'submit a Faculty Scholarship contribution', js: true do
   let(:user) { FactoryGirl.create(:user) }
   let(:csv_path) { Rails.root.join('config', 'deposit_type_seed.csv').to_s }
   let(:importer) { DepositTypeImporter.new(csv_path) }
@@ -20,6 +20,7 @@ RSpec.feature 'submit a Faculty Scholarship contribution' do
     fill_in 'Contributor', with: FFaker::Book.author
     fill_in 'Bibliographic Citation', with: FFaker::Book.title
     fill_in 'Short Description', with: FFaker::Book.description
+    click_button 'Add Another Author'
     click_button 'Agree & Deposit'
     expect(page).to have_content 'Your deposit has been submitted for approval.'
   end
