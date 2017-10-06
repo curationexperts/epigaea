@@ -11,7 +11,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
     let(:depositing_user) { FactoryGirl.create(:user) }
     let(:admin) { FactoryGirl.create(:admin) }
     let(:title) { FFaker::Movie.title }
-    let(:short_description) { FFaker::Book.description }
+    let(:short_description) { FFaker::Lorem.paragraphs(6).join("\n") }
     before do
       importer = DepositTypeImporter.new('./config/deposit_type_seed.csv')
       importer.import_from_csv
@@ -27,11 +27,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       attach_file('contribution_attachment', File.absolute_path(file_fixture('pdf-sample.pdf')))
       fill_in "Title", with: title
       fill_in "Contributor", with: depositing_user.display_name
-<<<<<<< HEAD:spec/features/undergrad_scholarship_contribute_spec.rb
-      fill_in "Short Description", with: FFaker::Lorem.paragraphs + FFaker::Lorem.paragraphs
-=======
       fill_in "Short Description", with: short_description
->>>>>>> Persist description and bibliographic citation to PDFs where they were missing:spec/features/contribute/undergrad_scholarship_contribute_spec.rb
       click_button "Agree & Deposit"
       created_pdf = Pdf.last
       expect(created_pdf.title.first).to eq title
@@ -40,7 +36,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"
       expect(created_pdf.visibility).to eq Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
-      expect(created_pdf.description.first).to eq short_description
+      expect(created_pdf.description.first[0...100]).to eq short_description[0...100]
       # Check notifications for depositing user
       login_as depositing_user
       visit("/notifications?locale=en")
