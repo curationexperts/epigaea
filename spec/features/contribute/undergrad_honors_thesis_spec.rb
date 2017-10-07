@@ -8,6 +8,7 @@ RSpec.feature 'submit an Undergraduate Honors Thesis contribution', js: true do
   let(:csv_path) { Rails.root.join('config', 'deposit_type_seed.csv').to_s }
   let(:importer) { DepositTypeImporter.new(csv_path) }
   let(:pdf_path) { Rails.root.join('spec', 'fixtures', 'hello.pdf') }
+  let(:short_description) { FFaker::Book.description }
 
   before do
     login_as user
@@ -21,6 +22,7 @@ RSpec.feature 'submit an Undergraduate Honors Thesis contribution', js: true do
     attach_file('PDF to upload', pdf_path)
     fill_in 'Thesis title', with: FFaker::Book.title
     fill_in 'Contributor', with: FFaker::Book.author
+    fill_in "Short Description", with: short_description
 
     # Test department autocomplete
     fill_in 'Department', with: 'geol'

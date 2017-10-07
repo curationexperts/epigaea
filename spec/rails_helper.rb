@@ -7,6 +7,8 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
+require 'capybara/rspec'
+require 'capybara-screenshot/rspec'
 require 'capybara/poltergeist'
 require 'database_cleaner'
 require 'active_fedora/cleaner'
@@ -35,6 +37,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 # Uses faster rack_test driver when JavaScript support not needed
 Capybara.default_driver = :rack_test
+Capybara::Screenshot.autosave_on_failure = false
 
 # Adding the below to deal with random Capybara-related timeouts in CI.
 # Found in this thread: https://github.com/teampoltergeist/poltergeist/issues/375

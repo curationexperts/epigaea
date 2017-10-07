@@ -28,6 +28,11 @@ class GenericTischDeposit < Contribution
     @tufts_pdf
   end
 
+  def copy_attributes
+    @tufts_pdf.description = [description] if description
+    super
+  end
+
   def parent_collection
     nil
   end
