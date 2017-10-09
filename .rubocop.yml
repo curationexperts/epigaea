@@ -20,6 +20,7 @@ RSpec/ExampleLength:
    Exclude:
     - 'spec/features/**/*'
     - 'spec/controllers/tufts/draft_controller_spec.rb'
+    - 'spec/controllers/tufts/publication_status_controller_spec.rb'
     - 'spec/lib/import_export/deposit_type_importer_spec.rb'
     - 'spec/lib/import_export/deposit_type_exporter_spec.rb'
     - 'spec/lib/deposit_types_controller_spec.rb'
@@ -33,6 +34,7 @@ RSpec/AnyInstance:
 RSpec/MultipleExpectations:
   Exclude:
   - 'spec/controllers/contribute_controller_spec.rb'
+  - 'spec/controllers/tufts/publication_status_controller_spec.rb'
   - 'spec/features/**/*'
   - 'spec/lib/tufts/workflow_setup_spec.rb'
   - 'spec/services/**/*'
