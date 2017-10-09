@@ -10,7 +10,7 @@ RSpec.feature 'Manage Deposit Types link in dashboard sidebar', :clean do
 
     scenario do
       visit '/dashboard'
-      expect(page).to have_content "Manage self-deposit types"
+      expect(page).to have_content "Manage Self-Deposit Types"
     end
   end
 end
