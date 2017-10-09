@@ -4,7 +4,9 @@ module Tufts
   # `Hyrax::UploadedFile` and an associated `XmlImport`.
   #
   # @example
-  #   ImportService.new
+  #   ImportService.import_object!(import:    my_import,
+  #                                file:      import_file,
+  #                                object_id: 'a_fedora_id')
   class ImportService
     ##
     # @!attribute file [rw]
