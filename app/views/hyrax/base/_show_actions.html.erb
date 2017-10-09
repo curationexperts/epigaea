@@ -25,6 +25,10 @@
     <li>
           <%= link_to 'Mark as Reviewed', "/qr_statuses/#{presenter.id}/set_status", class: 'btn btn-default mark-as-reviewed' , method: :post, remote: true %>
         </li>
+
+        <li>
+          <%= link_to 'Publish', "/publication_statuses/#{presenter.id}/publish", class: 'btn btn-default publish' , method: :post, remote: true %>
+        </li>
   <% end %>
 
   <!-- if presenter.work_templatable? && presenter.editor? -->
@@ -32,7 +36,7 @@
   <li>
     <%= link_to "Apply Template", main_app.new_template_update_path(ids: [presenter.id]), class: 'btn btn-default' %>
   </li>
-  
+
   <% end %>
 
   <% if presenter.work_featurable? %>
