@@ -52,5 +52,22 @@ RSpec.feature 'Create a Faculty Scholarship self contribution', :clean, js: true
       expect(find_by_id("pdf_description").value).to eq abstract
       expect(find_by_id("pdf_bibliographic_citation").value).to eq bibliographic_citation
     end
+
+    scenario "normalize spaces in entered fields" do
+      visit '/contribute'
+      select 'Faculty Scholarship', from: 'deposit_type'
+      click_button "Begin"
+      attach_file('contribution_attachment', File.absolute_path(file_fixture('pdf-sample.pdf')))
+      fill_in "Title", with: " Space   non normalized \n  title    "
+      fill_in "Contributor", with: " Name   with  Spaces "
+      fill_in "Short Description", with: " A short   description    with  wonky spaces   "
+      fill_in "Bibliographic Citation", with: " bibliographic   citation  \n with     spaces    "
+      click_button "Agree & Deposit"
+      created_pdf = Pdf.last
+      expect(created_pdf.title.first).to eq "Space non normalized title"
+      expect(created_pdf.contributor.first).to eq "Name with Spaces"
+      expect(created_pdf.description.first).to eq "A short description with wonky spaces"
+      expect(created_pdf.bibliographic_citation.first).to eq "bibliographic citation with spaces"
+    end
   end
 end

@@ -158,4 +158,30 @@ describe ContributeController do
       end
     end
   end
+
+  describe 'normalize spaces before passing them to object creation methods' do
+    let(:params) do
+      {
+        "utf8" => "✓",
+        "contribution" =>
+        {
+          "title" => " Space   non normalized  \t title    ",
+          "creator" => " Name   with  Spaces ",
+          "bibliographic_citation" => " bibliographic   citation   with     spaces    ",
+          "embargo_note" => "0",
+          "description" => " A short   description \n   with  wonky spaces   "
+        },
+        "deposit_type" => "1",
+        "commit" => "Agree & Deposit",
+        "controller" => "contribute",
+        "action" => "create"
+      }
+    end
+    it "normalizes the text in the params hash" do
+      described_class.new.normalize_whitespace(params)
+      expect(params["contribution"]["title"]).to eq "Space non normalized title"
+      expect(params["contribution"]["creator"]).to eq "Name with Spaces"
+      expect(params["contribution"]["description"]).to eq "A short description with wonky spaces"
+    end
+  end
 end
