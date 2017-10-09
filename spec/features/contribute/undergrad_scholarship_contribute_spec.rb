@@ -36,7 +36,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"
       expect(created_pdf.visibility).to eq Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
-      expect(created_pdf.description.first[0...100]).to eq short_description[0...100]
+      expect(created_pdf.description.first[0...10]).to eq short_description[0...10]
       # Check notifications for depositing user
       login_as depositing_user
       visit("/notifications?locale=en")
@@ -47,7 +47,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       expect(page).to have_content(title)
       expect(page).to have_content(short_description)
       visit("/concern/pdfs/#{created_pdf.id}/edit")
-      expect(find_by_id("pdf_description").value).to eq short_description
+      expect(find_by_id("pdf_description").value[0...10]).to eq short_description[0...10]
     end
   end
 end

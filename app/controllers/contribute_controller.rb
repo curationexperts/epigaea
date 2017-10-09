@@ -16,6 +16,7 @@ class ContributeController < ApplicationController
   end
 
   def create
+    normalize_whitespace(params)
     @contribution = @deposit_type.contribution_class.new(
       params[:contribution].merge(deposit_type: @deposit_type).merge(depositor: current_user.user_key)
     )
@@ -25,6 +26,16 @@ class ContributeController < ApplicationController
       redirect_to contributions_path
     else
       render :new
+    end
+  end
+
+  # Go through the params hash and normalize whitespace before handing it off to
+  # object creation
+  # @param [ActionController::Parameters] params
+  def normalize_whitespace(params)
+    params["contribution"].keys.each do |key|
+      next unless params["contribution"][key].class == String
+      params["contribution"][key] = params["contribution"][key].gsub(/\s+/, " ").strip
     end
   end
 
