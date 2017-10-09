@@ -1,9 +1,12 @@
 class XmlImport < ApplicationRecord
   ##
   # @!attribute metadata_file [rw]
+  #   The uploaded metadata file.
+  #
+  #   Set with `import.metadata_file = File.open('path/to/file')`
+  #
   #   @return [Tufts::MetadataFileUploader]
   #   @see CarrierWave::Uploader::Base
-  #   @note Set with `import.metadata_file = File.open('path/to/file')`
   mount_uploader :metadata_file, Tufts::MetadataFileUploader
 
   validates :metadata_file, presence: true
