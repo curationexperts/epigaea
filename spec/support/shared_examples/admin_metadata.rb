@@ -58,11 +58,6 @@ shared_examples 'and has admin metadata attributes' do
       .to match(/purl.org\/dc\/terms\/accrualPolicy/)
   end
 
-  it 'has license' do
-    work.license = ['A license DCA Detailed Rights']
-    expect(work.resource.dump(:ttl)).to match(/purl.org\/dc\/terms\/rights/)
-  end
-
   it 'has rights note' do
     work.rights_note = 'A note about DCA Detailed Rights'
     expect(work.resource.dump(:ttl))
@@ -116,5 +111,11 @@ shared_examples 'and has admin metadata attributes' do
     work.tufts_is_part_of = ['A greater whole']
     expect(work.resource.dump(:ttl))
       .to match(/dl.tufts.edu\/terms#tuftsIsPartOf/)
+  end
+
+  it 'has a Tufts license field' do
+    work.tufts_license = ['An example tufts license']
+    expect(work.resource.dump(:ttl))
+      .to match(/purl.org\/dc\/terms\/rights/)
   end
 end

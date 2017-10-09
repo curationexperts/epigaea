@@ -13,7 +13,7 @@ class Contribution
 
   self.ignore_attributes = [:attachment]
 
-  self.attributes = [:title, :description, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :license, :embargo_note]
+  self.attributes = [:title, :description, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :tufts_license, :embargo_note]
 
   SELFDEP = 'selfdep'.freeze
 
@@ -81,7 +81,7 @@ protected
         @tufts_pdf.public_send(attribute, attribute)
       end
     end
-    @tufts_pdf.license = license_data(@tufts_pdf)
+    @tufts_pdf.tufts_license = license_data(@tufts_pdf)
     insert_embargo_date
   end
 
@@ -90,9 +90,9 @@ protected
   end
 
   def license_data(contribution)
-    return contribution.license unless @deposit_type
-    contribution.license = Array(contribution.license)
-    contribution.license << @deposit_type.license_name
+    return contribution.tufts_license unless @deposit_type
+    contribution.tufts_license = Array(contribution.license)
+    contribution.tufts_license << @deposit_type.license_name
   end
 
   def insert_embargo_date

@@ -15,7 +15,7 @@ RSpec.describe Tufts::DraftController, type: :controller do
       post :save_draft, params: { "id" => model.id, "pdf" => { "title" => "another test thing ", "displays_in" => ["nowhere"],
                                                                "representative_id" => "0z708w40c", "thumbnail_id" => "0z708w40c",
                                                                "creator" => [""], "contributor" => [""], "description" => [""], "keyword" => [""],
-                                                               "license" => "#<ActiveTriples::Relation:0x007faba5ea15c0>", "rights_statement" => "",
+                                                               "tufts_license" => [""], "rights_statement" => "",
                                                                "publisher" => [""], "date_created" => [""], "subject" => [""], "language" => [""],
                                                                "identifier" => [""], "based_near_attributes" => { "0" => { "hidden_label" => "",
                                                                                                                            "id" => "",
