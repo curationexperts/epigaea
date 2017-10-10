@@ -17,7 +17,7 @@ RSpec.feature 'deposit and publication' do
       env = Hyrax::Actors::Environment.new(work, current_ability, attributes)
       Hyrax::CurationConcern.actor.create(env)
     end
-    scenario "non-admin user deposits, admin publishes" do
+    scenario "non-admin user deposits, admin publishes", js: true do
       # All works go to the default admin set, which uses the mira_publication_workflow
       expect(work.active_workflow.name).to eq "mira_publication_workflow"
 
@@ -57,11 +57,21 @@ RSpec.feature 'deposit and publication' do
         "comment_only"
       )
 
+      # Check it appears as waiting for review in the admin dashboard
+      visit("/admin/workflows#under-review")
+      expect(page).to have_content work.title.first
+
       # The admin user approves the work, changing its status to "published"
       subject = Hyrax::WorkflowActionInfo.new(work, publishing_user)
       sipity_workflow_action = PowerConverter.convert_to_sipity_action("publish", scope: subject.entity.workflow) { nil }
       Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Published in publication_workflow_spec.rb")
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
+
+      # Check it appears as published in the admin dashboard
+      visit("/admin/workflows#under-review")
+      expect(page).not_to have_content work.title.first
+      visit("/admin/workflows#published")
+      expect(page).to have_content work.title.first
 
       # Check notifications for publishing user
       visit("/notifications")
