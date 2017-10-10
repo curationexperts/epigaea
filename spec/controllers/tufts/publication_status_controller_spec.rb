@@ -23,16 +23,12 @@ RSpec.describe Tufts::PublicationStatusController, :workflow, type: :controller 
     it 'sets the workflow status to published' do
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
       post :publish, params: { "id" => work.id }
-      parsed_body = JSON.parse(response.body)
-      expect(parsed_body["published"]).to eq(true)
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
     end
     it 'sets the workflow status to unpublished' do
       post :publish, params: { "id" => work.id }
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
       post :unpublish, params: { "id" => work.id }
-      parsed_body = JSON.parse(response.body)
-      expect(parsed_body["unpublished"]).to eq(true)
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
     end
     it "gets the workflow status" do

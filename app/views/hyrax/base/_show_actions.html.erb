@@ -27,7 +27,17 @@
         </li>
 
         <li>
-          <%= link_to 'Publish', "/publication_statuses/#{presenter.id}/publish", class: 'btn btn-default publish' , method: :post, remote: true %>
+          <!-- If the work is unpublished, offer a publish button. If it is published, offer an unpublish button -->
+          <% if presenter.solr_document["workflow_state_name_ssim"] %>
+            <% workflow_state = presenter.solr_document["workflow_state_name_ssim"].first %>
+            <% if workflow_state == "unpublished" %>
+              <%= link_to 'Publish', "/publication_statuses/#{presenter.id}/publish", class: 'btn btn-default publish' , method: :post, remote: true %>
+            <% elsif workflow_state == "published" %>
+              <%= link_to 'Unpublish', "/publication_statuses/#{presenter.id}/unpublish", class: 'btn btn-default publish' , method: :post, remote: true %>
+            <% else %>
+              <b>Could not determine workflow state</b>
+            <% end %>
+          <% end %>
         </li>
   <% end %>
 

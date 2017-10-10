@@ -9,7 +9,8 @@ module Tufts
       subject = Hyrax::WorkflowActionInfo.new(work, current_user)
       sipity_workflow_action = PowerConverter.convert_to_sipity_action("publish", scope: subject.entity.workflow) { nil }
       Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Published by #{current_user}")
-      render json: { published: true }
+      flash[:notice] = "ID #{params[:id]} has been published."
+      redirect_back(fallback_location: root_path)
     end
 
     def unpublish
@@ -17,7 +18,8 @@ module Tufts
       subject = Hyrax::WorkflowActionInfo.new(work, current_user)
       sipity_workflow_action = PowerConverter.convert_to_sipity_action("unpublish", scope: subject.entity.workflow) { nil }
       Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Unpublished by #{current_user}")
-      render json: { unpublished: true }
+      flash[:notice] = "ID #{params[:id]} has been unpublished."
+      redirect_back(fallback_location: root_path)
     end
 
     def status
