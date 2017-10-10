@@ -1,32 +1,30 @@
-<li class="h5">Self Deposit</li>
-<%= menu.nav_link('/deposit_types') do %>
-<span class="sidebar-action-text">Manage self-deposit types</span>
-<% end %>
-
-<%= menu.nav_link('/contribute') do %>
-<span class="sidebar-action-text">Contribute new self-deposit item</span>
-<% end %>
-
-<li class="h5">Handle.net</li>
-<%= menu.nav_link('/handle/log.html') do %>
-<span class="sidebar-action-text">Handle.net Error Log</span>
-<% end %>
-
-<li class="h5">Import/Export</li>
-<%= menu.nav_link('/xml_imports/new') do %>
-<span class="sidebar-action-text">Import Archival Content</span>
-<% end %>
-
-<li class="h5">Templates</li>
-<%= menu.nav_link('/templates') do %>
-<span class="sidebar-action-text">Manage Metadata Templates</span>
-<% end %>
-
 <% if can? :review, :submissions %>
 <li class="h5"><%= t('hyrax.admin.sidebar.tasks') %></li>
 <%= menu.nav_link(hyrax.admin_workflows_path) do %>
-<span class="fa fa-flag"></span> <span class="sidebar-action-text"><%= t('hyrax.admin.sidebar.workflow_review') %></span>
+<span class="fa fa-flag"></span><span class="sidebar-action-text"><%= t('hyrax.admin.sidebar.workflow_review') %></span>
 <% end %>
+<% end %>
+
+<%= menu.nav_link('/deposit_types') do %>
+<span class="fa fa-list"></span><span class="sidebar-action-text">Manage Self-Deposit Types</span>
+<% end %>
+
+<%= menu.nav_link('/contribute') do %>
+<span class="fa fa-book"></span><span class="sidebar-action-text">New Self-Deposit Item</span>
+<% end %>
+
+<%= menu.nav_link('/handle/log.html') do %>
+<span class="fa fa-exclamation-triangle"></span><span class="sidebar-action-text">View Handle.net Error Log</span>
+<% end %>
+
+<%= menu.nav_link('/templates') do %>
+<span class="fa fa-list-alt"></span><span class="sidebar-action-text">Manage Metadata Templates</span>
+<% end %>
+
+<li class="h5">Import/Export</li>
+
+<%= menu.nav_link('/xml_imports/new') do %>
+<span class="fa fa-archive"></span><span class="sidebar-action-text">Import Archival Content</span>
 <% end %>
 
 <% if can? :manage, User %>
@@ -34,3 +32,4 @@
 <span class="fa fa-user"></span> <span class="sidebar-action-text"><%= t('hyrax.admin.sidebar.users') %></span>
 <% end %>
 <% end %>
+
