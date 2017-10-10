@@ -4,6 +4,7 @@ module Hyrax
   class VideoForm < Hyrax::Forms::WorkForm
     include Tufts::HasTranscriptForm
     self.model_class = ::Video
+    terms.delete(:license)
     self.terms += Tufts::Terms.shared_terms
     self.terms += [:transcript_id]
     self.required_fields = [:title, :displays_in]

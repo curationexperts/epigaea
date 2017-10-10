@@ -6,7 +6,7 @@ module Tufts
                     :internal_note, :audience, :embargo_note, :end_date, :accrual_policy,
                     :rights_note, :resource_type,
                     :bibliographic_citation, :rights_holder, :format_label, :replaces, :is_replaced_by,
-                    :has_format, :is_format_of, :has_part, :license,
+                    :has_format, :is_format_of, :has_part, :tufts_license,
                     :retention_period, :admin_start_date, :qr_status, :rejection_reason,
                     :qr_note, :creator_department, :legacy_pid, :spatial, :temporal, :extent,
                     :personal_name, :corporate_name, :genre, :provenance, :funder, :createdby, :tufts_is_part_of].freeze

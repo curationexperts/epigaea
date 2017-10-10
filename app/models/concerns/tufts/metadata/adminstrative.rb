@@ -60,6 +60,9 @@ module Tufts
         property :createdby, predicate: ::Tufts::Vocab::Terms.createdby, multiple: false do |index|
           index.as :stored_searchable, :facetable
         end
+        property :tufts_license, predicate: ::RDF::Vocab::DC.rights do |index|
+          index.as :stored_searchable
+        end
       end
 
       def mark_reviewed

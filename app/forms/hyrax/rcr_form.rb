@@ -3,6 +3,7 @@
 module Hyrax
   class RcrForm < Hyrax::Forms::WorkForm
     self.model_class = ::Rcr
+    terms.delete(:license)
     self.terms += Tufts::Terms.shared_terms
     self.required_fields = [:title, :displays_in]
     self.field_metadata_service = Tufts::MetadataService

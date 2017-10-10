@@ -14,7 +14,7 @@ class GisPoster < GenericTischDeposit
     @tufts_pdf.title = [title]
     @tufts_pdf.description = description
     @tufts_pdf.creator = [(send(:creator) unless send(:creator).nil?)]
-    @tufts_pdf.license = license_data(@tufts_pdf)
+    @tufts_pdf.tufts_license = license_data(@tufts_pdf)
     @tufts_pdf.corporate_name = corpname
     @tufts_pdf.subject = (send(:topics).nil? ? [] : Array(send(:topics))) + (send(:methodological_keywords).nil? ? [] : Array(send(:methodological_keywords)))
     @tufts_pdf.geographic_name = Array(send(:geonames)) unless send(:geonames).nil?
