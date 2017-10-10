@@ -20,6 +20,8 @@ RSpec.feature 'Create a Faculty Scholarship self contribution', :clean, js: true
       Pdf.delete_all
       Hyrax::UploadedFile.delete_all
       login_as user
+      user.display_name = "     Name   with   Spaces    "
+      user.save
     end
 
     scenario "a new user contributes faculty scholarship" do
@@ -28,14 +30,13 @@ RSpec.feature 'Create a Faculty Scholarship self contribution', :clean, js: true
       click_button "Begin"
       attach_file('contribution_attachment', File.absolute_path(file_fixture('pdf-sample.pdf')))
       fill_in "Title", with: title
-      fill_in "Contributor", with: user.display_name
       fill_in "Bibliographic Citation", with: bibliographic_citation
       # fill_in "Other authors", with: other_author
       fill_in "Short Description", with: abstract
       click_button "Agree & Deposit"
       created_pdf = Pdf.last
       expect(created_pdf.title.first).to eq title
-      expect(created_pdf.contributor.first).to eq user.display_name
+      expect(created_pdf.contributor.first).to eq "Name with Spaces"
       expect(created_pdf.depositor).to eq user.user_key
       expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"
@@ -59,7 +60,6 @@ RSpec.feature 'Create a Faculty Scholarship self contribution', :clean, js: true
       click_button "Begin"
       attach_file('contribution_attachment', File.absolute_path(file_fixture('pdf-sample.pdf')))
       fill_in "Title", with: " Space   non normalized \n  title    "
-      fill_in "Contributor", with: " Name   with  Spaces "
       fill_in "Short Description", with: " A short   description    with  wonky spaces   "
       fill_in "Bibliographic Citation", with: " bibliographic   citation  \n with     spaces    "
       click_button "Agree & Deposit"

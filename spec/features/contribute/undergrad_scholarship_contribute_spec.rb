@@ -26,7 +26,6 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       click_button "Begin"
       attach_file('contribution_attachment', File.absolute_path(file_fixture('pdf-sample.pdf')))
       fill_in "Title", with: title
-      fill_in "Contributor", with: depositing_user.display_name
       fill_in "Short Description", with: short_description
       click_button "Agree & Deposit"
       created_pdf = Pdf.last

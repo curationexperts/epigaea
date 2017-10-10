@@ -6,6 +6,6 @@
 <% if @contribution.creator.nil? %>
    <% contributor = current_user.display_name  %>
 <% end %>
-<%= f.text_field :creator, label: 'Contributor', value: contributor, required: true  %>
+<%= f.text_field :creator, label: 'Contributor', value: contributor, required: true, readonly: 'readonly'   %>
 
 <%= f.text_area :description, label: 'Short Description', help_block: 'Please limit description to 2000 characters or less.', rows: 5, class: 'col-sm-8'  %>

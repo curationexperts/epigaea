@@ -24,7 +24,6 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       click_button "Begin"
       attach_file('contribution_attachment', File.absolute_path(file_fixture('pdf-sample.pdf')))
       fill_in "Capstone Project Title", with: title
-      fill_in "Contributor", with: user.display_name
       select 'Master of Arts', from: 'contribution_degree'
       fill_in "Short Description", with: FFaker::Lorem.paragraph
       click_button "Agree & Deposit"
