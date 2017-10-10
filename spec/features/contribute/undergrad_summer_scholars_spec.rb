@@ -17,7 +17,6 @@ RSpec.feature 'submit an Undergraduate Summer Scholars contribution' do
     click_button 'Begin'
     attach_file('PDF to upload', pdf_path)
     fill_in 'Title', with: FFaker::Book.title
-    fill_in 'Contributor', with: FFaker::Book.author
     fill_in 'Short Description', with: FFaker::Book.description
     click_button 'Agree & Deposit'
     expect(page).to have_content 'Your deposit has been submitted for approval.'

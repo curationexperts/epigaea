@@ -17,7 +17,6 @@ RSpec.feature 'submit a Faculty Scholarship contribution', js: true do
     click_button 'Begin'
     attach_file('PDF to upload', pdf_path)
     fill_in 'Title', with: FFaker::Book.title
-    fill_in 'Contributor', with: FFaker::Book.author
     fill_in 'Bibliographic Citation', with: FFaker::Book.title
     fill_in 'Short Description', with: FFaker::Book.description
     click_button 'Add Another Author'

@@ -6,7 +6,7 @@
 <% if @contribution.creator.nil? %>
    <% contributor = current_user.display_name  %>
 <% end %>
-<%= f.text_field :creator, label: 'Contributor', value: contributor, required: true  %>
+<%= f.text_field :creator, label: 'Contributor', value: contributor, required: true, readonly: 'readonly' %>
 
 <%= f.text_field :bibliographic_citation, label: 'Bibliographic Citation', help_block: '<b>Optional</b> - the bibliographic citation field may be left blank'.html_safe %>
 

@@ -21,7 +21,6 @@ RSpec.feature 'submit an Undergraduate Honors Thesis contribution', js: true do
     click_button 'Begin'
     attach_file('PDF to upload', pdf_path)
     fill_in 'Thesis title', with: FFaker::Book.title
-    fill_in 'Contributor', with: FFaker::Book.author
     fill_in "Short Description", with: short_description
 
     # Test department autocomplete

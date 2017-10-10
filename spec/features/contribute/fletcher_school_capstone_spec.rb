@@ -17,7 +17,6 @@ RSpec.feature 'submit a Fletcher School Capstone Project contribution' do
     click_button 'Begin'
     attach_file('PDF to upload', pdf_path)
     fill_in 'Capstone Project Title', with: FFaker::Book.title
-    fill_in 'Contributor', with: FFaker::Book.author
     select 'Master of Arts', from: 'Degree'
     fill_in 'Short Description', with: FFaker::Book.description
     click_button 'Agree & Deposit'
