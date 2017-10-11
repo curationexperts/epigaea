@@ -13,7 +13,10 @@ class BatchTask < ApplicationRecord
   #   @return [String]
   has_one :batch, as: :batchable
 
-  BATCH_TYPES = { publish: PublishJob }.freeze
+  BATCH_TYPES = {
+    publish: PublishJob,
+    unpublish: UnpublishJob
+  }.freeze
 
   validates :batch_type,
             inclusion: { in: BATCH_TYPES.keys.map { |t| t.capitalize.to_s } }
