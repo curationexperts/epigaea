@@ -63,6 +63,9 @@
       </li>
   <% end %>
 
+   <li>
+          <%= link_to 'View Metadata', "#{request.path}.ttl", class: 'btn btn-default show-metadata' %>
+        </li>
   </ul>
 <!-- COinS hook for Zotero -->
   <span class="Z3988" title="<%= export_as_openurl_ctx_kev(presenter) %>"></span>
