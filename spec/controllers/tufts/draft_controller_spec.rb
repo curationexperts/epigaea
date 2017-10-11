@@ -23,7 +23,7 @@ RSpec.describe Tufts::DraftController, type: :controller do
                                                                "related_url" => [""], "source" => [""], "geographic_name" => [""], "held_by" => [""],
                                                                "alternative_title" => [""], "abstract" => [""], "table_of_contents" => [""],
                                                                "primary_date" => [""], "date_accepted" => [""], "date_available" => [""],
-                                                               "date_copyrighted" => [""], "date_issued" => [""], "steward" => "", "created_by" => "",
+                                                               "date_copyrighted" => [""], "date_issued" => [""], "steward" => "",
                                                                "internal_note" => "", "audience" => "", "embargo_note" => "", "end_date" => "",
                                                                "accrual_policy" => "", "rights_note" => "", "resource_type" => [""],
                                                                "admin_set_id" => "admin_set/default", "member_of_collection_ids" => [""],
