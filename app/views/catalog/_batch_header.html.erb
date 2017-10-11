@@ -9,6 +9,9 @@
     <%= button_to "Publish", batches_path, method: :post, params: { batch: { batchable_attributes: { batch_type: "Publish" } } }, class: "btn btn-primary submits-batches" %>
   </li>
   <li>
+    <%= button_to "Unpublish", batches_path, method: :post, params: { batch: { batchable_attributes: { batch_type: "Unpublish" } } }, class: "btn btn-primary submits-batches" %>
+  </li>
+  <li>
     <%= button_to "Export Metadata", metadata_exports_path, method: :post, class: "btn btn-primary submits-batches" %>
   </li>
   <li class="selected-documents">
