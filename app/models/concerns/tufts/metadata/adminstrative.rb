@@ -12,9 +12,6 @@ module Tufts
         property :steward, predicate: ::Tufts::Vocab::Terms.steward, multiple: false do |index|
           index.as :stored_searchable
         end
-        property :created_by, predicate: ::Tufts::Vocab::Terms.created_by, multiple: false do |index|
-          index.as :stored_searchable
-        end
         property :internal_note, predicate: ::Tufts::Vocab::Terms.internal_note, multiple: false do |index|
           index.as :stored_searchable
         end

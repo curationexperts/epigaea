@@ -33,7 +33,6 @@ shared_examples 'a Tufts presenter' do
 
   describe "with admin attributes that are delegated to Solr" do
     it { is_expected.to delegate_method(:steward).to(:solr_document) }
-    it { is_expected.to delegate_method(:created_by).to(:solr_document) }
     it { is_expected.to delegate_method(:internal_note).to(:solr_document) }
     it { is_expected.to delegate_method(:audience).to(:solr_document) }
     it { is_expected.to delegate_method(:end_date).to(:solr_document) }

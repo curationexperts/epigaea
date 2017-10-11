@@ -10,7 +10,7 @@ shared_examples 'a form with Tufts metadata attributes' do
         .to include(:displays_in, :geographic_name, :held_by,
                     :alternative_title, :abstract, :table_of_contents,
                     :primary_date, :date_accepted, :date_available,
-                    :date_copyrighted, :date_issued, :steward, :created_by,
+                    :date_copyrighted, :date_issued, :steward,
                     :internal_note, :audience, :embargo_note, :end_date,
                     :accrual_policy, :tufts_license, :rights_note, :resource_type,
                     :bibliographic_citation, :rights_holder, :format_label,
@@ -20,7 +20,7 @@ shared_examples 'a form with Tufts metadata attributes' do
 
     it 'has Tufts admin terms' do
       expect(form.terms)
-        .to include(:steward, :created_by, :internal_note, :audience, :end_date,
+        .to include(:steward, :internal_note, :audience, :end_date,
                     :accrual_policy, :tufts_license, :retention_period,
                     :admin_start_date, :qr_status, :rejection_reason, :qr_note,
                     :creator_department, :legacy_pid, :personal_name,

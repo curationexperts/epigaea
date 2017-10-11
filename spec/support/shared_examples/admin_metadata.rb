@@ -24,11 +24,6 @@ shared_examples 'and has admin metadata attributes' do
     expect(work.resource.dump(:ttl)).to match(/dl.tufts.edu\/terms#steward/)
   end
 
-  it 'has created_by' do
-    work.created_by = 'an individual'
-    expect(work.resource.dump(:ttl)).to match(/dl.tufts.edu\/terms#createdBy/)
-  end
-
   it 'has internal_note' do
     work.internal_note = 'An internal note'
     expect(work.resource.dump(:ttl))
