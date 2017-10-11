@@ -40,7 +40,7 @@ module Tufts
     ##
     # @return [Hash<String, String>]
     def namespaces
-      PROPERTIES.each_with_object({}) do |node_config, hsh|
+      @namespaces ||= PROPERTIES.each_with_object({}) do |node_config, hsh|
         predicate = node_config.predicate
         ns, name  = predicate.qname
         next if ns.nil?

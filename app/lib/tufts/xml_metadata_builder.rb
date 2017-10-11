@@ -18,7 +18,8 @@ module Tufts
 
     ##
     # @return [String] the built metadata for export
-    def build # rubocop:disable Metrics/MethodLength
+    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/BlockLength
+    def build
       @xml ||= Nokogiri::XML::Builder.new do |xml|
         xml.send(:'OAI-PMH',
                  'xmlns' => 'http://www.openarchives.org/OAI/2.0/') do
@@ -28,11 +29,28 @@ module Tufts
                 xml.metadata do
                   xml.mira_import(@mapping.namespaces) do
                     @mapping.map do |field|
-                      values = object.send(field.property)
+                      if field.property == :id
+                        xml[field.namespace.to_s]
+                          .send(field.name, object.send(field.property))
+                        next
+                      end
+
+                      values = object.resource.get_values(field.property)
                       values = field.filter.call(values) if field.filter
 
                       Array(values).each do |value|
-                        xml[field.namespace.to_s].send(field.name, value)
+                        attributes = {}
+
+                        if value.respond_to? :to_term
+                          attributes[:uri] = value.to_term
+                          value            = value.rdf_label.first
+                        else
+                          datatype = RDF::Literal(value).datatype
+                          attributes[:datatype] = datatype unless
+                            datatype == RDF::XSD.string
+                        end
+
+                        xml[field.namespace.to_s].send(field.name, value, **attributes)
                       end
                     end
                   end
