@@ -79,6 +79,15 @@ Rails.application.routes.draw do
     end
   end
 
+  # Routes for managing publication status
+  resources :publication_statuses, controller: 'tufts/publication_status', only: [:publish, :unpublish, :status] do
+    member do
+      post 'publish'
+      post 'unpublish'
+      get 'status'
+    end
+  end
+
   resources :deposit_types do
     get 'export', on: :collection
   end
