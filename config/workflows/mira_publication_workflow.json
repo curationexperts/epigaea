@@ -3,7 +3,7 @@
         {
             "name": "mira_publication_workflow",
             "label": "Mira publication workflow",
-            "description": "A multi-step workflow for mediated deposit including review and publication steps. Reviewer may also send items back to the submitter.",
+            "description": "A mediated deposit workflow allowing application admins to publish selected content.",
             "allows_access_grant": false,
             "actions": [
                 {
