@@ -89,3 +89,5 @@ Rails.application.configure do
   config.exports_storage_dir   = Rails.root.join('tmp', 'exports')
   config.templates_storage_dir = Rails.root.join('tmp', 'templates')
 end
+
+Hyrax.config.derivatives_path = '/opt/derivatives'
