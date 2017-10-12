@@ -30,6 +30,25 @@ shared_examples 'a MetadataBuilder' do
         .to change { builder.build }
         .to include(*values)
     end
+
+    it 'adds datatypes' do
+      expect { builder.add(*objects) }
+        .to change { builder.build }
+        .to include('datatype=')
+    end
+
+    context 'with uris' do
+      before do
+        object.replaces = objects
+        object.save!
+      end
+
+      it 'handles uris' do
+        expect { builder.add(*objects) }
+          .to change { builder.build }
+          .to include "uri=\"#{object.rdf_subject}\""
+      end
+    end
   end
 
   describe '#build' do
