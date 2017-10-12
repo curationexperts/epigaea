@@ -42,7 +42,7 @@ Capybara::Screenshot.autosave_on_failure = false
 # Adding the below to deal with random Capybara-related timeouts in CI.
 # Found in this thread: https://github.com/teampoltergeist/poltergeist/issues/375
 poltergeist_options = {
-  js_errors: true,
+  js_errors: false,
   timeout: 30,
   logger: false,
   debug: false,

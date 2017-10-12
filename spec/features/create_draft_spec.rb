@@ -31,6 +31,14 @@ RSpec.feature 'Create and revert a draft', :clean, js: true do
       expect(page).to have_content('edited')
       click_on 'Revert Draft'
       expect(page).to have_content('published')
+      # Test to see if the draft has been deleted after saving the work
+      click_on 'Save Draft'
+      fill_in "Title", with: 'Example Title from Draft'
+      fill_in "Abstract", with: 'Another abstract'
+      sleep(1)
+      click_on 'Save'
+      click_on 'Edit'
+      expect(page).to have_content('published')
     end
   end
 end
