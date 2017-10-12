@@ -29,6 +29,7 @@ append :linked_files, "config/redis.yml"
 append :linked_files, "config/secrets.yml"
 append :linked_files, "config/solr.yml"
 append :linked_files, "config/handle.yml"
+append :linked_files, "config/honeybadger.yml"
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"

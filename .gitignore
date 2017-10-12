@@ -26,3 +26,6 @@ dump.rdb
 # Ignore Byebug command history file.
 .byebug_history
 *.log
+
+# Ignore honeybadger config
+config/honeybadger.yml
