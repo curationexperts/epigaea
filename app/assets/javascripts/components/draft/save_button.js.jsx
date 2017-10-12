@@ -7,6 +7,12 @@ var DraftSaveButton = React.createClass ({
         }
         return draftState
     },
+    componentDidMount: function() {
+        var draftSaveButton = this
+        $('#with_files_submit').on('click',function() {
+            draftSaveButton.delete()
+        })
+    },
     render: function () {
         return <ul className='drafts'>
         <li className='draft-button'>
