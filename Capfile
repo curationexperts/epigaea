@@ -39,3 +39,7 @@ require "capistrano/sidekiq"
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 
 require 'capistrano/honeybadger'
+
+# use whenever to manage cron jobs
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
