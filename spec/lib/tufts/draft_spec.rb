@@ -28,9 +28,12 @@ RSpec.describe Tufts::Draft do
   shared_context 'with changes' do
     subject(:draft) { described_class.new(model: model, changeset: changeset) }
 
+    let(:new_model) do
+      model_class.new(title: ['moomin', 'moominmama', 'snork'],
+                      subject: ['too-ticky'])
+    end
+
     let(:changeset) do
-      new_model = model_class.new(title: ['moomin', 'moominmama', 'snork'],
-                                  subject: ['too-ticky'])
       ActiveFedora::ChangeSet
         .new(new_model, new_model.resource, new_model.changed_attributes.keys)
     end
@@ -61,6 +64,37 @@ RSpec.describe Tufts::Draft do
       it 'remains unchanged when the model changes again' do
         expect { model.title = ['Snorkmaiden'] }
           .not_to change { draft.changeset.changes }
+      end
+    end
+  end
+
+  describe '#==' do
+    it 'is equal to self' do
+      expect(draft).to eq draft
+    end
+
+    it 'is equal when both are empty' do
+      expect(draft).to eq described_class.new(model: model)
+    end
+
+    it 'is not equal when models are different' do
+      expect(draft).not_to eq described_class.new(model: model_class.new)
+    end
+
+    context 'with changes' do
+      include_context 'with changes'
+
+      it 'is not equal to an empty draft' do
+        expect(draft).not_to eq described_class.new(model: model)
+      end
+
+      it 'is equal to a draft with the same changes' do
+        new_changeset =
+          ActiveFedora::ChangeSet
+          .new(new_model, new_model.resource, new_model.changed_attributes.keys)
+        other = described_class.new(model: model, changeset: new_changeset)
+
+        expect(draft).to eq other
       end
     end
   end
@@ -145,8 +179,7 @@ RSpec.describe Tufts::Draft do
       before { draft.save }
 
       it 'retains the changes' do
-        expect { draft.load }
-          .not_to change { draft.changeset.changes }
+        expect { draft.load }.not_to change { draft }
       end
 
       it 'reloads saved changes' do
