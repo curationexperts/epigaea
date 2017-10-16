@@ -2,15 +2,18 @@
   <h1>Batches</h1>
 
   <div class="batches">
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Batch Type</th>
-        <th>Creator</th>
-        <th>Created at</th>
-        <th>Items</th>
-        <th>Status</th>
-      </tr>
+    <table id="batch-table" class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Batch Type</th>
+          <th>Creator</th>
+          <th>Created at</th>
+          <th>Items</th>
+          <th>Status</th>
+        </tr>
+        <thead>
+        <tbody>
       <% @batches.each do |batch| %>
         <tr>
           <td class="batch_id"><%= link_to batch.id, batch.path %></td>
@@ -21,6 +24,10 @@
           <td class="status"><%= batch.status %></td>
         </tr>
       <% end %>
+       </tbody>
     </table>
+    <script>
+     $('#batch-table').DataTable()
+    </script>
   </div>
 </div>
