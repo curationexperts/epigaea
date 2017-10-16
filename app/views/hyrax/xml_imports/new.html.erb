@@ -1,6 +1,10 @@
+<% provide :page_title, construct_page_title(["Import New Objects"]) %>
+
 <h1> Archival Content Batch Import </h1>
 
 <%= form_for [main_app, @import] do |f| %>
-  <%= f.file_field :metadata_file, id: 'metadata_file' %>
-  <%= f.submit 'Next' %>
+    <div class='well' class='batch-import-container''>
+        <%= f.file_field :metadata_file, id: 'metadata_file' %>
+    </div>
+  <%= f.submit 'Next', class: 'btn btn-primary' %>
 <% end %>
