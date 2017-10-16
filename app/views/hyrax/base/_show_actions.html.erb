@@ -2,7 +2,7 @@
   <script>
     Tufts.qrStatus()
   </script>
-  <div class="panel panel-default">
+  <div class="panel panel-default work-actions">
     <div class="panel-heading">
       <h3 class="panel-title">Work Actions</h3>
     </div>
@@ -15,18 +15,18 @@
         <% end %>
         <% if presenter.editor? %>
         <li>
-          <%= link_to "Edit", edit_polymorphic_path([main_app, presenter]), class: 'btn btn-default' %>
+          <%= link_to raw("<i class='glyphicon glyphicon-pencil'></i> Edit"), edit_polymorphic_path([main_app, presenter]), class: 'btn btn-default' %>
         </li>
         <li>
-          <%= link_to "Delete", [main_app, presenter], class: 'btn btn-danger', data: { confirm: "Delete this #{presenter.human_readable_type}?" }, method: :delete %>
+          <%= link_to raw("<i class='glyphicon glyphicon-trash'></i> Delete"), [main_app, presenter], class: 'btn btn-danger', data: { confirm: "Delete this #{presenter.human_readable_type}?" }, method: :delete %>
         </li>
         <% if presenter.member_presenters.size > 1 %>
         <li>
-          <%= link_to t("hyrax.file_manager.link_text"), polymorphic_path([main_app, :file_manager, presenter]), class: 'btn btn-default' %>
+          <%= link_to raw('<i class="glyphicon glyphicon-folder-open"></i>') + t("hyrax.file_manager.link_text"), polymorphic_path([main_app, :file_manager, presenter]), class: 'btn btn-default' %>
         </li>
     <% end %>
         <li>
-          <%= link_to 'Mark as Reviewed', "/qr_statuses/#{presenter.id}/set_status", class: 'btn btn-default mark-as-reviewed' , method: :post, remote: true %>
+          <%= link_to raw('<i class="glyphicon glyphicon-check"></i>') + 'Mark as Reviewed', "/qr_statuses/#{presenter.id}/set_status", class: 'btn btn-default mark-as-reviewed' , method: :post, remote: true %>
         </li>
         
         <li>
@@ -34,9 +34,9 @@
           <% if presenter.solr_document["workflow_state_name_ssim"] %>
             <% workflow_state = presenter.solr_document["workflow_state_name_ssim"].first %>
             <% if workflow_state == "unpublished" %>
-              <%= link_to 'Publish', "/publication_statuses/#{presenter.id}/publish", class: 'btn btn-default publish' , method: :post, remote: true %>
+              <%= link_to raw('<i class="glyphicon glyphicon-eye-open"></i>')+'Publish', "/publication_statuses/#{presenter.id}/publish", class: 'btn btn-default publish' , method: :post, remote: true %>
             <% elsif workflow_state == "published" %>
-              <%= link_to 'Unpublish', "/publication_statuses/#{presenter.id}/unpublish", class: 'btn btn-default publish' , method: :post, remote: true %>
+              <%= link_to raw('<i class="glyphicon glyphicon-eye-close"></i>')+'Unpublish', "/publication_statuses/#{presenter.id}/unpublish", class: 'btn btn-default publish' , method: :post, remote: true %>
             <% else %>
               <b>Could not determine workflow state</b>
             <% end %>
@@ -47,27 +47,27 @@
   <!-- if presenter.work_templatable? && presenter.editor? -->
   <% if presenter.work_templatable? %>
   <li>
-    <%= link_to "Apply Template", main_app.new_template_update_path(ids: [presenter.id]), class: 'btn btn-default' %>
+    <%= link_to raw('<i class="glyphicon glyphicon-list-alt"></i>') + "Apply Template", main_app.new_template_update_path(ids: [presenter.id]), class: 'btn btn-default' %>
   </li>
 
   <% end %>
 
   <% if presenter.work_featurable? %>
   <li>
-      <%= link_to "Feature", hyrax.featured_work_path(presenter, format: :json),
+      <%= link_to raw('<i class="glyphicon glyphicon-star"></i>') + "Feature", hyrax.featured_work_path(presenter, format: :json),
           data: { behavior: 'feature' },
           class: presenter.display_unfeature_link? ? 'btn btn-default collapse' : 'btn btn-default' %>
       </li>
       <li>
 
-      <%= link_to "Unfeature", hyrax.featured_work_path(presenter, format: :json),
+      <%= link_to raw('<i class="glyphicon glyphicon-star-empty"></i>') + "Unfeature", hyrax.featured_work_path(presenter, format: :json),
           data: { behavior: 'unfeature' },
           class: presenter.display_feature_link? ? 'btn btn-default collapse' : 'btn btn-default' %>
       </li>
   <% end %>
 
    <li>
-          <%= link_to 'View Metadata', "#{request.path}.ttl", class: 'btn btn-default show-metadata' %>
+          <%= link_to  raw('<i class="glyphicon glyphicon-list"></i>') + 'View Metadata', "#{request.path}.ttl", class: 'btn btn-default show-metadata' %>
         </li>
       </ul>
     </div>
