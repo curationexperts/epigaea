@@ -9,7 +9,7 @@ module Tufts
     # @!attribute [rw] apply_strategy
     #   @return [Tufts::ChangesetOverwriteStrategy]
     # @!attribute [rw] changeset
-    #   @return [ActiveFedora::Changeset]
+    #   @return [ActiveFedora::ChangeSet]
     # @!attribute [rw] id
     #   @return [String]
     # @!attribute [rw] model
@@ -54,6 +54,18 @@ module Tufts
       self.serializer     = ChangesetSerializer.new
       self.apply_strategy = Tufts::ChangesetOverwriteStrategy
                             .new(model: model, changeset: changeset)
+    end
+
+    ##
+    # Drafts are equal if they operate on the same model object and
+    # contain the same changes.
+    #
+    # @see Object#==
+    def ==(other)
+      other.model.eql?(model) &&
+        (other.changeset.changed_attributes.to_set ==
+         changeset.changed_attributes.to_set) &&
+        (changeset.changes == other.changeset.changes)
     end
 
     ##

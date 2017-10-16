@@ -19,5 +19,9 @@ module Tufts
     def changes
       {}
     end
+
+    def changed_attributes
+      []
+    end
   end
 end
