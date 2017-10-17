@@ -83,7 +83,7 @@ module Tufts
         property :funder, predicate: ::RDF::Vocab::MARCRelators.fnd do |index|
           index.as :stored_searchable
         end
-        property :tufts_is_part_of, predicate: ::Tufts::Vocab::Terms.tufts_is_part_of do |index|
+        property :tufts_is_part_of, predicate: ::Tufts::Vocab::Tufts.tufts_is_part_of do |index|
           index.as :stored_searchable
         end
       end

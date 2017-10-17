@@ -3,8 +3,8 @@
   <ListRecords>
     <record>
       <metadata>
-        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:terms="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-          <terms:id>7s75dc36z</terms:id>
+        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:tufts="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+          <tufts:id>7s75dc36z</tufts:id>
           <model:hasModel>Pdf</model:hasModel>
           <fcrepo4:created>2017-10-10T21:19:46+00:00</fcrepo4:created>
           <fcrepo4:lastModified>2017-10-10T21:19:46+00:00</fcrepo4:lastModified>
@@ -121,17 +121,17 @@
           <marcrelators:fnd>Pig ribeye spare ribs pork belly doner corned beef shoulder short loin pork chop.</marcrelators:fnd>
           <marcrelators:fnd>Turducken prosciutto leberkas kielbasa venison.</marcrelators:fnd>
           <marcrelators:fnd>Brisket tri-tip porchetta pig beef ribs swine filet mignon.</marcrelators:fnd>
-          <terms:tuftsIsPartOf>Short ribs salami ribeye swine spare ribs hamburger brisket meatball.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Leberkas swine chuck frankfurter pork belly sirloin sausage short loin chicken.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Pork loin turducken short ribs tri-tip filet mignon drumstick.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Sirloin strip steak frankfurter pig ham beef ribs.</terms:tuftsIsPartOf>
-          <terms:displays_in>Prosciutto hamburger fatback tongue short ribs.</terms:displays_in>
-          <terms:displays_in>Shankle venison Kevin doner turkey.</terms:displays_in>
-          <terms:displays_in>Spare ribs salami doner jerky boudin capicola pork.</terms:displays_in>
-          <terms:displays_in>Meatball capicola beef salami bacon venison beef ribs meatloaf.</terms:displays_in>
-          <terms:steward>Shankle boudin landjaeger shank Kevin spare ribs chicken salami flank.</terms:steward>
-          <terms:createdBy>Rump ham pancetta pork loin prosciutto chicken beef strip steak.</terms:createdBy>
-          <terms:internal_note>Boudin biltong short ribs spare ribs brisket leberkas.</terms:internal_note>
+          <tufts:tuftsIsPartOf>Short ribs salami ribeye swine spare ribs hamburger brisket meatball.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Leberkas swine chuck frankfurter pork belly sirloin sausage short loin chicken.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Pork loin turducken short ribs tri-tip filet mignon drumstick.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Sirloin strip steak frankfurter pig ham beef ribs.</tufts:tuftsIsPartOf>
+          <tufts:displays_in>Prosciutto hamburger fatback tongue short ribs.</tufts:displays_in>
+          <tufts:displays_in>Shankle venison Kevin doner turkey.</tufts:displays_in>
+          <tufts:displays_in>Spare ribs salami doner jerky boudin capicola pork.</tufts:displays_in>
+          <tufts:displays_in>Meatball capicola beef salami bacon venison beef ribs meatloaf.</tufts:displays_in>
+          <tufts:steward>Shankle boudin landjaeger shank Kevin spare ribs chicken salami flank.</tufts:steward>
+          <tufts:createdBy>Rump ham pancetta pork loin prosciutto chicken beef strip steak.</tufts:createdBy>
+          <tufts:internal_note>Boudin biltong short ribs spare ribs brisket leberkas.</tufts:internal_note>
           <dc:audience>Porchetta pork loin landjaeger hamburger pork spare ribs kielbasa.</dc:audience>
           <premis:TermOfRestriction>Drumstick venison turkey leberkas t-bone bacon.</premis:TermOfRestriction>
           <premis:hasEndDate>Cow andouille Kevin beef t-bone strip steak ribeye.</premis:hasEndDate>
@@ -141,32 +141,32 @@
           <dc:type>Chicken hamburger short loin corned beef andouille salami ham hock.</dc:type>
           <dc:type>Tongue jerky short ribs rump tri-tip tenderloin frankfurter.</dc:type>
           <dc:type>Ground round shoulder shank pork belly shankle landjaeger.</dc:type>
-          <terms:retention_period>Bacon biltong ham hock swine strip steak.</terms:retention_period>
-          <terms:retention_period>Jowl short loin ham hock prosciutto jerky pastrami turkey fatback meatloaf.</terms:retention_period>
-          <terms:retention_period>Ground round salami chicken turducken sirloin.</terms:retention_period>
-          <terms:retention_period>Strip steak ham hock bresaola biltong beef frankfurter Kevin.</terms:retention_period>
-          <terms:startDate>Bacon pig filet mignon beef ribs turkey meatloaf frankfurter boudin kielbasa.</terms:startDate>
-          <terms:startDate>Biltong ham hock ribeye pork chop doner hamburger pork loin flank.</terms:startDate>
-          <terms:startDate>Jowl shankle doner chuck ribeye t-bone biltong.</terms:startDate>
-          <terms:startDate>Pork chop tongue shoulder andouille bresaola pork loin frankfurter short ribs prosciutto.</terms:startDate>
-          <terms:qr_status>Turducken beef ribs boudin filet mignon sirloin.</terms:qr_status>
-          <terms:qr_status>Venison ribeye jowl pork belly chicken sirloin.</terms:qr_status>
-          <terms:qr_status>Cow chuck pork loin beef ribs pig.</terms:qr_status>
-          <terms:qr_status>Hamburger brisket tail shoulder capicola corned beef Kevin fatback boudin.</terms:qr_status>
-          <terms:rejection_reason>Pork landjaeger corned beef beef ribeye doner.</terms:rejection_reason>
-          <terms:rejection_reason>Porchetta tail turkey shoulder shankle flank ham rump pork.</terms:rejection_reason>
-          <terms:rejection_reason>Jerky shankle pork flank pig andouille.</terms:rejection_reason>
-          <terms:rejection_reason>Chuck spare ribs ground round short loin tail tongue pork chop t-bone shoulder.</terms:rejection_reason>
-          <terms:qr_note>Cow swine sausage boudin short ribs meatloaf ground round beef ribs filet mignon.</terms:qr_note>
-          <terms:qr_note>Ribeye sausage corned beef jerky pork belly turkey tongue prosciutto andouille.</terms:qr_note>
-          <terms:qr_note>Kielbasa pancetta short ribs bresaola doner ribeye tenderloin.</terms:qr_note>
-          <terms:qr_note>Doner pastrami jerky corned beef pancetta bacon turkey chuck frankfurter.</terms:qr_note>
-          <terms:creator_department>Ground round boudin chuck prosciutto capicola rump.</terms:creator_department>
-          <terms:creator_department>Landjaeger tenderloin flank ham hock tongue.</terms:creator_department>
-          <terms:creator_department>Ham flank shank landjaeger frankfurter brisket chuck.</terms:creator_department>
-          <terms:creator_department>Doner beef ribs kielbasa tongue tri-tip ham jowl pig flank.</terms:creator_department>
-          <terms:legacy_pid>Boudin turducken short loin spare ribs ham shank rump venison.</terms:legacy_pid>
-          <terms:createdby>Pork loin pork belly cow tongue pig hamburger.</terms:createdby>
+          <tufts:retention_period>Bacon biltong ham hock swine strip steak.</tufts:retention_period>
+          <tufts:retention_period>Jowl short loin ham hock prosciutto jerky pastrami turkey fatback meatloaf.</tufts:retention_period>
+          <tufts:retention_period>Ground round salami chicken turducken sirloin.</tufts:retention_period>
+          <tufts:retention_period>Strip steak ham hock bresaola biltong beef frankfurter Kevin.</tufts:retention_period>
+          <tufts:startDate>Bacon pig filet mignon beef ribs turkey meatloaf frankfurter boudin kielbasa.</tufts:startDate>
+          <tufts:startDate>Biltong ham hock ribeye pork chop doner hamburger pork loin flank.</tufts:startDate>
+          <tufts:startDate>Jowl shankle doner chuck ribeye t-bone biltong.</tufts:startDate>
+          <tufts:startDate>Pork chop tongue shoulder andouille bresaola pork loin frankfurter short ribs prosciutto.</tufts:startDate>
+          <tufts:qr_status>Turducken beef ribs boudin filet mignon sirloin.</tufts:qr_status>
+          <tufts:qr_status>Venison ribeye jowl pork belly chicken sirloin.</tufts:qr_status>
+          <tufts:qr_status>Cow chuck pork loin beef ribs pig.</tufts:qr_status>
+          <tufts:qr_status>Hamburger brisket tail shoulder capicola corned beef Kevin fatback boudin.</tufts:qr_status>
+          <tufts:rejection_reason>Pork landjaeger corned beef beef ribeye doner.</tufts:rejection_reason>
+          <tufts:rejection_reason>Porchetta tail turkey shoulder shankle flank ham rump pork.</tufts:rejection_reason>
+          <tufts:rejection_reason>Jerky shankle pork flank pig andouille.</tufts:rejection_reason>
+          <tufts:rejection_reason>Chuck spare ribs ground round short loin tail tongue pork chop t-bone shoulder.</tufts:rejection_reason>
+          <tufts:qr_note>Cow swine sausage boudin short ribs meatloaf ground round beef ribs filet mignon.</tufts:qr_note>
+          <tufts:qr_note>Ribeye sausage corned beef jerky pork belly turkey tongue prosciutto andouille.</tufts:qr_note>
+          <tufts:qr_note>Kielbasa pancetta short ribs bresaola doner ribeye tenderloin.</tufts:qr_note>
+          <tufts:qr_note>Doner pastrami jerky corned beef pancetta bacon turkey chuck frankfurter.</tufts:qr_note>
+          <tufts:creator_department>Ground round boudin chuck prosciutto capicola rump.</tufts:creator_department>
+          <tufts:creator_department>Landjaeger tenderloin flank ham hock tongue.</tufts:creator_department>
+          <tufts:creator_department>Ham flank shank landjaeger frankfurter brisket chuck.</tufts:creator_department>
+          <tufts:creator_department>Doner beef ribs kielbasa tongue tri-tip ham jowl pig flank.</tufts:creator_department>
+          <tufts:legacy_pid>Boudin turducken short loin spare ribs ham shank rump venison.</tufts:legacy_pid>
+          <tufts:createdby>Pork loin pork belly cow tongue pig hamburger.</tufts:createdby>
           <model:downloadFilename>Ribeye jerky pork belly tri-tip pork loin leberkas short ribs swine.</model:downloadFilename>
           <scholarsphere:relativePath>Capicola jowl cow pastrami beef ribs ham.</scholarsphere:relativePath>
           <scholarsphere:importUrl>Ham hock flank strip steak turkey tenderloin chicken doner beef.</scholarsphere:importUrl>
@@ -231,8 +231,8 @@
     </record>
     <record>
       <metadata>
-        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:terms="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-          <terms:id>wm117n96b</terms:id>
+        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:tufts="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+          <tufts:id>wm117n96b</tufts:id>
           <model:hasModel>Pdf</model:hasModel>
           <fcrepo4:created>2017-10-10T21:19:47+00:00</fcrepo4:created>
           <fcrepo4:lastModified>2017-10-10T21:19:47+00:00</fcrepo4:lastModified>
@@ -349,17 +349,17 @@
           <marcrelators:fnd>Pig ribeye spare ribs pork belly doner corned beef shoulder short loin pork chop.</marcrelators:fnd>
           <marcrelators:fnd>Turducken prosciutto leberkas kielbasa venison.</marcrelators:fnd>
           <marcrelators:fnd>Brisket tri-tip porchetta pig beef ribs swine filet mignon.</marcrelators:fnd>
-          <terms:tuftsIsPartOf>Short ribs salami ribeye swine spare ribs hamburger brisket meatball.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Leberkas swine chuck frankfurter pork belly sirloin sausage short loin chicken.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Sirloin strip steak frankfurter pig ham beef ribs.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Pork loin turducken short ribs tri-tip filet mignon drumstick.</terms:tuftsIsPartOf>
-          <terms:displays_in>Prosciutto hamburger fatback tongue short ribs.</terms:displays_in>
-          <terms:displays_in>Shankle venison Kevin doner turkey.</terms:displays_in>
-          <terms:displays_in>Spare ribs salami doner jerky boudin capicola pork.</terms:displays_in>
-          <terms:displays_in>Meatball capicola beef salami bacon venison beef ribs meatloaf.</terms:displays_in>
-          <terms:steward>Shankle boudin landjaeger shank Kevin spare ribs chicken salami flank.</terms:steward>
-          <terms:createdBy>Rump ham pancetta pork loin prosciutto chicken beef strip steak.</terms:createdBy>
-          <terms:internal_note>Boudin biltong short ribs spare ribs brisket leberkas.</terms:internal_note>
+          <tufts:tuftsIsPartOf>Short ribs salami ribeye swine spare ribs hamburger brisket meatball.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Leberkas swine chuck frankfurter pork belly sirloin sausage short loin chicken.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Sirloin strip steak frankfurter pig ham beef ribs.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Pork loin turducken short ribs tri-tip filet mignon drumstick.</tufts:tuftsIsPartOf>
+          <tufts:displays_in>Prosciutto hamburger fatback tongue short ribs.</tufts:displays_in>
+          <tufts:displays_in>Shankle venison Kevin doner turkey.</tufts:displays_in>
+          <tufts:displays_in>Spare ribs salami doner jerky boudin capicola pork.</tufts:displays_in>
+          <tufts:displays_in>Meatball capicola beef salami bacon venison beef ribs meatloaf.</tufts:displays_in>
+          <tufts:steward>Shankle boudin landjaeger shank Kevin spare ribs chicken salami flank.</tufts:steward>
+          <tufts:createdBy>Rump ham pancetta pork loin prosciutto chicken beef strip steak.</tufts:createdBy>
+          <tufts:internal_note>Boudin biltong short ribs spare ribs brisket leberkas.</tufts:internal_note>
           <dc:audience>Porchetta pork loin landjaeger hamburger pork spare ribs kielbasa.</dc:audience>
           <premis:TermOfRestriction>Drumstick venison turkey leberkas t-bone bacon.</premis:TermOfRestriction>
           <premis:hasEndDate>Cow andouille Kevin beef t-bone strip steak ribeye.</premis:hasEndDate>
@@ -369,32 +369,32 @@
           <dc:type>Chicken hamburger short loin corned beef andouille salami ham hock.</dc:type>
           <dc:type>Tongue jerky short ribs rump tri-tip tenderloin frankfurter.</dc:type>
           <dc:type>Ground round shoulder shank pork belly shankle landjaeger.</dc:type>
-          <terms:retention_period>Bacon biltong ham hock swine strip steak.</terms:retention_period>
-          <terms:retention_period>Jowl short loin ham hock prosciutto jerky pastrami turkey fatback meatloaf.</terms:retention_period>
-          <terms:retention_period>Ground round salami chicken turducken sirloin.</terms:retention_period>
-          <terms:retention_period>Strip steak ham hock bresaola biltong beef frankfurter Kevin.</terms:retention_period>
-          <terms:startDate>Bacon pig filet mignon beef ribs turkey meatloaf frankfurter boudin kielbasa.</terms:startDate>
-          <terms:startDate>Biltong ham hock ribeye pork chop doner hamburger pork loin flank.</terms:startDate>
-          <terms:startDate>Jowl shankle doner chuck ribeye t-bone biltong.</terms:startDate>
-          <terms:startDate>Pork chop tongue shoulder andouille bresaola pork loin frankfurter short ribs prosciutto.</terms:startDate>
-          <terms:qr_status>Turducken beef ribs boudin filet mignon sirloin.</terms:qr_status>
-          <terms:qr_status>Venison ribeye jowl pork belly chicken sirloin.</terms:qr_status>
-          <terms:qr_status>Cow chuck pork loin beef ribs pig.</terms:qr_status>
-          <terms:qr_status>Hamburger brisket tail shoulder capicola corned beef Kevin fatback boudin.</terms:qr_status>
-          <terms:rejection_reason>Pork landjaeger corned beef beef ribeye doner.</terms:rejection_reason>
-          <terms:rejection_reason>Porchetta tail turkey shoulder shankle flank ham rump pork.</terms:rejection_reason>
-          <terms:rejection_reason>Jerky shankle pork flank pig andouille.</terms:rejection_reason>
-          <terms:rejection_reason>Chuck spare ribs ground round short loin tail tongue pork chop t-bone shoulder.</terms:rejection_reason>
-          <terms:qr_note>Cow swine sausage boudin short ribs meatloaf ground round beef ribs filet mignon.</terms:qr_note>
-          <terms:qr_note>Ribeye sausage corned beef jerky pork belly turkey tongue prosciutto andouille.</terms:qr_note>
-          <terms:qr_note>Kielbasa pancetta short ribs bresaola doner ribeye tenderloin.</terms:qr_note>
-          <terms:qr_note>Doner pastrami jerky corned beef pancetta bacon turkey chuck frankfurter.</terms:qr_note>
-          <terms:creator_department>Ground round boudin chuck prosciutto capicola rump.</terms:creator_department>
-          <terms:creator_department>Landjaeger tenderloin flank ham hock tongue.</terms:creator_department>
-          <terms:creator_department>Ham flank shank landjaeger frankfurter brisket chuck.</terms:creator_department>
-          <terms:creator_department>Doner beef ribs kielbasa tongue tri-tip ham jowl pig flank.</terms:creator_department>
-          <terms:legacy_pid>Boudin turducken short loin spare ribs ham shank rump venison.</terms:legacy_pid>
-          <terms:createdby>Pork loin pork belly cow tongue pig hamburger.</terms:createdby>
+          <tufts:retention_period>Bacon biltong ham hock swine strip steak.</tufts:retention_period>
+          <tufts:retention_period>Jowl short loin ham hock prosciutto jerky pastrami turkey fatback meatloaf.</tufts:retention_period>
+          <tufts:retention_period>Ground round salami chicken turducken sirloin.</tufts:retention_period>
+          <tufts:retention_period>Strip steak ham hock bresaola biltong beef frankfurter Kevin.</tufts:retention_period>
+          <tufts:startDate>Bacon pig filet mignon beef ribs turkey meatloaf frankfurter boudin kielbasa.</tufts:startDate>
+          <tufts:startDate>Biltong ham hock ribeye pork chop doner hamburger pork loin flank.</tufts:startDate>
+          <tufts:startDate>Jowl shankle doner chuck ribeye t-bone biltong.</tufts:startDate>
+          <tufts:startDate>Pork chop tongue shoulder andouille bresaola pork loin frankfurter short ribs prosciutto.</tufts:startDate>
+          <tufts:qr_status>Turducken beef ribs boudin filet mignon sirloin.</tufts:qr_status>
+          <tufts:qr_status>Venison ribeye jowl pork belly chicken sirloin.</tufts:qr_status>
+          <tufts:qr_status>Cow chuck pork loin beef ribs pig.</tufts:qr_status>
+          <tufts:qr_status>Hamburger brisket tail shoulder capicola corned beef Kevin fatback boudin.</tufts:qr_status>
+          <tufts:rejection_reason>Pork landjaeger corned beef beef ribeye doner.</tufts:rejection_reason>
+          <tufts:rejection_reason>Porchetta tail turkey shoulder shankle flank ham rump pork.</tufts:rejection_reason>
+          <tufts:rejection_reason>Jerky shankle pork flank pig andouille.</tufts:rejection_reason>
+          <tufts:rejection_reason>Chuck spare ribs ground round short loin tail tongue pork chop t-bone shoulder.</tufts:rejection_reason>
+          <tufts:qr_note>Cow swine sausage boudin short ribs meatloaf ground round beef ribs filet mignon.</tufts:qr_note>
+          <tufts:qr_note>Ribeye sausage corned beef jerky pork belly turkey tongue prosciutto andouille.</tufts:qr_note>
+          <tufts:qr_note>Kielbasa pancetta short ribs bresaola doner ribeye tenderloin.</tufts:qr_note>
+          <tufts:qr_note>Doner pastrami jerky corned beef pancetta bacon turkey chuck frankfurter.</tufts:qr_note>
+          <tufts:creator_department>Ground round boudin chuck prosciutto capicola rump.</tufts:creator_department>
+          <tufts:creator_department>Landjaeger tenderloin flank ham hock tongue.</tufts:creator_department>
+          <tufts:creator_department>Ham flank shank landjaeger frankfurter brisket chuck.</tufts:creator_department>
+          <tufts:creator_department>Doner beef ribs kielbasa tongue tri-tip ham jowl pig flank.</tufts:creator_department>
+          <tufts:legacy_pid>Boudin turducken short loin spare ribs ham shank rump venison.</tufts:legacy_pid>
+          <tufts:createdby>Pork loin pork belly cow tongue pig hamburger.</tufts:createdby>
           <model:downloadFilename>Ribeye jerky pork belly tri-tip pork loin leberkas short ribs swine.</model:downloadFilename>
           <scholarsphere:relativePath>Capicola jowl cow pastrami beef ribs ham.</scholarsphere:relativePath>
           <scholarsphere:importUrl>Ham hock flank strip steak turkey tenderloin chicken doner beef.</scholarsphere:importUrl>
@@ -459,8 +459,8 @@
     </record>
     <record>
       <metadata>
-        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:terms="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-          <terms:id>pk02c9724</terms:id>
+        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:tufts="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+          <tufts:id>pk02c9724</tufts:id>
           <model:hasModel>Pdf</model:hasModel>
           <fcrepo4:created>2017-10-10T21:19:48+00:00</fcrepo4:created>
           <fcrepo4:lastModified>2017-10-10T21:19:48+00:00</fcrepo4:lastModified>
@@ -577,17 +577,17 @@
           <marcrelators:fnd>Pig ribeye spare ribs pork belly doner corned beef shoulder short loin pork chop.</marcrelators:fnd>
           <marcrelators:fnd>Turducken prosciutto leberkas kielbasa venison.</marcrelators:fnd>
           <marcrelators:fnd>Brisket tri-tip porchetta pig beef ribs swine filet mignon.</marcrelators:fnd>
-          <terms:tuftsIsPartOf>Short ribs salami ribeye swine spare ribs hamburger brisket meatball.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Leberkas swine chuck frankfurter pork belly sirloin sausage short loin chicken.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Pork loin turducken short ribs tri-tip filet mignon drumstick.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Sirloin strip steak frankfurter pig ham beef ribs.</terms:tuftsIsPartOf>
-          <terms:displays_in>Prosciutto hamburger fatback tongue short ribs.</terms:displays_in>
-          <terms:displays_in>Shankle venison Kevin doner turkey.</terms:displays_in>
-          <terms:displays_in>Spare ribs salami doner jerky boudin capicola pork.</terms:displays_in>
-          <terms:displays_in>Meatball capicola beef salami bacon venison beef ribs meatloaf.</terms:displays_in>
-          <terms:steward>Shankle boudin landjaeger shank Kevin spare ribs chicken salami flank.</terms:steward>
-          <terms:createdBy>Rump ham pancetta pork loin prosciutto chicken beef strip steak.</terms:createdBy>
-          <terms:internal_note>Boudin biltong short ribs spare ribs brisket leberkas.</terms:internal_note>
+          <tufts:tuftsIsPartOf>Short ribs salami ribeye swine spare ribs hamburger brisket meatball.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Leberkas swine chuck frankfurter pork belly sirloin sausage short loin chicken.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Pork loin turducken short ribs tri-tip filet mignon drumstick.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Sirloin strip steak frankfurter pig ham beef ribs.</tufts:tuftsIsPartOf>
+          <tufts:displays_in>Prosciutto hamburger fatback tongue short ribs.</tufts:displays_in>
+          <tufts:displays_in>Shankle venison Kevin doner turkey.</tufts:displays_in>
+          <tufts:displays_in>Spare ribs salami doner jerky boudin capicola pork.</tufts:displays_in>
+          <tufts:displays_in>Meatball capicola beef salami bacon venison beef ribs meatloaf.</tufts:displays_in>
+          <tufts:steward>Shankle boudin landjaeger shank Kevin spare ribs chicken salami flank.</tufts:steward>
+          <tufts:createdBy>Rump ham pancetta pork loin prosciutto chicken beef strip steak.</tufts:createdBy>
+          <tufts:internal_note>Boudin biltong short ribs spare ribs brisket leberkas.</tufts:internal_note>
           <dc:audience>Porchetta pork loin landjaeger hamburger pork spare ribs kielbasa.</dc:audience>
           <premis:TermOfRestriction>Drumstick venison turkey leberkas t-bone bacon.</premis:TermOfRestriction>
           <premis:hasEndDate>Cow andouille Kevin beef t-bone strip steak ribeye.</premis:hasEndDate>
@@ -597,32 +597,32 @@
           <dc:type>Chicken hamburger short loin corned beef andouille salami ham hock.</dc:type>
           <dc:type>Tongue jerky short ribs rump tri-tip tenderloin frankfurter.</dc:type>
           <dc:type>Ground round shoulder shank pork belly shankle landjaeger.</dc:type>
-          <terms:retention_period>Bacon biltong ham hock swine strip steak.</terms:retention_period>
-          <terms:retention_period>Jowl short loin ham hock prosciutto jerky pastrami turkey fatback meatloaf.</terms:retention_period>
-          <terms:retention_period>Ground round salami chicken turducken sirloin.</terms:retention_period>
-          <terms:retention_period>Strip steak ham hock bresaola biltong beef frankfurter Kevin.</terms:retention_period>
-          <terms:startDate>Bacon pig filet mignon beef ribs turkey meatloaf frankfurter boudin kielbasa.</terms:startDate>
-          <terms:startDate>Biltong ham hock ribeye pork chop doner hamburger pork loin flank.</terms:startDate>
-          <terms:startDate>Jowl shankle doner chuck ribeye t-bone biltong.</terms:startDate>
-          <terms:startDate>Pork chop tongue shoulder andouille bresaola pork loin frankfurter short ribs prosciutto.</terms:startDate>
-          <terms:qr_status>Turducken beef ribs boudin filet mignon sirloin.</terms:qr_status>
-          <terms:qr_status>Venison ribeye jowl pork belly chicken sirloin.</terms:qr_status>
-          <terms:qr_status>Cow chuck pork loin beef ribs pig.</terms:qr_status>
-          <terms:qr_status>Hamburger brisket tail shoulder capicola corned beef Kevin fatback boudin.</terms:qr_status>
-          <terms:rejection_reason>Pork landjaeger corned beef beef ribeye doner.</terms:rejection_reason>
-          <terms:rejection_reason>Porchetta tail turkey shoulder shankle flank ham rump pork.</terms:rejection_reason>
-          <terms:rejection_reason>Jerky shankle pork flank pig andouille.</terms:rejection_reason>
-          <terms:rejection_reason>Chuck spare ribs ground round short loin tail tongue pork chop t-bone shoulder.</terms:rejection_reason>
-          <terms:qr_note>Cow swine sausage boudin short ribs meatloaf ground round beef ribs filet mignon.</terms:qr_note>
-          <terms:qr_note>Ribeye sausage corned beef jerky pork belly turkey tongue prosciutto andouille.</terms:qr_note>
-          <terms:qr_note>Kielbasa pancetta short ribs bresaola doner ribeye tenderloin.</terms:qr_note>
-          <terms:qr_note>Doner pastrami jerky corned beef pancetta bacon turkey chuck frankfurter.</terms:qr_note>
-          <terms:creator_department>Ground round boudin chuck prosciutto capicola rump.</terms:creator_department>
-          <terms:creator_department>Landjaeger tenderloin flank ham hock tongue.</terms:creator_department>
-          <terms:creator_department>Ham flank shank landjaeger frankfurter brisket chuck.</terms:creator_department>
-          <terms:creator_department>Doner beef ribs kielbasa tongue tri-tip ham jowl pig flank.</terms:creator_department>
-          <terms:legacy_pid>Boudin turducken short loin spare ribs ham shank rump venison.</terms:legacy_pid>
-          <terms:createdby>Pork loin pork belly cow tongue pig hamburger.</terms:createdby>
+          <tufts:retention_period>Bacon biltong ham hock swine strip steak.</tufts:retention_period>
+          <tufts:retention_period>Jowl short loin ham hock prosciutto jerky pastrami turkey fatback meatloaf.</tufts:retention_period>
+          <tufts:retention_period>Ground round salami chicken turducken sirloin.</tufts:retention_period>
+          <tufts:retention_period>Strip steak ham hock bresaola biltong beef frankfurter Kevin.</tufts:retention_period>
+          <tufts:startDate>Bacon pig filet mignon beef ribs turkey meatloaf frankfurter boudin kielbasa.</tufts:startDate>
+          <tufts:startDate>Biltong ham hock ribeye pork chop doner hamburger pork loin flank.</tufts:startDate>
+          <tufts:startDate>Jowl shankle doner chuck ribeye t-bone biltong.</tufts:startDate>
+          <tufts:startDate>Pork chop tongue shoulder andouille bresaola pork loin frankfurter short ribs prosciutto.</tufts:startDate>
+          <tufts:qr_status>Turducken beef ribs boudin filet mignon sirloin.</tufts:qr_status>
+          <tufts:qr_status>Venison ribeye jowl pork belly chicken sirloin.</tufts:qr_status>
+          <tufts:qr_status>Cow chuck pork loin beef ribs pig.</tufts:qr_status>
+          <tufts:qr_status>Hamburger brisket tail shoulder capicola corned beef Kevin fatback boudin.</tufts:qr_status>
+          <tufts:rejection_reason>Pork landjaeger corned beef beef ribeye doner.</tufts:rejection_reason>
+          <tufts:rejection_reason>Porchetta tail turkey shoulder shankle flank ham rump pork.</tufts:rejection_reason>
+          <tufts:rejection_reason>Jerky shankle pork flank pig andouille.</tufts:rejection_reason>
+          <tufts:rejection_reason>Chuck spare ribs ground round short loin tail tongue pork chop t-bone shoulder.</tufts:rejection_reason>
+          <tufts:qr_note>Cow swine sausage boudin short ribs meatloaf ground round beef ribs filet mignon.</tufts:qr_note>
+          <tufts:qr_note>Ribeye sausage corned beef jerky pork belly turkey tongue prosciutto andouille.</tufts:qr_note>
+          <tufts:qr_note>Kielbasa pancetta short ribs bresaola doner ribeye tenderloin.</tufts:qr_note>
+          <tufts:qr_note>Doner pastrami jerky corned beef pancetta bacon turkey chuck frankfurter.</tufts:qr_note>
+          <tufts:creator_department>Ground round boudin chuck prosciutto capicola rump.</tufts:creator_department>
+          <tufts:creator_department>Landjaeger tenderloin flank ham hock tongue.</tufts:creator_department>
+          <tufts:creator_department>Ham flank shank landjaeger frankfurter brisket chuck.</tufts:creator_department>
+          <tufts:creator_department>Doner beef ribs kielbasa tongue tri-tip ham jowl pig flank.</tufts:creator_department>
+          <tufts:legacy_pid>Boudin turducken short loin spare ribs ham shank rump venison.</tufts:legacy_pid>
+          <tufts:createdby>Pork loin pork belly cow tongue pig hamburger.</tufts:createdby>
           <model:downloadFilename>Ribeye jerky pork belly tri-tip pork loin leberkas short ribs swine.</model:downloadFilename>
           <scholarsphere:relativePath>Capicola jowl cow pastrami beef ribs ham.</scholarsphere:relativePath>
           <scholarsphere:importUrl>Ham hock flank strip steak turkey tenderloin chicken doner beef.</scholarsphere:importUrl>
@@ -687,8 +687,8 @@
     </record>
     <record>
       <metadata>
-        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:terms="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-          <terms:id>xs55mc046</terms:id>
+        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:tufts="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+          <tufts:id>xs55mc046</tufts:id>
           <model:hasModel>Pdf</model:hasModel>
           <fcrepo4:created>2017-10-10T21:19:49+00:00</fcrepo4:created>
           <fcrepo4:lastModified>2017-10-10T21:19:49+00:00</fcrepo4:lastModified>
@@ -805,17 +805,17 @@
           <marcrelators:fnd>Pig ribeye spare ribs pork belly doner corned beef shoulder short loin pork chop.</marcrelators:fnd>
           <marcrelators:fnd>Turducken prosciutto leberkas kielbasa venison.</marcrelators:fnd>
           <marcrelators:fnd>Brisket tri-tip porchetta pig beef ribs swine filet mignon.</marcrelators:fnd>
-          <terms:tuftsIsPartOf>Short ribs salami ribeye swine spare ribs hamburger brisket meatball.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Leberkas swine chuck frankfurter pork belly sirloin sausage short loin chicken.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Pork loin turducken short ribs tri-tip filet mignon drumstick.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Sirloin strip steak frankfurter pig ham beef ribs.</terms:tuftsIsPartOf>
-          <terms:displays_in>Prosciutto hamburger fatback tongue short ribs.</terms:displays_in>
-          <terms:displays_in>Shankle venison Kevin doner turkey.</terms:displays_in>
-          <terms:displays_in>Spare ribs salami doner jerky boudin capicola pork.</terms:displays_in>
-          <terms:displays_in>Meatball capicola beef salami bacon venison beef ribs meatloaf.</terms:displays_in>
-          <terms:steward>Shankle boudin landjaeger shank Kevin spare ribs chicken salami flank.</terms:steward>
-          <terms:createdBy>Rump ham pancetta pork loin prosciutto chicken beef strip steak.</terms:createdBy>
-          <terms:internal_note>Boudin biltong short ribs spare ribs brisket leberkas.</terms:internal_note>
+          <tufts:tuftsIsPartOf>Short ribs salami ribeye swine spare ribs hamburger brisket meatball.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Leberkas swine chuck frankfurter pork belly sirloin sausage short loin chicken.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Pork loin turducken short ribs tri-tip filet mignon drumstick.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Sirloin strip steak frankfurter pig ham beef ribs.</tufts:tuftsIsPartOf>
+          <tufts:displays_in>Prosciutto hamburger fatback tongue short ribs.</tufts:displays_in>
+          <tufts:displays_in>Shankle venison Kevin doner turkey.</tufts:displays_in>
+          <tufts:displays_in>Spare ribs salami doner jerky boudin capicola pork.</tufts:displays_in>
+          <tufts:displays_in>Meatball capicola beef salami bacon venison beef ribs meatloaf.</tufts:displays_in>
+          <tufts:steward>Shankle boudin landjaeger shank Kevin spare ribs chicken salami flank.</tufts:steward>
+          <tufts:createdBy>Rump ham pancetta pork loin prosciutto chicken beef strip steak.</tufts:createdBy>
+          <tufts:internal_note>Boudin biltong short ribs spare ribs brisket leberkas.</tufts:internal_note>
           <dc:audience>Porchetta pork loin landjaeger hamburger pork spare ribs kielbasa.</dc:audience>
           <premis:TermOfRestriction>Drumstick venison turkey leberkas t-bone bacon.</premis:TermOfRestriction>
           <premis:hasEndDate>Cow andouille Kevin beef t-bone strip steak ribeye.</premis:hasEndDate>
@@ -825,32 +825,32 @@
           <dc:type>Chicken hamburger short loin corned beef andouille salami ham hock.</dc:type>
           <dc:type>Tongue jerky short ribs rump tri-tip tenderloin frankfurter.</dc:type>
           <dc:type>Ground round shoulder shank pork belly shankle landjaeger.</dc:type>
-          <terms:retention_period>Bacon biltong ham hock swine strip steak.</terms:retention_period>
-          <terms:retention_period>Jowl short loin ham hock prosciutto jerky pastrami turkey fatback meatloaf.</terms:retention_period>
-          <terms:retention_period>Ground round salami chicken turducken sirloin.</terms:retention_period>
-          <terms:retention_period>Strip steak ham hock bresaola biltong beef frankfurter Kevin.</terms:retention_period>
-          <terms:startDate>Bacon pig filet mignon beef ribs turkey meatloaf frankfurter boudin kielbasa.</terms:startDate>
-          <terms:startDate>Biltong ham hock ribeye pork chop doner hamburger pork loin flank.</terms:startDate>
-          <terms:startDate>Jowl shankle doner chuck ribeye t-bone biltong.</terms:startDate>
-          <terms:startDate>Pork chop tongue shoulder andouille bresaola pork loin frankfurter short ribs prosciutto.</terms:startDate>
-          <terms:qr_status>Turducken beef ribs boudin filet mignon sirloin.</terms:qr_status>
-          <terms:qr_status>Venison ribeye jowl pork belly chicken sirloin.</terms:qr_status>
-          <terms:qr_status>Cow chuck pork loin beef ribs pig.</terms:qr_status>
-          <terms:qr_status>Hamburger brisket tail shoulder capicola corned beef Kevin fatback boudin.</terms:qr_status>
-          <terms:rejection_reason>Pork landjaeger corned beef beef ribeye doner.</terms:rejection_reason>
-          <terms:rejection_reason>Porchetta tail turkey shoulder shankle flank ham rump pork.</terms:rejection_reason>
-          <terms:rejection_reason>Jerky shankle pork flank pig andouille.</terms:rejection_reason>
-          <terms:rejection_reason>Chuck spare ribs ground round short loin tail tongue pork chop t-bone shoulder.</terms:rejection_reason>
-          <terms:qr_note>Cow swine sausage boudin short ribs meatloaf ground round beef ribs filet mignon.</terms:qr_note>
-          <terms:qr_note>Ribeye sausage corned beef jerky pork belly turkey tongue prosciutto andouille.</terms:qr_note>
-          <terms:qr_note>Kielbasa pancetta short ribs bresaola doner ribeye tenderloin.</terms:qr_note>
-          <terms:qr_note>Doner pastrami jerky corned beef pancetta bacon turkey chuck frankfurter.</terms:qr_note>
-          <terms:creator_department>Ground round boudin chuck prosciutto capicola rump.</terms:creator_department>
-          <terms:creator_department>Landjaeger tenderloin flank ham hock tongue.</terms:creator_department>
-          <terms:creator_department>Ham flank shank landjaeger frankfurter brisket chuck.</terms:creator_department>
-          <terms:creator_department>Doner beef ribs kielbasa tongue tri-tip ham jowl pig flank.</terms:creator_department>
-          <terms:legacy_pid>Boudin turducken short loin spare ribs ham shank rump venison.</terms:legacy_pid>
-          <terms:createdby>Pork loin pork belly cow tongue pig hamburger.</terms:createdby>
+          <tufts:retention_period>Bacon biltong ham hock swine strip steak.</tufts:retention_period>
+          <tufts:retention_period>Jowl short loin ham hock prosciutto jerky pastrami turkey fatback meatloaf.</tufts:retention_period>
+          <tufts:retention_period>Ground round salami chicken turducken sirloin.</tufts:retention_period>
+          <tufts:retention_period>Strip steak ham hock bresaola biltong beef frankfurter Kevin.</tufts:retention_period>
+          <tufts:startDate>Bacon pig filet mignon beef ribs turkey meatloaf frankfurter boudin kielbasa.</tufts:startDate>
+          <tufts:startDate>Biltong ham hock ribeye pork chop doner hamburger pork loin flank.</tufts:startDate>
+          <tufts:startDate>Jowl shankle doner chuck ribeye t-bone biltong.</tufts:startDate>
+          <tufts:startDate>Pork chop tongue shoulder andouille bresaola pork loin frankfurter short ribs prosciutto.</tufts:startDate>
+          <tufts:qr_status>Turducken beef ribs boudin filet mignon sirloin.</tufts:qr_status>
+          <tufts:qr_status>Venison ribeye jowl pork belly chicken sirloin.</tufts:qr_status>
+          <tufts:qr_status>Cow chuck pork loin beef ribs pig.</tufts:qr_status>
+          <tufts:qr_status>Hamburger brisket tail shoulder capicola corned beef Kevin fatback boudin.</tufts:qr_status>
+          <tufts:rejection_reason>Pork landjaeger corned beef beef ribeye doner.</tufts:rejection_reason>
+          <tufts:rejection_reason>Porchetta tail turkey shoulder shankle flank ham rump pork.</tufts:rejection_reason>
+          <tufts:rejection_reason>Jerky shankle pork flank pig andouille.</tufts:rejection_reason>
+          <tufts:rejection_reason>Chuck spare ribs ground round short loin tail tongue pork chop t-bone shoulder.</tufts:rejection_reason>
+          <tufts:qr_note>Cow swine sausage boudin short ribs meatloaf ground round beef ribs filet mignon.</tufts:qr_note>
+          <tufts:qr_note>Ribeye sausage corned beef jerky pork belly turkey tongue prosciutto andouille.</tufts:qr_note>
+          <tufts:qr_note>Kielbasa pancetta short ribs bresaola doner ribeye tenderloin.</tufts:qr_note>
+          <tufts:qr_note>Doner pastrami jerky corned beef pancetta bacon turkey chuck frankfurter.</tufts:qr_note>
+          <tufts:creator_department>Ground round boudin chuck prosciutto capicola rump.</tufts:creator_department>
+          <tufts:creator_department>Landjaeger tenderloin flank ham hock tongue.</tufts:creator_department>
+          <tufts:creator_department>Ham flank shank landjaeger frankfurter brisket chuck.</tufts:creator_department>
+          <tufts:creator_department>Doner beef ribs kielbasa tongue tri-tip ham jowl pig flank.</tufts:creator_department>
+          <tufts:legacy_pid>Boudin turducken short loin spare ribs ham shank rump venison.</tufts:legacy_pid>
+          <tufts:createdby>Pork loin pork belly cow tongue pig hamburger.</tufts:createdby>
           <model:downloadFilename>Ribeye jerky pork belly tri-tip pork loin leberkas short ribs swine.</model:downloadFilename>
           <scholarsphere:relativePath>Capicola jowl cow pastrami beef ribs ham.</scholarsphere:relativePath>
           <scholarsphere:importUrl>Ham hock flank strip steak turkey tenderloin chicken doner beef.</scholarsphere:importUrl>
@@ -915,8 +915,8 @@
     </record>
     <record>
       <metadata>
-        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:terms="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-          <terms:id>j67313767</terms:id>
+        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:tufts="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+          <tufts:id>j67313767</tufts:id>
           <model:hasModel>Pdf</model:hasModel>
           <fcrepo4:created>2017-10-10T21:19:50+00:00</fcrepo4:created>
           <fcrepo4:lastModified>2017-10-10T21:19:50+00:00</fcrepo4:lastModified>
@@ -1033,17 +1033,17 @@
           <marcrelators:fnd>Pig ribeye spare ribs pork belly doner corned beef shoulder short loin pork chop.</marcrelators:fnd>
           <marcrelators:fnd>Turducken prosciutto leberkas kielbasa venison.</marcrelators:fnd>
           <marcrelators:fnd>Brisket tri-tip porchetta pig beef ribs swine filet mignon.</marcrelators:fnd>
-          <terms:tuftsIsPartOf>Short ribs salami ribeye swine spare ribs hamburger brisket meatball.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Leberkas swine chuck frankfurter pork belly sirloin sausage short loin chicken.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Sirloin strip steak frankfurter pig ham beef ribs.</terms:tuftsIsPartOf>
-          <terms:tuftsIsPartOf>Pork loin turducken short ribs tri-tip filet mignon drumstick.</terms:tuftsIsPartOf>
-          <terms:displays_in>Prosciutto hamburger fatback tongue short ribs.</terms:displays_in>
-          <terms:displays_in>Shankle venison Kevin doner turkey.</terms:displays_in>
-          <terms:displays_in>Spare ribs salami doner jerky boudin capicola pork.</terms:displays_in>
-          <terms:displays_in>Meatball capicola beef salami bacon venison beef ribs meatloaf.</terms:displays_in>
-          <terms:steward>Shankle boudin landjaeger shank Kevin spare ribs chicken salami flank.</terms:steward>
-          <terms:createdBy>Rump ham pancetta pork loin prosciutto chicken beef strip steak.</terms:createdBy>
-          <terms:internal_note>Boudin biltong short ribs spare ribs brisket leberkas.</terms:internal_note>
+          <tufts:tuftsIsPartOf>Short ribs salami ribeye swine spare ribs hamburger brisket meatball.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Leberkas swine chuck frankfurter pork belly sirloin sausage short loin chicken.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Sirloin strip steak frankfurter pig ham beef ribs.</tufts:tuftsIsPartOf>
+          <tufts:tuftsIsPartOf>Pork loin turducken short ribs tri-tip filet mignon drumstick.</tufts:tuftsIsPartOf>
+          <tufts:displays_in>Prosciutto hamburger fatback tongue short ribs.</tufts:displays_in>
+          <tufts:displays_in>Shankle venison Kevin doner turkey.</tufts:displays_in>
+          <tufts:displays_in>Spare ribs salami doner jerky boudin capicola pork.</tufts:displays_in>
+          <tufts:displays_in>Meatball capicola beef salami bacon venison beef ribs meatloaf.</tufts:displays_in>
+          <tufts:steward>Shankle boudin landjaeger shank Kevin spare ribs chicken salami flank.</tufts:steward>
+          <tufts:createdBy>Rump ham pancetta pork loin prosciutto chicken beef strip steak.</tufts:createdBy>
+          <tufts:internal_note>Boudin biltong short ribs spare ribs brisket leberkas.</tufts:internal_note>
           <dc:audience>Porchetta pork loin landjaeger hamburger pork spare ribs kielbasa.</dc:audience>
           <premis:TermOfRestriction>Drumstick venison turkey leberkas t-bone bacon.</premis:TermOfRestriction>
           <premis:hasEndDate>Cow andouille Kevin beef t-bone strip steak ribeye.</premis:hasEndDate>
@@ -1053,32 +1053,32 @@
           <dc:type>Chicken hamburger short loin corned beef andouille salami ham hock.</dc:type>
           <dc:type>Tongue jerky short ribs rump tri-tip tenderloin frankfurter.</dc:type>
           <dc:type>Ground round shoulder shank pork belly shankle landjaeger.</dc:type>
-          <terms:retention_period>Bacon biltong ham hock swine strip steak.</terms:retention_period>
-          <terms:retention_period>Jowl short loin ham hock prosciutto jerky pastrami turkey fatback meatloaf.</terms:retention_period>
-          <terms:retention_period>Ground round salami chicken turducken sirloin.</terms:retention_period>
-          <terms:retention_period>Strip steak ham hock bresaola biltong beef frankfurter Kevin.</terms:retention_period>
-          <terms:startDate>Bacon pig filet mignon beef ribs turkey meatloaf frankfurter boudin kielbasa.</terms:startDate>
-          <terms:startDate>Biltong ham hock ribeye pork chop doner hamburger pork loin flank.</terms:startDate>
-          <terms:startDate>Jowl shankle doner chuck ribeye t-bone biltong.</terms:startDate>
-          <terms:startDate>Pork chop tongue shoulder andouille bresaola pork loin frankfurter short ribs prosciutto.</terms:startDate>
-          <terms:qr_status>Turducken beef ribs boudin filet mignon sirloin.</terms:qr_status>
-          <terms:qr_status>Venison ribeye jowl pork belly chicken sirloin.</terms:qr_status>
-          <terms:qr_status>Cow chuck pork loin beef ribs pig.</terms:qr_status>
-          <terms:qr_status>Hamburger brisket tail shoulder capicola corned beef Kevin fatback boudin.</terms:qr_status>
-          <terms:rejection_reason>Pork landjaeger corned beef beef ribeye doner.</terms:rejection_reason>
-          <terms:rejection_reason>Porchetta tail turkey shoulder shankle flank ham rump pork.</terms:rejection_reason>
-          <terms:rejection_reason>Jerky shankle pork flank pig andouille.</terms:rejection_reason>
-          <terms:rejection_reason>Chuck spare ribs ground round short loin tail tongue pork chop t-bone shoulder.</terms:rejection_reason>
-          <terms:qr_note>Cow swine sausage boudin short ribs meatloaf ground round beef ribs filet mignon.</terms:qr_note>
-          <terms:qr_note>Ribeye sausage corned beef jerky pork belly turkey tongue prosciutto andouille.</terms:qr_note>
-          <terms:qr_note>Kielbasa pancetta short ribs bresaola doner ribeye tenderloin.</terms:qr_note>
-          <terms:qr_note>Doner pastrami jerky corned beef pancetta bacon turkey chuck frankfurter.</terms:qr_note>
-          <terms:creator_department>Ground round boudin chuck prosciutto capicola rump.</terms:creator_department>
-          <terms:creator_department>Landjaeger tenderloin flank ham hock tongue.</terms:creator_department>
-          <terms:creator_department>Ham flank shank landjaeger frankfurter brisket chuck.</terms:creator_department>
-          <terms:creator_department>Doner beef ribs kielbasa tongue tri-tip ham jowl pig flank.</terms:creator_department>
-          <terms:legacy_pid>Boudin turducken short loin spare ribs ham shank rump venison.</terms:legacy_pid>
-          <terms:createdby>Pork loin pork belly cow tongue pig hamburger.</terms:createdby>
+          <tufts:retention_period>Bacon biltong ham hock swine strip steak.</tufts:retention_period>
+          <tufts:retention_period>Jowl short loin ham hock prosciutto jerky pastrami turkey fatback meatloaf.</tufts:retention_period>
+          <tufts:retention_period>Ground round salami chicken turducken sirloin.</tufts:retention_period>
+          <tufts:retention_period>Strip steak ham hock bresaola biltong beef frankfurter Kevin.</tufts:retention_period>
+          <tufts:startDate>Bacon pig filet mignon beef ribs turkey meatloaf frankfurter boudin kielbasa.</tufts:startDate>
+          <tufts:startDate>Biltong ham hock ribeye pork chop doner hamburger pork loin flank.</tufts:startDate>
+          <tufts:startDate>Jowl shankle doner chuck ribeye t-bone biltong.</tufts:startDate>
+          <tufts:startDate>Pork chop tongue shoulder andouille bresaola pork loin frankfurter short ribs prosciutto.</tufts:startDate>
+          <tufts:qr_status>Turducken beef ribs boudin filet mignon sirloin.</tufts:qr_status>
+          <tufts:qr_status>Venison ribeye jowl pork belly chicken sirloin.</tufts:qr_status>
+          <tufts:qr_status>Cow chuck pork loin beef ribs pig.</tufts:qr_status>
+          <tufts:qr_status>Hamburger brisket tail shoulder capicola corned beef Kevin fatback boudin.</tufts:qr_status>
+          <tufts:rejection_reason>Pork landjaeger corned beef beef ribeye doner.</tufts:rejection_reason>
+          <tufts:rejection_reason>Porchetta tail turkey shoulder shankle flank ham rump pork.</tufts:rejection_reason>
+          <tufts:rejection_reason>Jerky shankle pork flank pig andouille.</tufts:rejection_reason>
+          <tufts:rejection_reason>Chuck spare ribs ground round short loin tail tongue pork chop t-bone shoulder.</tufts:rejection_reason>
+          <tufts:qr_note>Cow swine sausage boudin short ribs meatloaf ground round beef ribs filet mignon.</tufts:qr_note>
+          <tufts:qr_note>Ribeye sausage corned beef jerky pork belly turkey tongue prosciutto andouille.</tufts:qr_note>
+          <tufts:qr_note>Kielbasa pancetta short ribs bresaola doner ribeye tenderloin.</tufts:qr_note>
+          <tufts:qr_note>Doner pastrami jerky corned beef pancetta bacon turkey chuck frankfurter.</tufts:qr_note>
+          <tufts:creator_department>Ground round boudin chuck prosciutto capicola rump.</tufts:creator_department>
+          <tufts:creator_department>Landjaeger tenderloin flank ham hock tongue.</tufts:creator_department>
+          <tufts:creator_department>Ham flank shank landjaeger frankfurter brisket chuck.</tufts:creator_department>
+          <tufts:creator_department>Doner beef ribs kielbasa tongue tri-tip ham jowl pig flank.</tufts:creator_department>
+          <tufts:legacy_pid>Boudin turducken short loin spare ribs ham shank rump venison.</tufts:legacy_pid>
+          <tufts:createdby>Pork loin pork belly cow tongue pig hamburger.</tufts:createdby>
           <model:downloadFilename>Ribeye jerky pork belly tri-tip pork loin leberkas short ribs swine.</model:downloadFilename>
           <scholarsphere:relativePath>Capicola jowl cow pastrami beef ribs ham.</scholarsphere:relativePath>
           <scholarsphere:importUrl>Ham hock flank strip steak turkey tenderloin chicken doner beef.</scholarsphere:importUrl>

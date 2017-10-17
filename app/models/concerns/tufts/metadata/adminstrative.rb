@@ -6,13 +6,13 @@ module Tufts
       REVIEWED_STRING = 'Batch Reviewed'.freeze
 
       included do
-        property :displays_in, predicate: ::Tufts::Vocab::Terms.displays_in do |index|
+        property :displays_in, predicate: ::Tufts::Vocab::Tufts.displays_in do |index|
           index.as :stored_searchable, :facetable
         end
-        property :steward, predicate: ::Tufts::Vocab::Terms.steward, multiple: false do |index|
+        property :steward, predicate: ::Tufts::Vocab::Tufts.steward, multiple: false do |index|
           index.as :stored_searchable
         end
-        property :internal_note, predicate: ::Tufts::Vocab::Terms.internal_note, multiple: false do |index|
+        property :internal_note, predicate: ::Tufts::Vocab::Tufts.internal_note, multiple: false do |index|
           index.as :stored_searchable
         end
         property :audience, predicate: ::RDF::Vocab::DC.audience, multiple: false do |index|
@@ -33,28 +33,28 @@ module Tufts
         property :resource_type, predicate: ::RDF::Vocab::DC.type do |index|
           index.as :stored_searchable, :facetable
         end
-        property :retention_period, predicate: ::Tufts::Vocab::Terms.retention_period do |index|
+        property :retention_period, predicate: ::Tufts::Vocab::Tufts.retention_period do |index|
           index.as :stored_searchable
         end
-        property :admin_start_date, predicate: ::Tufts::Vocab::Terms.start_date do |index|
+        property :admin_start_date, predicate: ::Tufts::Vocab::Tufts.start_date do |index|
           index.as :stored_searchable
         end
-        property :qr_status, predicate: ::Tufts::Vocab::Terms.qr_status do |index|
+        property :qr_status, predicate: ::Tufts::Vocab::Tufts.qr_status do |index|
           index.as :stored_searchable
         end
-        property :rejection_reason, predicate: ::Tufts::Vocab::Terms.rejection_reason do |index|
+        property :rejection_reason, predicate: ::Tufts::Vocab::Tufts.rejection_reason do |index|
           index.as :stored_searchable
         end
-        property :qr_note, predicate: ::Tufts::Vocab::Terms.qr_note do |index|
+        property :qr_note, predicate: ::Tufts::Vocab::Tufts.qr_note do |index|
           index.as :stored_searchable
         end
-        property :creator_department, predicate: ::Tufts::Vocab::Terms.creator_department do |index|
+        property :creator_department, predicate: ::Tufts::Vocab::Tufts.creator_department do |index|
           index.as :stored_searchable
         end
-        property :legacy_pid, predicate: ::Tufts::Vocab::Terms.legacy_pid, multiple: false do |index|
+        property :legacy_pid, predicate: ::Tufts::Vocab::Tufts.legacy_pid, multiple: false do |index|
           index.as :stored_searchable
         end
-        property :createdby, predicate: ::Tufts::Vocab::Terms.createdby, multiple: false do |index|
+        property :createdby, predicate: ::Tufts::Vocab::Tufts.createdby, multiple: false do |index|
           index.as :stored_searchable, :facetable
         end
         property :tufts_license, predicate: ::RDF::Vocab::DC.rights do |index|

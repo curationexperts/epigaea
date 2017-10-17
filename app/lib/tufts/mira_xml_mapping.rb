@@ -24,7 +24,7 @@ module Tufts
     # @return [Enumerator<Field>]
     def map
       if block_given?
-        yield Field.new('terms', 'id', :id, FILTERS['id'])
+        yield Field.new('tufts', 'id', :id, FILTERS['id'])
 
         PROPERTIES.each do |node_config|
           term     = node_config.term
