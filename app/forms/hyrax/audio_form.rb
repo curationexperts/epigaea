@@ -4,7 +4,7 @@ module Hyrax
   class AudioForm < Hyrax::Forms::WorkForm
     include Tufts::HasTranscriptForm
     self.model_class = ::Audio
-    terms.delete(:license)
+    Tufts::Terms.remove_terms.each { |term| terms.delete(term) }
     self.terms += Tufts::Terms.shared_terms
     self.terms += [:transcript_id]
     self.required_fields = [:title, :displays_in]

@@ -19,7 +19,9 @@ RSpec.feature 'Create a PDF', :clean, js: true do
         select 'PDF', from: 'work-type-select-box'
         click_button "Create work"
       end
-      # expect(page).to have_content "Add New PDF"
+      expect(page).to have_no_content('Keywords')
+      expect(page).to have_no_content('Location')
+
       fill_in "Title", with: 'Example Title'
       find(:xpath, '//option[contains(text(), "nowhere")]').select_option
       click_link "Files"

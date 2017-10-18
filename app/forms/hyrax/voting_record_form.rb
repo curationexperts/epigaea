@@ -3,7 +3,7 @@
 module Hyrax
   class VotingRecordForm < Hyrax::Forms::WorkForm
     self.model_class = ::VotingRecord
-    terms.delete(:license)
+    Tufts::Terms.remove_terms.each { |term| terms.delete(term) }
     self.terms += Tufts::Terms.shared_terms
     self.required_fields = [:title, :displays_in]
     self.field_metadata_service = Tufts::MetadataService
