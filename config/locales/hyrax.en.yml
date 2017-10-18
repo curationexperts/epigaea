@@ -3,7 +3,9 @@ en:
     search:
       fields:
         facet:
-          based_near_sim: Location
+          legacy_pid: 'Legacy PID'
+          geographic_name_tesim: Spatial
+          based_near_tesim: Location
           creator_sim: Creator
           file_format_sim: Format
           generic_type_sim: Type
@@ -12,6 +14,8 @@ en:
           publisher_sim: Publisher
           subject_sim: Subject
         index:
+          legacy_pid: 'Legacy PID'  
+          geographic_name_tesim: Spatial
           based_near_tesim: Location
           contributor_tesim: Contributor
           creator_tesim: Creator
@@ -27,6 +31,8 @@ en:
           rights_tesim: Rights
           subject_tesim: Subject
         show:
+          legacy_pid: 'Legacy PID'  
+          geographic_name_tesim: Spatial
           based_near_tesim: Location
           contributor_tesim: Contributor
           creator_tesim: Creator
@@ -43,13 +49,21 @@ en:
           subject_tesim: Subject
           title_tesim: Title
   hyrax:
-    product_name:           "Hyrax"
-    product_twitter_handle: "@HydraSphere"
-    institution_name:       "Institution"
-    institution_name_full:  "The Institution Name"
-    account_name:           "My Institution Account Id"
+    product_name:           "MIRA"
+    product_twitter_handle: ""
+    institution_name:       "Tufts University"
+    institution_name_full:  "Tufts University"
+    account_name:           ""
     directory:
-      suffix:               "@example.org"
+      suffix:               "@tufts.edu"
     footer:
       copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> Licensed under the Apache License, Version 2.0"
       service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+  simple_form:
+    labels:
+      defaults:
+        legacy_pid: 'Legacy PID'
+        description: 'Description'
+        geographic_name: 'Spatial'
+        qr_status: 'Quality Review Status'
+        qr_note: 'Quality Review Note'
