@@ -26,11 +26,14 @@ RSpec.feature 'Create and revert a draft', :clean, js: true do
       sleep(1)
       find('#with_files_submit').click
       expect(page).to have_content('Example Title')
+      click_on 'Publish'
+      sleep(1)
       click_on 'Edit'
+      sleep(1)
       click_on 'Save Draft'
-      expect(page).to have_content('edited')
+      expect(page).to have_content('Edited')
       click_on 'Revert Draft'
-      expect(page).to have_content('published')
+      expect(page).to have_content('Published')
       # Test to see if the draft has been deleted after saving the work
       click_on 'Save Draft'
       fill_in "Title", with: 'Example Title from Draft'
@@ -38,7 +41,7 @@ RSpec.feature 'Create and revert a draft', :clean, js: true do
       sleep(1)
       click_on 'Save'
       click_on 'Edit'
-      expect(page).to have_content('published')
+      expect(page).to have_content('Published')
     end
   end
 end

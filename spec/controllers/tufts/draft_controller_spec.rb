@@ -48,13 +48,4 @@ RSpec.describe Tufts::DraftController, type: :controller do
       expect(parsed_body["status"]).to eq("Deleted the draft.")
     end
   end
-
-  describe 'GET #draft_saved' do
-    it "returns the status of the draft" do
-      get :draft_saved, params: { id: model.id }
-
-      parsed_body = JSON.parse(response.body)
-      expect(parsed_body["status"]).to eq(false)
-    end
-  end
 end

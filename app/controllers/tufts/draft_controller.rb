@@ -14,6 +14,7 @@ module Tufts
       model.assign_attributes(allowed_params(model_type))
       model.save_draft
       model.has_draft = 'true'
+      puts model.id
       model.save
       render json: { status: "A draft was saved.", attributes: model.attributes.except!(*delete_items) }
     end
