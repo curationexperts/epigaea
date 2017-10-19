@@ -31,7 +31,7 @@ RSpec.describe Tufts::DraftController, type: :controller do
                                                                "visibility_after_embargo" => "open", "visibility_during_lease" => "open",
                                                                "lease_expiration_date" => "2017-07-19", "visibility_after_lease" => "restricted",
                                                                "visibility" => "restricted", "version" => "W/\"ec5446d5fb67066ad7557d1f2d76530f0c0912d3\"" },
-                                  "find_child_work" => "", "new_user_name_skel" => "",
+                                  "find_child_work" => "", "new_user_name_skel" => "", "has_draft" => [""],
                                   "new_user_permission_skel" => "none", "new_group_name_skel" => "Select a group",
                                   "new_group_permission_skel" => "none", "agreement" => "1" }
       parsed_body = JSON.parse(response.body)

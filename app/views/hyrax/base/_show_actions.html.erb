@@ -15,7 +15,7 @@
         <% end %>
         <% if presenter.editor? %>
         <li>
-          <%= link_to raw("<i class='glyphicon glyphicon-pencil'></i> Edit"), edit_polymorphic_path([main_app, presenter]), class: 'btn btn-default' %>
+          <%= link_to raw("<i class='glyphicon glyphicon-pencil'></i> Edit"), edit_polymorphic_path([main_app, presenter]), class: 'btn btn-default edit-button' %>
         </li>
         <li>
           <%= link_to raw("<i class='glyphicon glyphicon-trash'></i> Delete"), [main_app, presenter], class: 'btn btn-danger', data: { confirm: "Delete this #{presenter.human_readable_type}?" }, method: :delete %>
