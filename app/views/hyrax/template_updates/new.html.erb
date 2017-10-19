@@ -3,24 +3,27 @@
     <%= f.hidden_field :ids, multiple: true, value: id %>
   <% end %>
 
-  <%= f.select :template_name, options_from_collection_for_select(Tufts::Template.all, :name, :name, @update.template_name), prompt: 'Select a Template' %>
+  <div class='well' id='template-name'>
+    <%= f.label  :template_name, 'Apply Template: ' %>
+    <%= f.select :template_name, options_from_collection_for_select(Tufts::Template.all, :name, :name, @update.template_name), { prompt: 'Please Select' }, { class: 'template-select' }  %>
+  </div>
 
-  <%= f.label :behavior, 'Template Behavior' %>
-
-  <div class='well'>
+  <div class='well' id='template-behavior'>
+    <%= f.label :behavior, 'Template Behavior' %>
+    - Blank fields in templates have no effect in either option and leave existing metadata in those fields as-is.
     <div class='form-group'>
-      <%= f.radio_button :behavior, TemplateUpdate::PRESERVE, checked: true %>
       <div class='radio-label'>
+        <%= f.radio_button :behavior, TemplateUpdate::PRESERVE, checked: true %>
         <strong> Preserve: </strong> &nbsp;
         Append template metadata to blank and multivalued fields.
       </div>
     </div>
 
     <div class='form-group'>
-      <%= f.radio_button :behavior, TemplateUpdate::OVERWRITE %>
       <div class='radio-label'>
+        <%= f.radio_button :behavior, TemplateUpdate::OVERWRITE %>
         <strong> Overwrite: </strong> &nbsp;
-        Apply the template and overwrite any exisiting data with data from the template. Use this option with caution.
+        Replace exisiting metadata with non-blank entries from the template. <em>Use this option with caution</em>.
       </div>
     </div>
   </div>
