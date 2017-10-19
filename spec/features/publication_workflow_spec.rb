@@ -49,6 +49,9 @@ RSpec.feature 'deposit and publication' do
       # in the search results
       visit("/catalog?search_field=all_fields&q=")
       expect(page).to have_content work.title.first
+      # in the dashboard / all works screen
+      visit("/dashboard/works")
+      expect(page).to have_content work.title.first
 
       # Check notifications for publishing user
       visit("/notifications")
