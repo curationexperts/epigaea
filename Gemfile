@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'whenever', require: false
 
-group :production, :development do
+group :production do
   gem 'honeybadger', '~> 3.1'
 end
 
