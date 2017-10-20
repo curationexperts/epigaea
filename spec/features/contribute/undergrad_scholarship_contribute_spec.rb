@@ -30,7 +30,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       click_button "Agree & Deposit"
       created_pdf = Pdf.last
       expect(created_pdf.title.first).to eq title
-      expect(created_pdf.contributor.first).to eq depositing_user.display_name
+      expect(created_pdf.creator.first).to eq depositing_user.display_name
       expect(created_pdf.depositor).to eq depositing_user.user_key
       expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"

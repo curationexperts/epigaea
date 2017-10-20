@@ -2,12 +2,7 @@
 
 <%= f.text_field :title, label: 'Title', help_block: 'Please limit titles to 250 characters or less.' %>
 
-<% contributor = @contribution.creator %>
-<% if @contribution.creator.nil? %>
-   <% contributor = current_user.display_name  %>
-<% end %>
-<%= f.text_field :creator, label: 'Contributor', value: contributor, required: true, readonly: 'readonly'  %>
-
+<%= f.text_field :creator, label: 'Creator', value: @contribution.creator, required: true, readonly: 'readonly'  %>
 
 <%= f.select :embargo_note, standard_embargos,  label: 'Embargo'  %>
 

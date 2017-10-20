@@ -5,11 +5,7 @@
 
 <%= f.text_field :title, label: 'Title', help_block: 'Please limit titles to 250 characters or less.', required: 'required' %>
 
-<% contributor = @contribution.creator %>
-<% if @contribution.creator.nil? %>
-   <% contributor = current_user.display_name  %>
-<% end %>
-<%= f.text_field :creator, label: 'Contributor', value: contributor, required: true  %>
+<%= f.text_field :creator, label: 'Creator', value: @contribution.creator, required: true, readonly: 'readonly'  %>
 
 <div class="checkbox_container">
 <%= f.collection_check_boxes :degrees, GisHelper.degrees, :last, :last, help: 'Degree which you were persuing while working on this poster.' %>

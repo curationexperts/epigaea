@@ -28,7 +28,6 @@ RSpec.feature 'Contribute GIS Expo Student Winners', :clean, js: true do
       click_button "Begin"
       attach_file('contribution_attachment', File.absolute_path(file_fixture('pdf-sample.pdf')))
       fill_in 'Title', with: title
-      fill_in 'Contributor', with: user.display_name
       check 'Masters'
       check 'The Fletcher School'
       check 'Food Policy & Applied Nutr'
@@ -39,7 +38,7 @@ RSpec.feature 'Contribute GIS Expo Student Winners', :clean, js: true do
       expect(page).to have_content 'Your deposit has been submitted for approval.'
       created_pdf = Pdf.last
       expect(created_pdf.title.first).to eq title
-      expect(created_pdf.contributor.first).to eq user.display_name
+      expect(created_pdf.creator.first).to eq user.display_name
       expect(created_pdf.depositor).to eq user.user_key
       expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"

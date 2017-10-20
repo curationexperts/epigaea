@@ -2,12 +2,7 @@
 
 <%= f.text_field :title, label: 'Capstone Project Title', help_block: 'Please limit titles to 250 characters or less.', class: 'form-control' %>
 
-<% contributor = @contribution.creator %>
-<% if @contribution.creator.nil? %>
-   <% contributor = current_user.display_name  %>
-<% end %>
-<%= f.text_field :creator, label: 'Contributor', value: contributor, required: true  %>
-
+<%= f.text_field :creator, label: 'Creator', value: @contribution.creator, required: true, readonly: 'readonly'  %>
 
 <%= f.select :degree, options_for_select(public_health_degrees), {prompt: 'Please select a degree', label: 'Degree'}, {required: true} %>
 
