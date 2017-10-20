@@ -8,5 +8,8 @@ var Tufts = {
     var autocomplete = new Autocomplete()
     
     autocomplete.setup($('#contribution_department'),'default','/authorities/search/local/departments')
+  },
+  selectAllOfHyrax: function() {
+    $('[data-search-option="/catalog"]').click()
   }
 }
