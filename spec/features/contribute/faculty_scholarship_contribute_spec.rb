@@ -36,7 +36,7 @@ RSpec.feature 'Create a Faculty Scholarship self contribution', :clean, js: true
       click_button "Agree & Deposit"
       created_pdf = Pdf.last
       expect(created_pdf.title.first).to eq title
-      expect(created_pdf.contributor.first).to eq "Name with Spaces"
+      expect(created_pdf.creator.first).to eq "Name with Spaces"
       expect(created_pdf.depositor).to eq user.user_key
       expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"
@@ -65,7 +65,7 @@ RSpec.feature 'Create a Faculty Scholarship self contribution', :clean, js: true
       click_button "Agree & Deposit"
       created_pdf = Pdf.last
       expect(created_pdf.title.first).to eq "Space non normalized title"
-      expect(created_pdf.contributor.first).to eq "Name with Spaces"
+      expect(created_pdf.creator.first).to eq "Name with Spaces"
       expect(created_pdf.description.first).to eq "A short description with wonky spaces"
       expect(created_pdf.bibliographic_citation.first).to eq "bibliographic citation with spaces"
     end

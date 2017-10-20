@@ -29,7 +29,7 @@ class Contribution
       createdby: SELFDEP,
       depositor: @depositor,
       visibility: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC,
-      contributor: [creator],
+      creator: [creator],
       title: [title],
       steward: 'dca',
       displays_in: ['dl'],

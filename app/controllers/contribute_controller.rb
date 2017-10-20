@@ -13,6 +13,7 @@ class ContributeController < ApplicationController
 
   def new
     @contribution = @deposit_type.contribution_class.new
+    @contribution.creator = current_user.display_name
   end
 
   def create

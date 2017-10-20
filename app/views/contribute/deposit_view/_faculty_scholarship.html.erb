@@ -2,11 +2,7 @@
 
 <%= f.text_field :title, help_block: 'Please limit titles to 250 characters or less.', required: true %>
 
-<% contributor = @contribution.creator %>
-<% if @contribution.creator.nil? %>
-   <% contributor = current_user.display_name  %>
-<% end %>
-<%= f.text_field :creator, label: 'Contributor', value: contributor, required: true, readonly: 'readonly' %>
+<%= f.text_field :creator, label: 'Creator', value: @contribution.creator, required: true, readonly: 'readonly'  %>
 
 <%= f.text_field :bibliographic_citation, label: 'Bibliographic Citation', help_block: '<b>Optional</b> - the bibliographic citation field may be left blank'.html_safe %>
 
