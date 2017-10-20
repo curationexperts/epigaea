@@ -8,7 +8,6 @@ module Tufts
   # @example
   #   importer = MiraXmlImporter.new(file: File.open('my_import.xml'))
   #
-  #
   # @see http://www.openarchives.org/OAI/openarchivesprotocol.html#ListRecords
   #   for the OAI ListRecords format.
   class MiraXmlImporter < Importer
@@ -26,11 +25,14 @@ module Tufts
 
     ##
     # @param file [String]
+    # @param id   [String]
     #
     # @return [ImportRecord] a record from the import matching the file;
     #   A new empty ImportRecord is returned if none match
-    def record_for(file:)
-      records.find { |record| record.file == file } || ImportRecord.new
+    def record_for(file: nil, id: nil)
+      (file && records.find { |record| record.file == file }) ||
+        (id && records.find { |record| record.id == id }) ||
+        ImportRecord.new
     end
 
     ##
@@ -48,14 +50,10 @@ module Tufts
     # @return [Enumerable<ImportRecord>]
     def records
       if block_given?
-        metadata_nodes.each do |node|
-          record      = ImportRecord.new
-          record.file = node.xpath('./dcterms:source', node.namespaces)
-                            .children.map(&:content).first || ''
-          record.title = node.xpath('./dc:title', node.namespaces)
-                             .children.map(&:content).first || record.file
+        mapping = MiraXmlMapping.new
 
-          yield record
+        metadata_nodes.each do |node|
+          yield ImportRecord.new(metadata: node, mapping: mapping)
         end
       end
 
