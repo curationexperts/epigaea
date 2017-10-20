@@ -1,3 +1,7 @@
+<% if flash[:warning] %>
+  <div class="alert alert-danger" role="alert"><%= flash[:warning] %></div>
+<% end %>
+
 <%= form_for [main_app, @update] do |f| %>
   <% @update.ids.each do |id| %>
     <%= f.hidden_field :ids, multiple: true, value: id %>
