@@ -5,6 +5,7 @@ FactoryGirl.define do
     id { ActiveFedora::Noid::Service.new.mint }
     title [FFaker::Book.title]
     visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+    displays_in ['nowhere']
   end
 
   factory :populated_pdf, class: Pdf do

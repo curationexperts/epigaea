@@ -1,0 +1,14 @@
+<% presenter.title.each_with_index do |title, index| %>
+    <% if index == 0 %>
+        <h1>
+          <%= title %> <%= presenter.permission_badge %>
+          <% if presenter.solr_document.has_draft == ['true'] %>
+          <span class="label label-warning">Edited</span>
+          <% else %>
+          <%= presenter.workflow.badge %>
+          <% end %>
+        </h1>
+    <% else %>
+        <h1><%= title %></h1>
+    <% end %>
+<% end %>

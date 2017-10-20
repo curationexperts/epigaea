@@ -48,8 +48,9 @@
             </div>
       </div>   
     </div>
-  <% if @curation_concern.persisted?  %>
-    <div class="col-xs-12 col-sm-4">
+    <% if @curation_concern.persisted?  %>
+      <% if workflow_status(curation_concern) == ["published"] %>
+     <div class="col-xs-12 col-sm-4">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Manage Draft</h3>
@@ -59,7 +60,8 @@
             </div>
         </div>
     </div>
-  <% end %>
+      <% end %>
+    <% end %>
     
   <div id="savewidget" class="col-xs-12 col-sm-4 fixedsticky" role="complementary">
     <%= render 'form_progress', f: f %>
