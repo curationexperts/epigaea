@@ -10,6 +10,7 @@ RSpec.feature 'deposit and publication' do
   let(:work) { FactoryGirl.create(:image) }
   context 'a logged in user' do
     before do
+      Image.delete_all
       allow(CharacterizeJob).to receive(:perform_later) # There is no fits installed on travis-ci
       publishing_user # Make sure publishing user exists before the work is submitted
       current_ability = ::Ability.new(depositing_user)
@@ -41,9 +42,18 @@ RSpec.feature 'deposit and publication' do
       visit("/notifications")
       expect(page).to have_content "#{work.title.first} (#{work.id}) has been deposited by #{depositing_user.display_name} (#{depositing_user.user_key}) and is awaiting publication."
 
-      # Check notifications for publishing user
       logout
       login_as publishing_user
+
+      # An admin user can see a work even if it is not yet published
+      # in the search results
+      visit("/catalog?search_field=all_fields&q=")
+      expect(page).to have_content work.title.first
+      # in the dashboard / all works screen
+      visit("/dashboard/works")
+      expect(page).to have_content work.title.first
+
+      # Check notifications for publishing user
       visit("/notifications")
       expect(page).to have_content "#{work.title.first} (#{work.id}) has been deposited by #{depositing_user.display_name} (#{depositing_user.user_key}) and is awaiting publication."
 
