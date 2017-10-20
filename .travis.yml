@@ -6,7 +6,6 @@ dist: trusty
 jdk:
   - oraclejdk8
 rvm:
-  - 2.3.3
   - 2.3.4
 before_script:
   - bundle exec sidekiq -d -l /tmp/sidekiq.log
