@@ -26,7 +26,6 @@ shared_examples 'a Tufts presenter' do
     it { is_expected.to delegate_method(:corporate_name).to(:solr_document) }
     it { is_expected.to delegate_method(:genre).to(:solr_document) }
     it { is_expected.to delegate_method(:provenance).to(:solr_document) }
-    it { is_expected.to delegate_method(:spatial).to(:solr_document) }
     it { is_expected.to delegate_method(:temporal).to(:solr_document) }
     it { is_expected.to delegate_method(:funder).to(:solr_document) }
   end
