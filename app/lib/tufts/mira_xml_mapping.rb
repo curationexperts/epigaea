@@ -14,8 +14,8 @@ module Tufts
     #
     Field = Struct.new(:namespace, :name, :property, :filter)
 
-    PROPERTIES    = GenericObject.properties.values.freeze
-    FILTERS       = { title: Proc.new(&:first) }.freeze
+    PROPERTIES = GenericObject.properties.values.freeze
+    FILTERS    = { title: Proc.new(&:first) }.freeze
 
     ##
     # @yield Yields each field in the mapped object

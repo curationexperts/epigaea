@@ -60,6 +60,9 @@ Rails.application.routes.draw do
   resources :metadata_exports,
             controller: 'hyrax/metadata_exports',
             only:       [:create]
+  resources :metadata_imports,
+            controller: 'hyrax/metadata_imports',
+            only:       [:new, :create]
   resources :xml_imports,
             controller: 'hyrax/xml_imports',
             only:       [:show, :create, :new, :edit, :update]
