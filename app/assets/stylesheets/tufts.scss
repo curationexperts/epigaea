@@ -239,9 +239,7 @@ body.dashboard > div#content-wrapper {
     margin-bottom: 1em;  
   }
 }
-.work-actions {
-  width: 75%;
-}
+
 .show-action-buttons {
   list-style: none;
   margin:0;
@@ -250,11 +248,11 @@ body.dashboard > div#content-wrapper {
   list-style:none;
   margin-bottom:.5em;
   margin-left:.5em;
-  overflow: auto;
     a {
-        min-width: 200px;
         max-width: inherit;
         padding: .7em;
+        width: 100%;
+        min-height:25px;
     }
     i {
         float:left;
