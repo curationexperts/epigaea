@@ -30,9 +30,6 @@ module Tufts
         property :rights_note, predicate: ::RDF::Vocab::DC11.rights, multiple: false do |index|
           index.as :stored_searchable
         end
-        property :resource_type, predicate: ::RDF::Vocab::DC.type do |index|
-          index.as :stored_searchable, :facetable
-        end
         property :retention_period, predicate: ::Tufts::Vocab::Tufts.retention_period do |index|
           index.as :stored_searchable
         end

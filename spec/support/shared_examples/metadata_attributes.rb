@@ -153,12 +153,6 @@ shared_examples 'a work with Tufts metadata attributes' do
         .to match(/purl.org\/dc\/terms\/provenance/)
     end
 
-    it 'has spatial' do
-      work.spatial = ['12,23']
-      expect(work.resource.dump(:ttl))
-        .to match(/purl.org\/dc\/terms\/spatial/)
-    end
-
     it 'has temporal' do
       work.temporal = ['20th century']
       expect(work.resource.dump(:ttl))

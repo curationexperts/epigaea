@@ -4,13 +4,12 @@ module Tufts
                     :abstract, :table_of_contents, :primary_date, :date_accepted,
                     :date_available, :date_copyrighted, :date_issued, :steward,
                     :internal_note, :audience, :embargo_note, :end_date, :accrual_policy,
-                    :rights_note, :resource_type,
-                    :bibliographic_citation, :rights_holder, :format_label, :replaces, :is_replaced_by,
-                    :has_format, :is_format_of, :has_part, :tufts_license,
+                    :rights_note, :rights_holder, :format_label, :replaces, :is_replaced_by,
+                    :has_format, :is_format_of, :bibliographic_citation, :has_part, :tufts_license,
                     :retention_period, :admin_start_date, :qr_status, :rejection_reason,
-                    :qr_note, :creator_department, :legacy_pid, :spatial, :temporal, :extent,
+                    :qr_note, :creator_department, :legacy_pid, :temporal, :extent,
                     :personal_name, :corporate_name, :genre, :provenance, :funder, :createdby, :tufts_is_part_of, :has_draft].freeze
-    REMOVE_TERMS = [:license, :keyword, :based_near].freeze
+    REMOVE_TERMS = [:license, :keyword, :based_near, :has_draft].freeze
     def self.shared_terms
       SHARED_TERMS
     end

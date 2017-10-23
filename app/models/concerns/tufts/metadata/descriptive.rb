@@ -33,8 +33,6 @@ module Tufts
         property :date_issued, predicate: ::RDF::Vocab::EBUCore.dateIssued do |index|
           index.as :stored_searchable
         end
-        property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation do |index|
-        end
         property :rights_holder, predicate: ::RDF::Vocab::DC.rightsHolder do |index|
           index.as :stored_searchable
         end
@@ -71,13 +69,7 @@ module Tufts
         property :provenance, predicate: ::RDF::Vocab::DC.provenance do |index|
           index.as :stored_searchable
         end
-        property :spatial, predicate: ::RDF::Vocab::DC.provenance do |index|
-          index.as :stored_searchable
-        end
         property :temporal, predicate: ::RDF::Vocab::DC.temporal do |index|
-          index.as :stored_searchable
-        end
-        property :spatial, predicate: ::RDF::Vocab::DC.spatial do |index|
           index.as :stored_searchable
         end
         property :funder, predicate: ::RDF::Vocab::MARCRelators.fnd do |index|
