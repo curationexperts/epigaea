@@ -111,7 +111,7 @@ RSpec.configure do |config|
     Tufts::WorkflowSetup.setup
   end
 
-  config.before(:each) do |example|
+  config.before do |example|
     # Pass `:clean' to destroy objects in fedora/solr and start from scratch
     ActiveFedora::Cleaner.clean! if example.metadata[:clean]
 
