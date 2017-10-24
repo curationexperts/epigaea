@@ -1,6 +1,5 @@
 shared_examples 'a Tufts presenter' do
   subject(:presenter) { described_class.new(double, double) }
-
   describe "with custom attributes that are delegated to Solr and" do
     it { is_expected.to delegate_method(:geographic_name).to(:solr_document) }
     it { is_expected.to delegate_method(:displays_in).to(:solr_document) }
