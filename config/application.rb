@@ -18,7 +18,15 @@ module Epigaea
     # -- all .rb files in that directory are automatically loaded.
 
     config.to_prepare do
-      Hyrax::CurationConcern.actor_factory.use Hyrax::Actors::HandleAssuranceActor
+      factory = Hyrax::CurationConcern.actor_factory
+      factory.use(Hyrax::Actors::HandleAssuranceActor)
+
+      # Hyrax's instructions don't work
+      # https://github.com/samvera/hyrax/blame/a992e37fba805665e1587f40870bde5cd3826b3f/app/services/hyrax/curation_concern.rb#L3-L18
+      # we'll force setting the stack instead
+      Hyrax::CurationConcern
+        .instance_variable_set(:@work_middleware_stack,
+                               factory.build(Hyrax::Actors::Terminator.new))
     end
   end
 end
