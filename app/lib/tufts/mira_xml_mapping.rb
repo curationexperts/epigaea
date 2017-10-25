@@ -14,8 +14,16 @@ module Tufts
     #
     Field = Struct.new(:namespace, :name, :property, :filter)
 
-    PROPERTIES = GenericObject.properties.values.freeze
-    FILTERS    = { title: Proc.new(&:first) }.freeze
+    SKIP_FIELDS = [:head, :tail, :create_date, :modified_date,
+                   :depositor, :proxy_depositor, :on_behalf_of,
+                   :state, :arkivo_checksum, :owner].freeze
+
+    PROPERTIES = GenericObject.properties
+                              .reject { |k, _| SKIP_FIELDS.include?(k.to_sym) }
+                              .values
+                              .freeze
+
+    FILTERS = { title: Proc.new(&:first) }.freeze
 
     ##
     # @yield Yields each field in the mapped object
