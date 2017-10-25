@@ -6,6 +6,7 @@ module Hyrax
     self.model_class = ::GenericObject
 
     self.terms += Tufts::Terms.shared_terms
+    Tufts::Terms.remove_terms.each { |term| terms.delete(term) }
     self.terms.unshift(:template_name)
 
     self.required_fields = []
