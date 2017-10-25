@@ -13,6 +13,7 @@ en:
           language_sim: Language
           publisher_sim: Publisher
           subject_sim: Subject
+          identifier_tesim: 'Permanent URL'
         index:
           legacy_pid: 'Legacy PID'  
           geographic_name_tesim: Spatial
@@ -30,6 +31,7 @@ en:
           publisher_tesim: Publisher
           rights_tesim: Rights
           subject_tesim: Subject
+          identifier_tesim: 'Permanent URL' 
         show:
           legacy_pid: 'Legacy PID'  
           geographic_name_tesim: Spatial
@@ -48,6 +50,7 @@ en:
           rights_tesim: Rights
           subject_tesim: Subject
           title_tesim: Title
+          identifier_tesim: 'Permanent URL' 
   hyrax:
     product_name:           "MIRA"
     product_twitter_handle: ""
@@ -67,3 +70,4 @@ en:
         geographic_name: 'Spatial'
         qr_status: 'Quality Review Status'
         qr_note: 'Quality Review Note'
+        identifier: 'Permanent URL' 
