@@ -28,7 +28,7 @@ module Tufts
               xml.record do
                 xml.metadata do
                   xml.mira_import(@mapping.namespaces) do
-                    @mapping.map do |field|
+                    @mapping.map_sorted do |field|
                       if field.property == :id
                         xml[field.namespace.to_s]
                           .send(field.name, object.send(field.property))
