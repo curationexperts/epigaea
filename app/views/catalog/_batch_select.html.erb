@@ -1,3 +1,16 @@
+<% if document["workflow_state_name_ssim"] %>
+    <% workflow_state = document["workflow_state_name_ssim"].first %>
+    <% if document["has_draft_tesim"] %>
+        <% has_draft = document["has_draft_tesim"].first %>
+    <% end  %>
+      <% if has_draft && has_draft == 'true' %>
+          <span class="state state-edited catalog-state label label-warning">Edited</span>
+         
+<% else %>
+    <span class="state state-<%= workflow_state %> label catalog-state label-primary"><%= workflow_state.capitalize %></span>
+<% end %>
+<% end  %>
+
 <span data-behavior="batch-add-button">
   <%= check_box_tag "batch", document.id, false, class:"batch_document_selector", id: "batch_document_#{document.id}" %>
 </span>
