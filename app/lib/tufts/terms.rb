@@ -8,7 +8,8 @@ module Tufts
                     :has_format, :is_format_of, :bibliographic_citation, :has_part, :tufts_license,
                     :retention_period, :admin_start_date, :qr_status, :rejection_reason,
                     :qr_note, :creator_department, :legacy_pid, :temporal, :extent,
-                    :personal_name, :corporate_name, :genre, :provenance, :funder, :createdby, :tufts_is_part_of, :resource_type, :has_draft].freeze
+                    :personal_name, :corporate_name, :genre, :provenance, :funder, :createdby,
+                    :tufts_is_part_of, :resource_type, :has_draft].freeze
     REMOVE_TERMS = [:license, :keyword, :based_near, :has_draft].freeze
     def self.shared_terms
       SHARED_TERMS

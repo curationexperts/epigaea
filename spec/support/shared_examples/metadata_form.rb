@@ -14,7 +14,8 @@ shared_examples 'a form with Tufts metadata attributes' do
                                     :has_format, :is_format_of, :has_part, :tufts_license,
                                     :retention_period, :admin_start_date, :qr_status, :rejection_reason,
                                     :qr_note, :creator_department, :legacy_pid, :temporal, :extent,
-                                    :personal_name, :corporate_name, :genre, :provenance, :funder, :createdby, :tufts_is_part_of, :has_draft)
+                                    :personal_name, :corporate_name, :genre, :provenance, :funder, :createdby,
+                                    :tufts_is_part_of)
     end
   end
 end
