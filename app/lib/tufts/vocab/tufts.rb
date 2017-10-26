@@ -27,7 +27,6 @@ module Tufts
       term :qr_note
       term :creator_department
       term :is_part_of
-      term :has_draft
     end
   end
 end

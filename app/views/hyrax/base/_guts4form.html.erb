@@ -49,7 +49,8 @@
       </div>   
     </div>
     <% if @curation_concern.persisted?  %>
-      <% if workflow_status(curation_concern) == ["published"] %>
+      <% workflow_status_with_draft = Tufts::WorkflowStatus.status(@curation_concern.id) %>
+      <% if workflow_status_with_draft == 'published' || workflow_status_with_draft == 'edited'  %>
      <div class="col-xs-12 col-sm-4">
         <div class="panel panel-default">
             <div class="panel-heading">

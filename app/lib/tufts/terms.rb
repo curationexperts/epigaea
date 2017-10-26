@@ -9,8 +9,8 @@ module Tufts
                     :retention_period, :admin_start_date, :qr_status, :rejection_reason,
                     :qr_note, :creator_department, :legacy_pid, :temporal, :extent,
                     :personal_name, :corporate_name, :genre, :provenance, :funder, :createdby,
-                    :tufts_is_part_of, :resource_type, :has_draft].freeze
-    REMOVE_TERMS = [:license, :keyword, :based_near, :has_draft].freeze
+                    :tufts_is_part_of, :resource_type].freeze
+    REMOVE_TERMS = [:license, :keyword, :based_near].freeze
     def self.shared_terms
       SHARED_TERMS
     end

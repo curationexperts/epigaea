@@ -4,8 +4,6 @@ module Tufts
 
     def save_draft
       model = ActiveFedora::Base.find(params[:id])
-      model.has_draft = 'true'
-      model.save
 
       model_type = model_type(model)
       scalar_fix(model_type)
@@ -21,8 +19,7 @@ module Tufts
     def delete_draft
       model = ActiveFedora::Base.find(params[:id])
       model.delete_draft
-      model.has_draft = 'false'
-      model.save
+
       render json: { status: "Deleted the draft." }
     end
 
