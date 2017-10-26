@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Tufts::WorkflowStatus do
+describe Tufts::WorkflowStatus, :clean do
   let(:work) { create(:pdf) }
   let(:workflow_status) { subject }
   it 'returns unpublished for an unpublished work when given its ID' do

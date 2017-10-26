@@ -1,5 +1,3 @@
-<%= render 'tufts/workflow_status_badge', locals: {id: document.id} %>
-    
 <span data-behavior="batch-add-button">
   <%= check_box_tag "batch", document.id, false, class:"batch_document_selector", id: "batch_document_#{document.id}" %>
 </span>

@@ -7,27 +7,32 @@ module Tufts
         'unpublished'
       else
         # Only look for this status in Fedora if necessary
-        work = ActiveFedora::Base.find(id)
-        draft_status = work.draft_saved?
-        if draft_status
-          'edited'
-        else
-          'published'
-        end
+        published_or_edited(id)
       end
     end
 
     def self.solr_status(id)
       document = SolrDocument.find(id)
-      begin
-        document['workflow_state_name_ssim'][0]
-      rescue
-        'unpublished'
+      states = document.fetch('workflow_state_name_ssim') { ['unpublished'] }
+      states.first
+    end
+
+    def self.draft_exist?(id)
+      Rails.application.config.drafts_storage_dir.join(id).exist?
+    end
+
+    def self.published_or_edited(id)
+      if draft_exist?(id)
+        'edited'
+      else
+        'published'
       end
     end
 
     class << self
       private :solr_status
+      private :draft_exist?
+      private :published_or_edited
     end
   end
 end
