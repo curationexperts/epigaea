@@ -28,6 +28,7 @@ module Tufts
       term :creator_department
       term :is_part_of
       term :has_draft
+      term :tufts_license
     end
   end
 end
