@@ -32,6 +32,8 @@ shared_examples 'a MetadataBuilder' do
     end
 
     it 'adds datatypes' do
+      object.date_accepted = [Time.zone.today]
+
       expect { builder.add(*objects) }
         .to change { builder.build }
         .to include('datatype=')
