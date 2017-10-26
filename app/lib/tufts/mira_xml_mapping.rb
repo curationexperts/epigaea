@@ -38,6 +38,15 @@ module Tufts
     end
 
     ##
+    # Maps in a sorted order for easy reading.
+    #
+    # @see #map
+    def map_sorted(&block)
+      map.sort_by { |field| "#{field.namespace}:#{field.name}" }
+         .each(&block)
+    end
+
+    ##
     # @return [Hash<String, String>]
     def namespaces
       @namespaces ||= PROPERTIES.each_with_object({}) do |node_config, hsh|
