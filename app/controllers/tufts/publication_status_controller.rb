@@ -6,6 +6,7 @@ module Tufts
 
     def publish
       work = ActiveFedora::Base.find(params[:id])
+      work.delete_draft
       subject = Hyrax::WorkflowActionInfo.new(work, current_user)
       sipity_workflow_action = PowerConverter.convert_to_sipity_action("publish", scope: subject.entity.workflow) { nil }
       Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Published by #{current_user}")

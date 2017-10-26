@@ -1,0 +1,7 @@
+<% status = Tufts::WorkflowStatus.status(locals[:id]) %>
+  <% if status == 'edited' %>
+    <span class="state state-edited catalog-state label label-warning">Edited</span>
+  <% else %>
+    <span class="state state-<%= status %> label catalog-state label-primary"><%= status.capitalize %>
+    </span>
+  <% end %>

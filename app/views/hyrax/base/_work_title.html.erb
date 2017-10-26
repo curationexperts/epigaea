@@ -2,11 +2,7 @@
     <% if index == 0 %>
         <h1>
           <%= title %> <%= presenter.permission_badge %>
-          <% if presenter.solr_document.has_draft == ['true'] %>
-          <span class="label label-warning">Edited</span>
-          <% else %>
-          <%= presenter.workflow.badge %>
-          <% end %>
+           <%= render 'tufts/workflow_status_badge', locals: {id: presenter.id} %>
         </h1>
     <% else %>
         <h1><%= title %></h1>

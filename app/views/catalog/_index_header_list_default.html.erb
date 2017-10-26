@@ -1,4 +1,5 @@
 <h2>
   <%= link_to document.title_or_label, document %>
+  <%= render 'tufts/workflow_status_badge', locals: {id: document.id} %>
   <%= render 'catalog/batch_select', document: document %>
 </h2>
