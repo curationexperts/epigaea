@@ -48,6 +48,8 @@
             </div>
       </div>   
     </div>
+
+    <div class="save-controls">
     <% if @curation_concern.persisted?  %>
       <% workflow_status_with_draft = Tufts::WorkflowStatus.status(@curation_concern.id) %>
       <% if workflow_status_with_draft == 'published' || workflow_status_with_draft == 'edited'  %>
@@ -64,7 +66,8 @@
       <% end %>
     <% end %>
     
-  <div id="savewidget" class="col-xs-12 col-sm-4 fixedsticky" role="complementary">
+  <div id="savewidget" class="col-xs-12 col-sm-4" role="complementary">
     <%= render 'form_progress', f: f %>
+  </div>
   </div>
 </div>

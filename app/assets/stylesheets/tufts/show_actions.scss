@@ -1,0 +1,37 @@
+.show-actions {
+  margin:0;
+  padding:0;
+  max-width: 52%; 
+  padding-top: 1em; 
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  h4 {
+    padding: 0; 
+    margin: 0;
+    margin-left: .5em;
+    margin-bottom: 1em;  
+  }
+}
+
+.show-action-buttons {
+  list-style: none;
+  margin:0;
+  padding: 0;
+  li {
+  list-style:none;
+  margin-bottom:.5em;
+  margin-left:.5em;
+    a {
+        max-width: inherit;
+        padding: .7em;
+        width: 100%;
+        min-height:25px;
+    }
+    i {
+        float:left;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 2px;
+    }
+  }
+}

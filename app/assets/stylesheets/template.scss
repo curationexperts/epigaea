@@ -4,3 +4,15 @@
   background-clip:padding-box;
   padding: 10px;
 }
+
+.save-template, .new-template {
+  position:sticky;
+  position:-webkit-sticky;
+  top:85px;
+}
+.save-template-buttons, .new-template-buttons {
+  margin-top:1em;
+  margin-bottom:1em;
+  margin-right:.5em;
+  margin-left:.5em;
+} 

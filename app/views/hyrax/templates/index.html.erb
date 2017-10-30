@@ -1,22 +1,39 @@
 <h1>Manage Metadata Templates</h1>
-
-<table class="table">
+<div class="col-xs-12 col-sm-8">
+<table id="template-table" class="table template-table">
   <thead>
-  <tr>
-    <th><%= link_to "New Template", main_app.new_template_path, class: "btn btn-primary" %></th>
+    <th></th>
     <th>Template Name</th>
     <th></th>
-  </tr>
   </thead>
 
   <tbody>
 
-  <%= render partial: 'template', collection: @templates, as: :template %>
-
-  <tr>
-    <td><%= link_to "New Template", main_app.new_template_path, class: "btn btn-primary" %></td>
-    <td></td>
-  </tr>
+      <%= render partial: 'template', collection: @templates, as: :template %>
+      
   </tbody>
-
 </table>
+</div>
+<div class="col-xs-12 col-sm-4 new-template" role="complementary">
+    <aside id="form-progress" class="form-progress">
+      <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          New Template
+        </h3>
+      </div>
+      <div class="new-template-buttons">
+          <td><%= link_to "New Template", main_app.new_template_path, class: "btn btn-primary" %></td>
+      </div>
+      </div>
+    </aside>
+</div>
+<script>
+ $(document).on('turbolinks:load', function() {
+     $('#template-table').DataTable()
+ })
+ $(document).on("turbolinks:before-cache", function() {
+     $('#template-table').DataTable().destroy()  
+ })
+</script>
+
