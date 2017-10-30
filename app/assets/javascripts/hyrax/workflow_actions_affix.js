@@ -1,0 +1,1 @@
+// Override for Hyrax sticky controls -- MIRA has its own implementation
