@@ -27,7 +27,12 @@
        </tbody>
     </table>
     <script>
-     $('#batch-table').DataTable()
+     $(document).on('turbolinks:load', function() {
+       $('#batch-table').DataTable()
+     })
+     $(document).on("turbolinks:before-cache", function() {
+       $('#batch-table').DataTable().destroy()  
+     })
     </script>
   </div>
 </div>

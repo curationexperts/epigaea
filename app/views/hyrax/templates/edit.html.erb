@@ -8,17 +8,21 @@
       </div>
     </div>
   </div>
-  <div id="savewidget" class="col-xs-12 col-sm-4 fixedsticky" role="complementary">
+  
+  <div id="savewidget" class="col-xs-12 col-sm-4 save-template" role="complementary">
+   
     <aside id="form-progress" class="form-progress">
+      <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Save Template: <strong><%= @form.template_name %></strong></h3>
       </div>
-      <div>
+      <div class="save-template-buttons">
         <%= f.submit class: 'btn btn-primary', onclick:
             "confirmation_needed = false;", id: "submit", name: "template_submit" %>
         <%= link_to "Cancel", :back, class: 'btn btn-default' %>
       </div>
     </aside>
+  </div>
   </div>
 </div>
 <% end %>

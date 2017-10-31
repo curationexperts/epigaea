@@ -1,0 +1,83 @@
+@import 'variables';
+
+/* ------------------------
+ *  HEADER / NAV
+ * ------------------------ */
+ .turbolinks-progress-bar {
+    
+     background-color: $tufts_blue;
+   }
+   
+   .navbar-fixed-top {
+     margin-bottom: 0;
+   }
+   div.image-mastehead > .navbar {
+       border-bottom:0;
+   }
+   nav#masthead.navbar {
+     background-color: $tufts_bar;
+     background: linear-gradient(0deg,$gradient_bottom,$gradient_top);
+     border-top: 1px solid #E5E5E5;
+     border-bottom: 5px solid $tufts_blue;
+     height: 71px;
+   }
+   
+   .image-masthead .navbar {
+       background: inherit;
+       border-bottom:none;
+   }
+   .image-masthead {
+       border-bottom:0;
+   }
+   #sidebar {
+     margin-left: 0;
+   }
+   
+   .sidebar .sidebar-toggle {
+       background-color: rgba(240, 240, 240, 0);
+       color:lavenderblush;
+   }
+   
+   .container-fluid {  
+      margin-right: 2em;
+      margin-left: 2em;
+   }
+   
+   div#content-wrapper > div.main-content {
+       background-color: inherit;
+   }
+   
+   #logo img {
+     width: 150px;
+     margin-left: -15px;
+   }
+   
+   #content-wrapper > h1 {
+     color: $tufts_bar;
+   }
+
+  .main-header {
+    h1 {
+      background: $tufts_bar;
+      padding: .5em;
+      border-radius: 4px;
+      margin: 0;
+      margin-bottom: 1em;
+    }
+  }
+   
+   .image-masthead {
+     .navbar-static-top {
+       background-color: #f8f8f8;
+       border-color: #e7e7e7;  
+     }
+   }
+   
+   #search-form-header {
+     margin-left: 1.7em; 
+   }
+
+   .canonical-image {   
+    float: left;  
+    max-width: 100%;
+  }

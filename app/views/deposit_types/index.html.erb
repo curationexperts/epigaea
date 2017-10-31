@@ -22,7 +22,12 @@
   </tbody>
 </table>
 <script>
-  $('#deposit-types').DataTable()
+ $(document).on('turbolinks:load', function() {
+     $('#deposit-types').DataTable()
+ })
+ $(document).on("turbolinks:before-cache", function() {
+     $('#deposit-types').DataTable().destroy()  
+ })
 </script>
 <p><%= link_to 'Add a New Deposit Type', new_deposit_type_path, class: 'btn btn-primary' %></p>
 <p><%= link_to 'Export Deposit Type Data', export_deposit_types_path, class: 'btn float-right' %></p>

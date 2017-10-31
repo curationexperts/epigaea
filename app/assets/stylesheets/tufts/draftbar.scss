@@ -67,3 +67,8 @@
     from { transform: scale(1) rotate(0deg);}
     to { transform: scale(1) rotate(360deg);}
 }
+
+.save-affix {
+position:sticky;
+  top:85px;
+}
