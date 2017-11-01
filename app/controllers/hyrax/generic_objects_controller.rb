@@ -2,14 +2,8 @@
 #  `rails generate hyrax:work GenericObject`
 
 module Hyrax
-  class GenericObjectsController < ApplicationController
-    # Adds Hyrax behaviors to the controller.
-    include Hyrax::WorksControllerBehavior
-    include Hyrax::BreadcrumbsForWorks
+  class GenericObjectsController < Tufts::WorksController
     self.curation_concern_type = ::GenericObject
-
-    # Use this line if you want to use a custom presenter
     self.show_presenter = Hyrax::GenericObjectPresenter
-    include Tufts::Drafts::Editable
   end
 end
