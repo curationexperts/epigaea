@@ -122,4 +122,23 @@ RSpec.describe Tufts::ImportRecord do
       end
     end
   end
+
+  describe '#files' do
+    it 'is an empty collection by default' do
+      expect(record.files).to be_empty
+    end
+
+    context 'with metadata' do
+      include_context 'with metadata'
+
+      it 'uses specified visibility' do
+        expect(record.visibility)
+          .to eq Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+      end
+
+      it 'has the filenames in order' do
+        expect(record.files).to eq ['pdf-sample.pdf', '2.pdf']
+      end
+    end
+  end
 end
