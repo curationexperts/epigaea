@@ -3,7 +3,7 @@
 <script>var Handlebars = require('handlebars')</script>
 <script>gisBehavior()</script>
 
-<%= f.text_field :title, label: 'Title', help_block: 'Please limit titles to 250 characters or less.', required: 'required' %>
+<%= f.text_field :title, label: 'Title', required: 'required' %>
 
 <%= f.text_field :creator, label: 'Creator', value: @contribution.creator, required: true, readonly: 'readonly'  %>
 
@@ -33,7 +33,7 @@
 </div>
 
 <%= f.hidden_field :description, value: 'throw away' %>
-<%= f.text_field :geonames_placeholder, label: 'Place Keywords', help_block: 'Pick some keywords', class: 'geonames', help: 'Please select places this poster pertains to. Note: field with autocomplete with values via GeoNames API' %>
+<%= f.text_field :geonames_placeholder, label: 'Place Keywords', help: 'Pick some keywords', class: 'geonames', help: 'Please select places this poster pertains to. Note: field with autocomplete with values via GeoNames API' %>
 
 <div id="geotextarea" contenteditable="false">
   <% unless @contribution.geonames.nil? %>

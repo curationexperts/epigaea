@@ -34,9 +34,16 @@ class ContributeController < ApplicationController
   # object creation
   # @param [ActionController::Parameters] params
   def normalize_whitespace(params)
+    # For keep_newline_fields, keep single newlines, compress 2+ newlines to 2,
+    # and otherwise strip whitespace as usual
+    keep_newline_fields = ['description', 'abstract']
     params["contribution"].keys.each do |key|
       next unless params["contribution"][key].class == String
-      params["contribution"][key] = params["contribution"][key].gsub(/\s+/, " ").strip
+      params["contribution"][key] = if keep_newline_fields.include?(key)
+                                      params["contribution"][key].gsub(/[ \t]+?[\n]{2,}[ \t]+?/, "\n\n").gsub(/[ \t]+/, " ").strip
+                                    else
+                                      params["contribution"][key].gsub(/\s+/, " ").strip
+                                    end
     end
   end
 
