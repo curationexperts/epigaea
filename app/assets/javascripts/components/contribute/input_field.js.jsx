@@ -5,7 +5,7 @@ var InputField = React.createClass({
   render: function() {
     return <ul>
       <li>
-        <input style={this.inputStyle} className='form-control'type='text' name="contribution[other_authors][]">
+        <input style={this.inputStyle} className='form-control'type='text' name="contribution[contributor][]">
         </input>
       </li>
       <li>
