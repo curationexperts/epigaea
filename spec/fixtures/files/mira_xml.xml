@@ -17,40 +17,29 @@ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
         <setSpec>another_set</setSpec>
       </header>
       <metadata>
-        <mira_import xmlns:dc="http://purl.org/dc/elements/1.1/"
-                     xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/"
-                     xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/"
-                     xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/"
-                     xmlns:dcterms="http://purl.org/dc/terms/"
-                     xmlns:model="info:fedora/fedora-system:def/model#"
-                     xmlns:terms="http://dl.tufts.edu/terms#"
-                     xmlns:admin="http://nils.lib.tufts.edu/dcaadmin/"
-                     xmlns:xlink="http://www.w3.org/TR/xlink">
-          <terms:filename>pdf-sample.pdf</terms:filename>
+        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:tufts="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+          <tufts:filename>pdf-sample.pdf</tufts:filename>
           <model:hasModel>Pdf</model:hasModel>
-          <dcterms:title>President Jean Mayer speaking at commencement, 1987</dcterms:title>
+          <dc:title>President Jean Mayer speaking at commencement, 1987</dc:title>
           <dc:description>5x7</dc:description>
           <dc:source>UA136</dc:source>
           <dc:coverage>Medford;7014023;42.417;-71.100</dc:coverage>
           <dc:temporal>1987</dc:temporal>
-          <dc:creator>Unknown</dc:creator>
+          <dc11:creator>Unknown</dc11:creator>
           <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
           <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
           <dc:identifier>http://hdl.handle.net/10427/448</dc:identifier>
-          <dcterms:isPartOf>UA136</dcterms:isPartOf>
-          <dcterms:created>07/02/2002</dcterms:created>
-          <dcterms:available>02/26/2004</dcterms:available>
+          <dc:isPartOf>UA136</dc:isPartOf>
+          <dc:created>07/02/2002</dc:created>
+          <dc:available>02/26/2004</dc:available>
           <dc:type>image</dc:type>
           <dc:format>image/tiff</dc:format>
-          <dcatech:resolution>600</dcatech:resolution>
-          <dcatech:bitDepartment>8</dcatech:bitDepartment>
-          <dcatech:colorSpace>grayscale</dcatech:colorSpace>
-          <dcadesc:persname>Mayer, Jean</dcadesc:persname>
-          <dcadesc:corpname>Office of the President</dcadesc:corpname>
-          <dcadesc:subject>People</dcadesc:subject>
-          <dcadesc:subject>Commencement</dcadesc:subject>
-          <dcadesc:subject>Events</dcadesc:subject>
-          <dcadesc:subject>College presidents</dcadesc:subject>
+          <mads:PersonalName>Mayer, Jean</mads:PersonalName>
+          <mads:CorporateName>Office of the President</mads:CorporateName>
+          <dc:subject>People</dc:subject>
+          <dc:subject>Commencement</dc:subject>
+          <dc:subject>Events</dc:subject>
+          <dc:subject>College presidents</dc:subject>
         </mira_import>
       </metadata>
       <about>
@@ -68,40 +57,29 @@ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
     </record>
     <record>
       <metadata>
-        <mira_import xmlns:dc="http://purl.org/dc/elements/1.1/"
-                     xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/"
-                     xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/"
-                     xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/"
-                     xmlns:dcterms="http://purl.org/dc/terms/"
-                     xmlns:model="info:fedora/fedora-system:def/model#"
-                     xmlns:terms="http://dl.tufts.edu/terms#"
-                     xmlns:admin="http://nils.lib.tufts.edu/dcaadmin/"
-                     xmlns:xlink="http://www.w3.org/TR/xlink">
-          <terms:filename>2.pdf</terms:filename>
+        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:tufts="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+          <tufts:filename>2.pdf</tufts:filename>
           <model:hasModel>Pdf</model:hasModel>
           <dc:title>President Jean Mayer speaking at commencement, 1988</dc:title>
           <dc:description>5x7</dc:description>
           <dc:source>UA136</dc:source>
           <dc:coverage>Medford;7014023;42.417;-71.100</dc:coverage>
           <dc:temporal>1987</dc:temporal>
-          <dc:creator>Unknown</dc:creator>
+          <dc11:creator>Unknown</dc11:creator>
           <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
           <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
           <dc:identifier>http://hdl.handle.net/10427/448</dc:identifier>
-          <dcterms:isPartOf>UA136</dcterms:isPartOf>
-          <dcterms:created>07/02/2002</dcterms:created>
-          <dcterms:available>02/26/2004</dcterms:available>
+          <dc:isPartOf>UA136</dc:isPartOf>
+          <dc:created>07/02/2002</dc:created>
+          <dc:available>02/26/2004</dc:available>
           <dc:type>image</dc:type>
           <dc:format>image/tiff</dc:format>
-          <dcatech:resolution>600</dcatech:resolution>
-          <dcatech:bitDepartment>8</dcatech:bitDepartment>
-          <dcatech:colorSpace>grayscale</dcatech:colorSpace>
-          <dcadesc:persname>Mayer, Jean</dcadesc:persname>
-          <dcadesc:corpname>Office of the President</dcadesc:corpname>
-          <dcadesc:subject>People</dcadesc:subject>
-          <dcadesc:subject>Commencement</dcadesc:subject>
-          <dcadesc:subject>Events</dcadesc:subject>
-          <dcadesc:subject>College presidents</dcadesc:subject>
+          <mads:PersonalName>Mayer, Jean</mads:PersonalName>
+          <mads:CorporateName>Office of the President</mads:CorporateName>
+          <dc:subject>People</dc:subject>
+          <dc:subject>Commencement</dc:subject>
+          <dc:subject>Events</dc:subject>
+          <dc:subject>College presidents</dc:subject>
         </mira_import>
       </metadata>
     </record>

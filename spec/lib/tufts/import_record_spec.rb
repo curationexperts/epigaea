@@ -39,7 +39,10 @@ RSpec.describe Tufts::ImportRecord do
 
       it 'assigns metadata' do
         expect(record.build_object)
-          .to have_attributes(title: [title], creator: ['Unknown'])
+          .to have_attributes(title:          [title],
+                              creator:        ['Unknown'],
+                              personal_name:  ['Mayer, Jean'],
+                              corporate_name: ['Office of the President'])
       end
     end
   end
