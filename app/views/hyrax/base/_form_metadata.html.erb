@@ -4,6 +4,8 @@
    <%= render 'form_media', f: f %>
 </div>
 <div class="base-terms">
+  <%= render_edit_field_partial(:title, f: f) %>
+  <%= render_edit_field_partial(:description, f: f) %>
   <% all_terms.sort.each do |term| %>
   <%= render_edit_field_partial(term, f: f) %>
   <% end %>
