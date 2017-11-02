@@ -12,6 +12,13 @@ module Tufts
   #   record.file = 'filename.png'
   #
   class ImportRecord
+    VISIBILITY_VALUES =
+      [Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC,
+       Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO,
+       Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_LEASE,
+       Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED,
+       Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE].freeze
+
     ##
     # @!attribute mapping [rw]
     #   @return [MiraXmlMapping]
@@ -70,9 +77,6 @@ module Tufts
     ##
     # @return [ActiveFedora::Core] a tufts model
     def build_object(id: self.id)
-      visibility =
-        Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
-
       attributes = fields.each_with_object({}) do |field, attrs|
         attrs[field.first] = field.last
       end
@@ -105,6 +109,25 @@ module Tufts
         end
       end
     end
+
+    ##
+    # @return [String]
+    def visibility
+      default = Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE
+
+      return default if metadata.nil?
+
+      visibilities = metadata.xpath('./tufts:visibility', mapping.namespaces)
+
+      return default if visibilities.empty?
+
+      visibility_text = visibilities.first.content
+      return visibility_text if VISIBILITY_VALUES.include?(visibility_text)
+
+      raise VisibilityError
+    end
+
+    class VisibilityError < ArgumentError; end
 
     private
 
