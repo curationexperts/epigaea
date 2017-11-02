@@ -106,4 +106,20 @@ RSpec.describe Tufts::ImportRecord do
       end
     end
   end
+
+  describe '#visibility' do
+    it 'default visibility is private' do
+      expect(record.visibility)
+        .to eq Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE
+    end
+
+    context 'with metadata' do
+      include_context 'with metadata'
+
+      it 'uses specified visibility' do
+        expect(record.visibility)
+          .to eq Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+      end
+    end
+  end
 end

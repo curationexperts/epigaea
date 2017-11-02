@@ -19,6 +19,7 @@ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
       <metadata>
         <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:tufts="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
           <tufts:filename>pdf-sample.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
           <model:hasModel>Pdf</model:hasModel>
           <dc:title>President Jean Mayer speaking at commencement, 1987</dc:title>
           <dc:description>5x7</dc:description>
