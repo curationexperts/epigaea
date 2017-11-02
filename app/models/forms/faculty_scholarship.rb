@@ -1,6 +1,4 @@
 class FacultyScholarship < Contribution
-  self.attributes += [:other_authors]
-  self.ignore_attributes += [:other_authors]
   attr_accessor(*attributes)
 
   protected
@@ -9,7 +7,7 @@ class FacultyScholarship < Contribution
       super
       @tufts_pdf.description = [description] if description
       @tufts_pdf.bibliographic_citation = [bibliographic_citation] if bibliographic_citation
-      @tufts_pdf.creator << other_authors if other_authors && other_authors != [""]
+      @tufts_pdf.contributor << contributor if contributor && contributor != [""]
     end
 
     def parent_collection

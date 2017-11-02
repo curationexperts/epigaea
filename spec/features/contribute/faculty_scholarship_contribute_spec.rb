@@ -13,7 +13,8 @@ RSpec.feature 'Create a Faculty Scholarship self contribution', :clean, js: true
     let(:title) { FFaker::Movie.title }
     let(:bibliographic_citation) { FFaker::Book.genre }
     let(:abstract) { FFaker::Book.description }
-    let(:other_author) { FFaker::Name.name }
+    let(:coauthor1) { FFaker::Name.name }
+    let(:coauthor2) { FFaker::Name.name }
     before do
       importer = DepositTypeImporter.new('./config/deposit_type_seed.csv')
       importer.import_from_csv
@@ -31,12 +32,17 @@ RSpec.feature 'Create a Faculty Scholarship self contribution', :clean, js: true
       attach_file('contribution_attachment', File.absolute_path(file_fixture('pdf-sample.pdf')))
       fill_in "Title", with: title
       fill_in "Bibliographic Citation", with: bibliographic_citation
-      # fill_in "Other authors", with: other_author
+      click_button "Add Another Author"
+      # fill_in "Other Authors", with: coauthor1
+      page.all(:fillable_field, 'contribution[contributor][]')[0].set(coauthor1)
+      click_button "Add Another Author"
+      page.all(:fillable_field, 'contribution[contributor][]')[1].set(coauthor2)
       fill_in "Short Description", with: abstract
       click_button "Agree & Deposit"
       created_pdf = Pdf.last
       expect(created_pdf.title.first).to eq title
       expect(created_pdf.creator.first).to eq "Name with Spaces"
+      expect(created_pdf.contributor).to contain_exactly coauthor1, coauthor2
       expect(created_pdf.depositor).to eq user.user_key
       expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"
