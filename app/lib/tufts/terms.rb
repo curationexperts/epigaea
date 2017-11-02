@@ -13,7 +13,7 @@ module Tufts
                     :tufts_is_part_of, :resource_type].sort.freeze
 
     REMOVE_TERMS = [:license, :keyword, :based_near].freeze
-    DEFAULT_TERMS = [:title, :description, :subject, :creator, :contributor, :publisher, :language, :date_uploaded,
+    DEFAULT_TERMS = [:subject, :creator, :contributor, :publisher, :language, :date_uploaded,
                      :date_modified, :date_created, :identifier].freeze
     ALL_TERMS = (SHARED_TERMS + DEFAULT_TERMS).sort.freeze
     def self.shared_terms
