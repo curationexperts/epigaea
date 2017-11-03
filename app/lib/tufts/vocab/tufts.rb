@@ -26,7 +26,7 @@ module Tufts
       term :rejection_reason
       term :qr_note
       term :creator_department
-      term :is_part_of
+      term :admin_set_member
     end
   end
 end
