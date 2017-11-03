@@ -545,6 +545,9 @@ GEM
       bootstrap-sass (~> 3.0)
       openseadragon (>= 0.2.0)
       rails
+    blacklight_advanced_search (6.3.1)
+      blacklight (~> 6.0, >= 6.0.1)
+      parslet
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -962,6 +965,7 @@ GEM
     parallel (1.12.0)
     parser (2.4.0.0)
       ast (~> 2.2)
+    parslet (1.8.0)
     poltergeist (1.15.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -1266,6 +1270,7 @@ PLATFORMS
 DEPENDENCIES
   active_job_status (~> 1.2.1)
   bixby
+  blacklight_advanced_search
   byebug
   capistrano (~> 3.9)
   capistrano-passenger
