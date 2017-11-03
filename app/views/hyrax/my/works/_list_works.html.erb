@@ -1,5 +1,4 @@
 <tr id="document_<%= document.id %>">
-
   <td>
     <label for="batch_document_<%= document.id %>" class="sr-only"><%=t("hyrax.dashboard.my.sr.batch_checkbox")%></label>
     <%= render 'hyrax/batch_select/add_button', document: document %>&nbsp;
@@ -33,7 +32,8 @@
   <td class='text-center'>
     <span class="fa <%= current_user.trophies.where(work_id: document.id).exists? ? 'fa-star highlighted-work' : 'fa-star-o trophy-off' %>"></span></td>
   <td><%= render_visibility_link document %></td>
-  <td><%= render 'tufts/workflow_status_badge', locals: {id: document.id} %></td>
+
+  <td class='workflow-state'><%= render 'tufts/workflow_status_badge', locals: {id: document.id} %></td>
   <td>
     <%= render 'work_action_menu', document: document %>
   </td>
