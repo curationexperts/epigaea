@@ -67,5 +67,10 @@
 .visibility {
   .radio {
     margin:0;
+    display: inline-block;
   } 
+}
+
+#collapsePublic {
+  display: none;
 }

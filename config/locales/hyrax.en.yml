@@ -62,6 +62,25 @@ en:
     footer:
       copyright_html: "<strong>Copyright &copy; 2017 Samvera</strong> Licensed under the Apache License, Version 2.0"
       service_html: A service of <a href="http://samvera.org/" class="navbar-link" target="_blank">Samvera</a>.
+    visibility:
+      authenticated:
+        note_html: ""
+        text: "%{institution}"
+      embargo:
+        note_html: ""
+        text: "Embargo"
+      lease:
+        note_html: ""
+        text: "Lease"
+      open:
+        note_html: ""
+        text: Public
+        warning_html: ""
+      open_title_attr: "Change the visibility of this resource"
+      restricted:
+        note_html: ""
+        text: "Private"
+      restricted_title_attr: "Change the visibility of this resource"
   simple_form:
     labels:
       defaults:
@@ -70,4 +89,4 @@ en:
         geographic_name: 'Spatial'
         qr_status: 'Quality Review Status'
         qr_note: 'Quality Review Note'
-        identifier: 'Permanent URL' 
+        identifier: 'Permanent URL'
