@@ -14,18 +14,11 @@
     </thead>
   <% end %>
   <tbody>
-  <% docs.each_with_index do |document, counter| %>
-      <%= render 'list_works', document: document, counter: counter, presenter: Hyrax::WorkShowPresenter.new(document, current_ability) %>
-  <% end %>
+      <% docs.each_with_index do |document, counter| %>
+          <%= render 'list_works', document: document, counter: counter, presenter: Hyrax::WorkShowPresenter.new(document, current_ability) %>
+      <% end %>
   </tbody>
 </table>
 <script>
- $(document).on('turbolinks:load', function() {
-     $('.works-list').DataTable({
-       paging: false
-     })
- })
- $(document).on("turbolinks:before-cache", function() {
-     $('.works-list').DataTable().destroy()  
- })
+ Tufts.activateDataTable({selector: '.works-list', paging: false})
 </script>
