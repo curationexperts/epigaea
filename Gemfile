@@ -78,6 +78,7 @@ gem 'sidekiq'
 group :development, :test do
   gem 'bixby'
   gem 'capybara'
+  gem 'capybara-maleficent', require: false
   gem 'capybara-screenshot'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
