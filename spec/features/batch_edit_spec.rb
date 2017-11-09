@@ -1,16 +1,19 @@
 # frozen_string_literal: true
 require 'rails_helper'
+require 'capybara/maleficent/spindle'
 
-RSpec.describe 'batch', type: :feature, clean_repo: true, js: true do
+RSpec.describe 'batch', type: :feature, js: true do
   let(:current_user) { create(:admin) }
-  let(:work1)       { create(:populated_pdf) }
-  let(:work2)       { create(:populated_pdf) }
+  let(:work_first) { create(:populated_pdf) }
+  let(:work_second) { create(:populated_pdf) }
 
   before do
     login_as current_user
     visit '/dashboard/works'
+    work_first.save!
+    work_second.save!
     check 'check_all'
-    expect(page).to have_xpath("//div[contains(@class, 'tufts-buttons')]")
+    expect(page).to have_selector('.tufts-buttons')
   end
 
   describe 'publishing' do
