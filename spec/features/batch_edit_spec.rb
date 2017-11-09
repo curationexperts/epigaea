@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 require 'rails_helper'
-require 'capybara/maleficent/spindle'
+require 'capybara/maleficent'
 
 RSpec.describe 'batch', type: :feature, js: true do
   let(:current_user) { create(:admin) }
@@ -13,7 +13,9 @@ RSpec.describe 'batch', type: :feature, js: true do
     work_first.save!
     work_second.save!
     check 'check_all'
-    expect(page).to have_selector('.tufts-buttons')
+    Capybara::Maleficent.with_sleep_injection do
+      expect(page).to have_selector('.tufts-buttons')
+    end
   end
 
   describe 'publishing' do
@@ -21,7 +23,9 @@ RSpec.describe 'batch', type: :feature, js: true do
       within(:xpath, "//div[contains(@class, 'tufts-buttons')]") do
         click_on 'Publish'
       end
-      expect(page).to have_content('Batch Status')
+      Capybara::Maleficent.with_sleep_injection do
+        expect(page).to have_content('Batch Status')
+      end
     end
   end
 
@@ -30,7 +34,9 @@ RSpec.describe 'batch', type: :feature, js: true do
       within(:xpath, "//div[contains(@class, 'tufts-buttons')]") do
         click_on 'Unpublish'
       end
-      expect(page).to have_content('Batch Status')
+      Capybara::Maleficent.with_sleep_injection do
+        expect(page).to have_content('Batch Status')
+      end
     end
   end
 
@@ -39,7 +45,9 @@ RSpec.describe 'batch', type: :feature, js: true do
       within(:xpath, "//div[contains(@class, 'tufts-buttons')]") do
         click_on 'Export Metadata'
       end
-      expect(page).to have_content('Batch Status')
+      Capybara::Maleficent.with_sleep_injection do
+        expect(page).to have_content('Batch Status')
+      end
     end
   end
 
@@ -48,7 +56,9 @@ RSpec.describe 'batch', type: :feature, js: true do
       within(:xpath, "//div[contains(@class, 'tufts-buttons')]") do
         click_on 'Apply Template'
       end
-      expect(page).to have_content('Template Behavior')
+      Capybara::Maleficent.with_sleep_injection do
+        expect(page).to have_content('Template Behavior')
+      end
     end
   end
 end
