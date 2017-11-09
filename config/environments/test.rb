@@ -48,4 +48,5 @@ Rails.application.configure do
   config.drafts_storage_dir    = Rails.root.join('tmp', 'drafts')
   config.exports_storage_dir   = Rails.root.join('tmp', 'exports')
   config.templates_storage_dir = Rails.root.join('tmp', 'templates')
+  config.metadata_upload_dir   = Rails.root.join('tmp', 'metadata')
 end
