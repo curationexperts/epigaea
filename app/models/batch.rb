@@ -65,7 +65,7 @@ class Batch < ApplicationRecord
       @store    = store
       @object   = begin
         ActiveFedora::Base.find(id)
-      rescue ActiveFedora::ObjectNotFoundError
+      rescue Ldp::Gone, ActiveFedora::ObjectNotFoundError
         nil
       end
     end
