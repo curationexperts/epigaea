@@ -39,14 +39,22 @@ append :linked_dirs, "tmp/cache"
 append :linked_dirs, "tmp/sockets"
 append :linked_dirs, "log"
 
-# link the draft dir specified in config/environments/produciton.rb config.drafts_storage_dir
+# link the draft dir specified in config/environments/production.rb config.drafts_storage_dir
 append :linked_dirs, "tmp/drafts"
 
-# link the draft dir specified in config/environments/production.rb config.exports_storage_dir
+# link the export dir specified in config/environments/production.rb config.exports_storage_dir
 append :linked_dirs, "tmp/exports"
 
-# link the template dir specified in config/environments/produciton.rb config.templates_storage_dir
+# link the template dir specified in config/environments/production.rb config.templates_storage_dir
 append :linked_dirs, "tmp/templates"
+
+# link the metadata store and cache dirs specified in config/environments/production.rb
+# config.metadata_upload_dir
+append :linked_dirs, "tmp/metadata"
+
+# link the hyrax uploaded file store and cache dirs specified in config/initializers/hyrax.rb
+# config.templates_storage_dir
+append :linked_dirs, "tmp/uploads"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
