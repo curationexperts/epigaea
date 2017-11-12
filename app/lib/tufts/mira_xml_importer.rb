@@ -63,6 +63,7 @@ module Tufts
     private
 
       def doc
+        return Nokogiri::XML(nil) unless file.exists?
         file.rewind if file.respond_to? :rewind
         Nokogiri::XML(file.read)
       end

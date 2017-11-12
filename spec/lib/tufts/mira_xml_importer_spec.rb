@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Tufts::MiraXmlImporter do
   subject(:importer) { described_class.new(file: file) }
-  let(:file)         { File.open(file_fixture('mira_xml.xml')) }
+  let(:file)         { CarrierWave::SanitizedFile.new(file_fixture('mira_xml.xml')) }
 
   it_behaves_like 'an importer'
 
@@ -51,7 +51,7 @@ RSpec.describe Tufts::MiraXmlImporter do
 
   describe 'validations' do
     context 'with missing filenames' do
-      let(:file) { File.open(file_fixture('mira_xml_invalid.xml')) }
+      let(:file) { CarrierWave::SanitizedFile.new(file_fixture('mira_xml_invalid.xml')) }
 
       it 'validates presence of filenames' do
         expect { importer.validate! }

@@ -16,7 +16,7 @@ shared_examples 'an importer' do
 
   describe '#records' do
     context 'with empty file' do
-      let(:file) { StringIO.new('') }
+      let(:file) { CarrierWave::SanitizedFile.new(Tempfile.new('empty_file')) }
 
       it 'yields nothing' do
         expect { |b| importer.records(&b) }.not_to yield_control
