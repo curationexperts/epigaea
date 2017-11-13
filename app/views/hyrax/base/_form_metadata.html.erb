@@ -1,11 +1,8 @@
-<% all_terms = f.object.primary_terms + f.object.secondary_terms %>
-
 <div class="well">
    <%= render 'form_media', f: f %>
 </div>
 <div class="base-terms">
-  <% all_terms.sort.each do |term| %>
-  <%= render_edit_field_partial(term, f: f) %>
+  <%  Tufts::Terms.shared_terms.each do |term| %>
+  <%= render_edit_field_partial(term, f: f)  %>
   <% end %>
 </div>
-
