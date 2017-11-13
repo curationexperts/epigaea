@@ -20,12 +20,5 @@
   </tbody>
 </table>
 <script>
- $(document).on('turbolinks:load', function() {
-    $('.works-list').DataTable({
-       paging: false
-     })
- })
- $(document).on("turbolinks:before-cache", function() {
-     $('.works-list').DataTable().destroy()  
- })
+  Tufts.activateDataTable({selector: '.works-list', paging: false})
 </script>

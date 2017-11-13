@@ -27,12 +27,7 @@
        </tbody>
     </table>
     <script>
-     $(document).on('turbolinks:load', function() {
-       $('#batch-table').DataTable()
-     })
-     $(document).on("turbolinks:before-cache", function() {
-       $('#batch-table').DataTable().destroy()  
-     })
+      Tufts.activateDataTable({selector: '#batch-table', paging: true})
     </script>
   </div>
 </div>

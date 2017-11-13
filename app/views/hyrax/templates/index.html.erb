@@ -29,11 +29,6 @@
     </aside>
 </div>
 <script>
- $(document).on('turbolinks:load', function() {
-     $('#template-table').DataTable()
- })
- $(document).on("turbolinks:before-cache", function() {
-     $('#template-table').DataTable().destroy()  
- })
+  Tufts.activateDataTable({selector: '#template-table', paging: false})
 </script>
 
