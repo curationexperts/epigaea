@@ -1,3 +1,5 @@
+@import 'variables';
+
 /* ------------------------
  *  FORMS
  * ------------------------ */
@@ -33,7 +35,7 @@
     }
 
     #contribution_creator {
-        background-color: #F5F5F5;
+        background-color: $tufts_border;
     }
 
     #contribution_other_authors_ {
@@ -53,7 +55,7 @@
 
     #deposit-questions {
         margin-top: 3em;
-        background-color: #F2F7FF;
+        background-color: $tufts_white;
     }
 }
 
