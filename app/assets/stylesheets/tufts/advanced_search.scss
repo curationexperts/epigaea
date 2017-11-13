@@ -1,10 +1,11 @@
+@import 'variables';
 
 #advanced_submit {
   position: fixed;
   bottom: 0;
   left: 30%;
-  border: 1px solid #d0d0d0;
-  background-color: #e8e8e8;
+  border: 1px solid $tufts_border;
+  background-color: $tufts_navbar;
   border-radius: 10px;
   margin-top: 0;
   margin-bottom: 1.5em;

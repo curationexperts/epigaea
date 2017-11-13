@@ -1,10 +1,24 @@
+/* Tufts University colors */
 $tufts_blue: #6699CC;
+$tufts_dark_blue: #0755AC;
+$tufts_dark_orange:  #DE6020;
+
+/* Gradient Background */
+$tufts_gradient:  radial-gradient(ellipse farthest-corner at center center , #CEDCE7 0%, #596A72 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+
+/* Shades of gray */
+$tufts_white: #ffffff;
 $text_color: #404040;
-$error_color: #d22;
 $hint_color: #777;
 $tufts_bar: #EEEEEE;
-
+$tufts_navbar:  #f8f8f8;
+$tufts_border: #E7E7E7;
 $gradient_top: #f5f5f5;
 $gradient_bottom: #EEEEEE;
+
+/* UI/Notification Colors */
+$error_color: #d22;
+$edited_badge: #f0ad4e;
+$published_badge: #5cb85c;
 
 $main_padding: 20px 20px 20px 40px;

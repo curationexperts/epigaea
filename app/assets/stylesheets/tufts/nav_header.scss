@@ -17,7 +17,7 @@
    nav#masthead.navbar {
      background-color: $tufts_bar;
      background: linear-gradient(0deg,$gradient_bottom,$gradient_top);
-     border-top: 1px solid #E5E5E5;
+     border-top: 1px solid $tufts_border;
      border-bottom: 5px solid $tufts_blue;
      height: 71px;
    }
@@ -34,8 +34,8 @@
    }
    
    .sidebar .sidebar-toggle {
-       background-color: rgba(240, 240, 240, 0);
-       color:lavenderblush;
+       background-color: $tufts_border;
+       color: $tufts_navbar;
    }
    
    .container-fluid {  
@@ -68,8 +68,8 @@
    
    .image-masthead {
      .navbar-static-top {
-       background-color: #f8f8f8;
-       border-color: #e7e7e7;  
+       background-color: $tufts_navbar;
+       border-color: $tufts_border;  
      }
    }
    

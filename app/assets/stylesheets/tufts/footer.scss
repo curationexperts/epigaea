@@ -19,9 +19,10 @@
     margin-top: 1em;
   }
 }
+@import 'variables';
 
 #copyright {
-  color: #ffffff;
+  color: $tufts_white;
   line-height: 150%;
   margin-top: 3.5%;
 }

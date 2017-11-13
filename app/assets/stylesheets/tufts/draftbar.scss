@@ -1,5 +1,7 @@
+@import 'variables';
+
 .draft-bar {
-    background: #fff;
+    background: $tufts_white;
     padding: 1em;
     border-radius: 3px;
     width: 50%;
@@ -27,11 +29,11 @@
 }
 
 .workflow-status.edited {
-    background-color: #f0ad4e;
+    background-color: $edited_badge;
 }
 
 .workflow-status.published {
-    background-color: #5cb85c;
+    background-color: $published_badge;
 }
 
 .workflow-status {
@@ -40,7 +42,7 @@
     font-size: 75%;
     font-weight: bold;
     line-height: 1;
-    color: white;
+    color: $tufts_white;
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
@@ -69,6 +71,6 @@
 }
 
 .save-affix {
-position:sticky;
+  position:sticky;
   top:85px;
 }
