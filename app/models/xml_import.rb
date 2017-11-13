@@ -23,7 +23,7 @@ class XmlImport < ApplicationRecord
 
   ##
   # @!method record?
-  #   @see Tufts::Importer#has_record?
+  #   @see Tufts::Importer#record?
   # @!method record_for
   #   @see Tufts::Importer#record_for
   # @!method records
@@ -34,11 +34,13 @@ class XmlImport < ApplicationRecord
   # @!attribute uploaded_file_ids [rw]
   #   @return [Array<String>]
   # @!attribute record_ids [rw]
+  #   A hash from filenames to NOIDs minted by the `NOID_SERVICE`.
+  #   This is built and maintained by `mint_ids`.
   #   @return [Hash<String, String>]
   serialize :uploaded_file_ids, Array
   serialize :record_ids,        Hash
 
-  before_save :mint_ids
+  before_save :prepare_records_for_enqueue
 
   ##
   # @return [String]
@@ -56,7 +58,7 @@ class XmlImport < ApplicationRecord
       next if file.nil?
 
       filename = file.file.file.filename
-      next unless record_ids.key?(filename)
+      next unless id_exists_for?(filename: filename)
 
       hsh[id] = ImportJob.perform_later(self, file, record_ids[filename]).job_id
     end
@@ -103,16 +105,12 @@ class XmlImport < ApplicationRecord
 
     ##
     # @private Mint ids for items ready to enqueue
-    # @todo refactor for internal complexity. Should there be a service
-    #   responsible for handling ids?
-    def mint_ids # rubocop:disable Metrics/CyclomaticComplexity
-      return unless uploaded_file_ids_changed?
-
+    # @return [Boolean]
+    def mint_ids
       uploaded_files.each do |file|
         filename = file.file.file.filename
 
-        (uploaded_file_ids.delete(file.id) && file.destroy! && next) if
-          record_ids.key?(filename) || !record?(file: filename)
+        next if id_exists_for?(filename: filename)
 
         id = NOID_SERVICE.mint
 
@@ -120,7 +118,57 @@ class XmlImport < ApplicationRecord
         batch.ids << id
       end
 
+      true
+    end
+
+    def prepare_records_for_enqueue
+      return unless uploaded_file_ids_changed?
+
+      remove_unreferenced_filenames &&
+        remove_duplicate_filenames &&
+        mint_ids
+
       batch.save if batch.ids_changed?
+    end
+
+    def id_exists_for?(filename:)
+      record_ids.key?(filename)
+    end
+
+    ##
+    # @param [Hyrax::UploadedFile] file
+    #
+    # @return [Boolean]
+    def destroy_uploaded_file(file:)
+      uploaded_file_ids.delete(file.id) && file.destroy!
+    end
+
+    ##
+    # Remove all but the first uploaded file for a given filename
+    #
+    # @return [Boolean]
+    def remove_duplicate_filenames
+      filenames_touched_so_far = []
+
+      uploaded_files.sort.each do |file|
+        filename = file.file.file.filename
+
+        (destroy_uploaded_file(file: file) && next) if
+          filenames_touched_so_far.include?(filename)
+
+        filenames_touched_so_far << filename
+      end
+
+      true
+    end
+
+    ##
+    # @return [Boolean]
+    def remove_unreferenced_filenames
+      uploaded_files.each do |file|
+        destroy_uploaded_file(file: file) unless
+          record?(file: file.file.file.filename)
+      end
 
       true
     end
