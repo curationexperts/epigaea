@@ -111,6 +111,6 @@ shared_examples 'and has admin metadata attributes' do
   it 'has a Tufts license field' do
     work.tufts_license = ['An example tufts license']
     expect(work.resource.dump(:ttl))
-      .to match(/purl.org\/dc\/terms\/rights/)
+      .to match(/purl.org\/dc\/terms\/license/)
   end
 end
