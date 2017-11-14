@@ -84,11 +84,15 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # Configure the drafts strorage directory
-  config.drafts_storage_dir    = Rails.root.join('tmp', 'drafts')
-  config.exports_storage_dir   = Rails.root.join('tmp', 'exports')
-  config.templates_storage_dir = Rails.root.join('tmp', 'templates')
-  config.metadata_upload_dir   = Rails.root.join('tmp', 'metadata')
+  # Configure the application strorage directories
+  config.drafts_storage_dir    = Pathname.new('/opt/drafts')
+  config.exports_storage_dir   = Pathname.new('/opt/exports')
+  config.templates_storage_dir = Pathname.new('/opt/templates')
+  config.metadata_upload_dir   = Pathname.new('/opt/metadata')
 end
 
-Hyrax.config.derivatives_path = '/opt/derivatives'
+Hyrax.config do |config|
+  config.derivatives_path = Pathname.new('/opt/derivatives')
+  config.upload_path = ->() { Pathname.new('/opt/uploads') }
+  config.cache_path  = ->() { Pathname.new('/opt/cache') }
+end

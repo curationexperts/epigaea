@@ -23,13 +23,6 @@ set :deploy_to, "/opt/epigaea"
 # Default value for :linked_files is []
 append :linked_files, "config/database.yml"
 append :linked_files, "config/secrets.yml"
-append :linked_files, "config/blacklight.yml"
-append :linked_files, "config/fedora.yml"
-append :linked_files, "config/redis.yml"
-append :linked_files, "config/secrets.yml"
-append :linked_files, "config/solr.yml"
-append :linked_files, "config/handle.yml"
-append :linked_files, "config/honeybadger.yml"
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
@@ -38,23 +31,6 @@ append :linked_dirs, "tmp/pids"
 append :linked_dirs, "tmp/cache"
 append :linked_dirs, "tmp/sockets"
 append :linked_dirs, "log"
-
-# link the draft dir specified in config/environments/production.rb config.drafts_storage_dir
-append :linked_dirs, "tmp/drafts"
-
-# link the export dir specified in config/environments/production.rb config.exports_storage_dir
-append :linked_dirs, "tmp/exports"
-
-# link the template dir specified in config/environments/production.rb config.templates_storage_dir
-append :linked_dirs, "tmp/templates"
-
-# link the metadata store and cache dirs specified in config/environments/production.rb
-# config.metadata_upload_dir
-append :linked_dirs, "tmp/metadata"
-
-# link the hyrax uploaded file store and cache dirs specified in config/initializers/hyrax.rb
-# config.templates_storage_dir
-append :linked_dirs, "tmp/uploads"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
