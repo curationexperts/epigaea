@@ -54,7 +54,7 @@ module Tufts
         property :createdby, predicate: ::Tufts::Vocab::Tufts.createdby, multiple: false do |index|
           index.as :stored_searchable, :facetable
         end
-        property :tufts_license, predicate: ::RDF::Vocab::DC.rights do |index|
+        property :tufts_license, predicate: ::RDF::Vocab::DC.license do |index|
           index.as :stored_searchable
         end
       end
