@@ -95,7 +95,24 @@ class CatalogController < ApplicationController
       all_names = config.show_fields.values.map(&:field).join(" ")
       title_name = solr_name("title", :stored_searchable)
       field.solr_parameters = {
-        qf: "#{all_names} file_format_tesim all_text_timv",
+        qf: %( #{all_names} title_tesim description_tesim creator_tesim
+        keyword_tesim abstract_tesim accrual_policy_tesim
+        alternative_title_tesim audience_tesim contributor_tesim
+        corporate_name_tesim created_by_tesim creator_dept_tesim
+        primary_date_tesim date_accepted_tesim date_available_tesim
+        date_copyrighted_tesim date_created_tesim date_issued_tesim
+        date_modified_tesim date_uploaded_tesim description_tesim
+        displays_in_tesim embargo_note_tesim end_date_tesim extent_tesim
+        format_label_tesim funder_tesim genre_tesim geographic_name_tesim
+        has_format_tesim has_part_tesim internal_note_tesim is_format_of_tesim
+        is_part_of_tesim is_replaced_by_tesim language_tesim
+        tufts_license_tesim license_tesim held_by_tesim identifier_tesim
+        personal_name_tesim provenance_tesim publisher_tesim qr_note_tesim
+        qr_status_tesim created_by_tesim rejection_reason_tesim replaces_tesim
+        retention_period_tesim rights_statement_tesim rights_holder_tesim
+        rights_note_tesim source_tesim spatial_tesim admin_start_date_tesim
+        steward_tesim subject_tesim table_of_contents_tesim temporal_tesim
+        legacy_pid_tesim resource_type_tesim tufts_is_part_of_tesim" ),
         pf: title_name.to_s
       }
     end
