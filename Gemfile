@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'whenever', require: false
 
+gem 'blacklight_advanced_search'
+
 group :production do
   gem 'honeybadger', '~> 3.1'
 end
