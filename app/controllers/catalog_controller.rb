@@ -60,7 +60,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("publisher", :facetable), limit: 5
     config.add_facet_field solr_name("file_format", :facetable), limit: 5
     config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
-    config.add_facet_field solr_name("displays_in", :facetable), limit: 5
+    config.add_facet_field solr_name("displays_in", :facetable), limit: 5, label: 'Displays In'
     config.add_facet_field solr_name("held_by", :facetable), limit: 5
 
     # The generic_type isn't displayed on the facet list
