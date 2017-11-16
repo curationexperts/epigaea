@@ -1,6 +1,7 @@
 # Epigaea
 
 [![ci](https://travis-ci.org/curationexperts/epigaea.svg?branch=master)](https://travis-ci.org/curationexperts/epigaea)
+[![Coverage Status](https://coveralls.io/repos/github/curationexperts/epigaea/badge.svg?branch=master)](https://coveralls.io/github/curationexperts/epigaea?branch=master)
 
 A [MIRA](https://github.com/TuftsUniversity/MIRA) replacement running on [Hyrax](https://github.com/samvera/hyrax) 2.0.
 
