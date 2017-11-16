@@ -82,6 +82,7 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-maleficent', require: false
   gem 'capybara-screenshot'
+  gem 'coveralls', require: false
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'fcrepo_wrapper'
