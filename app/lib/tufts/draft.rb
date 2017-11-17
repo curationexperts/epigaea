@@ -121,7 +121,7 @@ module Tufts
     #
     # @return [Draft] self
     def save
-      File.open(path, 'w+') do |f|
+      File.open(path, 'w+', 0o755) do |f|
         f.write(serializer.serialize(changeset: changeset, subject: model.rdf_subject))
       end
 
