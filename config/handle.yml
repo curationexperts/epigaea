@@ -19,10 +19,10 @@ test:
   pkey_passphrase: ''
 
 production:
-  hostname: "dl.tufts.edu"
-  email: "brian.goodmon@tufts.edu"
-  prefix: 'real.prefix'
-  admin: "0.NA/10427.TEST"
+  hostname: "epigaea.curationexperts.com"
+  email: "systems@curationexertscom"
+  prefix: '20.500.12101'
+  admin: "0.NA/20.500.12101"
   index: 300
-  private_key: ENV["HANDLE_PKEY_FILE"]
-  pkey_passphrase: ENV["HANDLE_PKEY_PASSPHRASE"]
+  private_key: <%= ENV["HANDLE_PKEY_FILE"] %>
+  pkey_passphrase: <%= ENV["HANDLE_PKEY_PASSPHRASE"] %>
