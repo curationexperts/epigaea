@@ -1,5 +1,5 @@
-# config valid only for current version of Capistrano
-lock "3.9.0"
+# config valid only for certain versions of Capistrano
+lock ">=3.9.0"
 
 set :application, "epigaea"
 set :repo_url, "https://github.com/curationexperts/epigaea.git"
@@ -23,6 +23,11 @@ set :deploy_to, "/opt/epigaea"
 # Default value for :linked_files is []
 append :linked_files, "config/database.yml"
 append :linked_files, "config/secrets.yml"
+
+# Production secrets need to go in a file called .env.production on the server
+# in /opt/epigaea/shared
+# See .env.sample for what environment variables need values set
+append :linked_files, ".env.production"
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
