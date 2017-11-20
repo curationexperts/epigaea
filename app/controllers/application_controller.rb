@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
   def default_url_options
     super.except(:locale)
   end
+
+  rescue_from Blacklight::Exceptions::RecordNotFound do |exception|
+    logger.error "Requested record not found: #{exception}"
+    redirect_to '/catalog'
+  end
 end
