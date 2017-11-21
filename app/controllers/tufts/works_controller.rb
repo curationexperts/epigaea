@@ -11,6 +11,7 @@ module Tufts
 
     def update
       normalize_whitespace(params)
+      delete_draft(params)
       super
     end
 
@@ -49,5 +50,12 @@ module Tufts
                                                      end
       end
     end
+
+    private
+
+      def delete_draft(params)
+        work = ActiveFedora::Base.find(params['id'])
+        work.delete_draft
+      end
   end
 end
