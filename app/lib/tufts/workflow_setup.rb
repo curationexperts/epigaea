@@ -22,7 +22,7 @@ module Tufts
       end
       Hyrax::PermissionTemplate.create!(admin_set_id: AdminSet::DEFAULT_ID) unless Hyrax::PermissionTemplate.find_by(admin_set_id: AdminSet::DEFAULT_ID)
       permission_template = Hyrax::PermissionTemplate.find_by(admin_set_id: AdminSet::DEFAULT_ID)
-      load_workflows unless permission_template.available_workflows.where(name: Tufts::WorkflowSetup::MIRA_WORKFLOW_NAME).first
+      load_workflows
       mira_publication_workflow = permission_template.available_workflows.where(name: Tufts::WorkflowSetup::MIRA_WORKFLOW_NAME).first
       # If the workflow is already active, calling activate! will *deactive* it
       return if permission_template.active_workflow == mira_publication_workflow
