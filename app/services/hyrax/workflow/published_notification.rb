@@ -7,15 +7,13 @@ module Hyrax
         { "to" => (admins << depositor) }
       end
 
-      private
+      def subject
+        "Deposit #{title} has been published"
+      end
 
-        def subject
-          "Deposit #{title} has been published"
-        end
-
-        def message
-          "#{title} (#{link_to work_id, document_path}) has been published by #{user.display_name} (#{user.user_key}).  #{comment}"
-        end
+      def message
+        "#{title} (#{link_to work_id, document_url}) has been published by #{user.display_name} (#{user.user_key}).  #{comment}"
+      end
     end
   end
 end

@@ -22,8 +22,9 @@ RSpec.describe Hyrax::Workflow::PublishedNotification, :workflow do
     entity = Sipity::Entity.where(proxy_for_global_id: work_global_id).first
     described_class.new(entity, '', depositor, recipients)
   end
-  it "can instantiate" do
+  it "includes a full url in the message" do
     expect(notification).to be_instance_of(described_class)
+    expect(notification.message).to match(/http/)
   end
   it "can find depositor" do
     expect(notification.depositor).to be_instance_of(::User)
