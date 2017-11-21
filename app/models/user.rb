@@ -38,4 +38,10 @@ class User < ApplicationRecord
     role.users.delete(self) if role && role.users && role.users.include?(self)
     reload
   end
+
+  # Mailboxer (the notification system) needs the User object to respond to this method
+  # in order to send emails
+  def mailboxer_email(_object)
+    email
+  end
 end

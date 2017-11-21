@@ -10,7 +10,9 @@ RSpec.feature 'deposit and publication' do
   let(:work) { FactoryGirl.create(:image) }
   context 'a logged in user' do
     before do
-      Image.delete_all
+      ActiveFedora::Cleaner.clean!
+      DatabaseCleaner.clean_with(:truncation)
+      Tufts::WorkflowSetup.setup
       allow(CharacterizeJob).to receive(:perform_later) # There is no fits installed on travis-ci
       publishing_user # Make sure publishing user exists before the work is submitted
       current_ability = ::Ability.new(depositing_user)
@@ -22,7 +24,7 @@ RSpec.feature 'deposit and publication' do
       # All works go to the default admin set, which uses the mira_publication_workflow
       expect(work.active_workflow.name).to eq "mira_publication_workflow"
 
-      # Upon submission, works are in the "pending review" workflow state
+      # Upon submission, works are in the "unpublished" workflow state
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
 
       # Upon submission, works are not visible to the public
@@ -86,6 +88,16 @@ RSpec.feature 'deposit and publication' do
       # Check notifications for publishing user
       visit("/notifications")
       expect(page).to have_content "#{work.title.first} (#{work.id}) has been published by #{publishing_user.display_name} (#{publishing_user.user_key}). Published in publication_workflow_spec.rb"
+
+      # The admin user comments on the work
+      subject = Hyrax::WorkflowActionInfo.new(work, publishing_user)
+      sipity_workflow_action = PowerConverter.convert_to_sipity_action("comment_only", scope: subject.entity.workflow) { nil }
+      Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "This is a comment")
+      expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
+
+      # Check notifications for publishing user
+      visit("/notifications")
+      expect(page).to have_content "Comment about #{work.title.first}"
 
       # Check notifications for depositor again
       logout
