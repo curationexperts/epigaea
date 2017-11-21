@@ -54,6 +54,13 @@
                     "name": "comment_only",
                     "from_states": [
                         { "names": ["unpublished", "published"], "roles": ["publishing"] }
+                    ],
+                    "notifications": [
+                        {
+                            "notification_type": "email",
+                            "name": "Hyrax::Workflow::CommentNotification",
+                            "to": ["publishing"]
+                        }
                     ]
                 }
             ]

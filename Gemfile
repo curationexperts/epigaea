@@ -7,6 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'dotenv-rails'
 gem 'hydra-role-management'
 gem 'hyrax', '2.0.0.beta1'
 gem 'nokogiri', '>=1.8.1' # 1.8.1 fixes security issue https://github.com/sparklemotion/nokogiri/issues/1673

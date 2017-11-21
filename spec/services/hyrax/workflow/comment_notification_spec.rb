@@ -4,7 +4,7 @@ require 'rails_helper'
 require 'active_fedora/cleaner'
 require 'database_cleaner'
 
-RSpec.describe Hyrax::Workflow::PublishedNotification, :workflow do
+RSpec.describe Hyrax::Workflow::CommentNotification, :workflow do
   let(:depositor) { FactoryGirl.create(:user) }
   let(:admin) { FactoryGirl.create(:admin) }
   let(:work) { FactoryGirl.create(:pdf, depositor: depositor.user_key) }
