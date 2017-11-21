@@ -29,3 +29,5 @@ dump.rdb
 
 # Ignore honeybadger config
 config/honeybadger.yml
+
+coverage
