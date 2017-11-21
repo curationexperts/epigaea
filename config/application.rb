@@ -30,4 +30,4 @@ module Epigaea
     end
   end
 end
-Rails.application.routes.default_url_options[:host] = ENV["HYRAX_HOST"]
+Rails.application.routes.default_url_options[:host] = ENV["RAILS_HOST"]
