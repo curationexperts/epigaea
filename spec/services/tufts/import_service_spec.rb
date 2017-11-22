@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Tufts::ImportService, :workflow do
+describe Tufts::ImportService, :workflow, :clean do
   subject(:service) { described_class.new(files: files, import: import, object_id: object_id) }
 
   let(:files)  { [FactoryGirl.create(:hyrax_uploaded_file)] }
