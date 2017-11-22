@@ -59,5 +59,15 @@ RSpec.describe Tufts::MiraXmlImporter do
           .to include(an_instance_of(Tufts::Importer::MissingFileError))
       end
     end
+
+    context 'with duplicate filenames' do
+      let(:file) { File.open(file_fixture('mira_xml_duplicate_filenames.xml')) }
+
+      it 'validates presence of filenames' do
+        expect { importer.validate! }
+          .to change { importer.errors }
+          .to include(an_instance_of(Tufts::Importer::DuplicateFileError))
+      end
+    end
   end
 end
