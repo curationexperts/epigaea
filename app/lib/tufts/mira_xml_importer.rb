@@ -30,7 +30,7 @@ module Tufts
     # @return [ImportRecord] a record from the import matching the file;
     #   A new empty ImportRecord is returned if none match
     def record_for(file: nil, id: nil)
-      (file && records.find { |record| record.file == file }) ||
+      (file && records.find { |record| record.files.include?(file) }) ||
         (id && records.find { |record| record.id == id }) ||
         ImportRecord.new
     end
@@ -40,7 +40,7 @@ module Tufts
     #
     # @return [Boolean]
     def record?(file:)
-      records.any? { |record| record.file == file }
+      records.any? { |record| record.files.include?(file) }
     end
 
     ##

@@ -11,7 +11,9 @@ RSpec.describe XmlImport, type: :model do
     let(:uploads) do
       [FactoryGirl.create(:hyrax_uploaded_file),
        FactoryGirl.create(:hyrax_uploaded_file,
-                          file: File.open('spec/fixtures/files/2.pdf'))]
+                          file: File.open('spec/fixtures/files/2.pdf')),
+       FactoryGirl.create(:hyrax_uploaded_file,
+                          file: File.open('spec/fixtures/files/3.pdf'))]
     end
   end
 
@@ -102,14 +104,17 @@ RSpec.describe XmlImport, type: :model do
       FactoryGirl.create(:xml_import, uploaded_file_ids: [file.id])
     end
 
-    let(:file) { FactoryGirl.create(:hyrax_uploaded_file) }
+    let(:file) do
+      FactoryGirl.create(:hyrax_uploaded_file,
+                         file: File.open('spec/fixtures/files/2.pdf'))
+    end
 
     before { ActiveJob::Base.queue_adapter = :test }
 
     it 'enqueues the correct job type' do
       expect { import.enqueue! }
         .to enqueue_job(ImportJob)
-        .with(import, file, an_instance_of(String))
+        .with(import, [file], an_instance_of(String))
         .on_queue('batch')
         .once
     end
@@ -136,8 +141,14 @@ RSpec.describe XmlImport, type: :model do
   end
 
   describe '#record_ids' do
-    let(:ids)    { [upload.id] }
+    let(:ids)    { uploads.map(&:id) }
     let(:upload) { FactoryGirl.create(:hyrax_uploaded_file) }
+
+    let(:uploads) do
+      [upload,
+       FactoryGirl.create(:hyrax_uploaded_file,
+                          file: File.open(file_fixture('3.pdf')))]
+    end
 
     before { import.uploaded_file_ids = ids }
 
@@ -146,10 +157,20 @@ RSpec.describe XmlImport, type: :model do
     end
 
     context 'when saved' do
-      it 'mints ids for an upload file' do
+      it 'mints ids for a complete record' do
         expect { import.save }
-          .to change { import.record_ids }
-          .to include(upload.file.file.filename => an_instance_of(String))
+          .to change { import.record_ids.keys }
+          .to contain_exactly(upload.file.file.filename)
+      end
+
+      context 'when the record is incomplete' do
+        let(:ids) { [upload.id] }
+
+        it 'does not mint an id' do
+          expect { import.save }
+            .not_to change { import.record_ids.keys }
+            .from(be_empty)
+        end
       end
 
       it 'skips duplicated filenames' do

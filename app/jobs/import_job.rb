@@ -1,8 +1,8 @@
 ##
 # A job to process imported records and files
 class ImportJob < BatchableJob
-  def perform(import, file, id = nil)
+  def perform(import, files, id = nil)
     Tufts::ImportService
-      .import_object!(file: file, import: import, object_id: id)
+      .import_object!(files: files, import: import, object_id: id)
   end
 end

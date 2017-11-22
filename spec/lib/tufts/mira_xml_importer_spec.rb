@@ -13,6 +13,10 @@ RSpec.describe Tufts::MiraXmlImporter do
       expect(importer.record?(file: filename)).to be true
     end
 
+    it 'is true when a record matches with a secondary file' do
+      expect(importer.record?(file: '3.pdf')).to be true
+    end
+
     it 'is false when no record matches' do
       expect(importer.record?(file: 'not-a-real-file.fake')).to be false
     end
@@ -23,6 +27,10 @@ RSpec.describe Tufts::MiraXmlImporter do
 
     it 'gives the record matching the filename' do
       expect(importer.record_for(file: filename).file).to eq filename
+    end
+
+    it 'gives the record for a matching secondary file' do
+      expect(importer.record_for(file: '3.pdf').files).to include '3.pdf'
     end
 
     it 'gives an empty ImportRecord when no record matches' do

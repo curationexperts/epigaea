@@ -60,7 +60,12 @@ class XmlImport < ApplicationRecord
       filename = file.file.file.filename
       next unless id_exists_for?(filename: filename)
 
-      hsh[id] = ImportJob.perform_later(self, file, record_ids[filename]).job_id
+      record = record_for(file: filename)
+      next unless record.file == filename && upload_completed?(record: record)
+
+      files_for_import = uploaded_files.select { |f| record.files.include?(f.file.file.filename) }
+
+      hsh[id] = ImportJob.perform_later(self, files_for_import, record_ids[filename]).job_id
     end
   end
 
@@ -107,10 +112,15 @@ class XmlImport < ApplicationRecord
     # @private Mint ids for items ready to enqueue
     # @return [Boolean]
     def mint_ids
-      uploaded_files.each do |file|
-        filename = file.file.file.filename
+      uploaded_filenames = uploaded_files.map { |up| up.file.file.filename }
 
+      uploaded_filenames.each do |filename|
         next if id_exists_for?(filename: filename)
+
+        record = record_for(file: filename)
+
+        # skip unless it's the primary file and the record is complete
+        next unless record.file == filename && upload_completed?(record: record)
 
         id = NOID_SERVICE.mint
 
@@ -132,7 +142,8 @@ class XmlImport < ApplicationRecord
     end
 
     def id_exists_for?(filename:)
-      record_ids.key?(filename)
+      record_ids.key?(filename) ||
+        record_ids.key?(record_for(file: filename).file)
     end
 
     ##
@@ -171,5 +182,14 @@ class XmlImport < ApplicationRecord
       end
 
       true
+    end
+
+    ##
+    # @param record [ImportRecord]
+    # @return [Boolean]
+    def upload_completed?(record:)
+      record.files.all? do |record_file|
+        uploaded_files.map { |f| f.file.file.filename }.include?(record_file)
+      end
     end
 end

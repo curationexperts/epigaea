@@ -48,7 +48,7 @@ class XmlImportPresenter
   ##
   # @return [Enumerable<String>]
   def missing_files
-    xml_import.records.map(&:file).to_a -
+    xml_import.records.flat_map(&:files).to_a -
       xml_import.uploaded_files.map { |file| File.basename(file.file.path) }
   end
 
