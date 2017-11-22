@@ -137,7 +137,7 @@ RSpec.describe Tufts::ImportRecord do
       end
 
       it 'has the filenames in order' do
-        expect(record.files).to eq ['pdf-sample.pdf', '2.pdf']
+        expect(record.files).to eq ['pdf-sample.pdf', '3.pdf']
       end
     end
   end
