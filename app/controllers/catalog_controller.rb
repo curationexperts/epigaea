@@ -53,15 +53,15 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
     config.add_facet_field solr_name("resource_type", :facetable), label: "Resource Type", limit: 5
-    config.add_facet_field solr_name("creator", :facetable), limit: 5
+    config.add_facet_field solr_name("creator", :facetable), limit: 5, label: 'Creator'
     config.add_facet_field solr_name("contributor", :facetable), label: "Contributor", limit: 5
-    config.add_facet_field solr_name("subject", :facetable), limit: 5
-    config.add_facet_field solr_name("language", :facetable), limit: 5
-    config.add_facet_field solr_name("publisher", :facetable), limit: 5
-    config.add_facet_field solr_name("file_format", :facetable), limit: 5
+    config.add_facet_field solr_name("subject", :facetable), limit: 5, label: 'Subject'
+    config.add_facet_field solr_name("language", :facetable), limit: 5, label: 'Language'
+    config.add_facet_field solr_name("publisher", :facetable), limit: 5, label: 'Publisher'
+    config.add_facet_field solr_name("file_format", :facetable), limit: 5, label: 'File Format'
     config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
     config.add_facet_field solr_name("displays_in", :facetable), limit: 5, label: 'Displays In'
-    config.add_facet_field solr_name("held_by", :facetable), limit: 5
+    config.add_facet_field solr_name("held_by", :facetable), limit: 5, label: 'Held By'
 
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
