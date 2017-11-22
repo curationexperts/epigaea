@@ -1,25 +1,13 @@
-# Generated via
-#  `rails generate hyrax:work Etd`
 require 'rails_helper'
-require 'active_fedora/cleaner'
 include Warden::Test::Helpers
 
-RSpec.feature 'deposit and publication' do
-  let(:depositing_user) { FactoryGirl.create(:user) }
-  let(:publishing_user) { FactoryGirl.create(:admin) }
-  let(:work) { FactoryGirl.create(:image) }
+RSpec.feature 'deposit and publication', :clean, :workflow do
+  let(:depositing_user)  { FactoryGirl.create(:user) }
+  let!(:publishing_user) { FactoryGirl.create(:admin) }
+
+  let(:work) { FactoryGirl.actor_create(:image, user: depositing_user) }
+
   context 'a logged in user' do
-    before do
-      ActiveFedora::Cleaner.clean!
-      DatabaseCleaner.clean_with(:truncation)
-      Tufts::WorkflowSetup.setup
-      allow(CharacterizeJob).to receive(:perform_later) # There is no fits installed on travis-ci
-      publishing_user # Make sure publishing user exists before the work is submitted
-      current_ability = ::Ability.new(depositing_user)
-      attributes = {}
-      env = Hyrax::Actors::Environment.new(work, current_ability, attributes)
-      Hyrax::CurationConcern.actor.create(env)
-    end
     scenario "non-admin user deposits, admin publishes", js: true do
       # All works go to the default admin set, which uses the mira_publication_workflow
       expect(work.active_workflow.name).to eq "mira_publication_workflow"
