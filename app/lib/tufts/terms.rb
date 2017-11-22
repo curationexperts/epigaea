@@ -2,7 +2,7 @@ module Tufts
   class Terms
     SHARED_TERMS = [:title, :displays_in, :abstract, :accrual_policy, :admin_start_date,
                     :alternative_title, :audience, :bibliographic_citation,
-                    :contributor, :corporate_name, :createdby, :creator_department, :date_accepted,
+                    :contributor, :corporate_name, :createdby, :creator, :creator_department, :date_accepted,
                     :date_available, :date_copyrighted, :date_issued, :date_modified, :date_uploaded,
                     :description, :embargo_note, :end_date, :extent, :format_label, :funder, :genre, :has_format, :has_part,
                     :held_by, :identifier, :internal_note, :is_format_of, :is_replaced_by, :language, :legacy_pid,

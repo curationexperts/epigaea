@@ -23,6 +23,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       expect(page).to have_no_content('Location')
 
       fill_in "Title", with: "Example \nTitle   "
+      fill_in "Creator", with: "A creator"
       find(:xpath, '//option[contains(text(), "nowhere")]').select_option
       click_link "Files"
       execute_script("$('.fileinput-button input:first').css({'opacity':'1', 'display':'block', 'position':'relative'})")
