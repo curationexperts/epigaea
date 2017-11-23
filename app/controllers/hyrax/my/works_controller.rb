@@ -2,11 +2,7 @@ module Hyrax
   module My
     class WorksController < MyController
       # Search builder for a list of works that belong to me
-      # Override of Blacklight::RequestBuilders
-      def search_builder_class
-        TuftsMyWorksSearchBuilder
-      end
-
+      # Override of Blacklight::RequestBuilder
       def index
         add_breadcrumb t(:'hyrax.controls.home'), root_path
         add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
