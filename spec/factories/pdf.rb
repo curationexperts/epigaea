@@ -6,6 +6,24 @@ FactoryGirl.define do
     title [FFaker::Book.title]
     visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
     displays_in ['nowhere']
+
+    transient do
+      user nil
+    end
+
+    factory :published_pdf do
+      after(:create) do |work, evaluator|
+        action_info = Hyrax::WorkflowActionInfo.new(work, evaluator.user)
+        scope       = action_info.entity.workflow
+        action      = PowerConverter
+                      .convert_to_sipity_action("publish", scope: scope) { nil }
+
+        Hyrax::Workflow::WorkflowActionService
+          .run(subject: action_info,
+               action:  action,
+               comment: 'Published by :published_pdf factory in `after_create` hook.')
+      end
+    end
   end
 
   factory :populated_pdf, class: Pdf do

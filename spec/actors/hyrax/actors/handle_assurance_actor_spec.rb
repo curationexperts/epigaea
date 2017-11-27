@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Hyrax::Actors::HandleAssuranceActor do
+RSpec.describe Hyrax::Actors::HandleAssuranceActor, :clean, :workflow do
   subject(:actor)  { described_class.new(next_actor) }
   let(:next_actor) { Hyrax::Actors::Terminator.new }
-  let(:object)     { create(:pdf) }
-  let(:user)       { User.new }
+  let(:object)     { actor_create(:published_pdf, displays_in: ['dl'], user: user) }
+  let(:user)       { create(:user) }
 
   let(:env) do
     Hyrax::Actors::Environment.new(object, Ability.new(user), {})
@@ -30,9 +30,28 @@ RSpec.describe Hyrax::Actors::HandleAssuranceActor do
   end
 
   describe '#create' do
-    it 'enqueues a job' do
+    before do
+      object
       ActiveJob::Base.queue_adapter = :test
+    end
 
+    context 'before published' do
+      let(:object) { actor_create(:pdf, displays_in: ['dl'], user: user) }
+
+      it 'does not enqueue a job' do
+        expect { middleware.create(env) }.not_to enqueue_job
+      end
+    end
+
+    context 'when published but not in DL' do
+      let(:object) { actor_create(:published_pdf, displays_in: ['trove'], user: user) }
+
+      it 'does not enqueue a job' do
+        expect { middleware.create(env) }.not_to enqueue_job
+      end
+    end
+
+    it 'enqueues a job' do
       expect { middleware.create(env) }
         .to enqueue_job.with(object)
     end
@@ -41,7 +60,6 @@ RSpec.describe Hyrax::Actors::HandleAssuranceActor do
       let(:next_actor) { failing_middleware.new }
 
       it 'does not equeue a job' do
-        ActiveJob::Base.queue_adapter = :test
         expect { middleware.create(env) }.not_to enqueue_job
       end
     end
@@ -76,9 +94,28 @@ RSpec.describe Hyrax::Actors::HandleAssuranceActor do
   end
 
   describe '#update' do
-    it 'enqueues a job' do
+    before do
+      object
       ActiveJob::Base.queue_adapter = :test
+    end
 
+    context 'before published' do
+      let(:object) { actor_create(:pdf, displays_in: ['dl'], user: user) }
+
+      it 'does not enqueue a job' do
+        expect { middleware.update(env) }.not_to enqueue_job
+      end
+    end
+
+    context 'when published but not in DL' do
+      let(:object) { actor_create(:published_pdf, displays_in: ['trove'], user: user) }
+
+      it 'does not enqueue a job' do
+        expect { middleware.update(env) }.not_to enqueue_job
+      end
+    end
+
+    it 'enqueues a job' do
       expect { middleware.create(env) }
         .to enqueue_job.with(object)
     end
@@ -87,7 +124,6 @@ RSpec.describe Hyrax::Actors::HandleAssuranceActor do
       let(:next_actor) { failing_middleware.new }
 
       it 'does not equeue a job' do
-        ActiveJob::Base.queue_adapter = :test
         expect { middleware.create(env) }.not_to enqueue_job
       end
     end
