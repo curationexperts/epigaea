@@ -1,6 +1,4 @@
-<div class="well">
-   <%= render 'form_media', f: f %>
-</div>
+<%= render 'form_media', f: f %>
 <div class="base-terms">
   <%  Tufts::Terms.shared_terms.each do |term| %>
   <%= render_edit_field_partial(term, f: f)  %>
