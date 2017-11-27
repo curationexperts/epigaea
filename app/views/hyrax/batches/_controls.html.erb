@@ -1,0 +1,19 @@
+<ul class="batch-controls">
+  <li>
+    <%= button_to "Review Batches", main_app.batches_path, method: :post, params: { batch: { batchable_attributes: { batch_type: "Publish" } } }, class: "btn btn-primary" %>
+  </li>
+  <li>
+    <%= button_to "Publish Batches", main_app.batches_path, method: :post, params: { batch: { batchable_attributes: { batch_type: "Publish" } } }, class: "btn btn-primary" %>
+  </li>
+  <li>
+  <li>
+    <%= button_to "Unpublish", main_app.batches_path, method: :post, params: { batch: { batchable_attributes: { batch_type: "Unpublish" } } }, class: "btn btn-primary" %>
+  </li>
+  </li>
+  <li>
+    <%= button_to "Purge Batch", main_app.batches_path, method: :post, params: { batch: { batchable_attributes: { batch_type: "Publish" } } }, class: "btn btn-primary" %>
+  </li>
+  <li>
+    <%= button_to "Revert Batch", main_app.batches_path, method: :post, params: { batch: { batchable_attributes: { batch_type: "Publish" } } }, class: "btn btn-primary" %>
+  </li>
+</ul>

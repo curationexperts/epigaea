@@ -1,6 +1,6 @@
 <div class="col-sm-12">
   <h1>Batch Status</h1>
-
+  <%= render 'controls' %>
   <%= link_to "All batches", main_app.batches_path %>
 
   <%= render 'batch_info',  batch: @batch %>
