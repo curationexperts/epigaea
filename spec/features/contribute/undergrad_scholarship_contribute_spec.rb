@@ -13,6 +13,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
     let(:title) { FFaker::Movie.title }
     let(:short_description) { FFaker::Lorem.paragraphs(6).join("\n") }
     before do
+      admin
       importer = DepositTypeImporter.new('./config/deposit_type_seed.csv')
       importer.import_from_csv
       Pdf.delete_all
@@ -42,6 +43,9 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       expect(page).to have_content "#{created_pdf.title.first} (#{created_pdf.id}) has been deposited by #{depositing_user.display_name} (#{depositing_user.user_key}) and is awaiting publication."
       logout
       login_as(admin)
+      # Check notifications for admin user
+      visit("/notifications?locale=en")
+      expect(page).to have_content "#{created_pdf.title.first} (#{created_pdf.id}) has been deposited by #{depositing_user.display_name} (#{depositing_user.user_key}) and is awaiting publication."
       visit("/concern/pdfs/#{created_pdf.id}")
       expect(page).to have_content(title)
       expect(page).to have_content(short_description)
