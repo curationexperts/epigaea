@@ -49,7 +49,7 @@ Hyrax.config do |config|
   # How often clients should poll for notifications
   # Removed in Hyrax 2.0.0
   # config.notifications_update_poll_interval = 5.minutes
-
+  config.realtime_notifications = false
   # How frequently should a file be fixity checked
   # config.max_days_between_fixity_checks = 7
 
