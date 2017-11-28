@@ -5,11 +5,6 @@
   <li>
     <%= render_notifications(user: current_user) %>
   </li>
-  <% if current_user.admin? %>
-  <li>
-
-  </li>
-  <% end %>
     <li class="dropdown">
       <%= link_to hyrax.dashboard_profile_path(current_user), role: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false} do %>
         <span class="sr-only"><%= t("hyrax.toolbar.profile.sr_action") %></span>
