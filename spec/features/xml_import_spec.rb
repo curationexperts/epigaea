@@ -15,9 +15,10 @@ RSpec.feature 'Create an XML Import', :clean, js: true do
     click_button 'Next'
 
     within(:css, 'div.alert-warning') do
-      expect(page).to have_css('li.missing-file', count: 2)
+      expect(page).to have_css('li.missing-file', count: 3)
       expect(page).to have_content 'pdf-sample.pdf'
       expect(page).to have_content '2.pdf'
+      expect(page).to have_content '3.pdf'
     end
 
     click_link 'add additional files to this batch'
@@ -29,6 +30,7 @@ RSpec.feature 'Create an XML Import', :clean, js: true do
 
     expect(page).to have_content 'pdf-sample.pdf'
     expect(page).to have_content '2.pdf'
+    expect(page).to have_content '3.pdf'
   end
 
   scenario 'importing an invalid file' do

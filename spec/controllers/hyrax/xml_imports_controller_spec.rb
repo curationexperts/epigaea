@@ -91,20 +91,22 @@ RSpec.describe Hyrax::XmlImportsController, type: :controller do
       let(:uploads) do
         [FactoryGirl.create(:hyrax_uploaded_file),
          FactoryGirl.create(:hyrax_uploaded_file,
+                            file: File.open(file_fixture('3.pdf'))),
+         FactoryGirl.create(:hyrax_uploaded_file,
                             file: File.open('spec/fixtures/hello.pdf'))]
       end
 
       it 'enqueues jobs only for matching files' do
         expect { patch :update, params: params }
           .to enqueue_job(ImportJob)
-          .with(import, uploads.first, an_instance_of(String))
+          .with(import, uploads[0..1], an_instance_of(String))
           .exactly(:once)
       end
 
       it 'updates file ids' do
         expect { patch :update, params: params }
           .to change { import.reload.uploaded_file_ids }
-          .to contain_exactly(file_ids.first)
+          .to contain_exactly(*file_ids[0..1])
       end
 
       it 'flashes an alert' do
@@ -120,7 +122,9 @@ RSpec.describe Hyrax::XmlImportsController, type: :controller do
       let(:uploads) do
         [FactoryGirl.create(:hyrax_uploaded_file),
          FactoryGirl.create(:hyrax_uploaded_file,
-                            file: File.open('spec/fixtures/files/2.pdf'))]
+                            file: File.open(file_fixture('3.pdf'))),
+         FactoryGirl.create(:hyrax_uploaded_file,
+                            file: File.open(file_fixture('2.pdf')))]
       end
 
       it 'enqueues jobs for the matching file' do

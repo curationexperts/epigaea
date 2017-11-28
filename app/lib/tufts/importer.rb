@@ -135,14 +135,26 @@ module Tufts
       end
     end
 
+    class DuplicateFileError < Error
+      ##
+      # @return [String]
+      def message
+        "A duplicate filename `#{@details[:file]}` was found at line: #{present_line}; #{present_details}"
+      end
+    end
+
     private
 
       ##
       # @private
       def validate_filenames
-        records.each do |record|
-          errors << MissingFileError.new if
-            record.file.nil? || record.file.empty?
+        records.each_with_object(Set.new) do |record, files_touched|
+          errors << MissingFileError.new if record.files.empty?
+
+          record.files.each do |file|
+            errors << DuplicateFileError.new(nil, file: file) unless
+              files_touched.add?(file)
+          end
         end
       end
   end

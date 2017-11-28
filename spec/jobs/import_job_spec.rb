@@ -11,9 +11,9 @@ RSpec.describe ImportJob, type: :job do
     it 'enqueues the job' do
       ActiveJob::Base.queue_adapter = :test
 
-      expect { job.perform_later(import, file, pdf.id) }
+      expect { job.perform_later(import, [file], pdf.id) }
         .to enqueue_job(described_class)
-        .with(import, file, pdf.id)
+        .with(import, [file], pdf.id)
         .on_queue('batch')
     end
   end

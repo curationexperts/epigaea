@@ -11,11 +11,13 @@ module Tufts
     ##
     # @!attribute file [rw]
     #   @return [Hyrax::UploadedFile]
+    # @!attribute files [rw]
+    #   @return [Array<Hyrax::UploadedFile>]
     # @!attribute import [rw]
     #   @return [XmlImport]
     # @!attribute object_id [rw]
     #   @return [String]
-    attr_accessor :file, :import, :object_id
+    attr_accessor :file, :files, :import, :object_id
 
     ##
     # @param file   [Hyrax::UploadedFile]
@@ -23,17 +25,23 @@ module Tufts
     #
     # @return [ActiveFedora::Core]
     # @see #import_object!
-    def self.import_object!(import:, file:, object_id: nil)
-      new(import: import, file: file, object_id: object_id).import_object!
+    def self.import_object!(import:, file: nil, object_id: nil, files: [])
+      new(import: import, file: file, object_id: object_id, files: files).import_object!
     end
 
     ##
     # @param file   [Hyrax::UploadedFile]
     # @param import [XmlImport]
-    def initialize(file:, import:, object_id: nil)
-      @file      = file
+    def initialize(import:, file: nil, files: [], object_id: nil)
+      if file
+        warn 'Initializing ImportService with a single file is deprecated, ' \
+             'use the `files` param instead'
+      end
+
+      @file      = file || files.first
       @import    = import
       @object_id = object_id
+      @files     = files
     end
 
     ##
@@ -44,7 +52,7 @@ module Tufts
       object     = record.build_object(id: object_id)
       creator    = User.find(file.user_id)
       ability    = ::Ability.new(creator)
-      attributes = { uploaded_files: [file.id] }
+      attributes = { uploaded_files: file_ids }
       env        = Hyrax::Actors::Environment.new(object, ability, attributes)
 
       Hyrax::CurationConcern.actor.create(env)
@@ -57,5 +65,13 @@ module Tufts
       # UploadedFile -> Uploader -> CarrierWave::SanitizedFile -> String
       import.record_for(file: file.file.file.filename)
     end
+
+    private
+
+      ##
+      # @private
+      def file_ids
+        files.empty? ? [file.id] : files.map(&:id)
+      end
   end
 end

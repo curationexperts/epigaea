@@ -21,7 +21,7 @@ RSpec.describe XmlImportPresenter do
   describe '#missing_files' do
     it 'contains the record files' do
       expect(presenter.missing_files)
-        .to contain_exactly(*import.parser.records.map(&:file))
+        .to contain_exactly(*import.parser.records.flat_map(&:files))
     end
 
     context 'with files' do
@@ -38,7 +38,8 @@ RSpec.describe XmlImportPresenter do
       before { import.uploaded_file_ids << file.id }
 
       it 'contains only the missing files' do
-        remaining_files = import.parser.records.map(&:file).to_a - [filename]
+        remaining_files =
+          import.parser.records.flat_map(&:files).to_a - [filename]
 
         expect(presenter.missing_files).to contain_exactly(*remaining_files)
       end
@@ -58,7 +59,10 @@ RSpec.describe XmlImportPresenter do
           .create(:xml_import, batch: batch, uploaded_file_ids: [file.id])
       end
 
-      let(:file) { FactoryGirl.create(:hyrax_uploaded_file) }
+      let(:file) do
+        FactoryGirl
+          .create(:hyrax_uploaded_file, file: File.open(file_fixture('2.pdf')))
+      end
 
       it 'changes to queued' do
         optional "Sometimes fails" if ENV['TRAVIS']
