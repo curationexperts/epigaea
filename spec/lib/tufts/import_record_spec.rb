@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Tufts::ImportRecord do
   subject(:record) { described_class.new }
   let(:id)         { 'IMPORT_RECORD_FAKE_ID' }
-  let(:title)      { 'President Jean Mayer speaking at commencement, 1987' }
+  let(:title)      { "President Jean Mayer speaking\n          at commencement, 1987" }
 
   shared_context 'with metadata' do
     subject(:record) { described_class.new(metadata: node) }
@@ -89,6 +89,10 @@ RSpec.describe Tufts::ImportRecord do
 
       it 'has metadata' do
         expect(record.fields.to_a).not_to be_empty
+      end
+
+      it 'normalized metadata fields' do
+        expect(record.fields.to_a[1]).to eq([:abstract, ["Another long description with \n plenty\n of whitespace"]])
       end
     end
   end
