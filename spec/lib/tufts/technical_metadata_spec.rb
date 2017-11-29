@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe Tufts::TechnicalMetadata do
-  subject(:tm) { described_class.new(work.id) }
+  subject(:tm) { described_class.new(work) }
   let(:work)   { FactoryGirl.create(:pdf) }
 
   describe 'to_s' do

@@ -9,7 +9,8 @@ module Tufts
   # FileSet member's characterization proxy
   #
   # @example
-  # tm = Tufts::TechnicalMetadata.new('zvcvcvc23')
+  # object = ActiveFedora::Base.find('mnvmbnvb')
+  # tm = Tufts::TechnicalMetadata.new(object)
   # tm.to_s
   #
   class TechnicalMetadata
@@ -18,9 +19,9 @@ module Tufts
     # @!attribute file_set [rw]
     attr_reader :base, :builder
     ##
-    # @param work_id [String]
-    def initialize(work_id)
-      @base = ActiveFedora::Base.find(work_id)
+    # @param work [Object]
+    def initialize(work)
+      @base = work
       @builder = xml_builder
     end
 

@@ -25,7 +25,7 @@ module Tufts
                  'xmlns' => 'http://www.openarchives.org/OAI/2.0/') do
           xml.ListRecords do
             @objects.each do |object|
-              tm = Tufts::TechnicalMetadata.new(object.id)
+              tm = Tufts::TechnicalMetadata.new(object)
               xml.record do
                 xml.metadata do
                   xml.parent << tm.to_s
