@@ -102,10 +102,10 @@ shared_examples 'and has admin metadata attributes' do
     expect(work.resource.dump(:ttl)).to match(/dl.tufts.edu\/terms#createdby/)
   end
 
-  it 'has tuft ispartof' do
-    work.tufts_is_part_of = ['A greater whole']
+  it 'is part of' do
+    work.tufts_is_part_of = ['Something bigger']
     expect(work.resource.dump(:ttl))
-      .to match(/dl.tufts.edu\/terms#tuftsIsPartOf/)
+      .to match(/purl.org\/dc\/terms\/isPartOf/)
   end
 
   it 'has a Tufts license field' do

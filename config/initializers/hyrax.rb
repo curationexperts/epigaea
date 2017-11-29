@@ -223,6 +223,9 @@ Hyrax.config do |config|
   rescue Errno::ENOENT
     config.browse_everything = nil
   end
+
+  # AdminSet Predicate
+  config.admin_set_predicate = Tufts::Vocab::Tufts.admin_set_member
 end
 
 Date::DATE_FORMATS[:standard] = "%m/%d/%Y"
