@@ -2,14 +2,9 @@
 <div class="row-fluid">
 <ul id="user_utility_links" class="nav navbar-nav navbar-right">
   <% if user_signed_in? %>
-  <% if current_user.admin? %>
   <li>
-  
+    <%= render_notifications(user: current_user) %>
   </li>
-  <li>
-      <%= render 'hyrax/users/notify_number' %>
-  </li>
-  <% end %>
     <li class="dropdown">
       <%= link_to hyrax.dashboard_profile_path(current_user), role: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: true, expanded: false} do %>
         <span class="sr-only"><%= t("hyrax.toolbar.profile.sr_action") %></span>

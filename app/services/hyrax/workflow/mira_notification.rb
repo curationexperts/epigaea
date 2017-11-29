@@ -4,7 +4,7 @@ module Hyrax
       # regardless of what is passed in, set the recipients according to this notification's requirements
       def initialize(entity, comment, user, recipients)
         super
-        @recipients = workflow_recipients
+        @recipients = workflow_recipients.with_indifferent_access
       end
 
       def workflow_recipients

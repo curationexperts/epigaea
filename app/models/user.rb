@@ -44,4 +44,9 @@ class User < ApplicationRecord
   def mailboxer_email(_object)
     email
   end
+
+  # Hyrax 2.0 expects this to be set for the user
+  def preferred_locale
+    'en'
+  end
 end
