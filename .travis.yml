@@ -10,6 +10,7 @@ rvm:
 before_script:
   - bundle exec sidekiq -d -l /tmp/sidekiq.log
   - bundle exec rake db:create
+  - cp .env.sample .env.test
 script:
   - bundle exec rubocop
   - xvfb-run -a bundle exec rake travis

@@ -13,6 +13,7 @@ Get started by cloning the repository and installing the dependencies:
 git clone https://github.com/curationexperts/epigaea.git
 cd epigaea
 
+cp .env.sample .env.development
 bundle install
 bundle exec rails db:setup
 bundle exec sidekiq -d -l tmp/sidekiq.log
