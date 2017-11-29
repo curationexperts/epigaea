@@ -32,7 +32,7 @@ describe Tufts::ImportService, :workflow, :clean do
     end
 
     it 'has the title from the imported record' do
-      title = 'President Jean Mayer speaking at commencement, 1987'
+      title = "President Jean Mayer speaking\n          at commencement, 1987"
 
       expect(service.import_object!).to have_attributes(title: [title])
     end

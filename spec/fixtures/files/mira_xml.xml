@@ -22,8 +22,16 @@ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
           <tufts:visibility>open</tufts:visibility>
           <tufts:filename>3.pdf</tufts:filename>
           <model:hasModel>Pdf</model:hasModel>
-          <dc:title>President Jean Mayer speaking at commencement, 1987</dc:title>
-          <dc:description>5x7</dc:description>
+          <dc:title>President Jean Mayer speaking
+          at commencement, 1987</dc:title>
+          <dc11:description>
+            A long       description             with 
+                           plenty
+          of          whitespace</dc11:description>
+          <dc:abstract>
+            Another long       description             with 
+                           plenty
+          of          whitespace</dc:abstract>
           <dc:source>UA136</dc:source>
           <dc:coverage>Medford;7014023;42.417;-71.100</dc:coverage>
           <dc:temporal>1987</dc:temporal>

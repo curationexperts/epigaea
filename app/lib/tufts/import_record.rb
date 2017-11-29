@@ -12,6 +12,8 @@ module Tufts
   #   record.file = 'filename.png'
   #
   class ImportRecord
+    include Tufts::Normalizer
+
     VISIBILITY_VALUES =
       [Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC,
        Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO,
@@ -157,6 +159,7 @@ module Tufts
 
         values = values.map(&:content)
         values = values.first if singular_properties.include?(field.property)
+        values = normalize_import_field(field, values)
         values
       end
   end
