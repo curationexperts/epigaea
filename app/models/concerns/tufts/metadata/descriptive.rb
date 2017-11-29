@@ -75,7 +75,7 @@ module Tufts
         property :funder, predicate: ::RDF::Vocab::MARCRelators.fnd do |index|
           index.as :stored_searchable
         end
-        property :tufts_is_part_of, predicate: ::RDF::Vocab::DC.isPartOf do |index|
+        property :is_part_of, predicate: ::RDF::Vocab::DC.isPartOf do |index|
           index.as :stored_searchable
         end
       end

@@ -34,7 +34,7 @@ class Contribution
       steward: 'dca',
       displays_in: ['dl'],
       publisher: ['Tufts University. Digital Collections and Archives.'],
-      rights_statement: ['http://dca.tufts.edu/ua/access/rights-creator.html'],
+      tufts_license: ['http://dca.tufts.edu/ua/access/rights-creator.html'],
       date_available: [now.to_s],
       date_uploaded: now.to_s,
       internal_note: note
