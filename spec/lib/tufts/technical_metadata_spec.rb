@@ -22,10 +22,4 @@ RSpec.describe Tufts::TechnicalMetadata do
       expect(Nokogiri::XML(tm.to_xml).xpath('/technicalMetadata')).not_to eq(nil)
     end
   end
-
-  describe 'file_name' do
-    it 'returns nil if there is no filename' do
-      expect(tm.file_name).to be_nil
-    end
-  end
 end
