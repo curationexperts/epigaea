@@ -35,13 +35,6 @@ module Tufts
       @builder.to_xml
     end
 
-    # @return [String]
-    def file_name
-      return if @file_set.nil?
-      return if @file_set.characterization_proxy.nil?
-      @file_set.characterization_proxy.file_name[0]
-    end
-
     private
 
       # @return [Nokogiri::XML::Builder]

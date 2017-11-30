@@ -30,7 +30,6 @@ module Tufts
                 xml.metadata do
                   xml.parent << tm.to_s
                   xml.mira_import(@mapping.namespaces) do
-                    xml['tufts'].file_name tm.file_name unless tm.file_name.nil?
                     @mapping.map_sorted do |field|
                       if field.property == :id
                         xml[field.namespace.to_s]
