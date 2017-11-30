@@ -13,7 +13,7 @@ class GenericTischDeposit < Contribution
       displays_in: ['dl'],
       format_label: ['application/pdf'],
       publisher: ['Tufts University. Tisch Library.'],
-      license: ['http://dca.tufts.edu/ua/access/rights-creator.html'],
+      tufts_license: ['http://dca.tufts.edu/ua/access/rights-creator.html'],
       date_available: [now.to_s],
       date_uploaded: now.to_s,
       internal_note: note

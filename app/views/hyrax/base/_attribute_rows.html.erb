@@ -1,7 +1,58 @@
-<% Tufts::Terms.shared_terms.each do |term| %>
-  <% presenter_value = presenter.send(term) %>
-  <% unless presenter_value.nil? || presenter_value.empty? || presenter_value == [''] || term == :title %>
-  <%= presenter.attribute_to_html(term) %>
-  <% end %>
-<% end %>
-
+<%= presenter.attribute_to_html(:abstract, render_as: :linked, search_field: 'all_fields' ) %>
+<%= presenter.attribute_to_html(:accrual_policy, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:alternative_title, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:audience, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:bibliographic_citation) %>
+<%= presenter.attribute_to_html(:contributor, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:corporate_name, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:createdby, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:creator, render_as: :faceted) %>
+<%= presenter.attribute_to_html(:creator_department, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:date_accepted, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:date_available, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:date_copyrighted, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:date_created, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:date_issued, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:date_modified, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:date_uploaded, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:depositor, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:displays_in, render_as: :faceted) %>
+<%= presenter.attribute_to_html(:embargo_note, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:end_date, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:extent, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:format_label, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:funder, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:genre, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:has_format, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:has_part, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:held_by, render_as: :faceted) %>
+<%= presenter.attribute_to_html(:internal_note, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:is_format_of, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:is_replaced_by, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:is_part_of, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:language, render_as: :faceted) %>
+<%= presenter.attribute_to_html(:legacy_pid, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:license, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:identifier, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:personal_name, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:primary_date, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:provenance, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:publisher, render_as: :faceted) %>
+<%= presenter.attribute_to_html(:qr_note, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:qr_status, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:rejection_reason, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:replaces, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:retention_period, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:rights_statement, render_as: :rights_statement) %>
+<%= presenter.attribute_to_html(:rights_holder, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:rights_note, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:source, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:geographic_name, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:admin_start_date, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:steward, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:subject, render_as: :faceted) %>
+<%= presenter.attribute_to_html(:table_of_contents, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:temporal, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:tufts_is_part_of, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:tufts_license, render_as: :linked, search_field: 'all_fields') %>
+<%= presenter.attribute_to_html(:resource_type, render_as: :resource_type) %>

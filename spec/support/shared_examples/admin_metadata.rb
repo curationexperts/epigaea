@@ -103,7 +103,7 @@ shared_examples 'and has admin metadata attributes' do
   end
 
   it 'is part of' do
-    work.tufts_is_part_of = ['Something bigger']
+    work.is_part_of = ['Something bigger']
     expect(work.resource.dump(:ttl))
       .to match(/purl.org\/dc\/terms\/isPartOf/)
   end

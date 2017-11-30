@@ -21,8 +21,9 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       end
       expect(page).to have_no_content('Keywords')
       expect(page).to have_no_content('Location')
-
-      fill_in "Title", with: "Example \nTitle   "
+      within('.pdf_title') do
+        fill_in "Title", with: "Example \nTitle   "
+      end
       fill_in "Creator", with: "A creator"
       find(:xpath, '//option[contains(text(), "nowhere")]').select_option
       click_link "Files"

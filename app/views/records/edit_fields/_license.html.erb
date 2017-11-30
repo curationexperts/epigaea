@@ -1,1 +1,1 @@
-<%= f.input :license, input_html: { class: 'form-control', multiple: false } %>
+<%= f.input key, as: :multi_value, input_html: { class: 'form-control' }, required: f.object.required?(key) %>
