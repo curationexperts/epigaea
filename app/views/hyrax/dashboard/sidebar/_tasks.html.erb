@@ -35,6 +35,10 @@
 <span class="fa fa-archive"></span><span class="sidebar-action-text">Import Objects</span>
 <% end %>
 
+<%= menu.nav_link('/metadata_imports/new') do %>
+<span class="fa fa-code"></span><span class="sidebar-action-text">Import Metadata</span>
+<% end %>
+
 <% if can? :manage, User %>
 <%= menu.nav_link(hyrax.admin_users_path) do %>
 <span class="fa fa-user"></span> <span class="sidebar-action-text"><%= t('hyrax.admin.sidebar.users') %></span>
