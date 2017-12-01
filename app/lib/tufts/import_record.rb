@@ -112,7 +112,7 @@ module Tufts
         case field.property
         when :title
           yield [:title, Array.wrap(title)]
-        when :id, :has_model, :create_date, :modified_date, :head, :tail
+        when :id, :has_model, :date_uploaded, :modified_date, :head, :tail
           next
         else
           values = values_for(field: field)
