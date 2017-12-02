@@ -6,8 +6,12 @@
   <%# Diplay the following content if the viewer is not logged in %>
   <% if current_user.nil? %>
       <p>From this page you may deposit your scholarly work to the Tufts Digital Library. This service is available for:
-
      
+      <ul class="deposit-types-list">
+        <% DepositType.all.sort_by{|dt| dt.display_name.downcase}.each do |dt| %>
+            <li><%= dt.display_name %></li>
+        <% end %>
+      </ul>
 
       Depositing your material to the Tufts Digital Library will require you to upload your file(s) and agree to
       the <a href='contribute/license'>Tufts Digital Library terms and conditions</a>.</p>
@@ -20,18 +24,6 @@
       <p>      <%= link_to main_app.new_user_session_path do %>
         <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> <%= t("hyrax.toolbar.profile.login") %>
       <% end %></p>
-       
-  <%# Display the following options for logged in users %>
-  <% else %>
-    <p>From this page you may deposit your scholarly work to the Tufts Digital Library.</p>
-
-
-    <p>Depositing your material to the Tufts Digital Library will require you to upload your file(s) and agree to
-    the <a href='contribute/license'>Tufts Digital Library terms and conditions</a>.</p>
-
-    <p>Submission of certain types of materials may be restricted pending approval of the relevant school or department.
-      Please contact your school or department for additional information.</p>
-
   <% end %>
 </div>
 
