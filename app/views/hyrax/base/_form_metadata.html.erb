@@ -1,4 +1,11 @@
 <%= render 'form_media', f: f %>
+
+<% if @curation_concern.class.to_s == 'Audio' || @curation_concern.class.to_s == 'Video' %>
+  <div class="well transcript-selection">
+    <%= render_edit_field_partial(:transcript_id, f: f) %>
+  </div>
+<% end %>
+
 <div class='base-terms'>
 <%= render_edit_field_partial(:title,  f: f) %>
 <%= render_edit_field_partial(:displays_in,  f: f) %>
@@ -17,7 +24,6 @@
 <%= render_edit_field_partial(:date_copyrighted,  f: f) %>
 <%= render_edit_field_partial(:date_created,  f: f) %>
 <%= render_edit_field_partial(:date_issued,  f: f) %>
-<%= render_edit_field_partial(:date_uploaded,  f: f) %>
 <%= render_edit_field_partial(:depositor,  f: f) %>
 <%= render_edit_field_partial(:description,  f: f) %>
 <%= render_edit_field_partial(:embargo_note,  f: f) %>
@@ -26,7 +32,6 @@
 <%= render_edit_field_partial(:format_label,  f: f) %>
 <%= render_edit_field_partial(:funder,  f: f) %>
 <%= render_edit_field_partial(:genre,  f: f) %>
-<%= render_edit_field_partial(:geographic_name,  f: f) %>
 <%= render_edit_field_partial(:has_format,  f: f) %>
 <%= render_edit_field_partial(:has_part,  f: f) %>
 <%= render_edit_field_partial(:held_by,  f: f) %>
@@ -45,7 +50,6 @@
 <%= render_edit_field_partial(:qr_note,  f: f) %>
 <%= render_edit_field_partial(:qr_status,  f: f) %>
 <%= render_edit_field_partial(:rejection_reason,  f: f) %>
-<%= render_edit_field_partial(:related_url,  f: f) %>
 <%= render_edit_field_partial(:replaces,  f: f) %>
 <%= render_edit_field_partial(:retention_period,  f: f) %>
 <%= render_edit_field_partial(:rights_holder,  f: f) %>
@@ -53,6 +57,7 @@
 <%= render_edit_field_partial(:rights_statement,  f: f) %>
 <%= render_edit_field_partial(:source,  f: f) %>
 <%= render_edit_field_partial(:admin_start_date,  f: f) %>
+<%= render_edit_field_partial(:geographic_name,  f: f) %>
 <%= render_edit_field_partial(:steward,  f: f) %>
 <%= render_edit_field_partial(:subject,  f: f) %>
 <%= render_edit_field_partial(:table_of_contents,  f: f) %>
