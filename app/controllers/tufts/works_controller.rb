@@ -25,6 +25,7 @@ module Tufts
       end
 
       def rights_statement_scalar_fix(params)
+        return unless params[params.keys[3]].is_a?(Array)
         return if params[params.keys[3]]['rights_statement'].nil?
         params[params.keys[3]]['rights_statement'] = [params[params.keys[3]]['rights_statement']]
       end
