@@ -6,7 +6,7 @@ FactoryGirl.define do
     title [FFaker::Book.title]
     visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
     displays_in ['nowhere']
-
+    rights_statement ['http://bostonhistory.org/photorequest.html']
     transient do
       user nil
     end
