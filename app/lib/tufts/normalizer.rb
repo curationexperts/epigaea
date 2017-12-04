@@ -1,18 +1,21 @@
 module Tufts
   module Normalizer
     def strip_whitespace(param_value)
+      return nil if param_value.empty?
       return strip_whitespace_transformation(param_value) if param_value.class == String
       return param_value.map { |m| strip_whitespace_transformation(m) } if param_value.class == Array
       param_value
     end
 
     def strip_whitespace_keep_newlines(param_value)
+      return nil if param_value.empty?
       return strip_whitespace_keep_newlines_transformation(param_value) if param_value.class == String
       return param_value.map { |m| strip_whitespace_keep_newlines_transformation(m) } if param_value.class == Array
       param_value
     end
 
     def strip_whitespace_keep_newlines_transformation(string)
+      return nil if string.empty?
       string.delete("\r").gsub(/[\n]{2,}/, "\n\n").gsub(/[ \t]+/, " ").strip
     end
 
