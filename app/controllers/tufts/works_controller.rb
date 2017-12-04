@@ -25,8 +25,13 @@ module Tufts
       end
 
       def rights_statement_scalar_fix(params)
-        return if params[params.keys[3]]['rights_statement'].nil?
-        params[params.keys[3]]['rights_statement'] = [params[params.keys[3]]['rights_statement']]
+        index = if Rails.env.production?
+                  2
+                else
+                  3
+                end
+        return if params[params.keys[index]]['rights_statement'].nil?
+        params[params.keys[index]]['rights_statement'] = [params[params.keys[index]]['rights_statement']]
       end
   end
 end
