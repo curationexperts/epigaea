@@ -31,7 +31,9 @@
   <td colspan="6">
     <dl class="expanded-details row">
       <dt class="col-xs-3 col-lg-2"><%= t("hyrax.dashboard.my.collection_list.description") %></dt>
-      <dd class="col-xs-9 col-lg-10"><%= document.description.first %></dd>
+      <% if document.description.present? %>
+        <dd class="col-xs-9 col-lg-10"><%= document.description.first %></dd>
+      <% end %>
       <dt class="col-xs-3 col-lg-2"><%= t("hyrax.dashboard.my.collection_list.edit_access") %></dt>
       <dd class="col-xs-9 col-lg-10">
       <% if document.edit_groups.present? %>
