@@ -8,10 +8,11 @@ git_source(:github) do |repo_name|
 end
 
 gem 'dotenv-rails'
+gem 'honeybadger', '~> 3.1'
 gem 'hydra-role-management'
 gem 'hyrax', '2.0.0'
 gem 'nokogiri', '>=1.8.1' # 1.8.1 fixes security issue https://github.com/sparklemotion/nokogiri/issues/1673
-
+gem 'okcomputer'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.4'
 # Use sqlite3 as the database for Active Record
@@ -40,10 +41,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'whenever', require: false
 
 gem 'blacklight_advanced_search'
-
-group :production do
-  gem 'honeybadger', '~> 3.1'
-end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
