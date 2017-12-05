@@ -1,9 +1,6 @@
 # Generated via
 #  `rails generate hyrax:work Ead`
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe Hyrax::Actors::EadActor do
-  it "has tests" do
-    skip "Add your tests here"
-  end
-end
+# RSpec.describe Hyrax::Actors::EadActor do
+# end
