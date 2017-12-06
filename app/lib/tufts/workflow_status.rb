@@ -21,6 +21,23 @@ module Tufts
       Rails.application.config.drafts_storage_dir.join(id).exist?
     end
 
+    ##
+    # publish a work, and kick off a handle registration job if appropriate
+    def self.publish(work:, current_user:, comment:)
+      subject = Hyrax::WorkflowActionInfo.new(work, current_user)
+      sipity_workflow_action = PowerConverter.convert_to_sipity_action("publish", scope: subject.entity.workflow) { nil }
+      Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: comment)
+      Hyrax::Actors::HandleAssuranceActor.ensure_handle(object: work)
+    end
+
+    ##
+    # unpublish a work
+    def self.unpublish(work:, current_user:, comment:)
+      subject = Hyrax::WorkflowActionInfo.new(work, current_user)
+      sipity_workflow_action = PowerConverter.convert_to_sipity_action("unpublish", scope: subject.entity.workflow) { nil }
+      Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: comment)
+    end
+
     def self.published_or_edited(id)
       if draft_exist?(id)
         'edited'

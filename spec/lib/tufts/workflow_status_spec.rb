@@ -16,9 +16,6 @@ describe Tufts::WorkflowStatus, :workflow, :clean do
   end
 
   it 'returns unpublished for an unpublished work when given its ID' do
-    subject = Hyrax::WorkflowActionInfo.new(work, current_user)
-    sipity_workflow_action = PowerConverter.convert_to_sipity_action("unpublish", scope: subject.entity.workflow) { nil }
-    Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Published by #{current_user}")
     expect(workflow_status.status(work.id)).to eq('unpublished')
   end
 
@@ -36,5 +33,45 @@ describe Tufts::WorkflowStatus, :workflow, :clean do
     File.open(Rails.application.config.drafts_storage_dir.join(work.id), 'w+')
     expect(workflow_status.status(work.id)).to eq('edited')
     File.delete(Rails.application.config.drafts_storage_dir.join(work.id))
+  end
+
+  describe "#publish" do
+    # rubocop:disable RSpec/MultipleExpectations
+    it "publishes a work" do
+      expect(workflow_status.status(work.id)).to eq('unpublished')
+      Tufts::WorkflowStatus.publish(work: work, current_user: current_user, comment: "Published by #{current_user}")
+      expect(workflow_status.status(work.id)).to eq('published')
+      Tufts::WorkflowStatus.publish(work: work, current_user: current_user, comment: "Published by #{current_user}")
+      expect(workflow_status.status(work.id)).to eq('published')
+    end
+    context "when displays in dl" do
+      let(:work) { create(:pdf, displays_in: ['dl']) }
+      before do
+        ActiveJob::Base.queue_adapter = :test
+      end
+      it "enqueues a handle registration job" do
+        expect { described_class.publish(work: work, current_user: current_user, comment: "rspec test for handle enqueue") }.to enqueue_job(HandleRegisterJob).with(work)
+      end
+      it "enqueues a handle update job" do
+        work.identifier = ["fake_handle"]
+        expect { described_class.publish(work: work, current_user: current_user, comment: "rspec test for handle enqueue") }.to enqueue_job(HandleUpdateJob).with(work)
+      end
+    end
+    # rubocop:enable RSpec/MultipleExpectations
+  end
+  describe "#unpublish" do
+    # rubocop:disable RSpec/MultipleExpectations
+    # rubocop:disable RSpec/ExampleLength
+    it "unpublishes a work" do
+      expect(workflow_status.status(work.id)).to eq('unpublished')
+      Tufts::WorkflowStatus.publish(work: work, current_user: current_user, comment: "Published by #{current_user}")
+      expect(workflow_status.status(work.id)).to eq('published')
+      Tufts::WorkflowStatus.unpublish(work: work, current_user: current_user, comment: "Published by #{current_user}")
+      expect(workflow_status.status(work.id)).to eq('unpublished')
+      Tufts::WorkflowStatus.unpublish(work: work, current_user: current_user, comment: "Published by #{current_user}")
+      expect(workflow_status.status(work.id)).to eq('unpublished')
+    end
+    # rubocop:enable RSpec/MultipleExpectations
+    # rubocop:enable RSpec/ExampleLength
   end
 end

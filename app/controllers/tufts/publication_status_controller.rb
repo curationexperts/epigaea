@@ -7,18 +7,14 @@ module Tufts
     def publish
       work = ActiveFedora::Base.find(params[:id])
       work.delete_draft
-      subject = Hyrax::WorkflowActionInfo.new(work, current_user)
-      sipity_workflow_action = PowerConverter.convert_to_sipity_action("publish", scope: subject.entity.workflow) { nil }
-      Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Published by #{current_user}")
+      Tufts::WorkflowStatus.publish(work: work, current_user: current_user, comment: "Published by #{current_user}")
       flash[:notice] = "ID #{params[:id]} has been published."
       redirect_back(fallback_location: root_path)
     end
 
     def unpublish
       work = ActiveFedora::Base.find(params[:id])
-      subject = Hyrax::WorkflowActionInfo.new(work, current_user)
-      sipity_workflow_action = PowerConverter.convert_to_sipity_action("unpublish", scope: subject.entity.workflow) { nil }
-      Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Unpublished by #{current_user}")
+      Tufts::WorkflowStatus.unpublish(work: work, current_user: current_user, comment: "Unpublished by #{current_user}")
       flash[:notice] = "ID #{params[:id]} has been unpublished."
       redirect_back(fallback_location: root_path)
     end
