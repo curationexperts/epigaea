@@ -25,6 +25,10 @@
 <span class="fa fa-info-circle"></span><span class="sidebar-action-text">View Batch Statuses</span>
 <% end %>
 
+<%= menu.nav_link('/sidekiq') do %>
+<span class="fa fa-hourglass-half"></span><span class="sidebar-action-text">View Background Job Queues</span>
+<% end %>
+
 <%= menu.nav_link('/templates') do %>
 <span class="fa fa-list-alt"></span><span class="sidebar-action-text">Manage Metadata Templates</span>
 <% end %>
@@ -44,4 +48,3 @@
 <span class="fa fa-user"></span> <span class="sidebar-action-text"><%= t('hyrax.admin.sidebar.users') %></span>
 <% end %>
 <% end %>
-
