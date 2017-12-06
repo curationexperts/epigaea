@@ -44,9 +44,11 @@ class TemplateUpdate < ApplicationRecord
   ##
   # @return [Hash<String, String>] a hash associating object ids to job ids
   def enqueue!
-    items.each_with_object({}) do |item, hsh|
+    jobs_and_objects = items.each_with_object({}) do |item, hsh|
       hsh[item.values[1]] = TemplateUpdateJob.perform_later(*item.values).job_id
     end
+    Hyrax::Workflow::TemplateNotification.new(template_name: template_name, count: ids.count, batch: batch, user: batch.user).call if batch.try(:ids).try(:count) > 0
+    jobs_and_objects
   end
 
   ##
