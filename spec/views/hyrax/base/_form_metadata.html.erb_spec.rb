@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'hyrax/base/_form_metadata.html.erb', type: :view do
   context 'a video form' do
     let(:work) { FactoryGirl.create(:video) }
+    let(:curation_concern) { work }
     let(:form) do
       Hyrax::VideoForm.new(work, ability, controller)
     end
@@ -11,6 +12,7 @@ RSpec.describe 'hyrax/base/_form_metadata.html.erb', type: :view do
 
   context 'a video form' do
     let(:work) { FactoryGirl.create(:audio) }
+    let(:curation_concern) { work }
     let(:form) do
       Hyrax::AudioForm.new(work, ability, controller)
     end

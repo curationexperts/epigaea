@@ -42,7 +42,7 @@ module Tufts
         # Make the title & license arrays to avoid type erros
         params[model_type][:title] = [params[model_type][:title]]
         params[model_type][:license] = params[model_type][:license]
-        params[model_type][:rights_statement] = [params[model_type][:rights_statement]]
+        params[model_type][:rights_statement] = [RDF::URI(params[model_type][:rights_statement])]
       end
 
       def model_type(model)
