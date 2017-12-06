@@ -6,6 +6,6 @@ RSpec.describe Hyrax::EadsController, type: :controller do
   let(:params) { { id: 'impossible_id' } }
 
   it 'catches and redirects RecordNotFound exceptions' do
-    expect { get :show, params: params }.not_to raise_error(Blacklight::Exceptions::RecordNotFound)
+    expect { get :show, params: params }.not_to raise_error
   end
 end
