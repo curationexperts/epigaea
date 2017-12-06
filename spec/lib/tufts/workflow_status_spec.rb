@@ -34,6 +34,7 @@ describe Tufts::WorkflowStatus, :workflow, :clean do
     expect(workflow_status.status(work.id)).to eq('edited')
     File.delete(Rails.application.config.drafts_storage_dir.join(work.id))
   end
+
   describe "#publish" do
     # rubocop:disable RSpec/MultipleExpectations
     it "publishes a work" do
@@ -42,6 +43,15 @@ describe Tufts::WorkflowStatus, :workflow, :clean do
       expect(workflow_status.status(work.id)).to eq('published')
       Tufts::WorkflowStatus.publish(work: work, current_user: current_user, comment: "Published by #{current_user}")
       expect(workflow_status.status(work.id)).to eq('published')
+    end
+    context "when displays in dl" do
+      let(:work) { create(:pdf, displays_in: ['dl']) }
+      before do
+        ActiveJob::Base.queue_adapter = :test
+      end
+      it "enqueues a handle registration job" do
+        expect { described_class.publish(work: work, current_user: current_user, comment: "rspec test for handle enqueue") }.to enqueue_job(HandleRegisterJob).with(work)
+      end
     end
     # rubocop:enable RSpec/MultipleExpectations
   end

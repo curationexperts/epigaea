@@ -27,6 +27,7 @@ module Tufts
       subject = Hyrax::WorkflowActionInfo.new(work, current_user)
       sipity_workflow_action = PowerConverter.convert_to_sipity_action("publish", scope: subject.entity.workflow) { nil }
       Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: comment)
+      Hyrax::Actors::HandleAssuranceActor.ensure_handle(object: work)
     end
 
     ##
