@@ -54,7 +54,7 @@
 <%= render_edit_field_partial(:retention_period,  f: f) %>
 <%= render_edit_field_partial(:rights_holder,  f: f) %>
 <%= render_edit_field_partial(:rights_note,  f: f) %>
-<%= render_edit_field_partial(:rights_statement,  f: f) %>
+<%= render_edit_field_partial(:rights_statement,  f: f, curation_concern: @curation_concern) %>
 <%= render_edit_field_partial(:source,  f: f) %>
 <%= render_edit_field_partial(:admin_start_date,  f: f) %>
 <%= render_edit_field_partial(:geographic_name,  f: f) %>
