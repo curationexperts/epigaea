@@ -1,5 +1,5 @@
 # Generated via
-#  `rails generate hyrax:work Pdf`
+#  `rails generate hyrax:work GenericObject`
 require 'rails_helper'
 include Warden::Test::Helpers
 
@@ -19,6 +19,7 @@ RSpec.feature 'Create a GenericObject', :clean, js: true do
         select 'Generic Object', from: 'work-type-select-box'
         click_button "Create work"
       end
+      expect(page).to have_content "Add New Generic Object"
       # Hyrax::BasicMetadata attributes that we don't want in the form
       expect(page).to have_no_content('Keywords')
       expect(page).to have_no_content('Location')
@@ -139,9 +140,6 @@ RSpec.feature 'Create a GenericObject', :clean, js: true do
       expect(page).to have_content 'Rights Holder'
       expect(page).to have_content 'Rights Note'
       expect(page).to have_content 'Tufts License'
-      # This is not working with Capybara, but does work
-      # there is a view test for the Rights Statement
-      # in spec/views/hyrax/_attribute_rows.html.erb_spec.rb
       expect(page).to have_content 'Springer Policy'
       expect(page).to have_content 'Source'
       expect(page).to have_content 'Start Date'
