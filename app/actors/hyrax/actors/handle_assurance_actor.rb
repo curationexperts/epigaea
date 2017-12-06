@@ -21,7 +21,6 @@ module Hyrax
     #   stack.build(last_actor).create(env)
     #
     class HandleAssuranceActor < AbstractActor
-
       ##
       # Enqueue handle creation or update.
       #

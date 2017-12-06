@@ -52,6 +52,10 @@ describe Tufts::WorkflowStatus, :workflow, :clean do
       it "enqueues a handle registration job" do
         expect { described_class.publish(work: work, current_user: current_user, comment: "rspec test for handle enqueue") }.to enqueue_job(HandleRegisterJob).with(work)
       end
+      it "enqueues a handle update job" do
+        work.identifier = ["fake_handle"]
+        expect { described_class.publish(work: work, current_user: current_user, comment: "rspec test for handle enqueue") }.to enqueue_job(HandleUpdateJob).with(work)
+      end
     end
     # rubocop:enable RSpec/MultipleExpectations
   end
