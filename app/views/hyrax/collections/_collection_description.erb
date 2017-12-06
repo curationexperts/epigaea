@@ -1,0 +1,5 @@
+<% if presenter.description.present? %>
+  <% presenter.description.each do |description| %>
+      <p class="collection_description"><%= iconify_auto_link(description) %></p>
+  <% end %>
+<% end %>
