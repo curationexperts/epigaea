@@ -5,7 +5,7 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
   let(:depositing_user)  { FactoryGirl.create(:user) }
   let!(:publishing_user) { FactoryGirl.create(:admin) }
 
-  let(:work) { FactoryGirl.actor_create(:image, user: depositing_user) }
+  let(:work) { FactoryGirl.actor_create(:image, user: depositing_user, displays_in: ['dl']) }
 
   context 'a logged in user' do
     scenario "non-admin user deposits, admin publishes", js: true do
@@ -62,9 +62,7 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       expect(page).to have_content work.title.first
 
       # The admin user approves the work, changing its status to "published"
-      subject = Hyrax::WorkflowActionInfo.new(work, publishing_user)
-      sipity_workflow_action = PowerConverter.convert_to_sipity_action("publish", scope: subject.entity.workflow) { nil }
-      Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Published in publication_workflow_spec.rb")
+      Tufts::WorkflowStatus.publish(work: work, current_user: publishing_user, comment: "Published in publication_workflow_spec.rb")
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
 
       # Check it appears as published in the admin dashboard
@@ -100,9 +98,7 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       expect(page).not_to have_content "The work is not currently available"
 
       # After publication, an admin can unpublish a work.
-      subject = Hyrax::WorkflowActionInfo.new(work, publishing_user)
-      sipity_workflow_action = PowerConverter.convert_to_sipity_action("unpublish", scope: subject.entity.workflow) { nil }
-      Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: "Unpublished in publication_workflow_spec.rb")
+      Tufts::WorkflowStatus.unpublish(work: work, current_user: publishing_user, comment: "Unpublished in publication_workflow_spec.rb")
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
 
       # Check unpublished notifications for admin user
