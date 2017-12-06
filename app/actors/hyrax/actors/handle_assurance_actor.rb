@@ -21,6 +21,30 @@ module Hyrax
     #   stack.build(last_actor).create(env)
     #
     class HandleAssuranceActor < AbstractActor
+
+      ##
+      # Enqueue handle creation or update.
+      #
+      # If `object` has no exiting `identifier` a 'HandleRegisterJob` is
+      # enqueued. If an identifier exists, a `HandleUpdateJob` is enqueued
+      # instead.
+      #
+      # @param object [ActiveFedora::Base]
+      #
+      # @return [Boolean] true
+      def self.ensure_handle(object:)
+        return true unless
+          object.displays_in.include?('dl') &&
+          object.to_sipity_entity.try(:workflow_state_name) == 'published'
+
+        if object.identifier.empty?
+          HandleRegisterJob.perform_later(object)
+        else
+          HandleUpdateJob.perform_later(object)
+        end
+        true
+      end
+
       ##
       # @param env [Hyrax::Actors::Enviornment]
       #
@@ -38,26 +62,9 @@ module Hyrax
       end
 
       ##
-      # Enqueue handle creation or update.
-      #
-      # If `object` has no exiting `identifier` a 'HandleRegisterJob` is
-      # enqueued. If an identifier exists, a `HandleUpdateJob` is enqueued
-      # instead.
-      #
-      # @param object [ActiveFedora::Base]
-      #
-      # @return [Boolean] true
+      # @see HandleAssuranceActor.ensure_handle
       def ensure_handle(object:)
-        return true unless
-          object.displays_in.include?('dl') &&
-          object.to_sipity_entity.try(:workflow_state_name) == 'published'
-
-        if object.identifier.empty?
-          HandleRegisterJob.perform_later(object)
-        else
-          HandleUpdateJob.perform_later(object)
-        end
-        true
+        self.class.ensure_handle(object: object)
       end
     end
   end
