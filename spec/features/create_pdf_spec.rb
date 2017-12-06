@@ -143,7 +143,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       # This is not working with Capybara, but does work
       # there is a view test for the Rights Statement
       # in spec/views/hyrax/_attribute_rows.html.erb_spec.rb
-      # expect(page).to have_content 'Springer Policy'
+      expect(page).to have_content 'Springer Policy'
       expect(page).to have_content 'Source'
       expect(page).to have_content 'Start Date'
       expect(page).to have_content 'Steward'
