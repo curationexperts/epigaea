@@ -20,27 +20,29 @@ RSpec.describe Tufts::PublicationStatusController, :workflow, type: :controller 
   end
 
   describe 'POST #publish' do
-    it 'sets the workflow status to published' do
-      expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
-      post :publish, params: { "id" => work.id }
-      expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
-    end
-    it 'sets the workflow status to unpublished' do
-      post :publish, params: { "id" => work.id }
-      expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
-      post :unpublish, params: { "id" => work.id }
-      expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
-    end
-    it "gets the workflow status" do
-      expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
-      post :status, params: { "id" => work.id }
-      parsed_body = JSON.parse(response.body)
-      expect(parsed_body["status"]).to eq("unpublished")
-      post :publish, params: { "id" => work.id }
-      expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
-      post :status, params: { "id" => work.id }
-      parsed_body = JSON.parse(response.body)
-      expect(parsed_body["status"]).to eq("published")
+    context "publication status" do
+      it 'sets the workflow status to published' do
+        expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
+        post :publish, params: { "id" => work.id }
+        expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
+      end
+      it 'sets the workflow status to unpublished' do
+        post :publish, params: { "id" => work.id }
+        expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
+        post :unpublish, params: { "id" => work.id }
+        expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
+      end
+      it "gets the workflow status" do
+        expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
+        post :status, params: { "id" => work.id }
+        parsed_body = JSON.parse(response.body)
+        expect(parsed_body["status"]).to eq("unpublished")
+        post :publish, params: { "id" => work.id }
+        expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
+        post :status, params: { "id" => work.id }
+        parsed_body = JSON.parse(response.body)
+        expect(parsed_body["status"]).to eq("published")
+      end
     end
   end
 end
