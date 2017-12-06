@@ -31,3 +31,6 @@ You can run CI with `rake` (or `rake ci`). Or start a server with `rake hydra:se
 If you need to re-create derivatives, use these rake tasks:
 1. One at a time, by id: `RAILS_ENV=production bundle exec rake derivatives:recreate_by_id[2801pg32c]`
 1. Re-create derivatives for all PDF objects: `RAILS_ENV=production bundle exec rake derivatives:recreate_all_pdfs`
+
+## Importing data
+See [importing data documentation](docs/importing_data.md)
