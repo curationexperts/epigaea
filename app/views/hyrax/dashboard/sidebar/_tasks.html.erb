@@ -25,7 +25,7 @@
 <span class="fa fa-info-circle"></span><span class="sidebar-action-text">View Batch Statuses</span>
 <% end %>
 
-<%= menu.nav_link('/sidekiq') do %>
+<%= menu.nav_link('/sidekiq',  data: { turbolinks: false }) do %>
 <span class="fa fa-hourglass-half"></span><span class="sidebar-action-text">View Background Job Queues</span>
 <% end %>
 
