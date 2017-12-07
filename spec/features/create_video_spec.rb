@@ -20,6 +20,8 @@ RSpec.feature 'Create a Video', :clean, js: true do
         click_button "Create work"
       end
       expect(page).to have_content "Add New Video"
+      # We want the transcription UI to show up on the form
+      expect(page).to have_content('You will need to attach an XML file to to this work to select a transcript.')
     end
   end
 end
