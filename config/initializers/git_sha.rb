@@ -19,7 +19,7 @@ BRANCH =
 LAST_DEPLOYED =
   if Rails.env.production? && File.exist?('/opt/epigaea/revisions.log')
     deployed = `tail -1 /opt/epigaea/revisions.log`.chomp.split(" ")[7]
-    Date.parse(deployed).strftime("%d %B %Y")
+    DateTime.parse(deployed).strftime("%e %b %Y %H:%M:%S")
   else
     "Not in deployed environment"
   end
