@@ -1,8 +1,6 @@
-# Generated via
-#  `rails generate hyrax:work VotingRecord`
 module Hyrax
   module Actors
-    class VotingRecordActor < Hyrax::Actors::BaseActor
+    class VotingRecordActor < ApplicationModelActor
     end
   end
 end
