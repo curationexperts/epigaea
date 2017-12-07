@@ -32,6 +32,6 @@ config/honeybadger.yml
 
 coverage
 .env
-.env.development
+# .env.development
 .env.production
 .env.test
