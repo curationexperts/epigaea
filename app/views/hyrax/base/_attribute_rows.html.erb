@@ -43,7 +43,7 @@
 <%= presenter.attribute_to_html(:rejection_reason, render_as: :linked, search_field: 'all_fields') %>
 <%= presenter.attribute_to_html(:replaces, render_as: :linked, search_field: 'all_fields') %>
 <%= presenter.attribute_to_html(:retention_period, render_as: :linked, search_field: 'all_fields') %>
-<%= presenter.attribute_to_html(:rights_statement, render_as: :rights_statement) %>
+<%= presenter.attribute_to_html(:rights_statement, render_as: :tufts_rights_statement, include_empty: false) %>
 <%= presenter.attribute_to_html(:rights_holder, render_as: :linked, search_field: 'all_fields') %>
 <%= presenter.attribute_to_html(:rights_note, render_as: :linked, search_field: 'all_fields') %>
 <%= presenter.attribute_to_html(:source, render_as: :linked, search_field: 'all_fields') %>
