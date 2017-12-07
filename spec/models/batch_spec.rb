@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Batch, type: :model, batch: true do
-  subject(:batch) { FactoryGirl.build(:batch) }
+  subject(:batch) { FactoryGirl.create(:batch) }
 
   it { is_expected.to have_attributes(creator: an_instance_of(User)) }
+  it { is_expected.to have_attributes(user: an_instance_of(User)) }
 
   describe '#enqueue' do
     it 'calls enqueue on batchable' do
