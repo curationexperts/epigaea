@@ -89,6 +89,16 @@ RSpec.describe Batch, type: :model, batch: true do
       end
     end
 
+    context 'when the object does not exist' do
+      it 'can initialize' do
+        expect { described_class.new('fake_af_id', batch.id) }.not_to raise_error
+      end
+
+      it 'can with initialize with nil' do
+        expect { described_class.new(nil, batch.id) }.not_to raise_error
+      end
+    end
+
     describe '#job_id' do
       context 'with nothing in the store' do
         it 'is nil' do
