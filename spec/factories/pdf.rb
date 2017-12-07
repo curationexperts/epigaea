@@ -13,16 +13,10 @@ FactoryGirl.define do
 
     factory :published_pdf do
       after(:create) do |work, evaluator|
-        Tufts::WorkflowStatus.publish(work: work, current_user: evaluator.user, comment: 'Published by :published_pdf factory in `after_create` hook.')
-        # action_info = Hyrax::WorkflowActionInfo.new(work, evaluator.user)
-        # scope       = action_info.entity.workflow
-        # action      = PowerConverter
-        #               .convert_to_sipity_action("publish", scope: scope) { nil }
-        #
-        # Hyrax::Workflow::WorkflowActionService
-        #   .run(subject: action_info,
-        #        action:  action,
-        #        comment: 'Published by :published_pdf factory in `after_create` hook.')
+        Tufts::WorkflowStatus
+          .publish(work:         work,
+                   current_user: evaluator.user,
+                   comment:      'Published by :published_pdf factory in `after_create` hook.')
       end
     end
   end

@@ -4,8 +4,9 @@ include Warden::Test::Helpers
 RSpec.feature 'Create and revert a draft', :clean, js: true do
   context 'a logged in admin user' do
     let(:user) { FactoryGirl.create(:admin) }
-    let(:pdf) { FactoryGirl.create(:pdf) }
+    let(:pdf) { FactoryGirl.build(:pdf) }
 
+    # @todo add support for file creation to actor_create build strategy
     before do
       login_as user
       pdf_file = File.open(Rails.root.join('spec', 'fixtures', 'hello.pdf'))
