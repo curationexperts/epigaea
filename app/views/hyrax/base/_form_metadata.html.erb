@@ -1,13 +1,16 @@
+
 <%= render 'form_media', f: f %>
 
 <% if @curation_concern.class.to_s == 'Audio' || @curation_concern.class.to_s == 'Video' %>
-  <div class="well transcript-selection">
-    <%= render_edit_field_partial(:transcript_id, f: f) %>
-  </div>
+    <div class="well transcript-selection">
+        <%= render_edit_field_partial(:transcript_id, f: f) %>
+    </div>
 <% end %>
 
 <div class='base-terms'>
-<%= render_edit_field_partial(:title,  f: f) %>
+<% unless current_page?(:controller => 'batch_uploads', :action => 'new') %>
+  <%= render_edit_field_partial(:title,  f: f) %>
+<% end %>
 <%= render_edit_field_partial(:displays_in,  f: f) %>
 <%= render_edit_field_partial(:abstract,  f: f) %>
 <%= render_edit_field_partial(:accrual_policy,  f: f) %>
@@ -63,5 +66,7 @@
 <%= render_edit_field_partial(:table_of_contents,  f: f) %>
 <%= render_edit_field_partial(:temporal,  f: f) %>
 <%= render_edit_field_partial(:tufts_license,  f: f) %>
-<%= render_edit_field_partial(:resource_type,  f: f) %>
+<% unless current_page?(:controller => 'batch_uploads', :action => 'new') %>
+  <%= render_edit_field_partial(:resource_type,  f: f) %>
+<% end %>
 </div>
