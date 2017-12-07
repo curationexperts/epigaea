@@ -20,6 +20,9 @@ Metrics/MethodLength:
 Performance/StringReplacement:
    Exclude:
     - 'app/controllers/tufts/works_controller.rb'
+Rails/TimeZone:
+  Exclude:
+    - 'config/initializers/git_sha.rb'  
 RSpec/ExampleLength:
    Exclude:
     - 'spec/features/**/*'

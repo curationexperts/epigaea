@@ -1,6 +1,9 @@
 # config valid only for certain versions of Capistrano
 lock ">=3.9.0"
 
+# Restart options
+set :passenger_restart_wait, 20
+
 set :application, "epigaea"
 set :repo_url, "https://github.com/curationexperts/epigaea.git"
 
