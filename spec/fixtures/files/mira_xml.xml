@@ -42,7 +42,7 @@ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
           <dc:isPartOf>UA136</dc:isPartOf>
           <dc:created>07/02/2002</dc:created>
           <dc:available>02/26/2004</dc:available>
-          <dc:type>image</dc:type>
+          <dc:type>http://purl.org/dc/dcmitype/Image</dc:type>
           <dc:format>image/tiff</dc:format>
           <mads:PersonalName>Mayer, Jean</mads:PersonalName>
           <mads:CorporateName>Office of the President</mads:CorporateName>
