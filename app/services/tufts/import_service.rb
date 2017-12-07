@@ -55,7 +55,8 @@ module Tufts
       attributes = { uploaded_files: file_ids }
       env        = Hyrax::Actors::Environment.new(object, ability, attributes)
 
-      Hyrax::CurationConcern.actor.create(env)
+      Hyrax::CurationConcern.actor.create(env) ||
+        raise(ImportError, "Failed to create object #{object.id}\n The actor stack returned `false`.")
       object
     end
 
@@ -65,6 +66,8 @@ module Tufts
       # UploadedFile -> Uploader -> CarrierWave::SanitizedFile -> String
       import.record_for(file: file.file.file.filename)
     end
+
+    class ImportError < RuntimeError; end
 
     private
 
