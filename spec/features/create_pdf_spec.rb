@@ -22,8 +22,6 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       # Hyrax::BasicMetadata attributes that we don't want in the form
       expect(page).to have_no_content('Keywords')
       expect(page).to have_no_content('Location')
-      # We don't want the transcript UI to show up on the Pdf form
-      expect(page).not_to have_content('You will need to attach an XML file to to this work to select a transcript.')
       # Fill out the form with everything
       within('.pdf_title') do
         fill_in "Title", with: "Example \nTitle   "
