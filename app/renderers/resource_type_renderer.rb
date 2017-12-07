@@ -1,7 +1,11 @@
 class ResourceTypeRenderer < Hyrax::Renderers::AttributeRenderer
-  private
+  SERVICE = Tufts::ResourceTypeService
 
-    def attribute_value_to_html(value)
-      Tufts::ResourceTypeService.label(value)
-    end
+  ##
+  # @private
+  def attribute_value_to_html(value)
+    SERVICE.label(value)
+  rescue SERVICE::LookupError
+    value
+  end
 end
