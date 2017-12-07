@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 require 'rails_helper'
-require 'capybara/maleficent'
 
 RSpec.describe 'batch', type: :feature, js: true do
   let(:current_user) { create(:admin) }
@@ -13,12 +12,19 @@ RSpec.describe 'batch', type: :feature, js: true do
     work_first.save!
     work_second.save!
     check 'check_all'
+    optional "Sometimes fails" if ENV['TRAVIS']
   end
 
   describe 'publishing' do
+    it 'has tufts-buttons on the page' do
+      optional "Sometimes fails" if ENV['TRAVIS']
+      expect(page).to have_selector('.tufts-buttons')
+    end
+
     it 'sends the user to the batch status page like on the catalog' do
       optional "Sometimes fails" if ENV['TRAVIS']
-      within(:xpath, "//div[contains(@class, 'tufts-buttons')]") do
+      expect(page).to have_selector('.tufts-buttons')
+      within('.tufts-buttons') do
         click_on 'Publish'
       end
       expect(page).to have_content('Batch Status')
@@ -28,7 +34,8 @@ RSpec.describe 'batch', type: :feature, js: true do
   describe 'unpublishing' do
     it 'sends the user to the batch status page like on the catalog' do
       optional "Sometimes fails" if ENV['TRAVIS']
-      within(:xpath, "//div[contains(@class, 'tufts-buttons')]") do
+      expect(page).to have_selector('.tufts-buttons')
+      within('.tufts-buttons') do
         click_on 'Unpublish'
       end
       expect(page).to have_content('Batch Status')
@@ -38,7 +45,8 @@ RSpec.describe 'batch', type: :feature, js: true do
   describe 'exporting metadata' do
     it 'sends the user to the batch status page like on the catalog' do
       optional "Sometimes fails" if ENV['TRAVIS']
-      within(:xpath, "//div[contains(@class, 'tufts-buttons')]") do
+      expect(page).to have_selector('.tufts-buttons')
+      within('.tufts-buttons') do
         click_on 'Export Metadata'
       end
       expect(page).to have_content('Batch Status')
@@ -48,7 +56,8 @@ RSpec.describe 'batch', type: :feature, js: true do
   describe 'applying template' do
     it 'sends the user to the batch status page like on the catalog' do
       optional "Sometimes fails" if ENV['TRAVIS']
-      within(:xpath, "//div[contains(@class, 'tufts-buttons')]") do
+      expect(page).to have_selector('.tufts-buttons')
+      within('.tufts-buttons') do
         click_on 'Apply Template'
       end
 
