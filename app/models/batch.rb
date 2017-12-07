@@ -37,7 +37,7 @@ class Batch < ApplicationRecord
   end
 
   ##
-  # @return [Enumerator<ActiveFedora::Base>]
+  # @return [Enumerator<Batch::Item>]
   def items
     ids.lazy.map { |obj_id| Item.new(obj_id, id, store: STATUS_STORE) }
   end
