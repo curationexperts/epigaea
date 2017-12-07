@@ -31,7 +31,8 @@ dump.rdb
 config/honeybadger.yml
 
 coverage
+
+# ignore .env files
 .env
-# .env.development
+.env.development
 .env.production
-.env.test
