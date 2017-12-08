@@ -1,9 +1,11 @@
 development:
-  hostname: "localhost:3000"
-  email: "contact@example.com"
-  prefix: '1234.DEV'
-  admin: "1234.TEST/ADMIN"
-  index: 301
+  hostname: <%= ENV["HANDLE_TARGET_HOSTNAME"] || "localhost:3000" %>
+  email: <%= ENV["HANDLE_EMAIL"] || "contact@example.com" %>
+  prefix: <%= ENV["HANDLE_PREFIX"] || '1234.DEV' %>
+  admin: <%= ENV["HANDLE_ADMIN_PREFIX"] || "1234.TEST/ADMIN" %> # 0.NA/20.500.12101
+  index: <%= ENV["HANDLE_INDEX"] || 301 %> # 300
+  private_key: <%= ENV["HANDLE_PKEY_FILE"] || '' %>
+  pkey_passphrase: <%= ENV["HANDLE_PKEY_PASSPHRASE"] || '' %>
   secret_key: 'password'
   # use secret_key for secret key auth;
   # secret_key preempts pkey authentication if configured.
@@ -15,14 +17,14 @@ test:
   prefix: 'tufts.test'
   index: 300
   # this is a dummy entry, we use a fake connection in testing
-  private_key: '/path/to/pkey'
-  pkey_passphrase: ''
+  private_key: <%= ENV["HANDLE_PKEY_FILE"] %>
+  pkey_passphrase: <%= ENV["HANDLE_PKEY_PASSPHRASE"] %>
 
 production:
-  hostname: "epigaea.curationexperts.com"
-  email: "systems@curationexertscom"
-  prefix: '20.500.12101'
-  admin: "0.NA/20.500.12101"
-  index: 300
+  hostname: <%= ENV["HANDLE_TARGET_HOSTNAME"] %>
+  email: <%= ENV["HANDLE_EMAIL"] %>
+  prefix: <%= ENV["HANDLE_PREFIX"] %> # 20.500.12101
+  admin: <%= ENV["HANDLE_ADMIN_PREFIX"] %> # 0.NA/20.500.12101
+  index: <%= ENV["HANDLE_INDEX"] %> # 300
   private_key: <%= ENV["HANDLE_PKEY_FILE"] %>
   pkey_passphrase: <%= ENV["HANDLE_PKEY_PASSPHRASE"] %>
