@@ -14,6 +14,15 @@ RSpec.describe User do
     expect(user.to_s).to eq user.display_name
   end
 
+  describe '#name' do
+    subject(:user) { build(:user, display_name: name) }
+    let(:name)     { 'MoominMama' }
+
+    it 'does not try to normalize names' do
+      expect(user.name).to eq name
+    end
+  end
+
   describe 'roles' do
     it 'is emplty for a new user' do
       new_user = create(:user)
