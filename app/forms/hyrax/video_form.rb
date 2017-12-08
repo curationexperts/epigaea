@@ -19,5 +19,15 @@ module Hyrax
     def title
       super.first || ""
     end
+
+    def representative_id
+      return if media_files.first[1].nil?
+      media_files.first[1]
+    end
+
+    def thumbnail_id
+      return if media_files.first[1].nil?
+      media_files.first[1]
+    end
   end
 end
