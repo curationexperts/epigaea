@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe XmlImport, type: :model do
+RSpec.describe XmlImport, :batch, type: :model do
   subject(:import) { FactoryGirl.build(:xml_import) }
 
   it_behaves_like 'a batchable' do
@@ -135,6 +135,22 @@ RSpec.describe XmlImport, type: :model do
       end
 
       it 'does not enqueue jobs' do
+        expect { import.enqueue! }.not_to enqueue_job(ImportJob)
+      end
+    end
+
+    context 'when a file is re-uploaded' do
+      let(:duplicate_file) do
+        FactoryGirl.create(:hyrax_uploaded_file,
+                           file: File.open('spec/fixtures/files/2.pdf'))
+      end
+
+      before do
+        import.batch.enqueue!
+        import.uploaded_file_ids << duplicate_file.id
+      end
+
+      it 'does not re-enqueue the job' do
         expect { import.enqueue! }.not_to enqueue_job(ImportJob)
       end
     end

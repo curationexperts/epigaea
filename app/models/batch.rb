@@ -51,9 +51,10 @@ class Batch < ApplicationRecord
     #   @return [String]
     # @!attribute id [rw]
     #   @return [String]
-    # @!attribute object [rw]
-    #   @return [ActiveFedora::Base, String]
-    attr_accessor :batch_id, :id, :object, :store
+    # @!attribute object [w]
+    #   @return [ActiveFedora::Base, nil]
+    attr_accessor :batch_id, :id, :store
+    attr_writer   :object
 
     ##
     # @param id       [#to_s]
@@ -63,7 +64,12 @@ class Batch < ApplicationRecord
       @id       = id
       @batch_id = batch_id
       @store    = store
-      @object   = begin
+    end
+
+    ##
+    # @return [ActiveFedora::Base, nil]
+    def object
+      @object ||= begin
         ActiveFedora::Base.find(id)
       rescue Ldp::Gone, ActiveFedora::ObjectNotFoundError, ArgumentError
         nil
