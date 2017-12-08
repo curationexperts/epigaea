@@ -12,7 +12,6 @@ RSpec.describe 'batch', type: :feature, js: true do
     work_first.save!
     work_second.save!
     check 'check_all'
-    optional "Sometimes fails" if ENV['TRAVIS']
   end
 
   describe 'publishing' do
@@ -24,9 +23,7 @@ RSpec.describe 'batch', type: :feature, js: true do
     it 'sends the user to the batch status page like on the catalog' do
       optional "Sometimes fails" if ENV['TRAVIS']
       expect(page).to have_selector('.tufts-buttons')
-      within('.tufts-buttons') do
-        click_on 'Publish'
-      end
+      click_on 'Publish'
       expect(page).to have_content('Batch Status')
     end
   end
@@ -35,9 +32,7 @@ RSpec.describe 'batch', type: :feature, js: true do
     it 'sends the user to the batch status page like on the catalog' do
       optional "Sometimes fails" if ENV['TRAVIS']
       expect(page).to have_selector('.tufts-buttons')
-      within('.tufts-buttons') do
-        click_on 'Unpublish'
-      end
+      click_on 'Unpublish'
       expect(page).to have_content('Batch Status')
     end
   end
@@ -46,9 +41,7 @@ RSpec.describe 'batch', type: :feature, js: true do
     it 'sends the user to the batch status page like on the catalog' do
       optional "Sometimes fails" if ENV['TRAVIS']
       expect(page).to have_selector('.tufts-buttons')
-      within('.tufts-buttons') do
-        click_on 'Export Metadata'
-      end
+      click_on 'Export Metadata'
       expect(page).to have_content('Batch Status')
     end
   end
@@ -57,10 +50,7 @@ RSpec.describe 'batch', type: :feature, js: true do
     it 'sends the user to the batch status page like on the catalog' do
       optional "Sometimes fails" if ENV['TRAVIS']
       expect(page).to have_selector('.tufts-buttons')
-      within('.tufts-buttons') do
-        click_on 'Apply Template'
-      end
-
+      click_on 'Apply Template'
       expect(page).to have_content('Template Behavior')
     end
   end
