@@ -46,3 +46,6 @@ would work. If everything is working as expected, you should see:
 ```
 You can also check individual systems by adding their name to the end of the okcomputer url, e.g., `/okcomputer/smtp`.
 See [okcomputer on github](https://github.com/sportngin/okcomputer) for more configuration options.
+
+## Email notifications
+To change how email notifications are sent, edit the values in a `.env.production` file on your server. The capistrano deploy task is set up to expect that file to exist, and ActionMailer is configured to get its mail values from environment variables, which we have set using [dotenv](https://github.com/bkeepers/dotenv). Please also change the email address of the batch_user to an address that can receive email. See `config/initializers/hyrax.rb` for batch_user configuration.
