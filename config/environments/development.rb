@@ -28,9 +28,12 @@ Rails.application.configure do
 
   # Mail Settings
   config.action_mailer.default_url_options = { host: ENV["ACTION_MAILER_HOST"] }
-  config.action_mailer.raise_delivery_errors = true
+
+  # Set these to true if you need to debug email delivery in development mode
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_deliveries = false
+
   config.action_mailer.perform_caching = false
-  config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = ENV['ACTION_MAILER_SMTP_DELIVERY_METHOD'].to_sym
   config.action_mailer.smtp_settings = {
     address: ENV['ACTION_MAILER_SMTP_ADDRESS'],
