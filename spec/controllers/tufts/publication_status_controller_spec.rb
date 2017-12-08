@@ -1,16 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Tufts::PublicationStatusController, :workflow, type: :controller do
-  let(:work) { FactoryGirl.create(:pdf) }
+  let(:work) { FactoryGirl.actor_create(:pdf, user: depositing_user) }
   let(:depositing_user) { FactoryGirl.create(:user) }
   let(:admin) { FactoryGirl.create(:admin) }
 
   before do
-    allow(CharacterizeJob).to receive(:perform_later) # There is no fits installed on travis-ci
-    current_ability = ::Ability.new(depositing_user)
-    attributes = {}
-    env = Hyrax::Actors::Environment.new(work, current_ability, attributes)
-    Hyrax::CurationConcern.actor.create(env)
     allow(controller).to receive(:authenticate_user!).and_return(true)
     allow(controller).to receive(:current_user).and_return(admin)
   end

@@ -36,6 +36,14 @@ describe Tufts::ImportService, :workflow, :clean do
 
       expect(service.import_object!).to have_attributes(title: [title])
     end
+
+    context 'when the object exists' do
+      before { object.save }
+
+      it 'raises an error' do
+        expect { service.import_object! }.to raise_error described_class::ImportError
+      end
+    end
   end
 
   describe '#record' do

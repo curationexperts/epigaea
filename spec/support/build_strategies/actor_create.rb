@@ -29,7 +29,7 @@ class ActorCreate
       user = evaluator.user
 
       if user.nil? || user.new_record?
-        raise 'You must pass a created depositing user to use the `actor_create` ' /
+        raise 'You must pass a created depositing user to use the `actor_create` ' \
               "build strategy; received: #{user}"
       end
 

@@ -1,8 +1,6 @@
-# Generated via
-#  `rails generate hyrax:work Pdf`
 module Hyrax
   module Actors
-    class PdfActor < Hyrax::Actors::BaseActor
+    class PdfActor < ApplicationModelActor
     end
   end
 end

@@ -1,19 +1,14 @@
 require 'rails_helper'
 
 describe Tufts::WorkflowStatus, :workflow, :clean do
-  let(:work) { Pdf.new(title: ['Title'], displays_in: ['nowhere'], description: ['A desc']) }
-  let(:current_user) { FactoryGirl.create(:admin) }
+  let(:current_user)    { FactoryGirl.create(:admin) }
   let(:workflow_status) { subject }
 
-  before do
-    work.save
-    current_ability = ::Ability.new(current_user)
-    uploaded_file = Hyrax::UploadedFile.create(user: current_user, file: File.open(Rails.root.join('spec', 'fixtures', 'hello.pdf'), 'r'))
-    attributes = { uploaded_files: [uploaded_file.id] }
-    env = Hyrax::Actors::Environment.new(work, current_ability, attributes)
-    Hyrax::CurationConcern.actor.create(env)
-    work.update(admin_set: AdminSet.find(AdminSet::DEFAULT_ID))
+  let(:work) do
+    actor_create(:pdf, title: ['Title'], displays_in: ['nowhere'], description: ['A desc'], user: current_user)
   end
+
+  before { work.update(admin_set: AdminSet.find(AdminSet::DEFAULT_ID)) }
 
   it 'returns unpublished for an unpublished work when given its ID' do
     expect(workflow_status.status(work.id)).to eq('unpublished')
@@ -45,10 +40,10 @@ describe Tufts::WorkflowStatus, :workflow, :clean do
       expect(workflow_status.status(work.id)).to eq('published')
     end
     context "when displays in dl" do
-      let(:work) { create(:pdf, displays_in: ['dl']) }
-      before do
-        ActiveJob::Base.queue_adapter = :test
-      end
+      let(:work) { actor_create(:pdf, displays_in: ['dl'], user: current_user) }
+
+      before { ActiveJob::Base.queue_adapter = :test }
+
       it "enqueues a handle registration job" do
         expect { described_class.publish(work: work, current_user: current_user, comment: "rspec test for handle enqueue") }.to enqueue_job(HandleRegisterJob).with(work)
       end

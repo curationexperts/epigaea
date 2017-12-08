@@ -1,8 +1,6 @@
-# Generated via
-#  `rails generate hyrax:work Ead`
 module Hyrax
   module Actors
-    class EadActor < Hyrax::Actors::BaseActor
+    class EadActor < ApplicationModelActor
     end
   end
 end

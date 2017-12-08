@@ -1,8 +1,6 @@
-# Generated via
-#  `rails generate hyrax:work GenericObject`
 module Hyrax
   module Actors
-    class GenericObjectActor < Hyrax::Actors::BaseActor
+    class GenericObjectActor < ApplicationModelActor
     end
   end
 end

@@ -1,8 +1,6 @@
-# Generated via
-#  `rails generate hyrax:work Video`
 module Hyrax
   module Actors
-    class VideoActor < Hyrax::Actors::BaseActor
+    class VideoActor < ApplicationModelActor
     end
   end
 end
