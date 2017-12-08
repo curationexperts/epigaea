@@ -1,0 +1,34 @@
+
+version: 1
+
+# people.example.org
+dn: ou=people,dc=example,dc=org
+objectClass: top
+objectClass: organizationalUnit
+ou: people
+
+# user.people.examle.org
+dn: cn=user,ou=people,dc=example,dc=org
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+sn: Ffrind
+givenName: Rhyw
+uid: example_user
+mail: user@example.org
+cn: user
+userPassword: password
+
+# admin.people.examle.org
+dn: cn=admin,ou=people,dc=example,dc=org
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+sn: Arall
+givenName: Rhywun
+uid: admin_user
+mail: admin@example.org
+cn: admin
+userPassword: password
