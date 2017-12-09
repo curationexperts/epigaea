@@ -1,4 +1,4 @@
-class XmlImport < ApplicationRecord
+class XmlImport < ApplicationRecord # rubocop:disable Metrics/ClassLength
   ##
   # @!attribute metadata_file [rw]
   #   The uploaded metadata file.
@@ -54,6 +54,8 @@ class XmlImport < ApplicationRecord
     files = uploaded_files
 
     object_ids.each_with_object({}) do |id, hsh|
+      next if item_processed?(id: id)
+
       file = files.shift
       next if file.nil?
 
@@ -147,6 +149,17 @@ class XmlImport < ApplicationRecord
     end
 
     ##
+    # @param [String] id
+    #
+    # @note It's cheaper to check for job_ids first, and we don't want to equeue
+    # multiple jobs inline. This order avoids an AF round trip in most cases,
+    # in favor of a lookup on `Tufts::JobItemStore` (Redis).
+    def item_processed?(id:)
+      item = batch.items.find { |i| i.id == id }
+      item.nil? ? false : item.job_id || item.object
+    end
+
+    ##
     # @param [Hyrax::UploadedFile] file
     #
     # @return [Boolean]
@@ -192,4 +205,4 @@ class XmlImport < ApplicationRecord
         uploaded_files.map { |f| f.file.file.filename }.include?(record_file)
       end
     end
-end
+end # rubocop:enable Metrics/ClassLength
