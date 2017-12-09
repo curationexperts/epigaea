@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe XmlImportPresenter do
+RSpec.describe XmlImportPresenter, :batch do
   subject(:presenter) { described_class.new(import) }
   let(:batch)         { FactoryGirl.build(:batch, ids: []) }
   let(:import)        { FactoryGirl.build(:xml_import, batch: batch) }
@@ -65,7 +65,6 @@ RSpec.describe XmlImportPresenter do
       end
 
       it 'changes to queued' do
-        optional "Sometimes fails" if ENV['TRAVIS']
         expect { import.batch.enqueue! }
           .to change { presenter.status }
           .to('Queued')

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe BatchPresenter do
+RSpec.describe BatchPresenter, :batch do
   subject(:presenter) { described_class.new(batch) }
   let(:batch)         { FactoryGirl.build(:batch) }
 
