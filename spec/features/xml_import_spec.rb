@@ -42,4 +42,14 @@ RSpec.feature 'Create an XML Import', :clean, js: true do
 
     expect(page).to have_content 'Error'
   end
+
+  scenario 'importing a malformed file' do
+    visit '/xml_imports/new'
+
+    attach_file 'metadata_file', File.join(fixture_path, 'files', 'malformed_files', 'stray_element.xml')
+
+    click_button 'Next'
+
+    expect(page).to have_content 'Error'
+  end
 end
