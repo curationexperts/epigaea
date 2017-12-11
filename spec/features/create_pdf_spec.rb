@@ -7,7 +7,7 @@ include Warden::Test::Helpers
 RSpec.feature 'Create a PDF', :clean, js: true do
   context 'a logged in admin user' do
     let(:user) { FactoryGirl.create(:admin) }
-
+    let(:today) { DateTime.now.in_time_zone.strftime('%F') }
     before { login_as user }
 
     scenario do
@@ -142,9 +142,6 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       expect(page).to have_content 'Rights Holder'
       expect(page).to have_content 'Rights Note'
       expect(page).to have_content 'Tufts License'
-      # This is not working with Capybara, but does work
-      # there is a view test for the Rights Statement
-      # in spec/views/hyrax/_attribute_rows.html.erb_spec.rb
       expect(page).to have_content 'Springer Policy'
       expect(page).to have_content 'Source'
       expect(page).to have_content 'Start Date'
@@ -154,6 +151,9 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       expect(page).to have_content 'Temporal'
       expect(page).to have_content 'Tufts License'
       expect(page).to have_content 'Text'
+
+      expect(page).to have_content "Ingested #{today}"
+      expect(page).to have_content "Modified #{today}"
     end
   end
 end
