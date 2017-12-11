@@ -4,7 +4,7 @@ class GenericTischDeposit < Contribution
     now = Time.zone.now
     note = "#{creator} self-deposited on #{now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
     @tufts_pdf = Pdf.new(
-      createdby: SELFDEP,
+      createdby: [SELFDEP],
       depositor: @depositor,
       visibility: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC,
       creator: [creator],

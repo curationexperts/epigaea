@@ -98,7 +98,7 @@ shared_examples 'and has admin metadata attributes' do
   end
 
   it 'createdby' do
-    work.createdby = 'self-deposit'
+    work.createdby = ['self-deposit']
     expect(work.resource.dump(:ttl)).to match(/dl.tufts.edu\/terms#createdby/)
   end
 
