@@ -28,8 +28,8 @@ module Tufts
               tm = Tufts::TechnicalMetadata.new(object)
               xml.record do
                 xml.metadata do
-                  xml.parent << tm.to_s
                   xml.mira_import(@mapping.namespaces) do
+                    xml.parent << tm.to_s
                     @mapping.map_sorted do |field|
                       if field.property == :id
                         xml[field.namespace.to_s]

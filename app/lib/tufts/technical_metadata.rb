@@ -27,7 +27,7 @@ module Tufts
 
     # @return [String]
     def to_s
-      @builder.doc.root.to_s
+      @builder.to_xml(save_with: Nokogiri::XML::Node::SaveOptions::AS_XML | Nokogiri::XML::Node::SaveOptions::NO_DECLARATION | Nokogiri::XML::Node::SaveOptions::NO_EMPTY_TAGS).strip
     end
 
     # @return [Object]
@@ -38,37 +38,39 @@ module Tufts
     private
 
       # @return [Nokogiri::XML::Builder]
-      def xml_builder # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+      def xml_builder # rubocop:disable Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
         @builder = Nokogiri::XML::Builder.new do |xml| # rubocop:disable Metrics/BlockLength
           xml.technicalMetadata do # rubocop:disable Metrics/BlockLength
             @base.file_sets.each do |fs| # rubocop:disable Metrics/BlockLength
               @file_set = fs
-              xml.file do
-                xml.byte_order = fs.characterization_proxy.byte_order[0]
-                xml.compression  = fs.characterization_proxy.compression[0]
-                xml.height       = fs.characterization_proxy.height[0]
-                xml.color_space  = fs.characterization_proxy.color_space[0]
-                xml.profile_name = fs.characterization_proxy.profile_name[0]
-                xml.profile_version = fs.characterization_proxy.profile_version[0]
-                xml.orientation = fs.characterization_proxy.orientation[0]
-                xml.color_map = fs.characterization_proxy.color_map[0]
-                xml.image_producer = fs.characterization_proxy.image_producer[0]
-                xml.capture_device = fs.characterization_proxy.capture_device[0]
-                xml.scanning_software = fs.characterization_proxy.scanning_software[0]
-                xml.gps_timestamp = fs.characterization_proxy.gps_timestamp[0]
-                xml.latitude = fs.characterization_proxy.latitude[0]
-                xml.longitude = fs.characterization_proxy.longitude[0]
-                xml.file_title = fs.characterization_proxy.file_title[0]
-                xml.page_count = fs.characterization_proxy.page_count[0]
-                xml.duration = fs.characterization_proxy.duration[0]
-                xml.sample_rate = fs.characterization_proxy.sample_rate[0]
-                xml.format_label = fs.characterization_proxy.format_label[0]
-                xml.file_size = fs.characterization_proxy.file_size[0]
-                xml.file_name = fs.characterization_proxy.file_name[0]
-                xml.well_formed = fs.characterization_proxy.well_formed[0]
-                xml.original_checksum = fs.characterization_proxy.original_checksum[0]
-                xml.mime_type = fs.characterization_proxy.mime_type[0]
-                xml.size = fs.characterization_proxy.size[0]
+              proxy = fs.characterization_proxy
+              xml.file do # rubocop:disable Metrics/BlockLength
+                xml.byte_order = proxy.byte_order[0] if proxy.byte_order[0]
+                xml.compression  = proxy.compression[0] if proxy.compression[0]
+                xml.width        = proxy.width[0] if proxy.width[0]
+                xml.height       = proxy.height[0] if proxy.height[0]
+                xml.color_space  = proxy.color_space[0] if proxy.color_space[0]
+                xml.profile_name = proxy.profile_name[0] if proxy.profile_name[0]
+                xml.profile_version = proxy.profile_version[0] if proxy.profile_version[0]
+                xml.orientation = proxy.orientation[0] if proxy.orientation[0]
+                xml.color_map = proxy.color_map[0] if proxy.color_map[0]
+                xml.image_producer = proxy.image_producer[0] if proxy.image_producer[0]
+                xml.capture_device = proxy.capture_device[0] if proxy.capture_device[0]
+                xml.scanning_software = proxy.scanning_software[0] if proxy.scanning_software[0]
+                xml.gps_timestamp = proxy.gps_timestamp[0] if proxy.gps_timestamp[0]
+                xml.latitude = proxy.latitude[0] if proxy.latitude[0]
+                xml.longitude = proxy.longitude[0] if proxy.longitude[0]
+                xml.file_title = proxy.file_title[0] if proxy.file_title[0]
+                xml.page_count = proxy.page_count[0] if proxy.page_count[0]
+                xml.duration = proxy.duration[0] if proxy.duration[0]
+                xml.sample_rate = proxy.sample_rate[0] if proxy.sample_rate[0]
+                xml.format_label = proxy.format_label[0] if proxy.format_label[0]
+                xml.file_size = proxy.file_size[0] if proxy.file_size[0]
+                xml.file_name = proxy.file_name[0] if proxy.file_name[0]
+                xml.well_formed = proxy.well_formed[0] if proxy.well_formed[0]
+                xml.original_checksum = proxy.original_checksum[0] if proxy.original_checksum[0]
+                xml.mime_type = proxy.mime_type[0] if proxy.mime_type[0]
+                xml.size = proxy.size[0] if proxy.size[0]
               end
             end
           end
