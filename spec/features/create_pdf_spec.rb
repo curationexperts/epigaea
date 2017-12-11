@@ -95,6 +95,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       find('#with_files_submit').click
 
       expect(page).to have_content 'Example Title'
+      expect(page).to have_content 'Displays in Portal'
       expect(page).to have_content 'nowhere'
       expect(page).to have_content 'Abstract'
       expect(page).to have_content 'Accrual Policy'
