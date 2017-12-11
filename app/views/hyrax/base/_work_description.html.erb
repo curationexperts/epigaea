@@ -3,3 +3,17 @@
     <p class="work_description"><%= iconify_auto_link(description) %></p>
   <% end %>
 <% end %>
+<ul class="modified-info">
+    <li>
+        <span class="modified-info__label">Ingested</span>
+        <span class="modified-info__date">
+            <%= presenter.date_uploaded %>
+        </span>
+    </li>
+    <li>
+        <span class="modified-info__label">Modified</span>
+        <span class="modified-info__date">
+            <%= presenter.date_modified %>
+        </span>
+    </li>
+</ul>
