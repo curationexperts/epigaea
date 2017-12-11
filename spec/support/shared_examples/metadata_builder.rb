@@ -31,6 +31,12 @@ shared_examples 'a MetadataBuilder' do
         .to include(*values)
     end
 
+    it 'adds the object visibility' do
+      expect { builder.add(*objects) }
+        .to change { builder.build }
+        .to include 'open'
+    end
+
     it 'adds datatypes' do
       object.date_accepted = [Time.zone.today]
 
@@ -46,7 +52,7 @@ shared_examples 'a MetadataBuilder' do
       end
 
       it 'handles uris' do
-        expect { builder.add(*objects) }
+        expect { builder.add(object) }
           .to change { builder.build }
           .to include "uri=\"#{object.rdf_subject}\""
       end
@@ -54,8 +60,15 @@ shared_examples 'a MetadataBuilder' do
   end
 
   describe '#build' do
+    let(:xml_string) { builder.build.to_str }
+    let(:xml_doc) { Nokogiri::XML(xml_string) }
+
     it 'builds a string' do
-      expect(builder.build.to_str).to be_a String
+      expect(xml_string).to be_a String
+    end
+
+    it 'builds a string that is well-formed XML' do
+      expect(xml_doc.errors).to eq []
     end
   end
 
