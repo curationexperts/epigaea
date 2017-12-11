@@ -51,7 +51,7 @@ module Tufts
         property :legacy_pid, predicate: ::Tufts::Vocab::Tufts.legacy_pid, multiple: false do |index|
           index.as :stored_searchable
         end
-        property :createdby, predicate: ::Tufts::Vocab::Tufts.createdby, multiple: false do |index|
+        property :createdby, predicate: ::Tufts::Vocab::Tufts.createdby do |index|
           index.as :stored_searchable, :facetable
         end
         property :tufts_license, predicate: ::RDF::Vocab::DC.license do |index|

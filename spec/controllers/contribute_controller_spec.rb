@@ -142,7 +142,7 @@ describe ContributeController do
           expect(contribution.note.first).to eq "Mickey Mouse self-deposited on #{now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
           expect(contribution.date_available).to eq [now.to_s]
           expect(contribution.date_submitted).to eq [now.to_s]
-          expect(contribution.createdby).to eq Contribution::SELFDEP
+          expect(contribution.createdby).to eq [Contribution::SELFDEP]
         end
 
         it 'requires a file attachments' do
