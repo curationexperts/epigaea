@@ -3,8 +3,9 @@ require 'nokogiri'
 require 'ffaker'
 
 namespace :import do
-  desc 'Create a file for testing bulk import'
+  desc "Create a file for testing bulk import -- defaults to 5 records."
   task :make_test_file, [:count] => :environment do |_t, args|
+    args.with_defaults(count: "5")
     puts "Making an import file with #{args[:count]} entries"
     dir_path = make_directory(args[:count])
     import_file = create_import_file(args[:count])
@@ -38,6 +39,7 @@ namespace :import do
                   xml.send("tufts:visibility", "open")
                   xml.send("model:hasModel", "Pdf")
                   xml.send("dc:title", "Sample Data: #{FFaker::Book.title}")
+                  xml.send("tufts:displays_in", "dl")
                 end
               end
             end
