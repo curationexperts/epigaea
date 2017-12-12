@@ -7,9 +7,10 @@ FactoryGirl.define do
     end
     password 'password'
     display_name FFaker::Name.name
+    after(:create) { |user| user.remove_role(:admin) }
 
     factory :admin do
-      roles { [Role.where(name: 'admin').first_or_create] }
+      after(:create) { |user| user.add_role(:admin) }
     end
   end
 end
