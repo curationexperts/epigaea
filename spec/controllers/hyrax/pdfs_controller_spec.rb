@@ -4,11 +4,15 @@ RSpec.describe Hyrax::PdfsController, type: :controller do
   render_views
   let(:work) { FactoryGirl.create(:pdf) }
   let(:user) { FactoryGirl.create(:admin) }
+
   before do
     sign_in user
     work.title = ["a_drafted_title"]
     work.save_draft
   end
+
+  after { work.delete_draft }
+
   describe 'GET #edit' do
     it 'applies a draft if one exists' do
       get :edit, params: { id: work.id }
@@ -20,6 +24,7 @@ RSpec.describe Hyrax::PdfsController, type: :controller do
       expect(response.body.match('a_drafted_title')).to be_nil
     end
   end
+
   describe 'PATCH #update' do
     it "deletes the draft when updating" do
       post :update, params: { id: work.id, pdf: { title: 'new_title', description: 'test' } }
