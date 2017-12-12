@@ -13,6 +13,9 @@ RSpec.shared_examples 'a draftable model' do
       raise 'Define `change_map` with `let(:change_map)` before using the ' \
             'draftable model shared examples'
     end
+
+    model.delete_draft
+
     # The model has to be saved before drafts can be created
     model.save
   end
@@ -106,7 +109,6 @@ RSpec.shared_examples 'a draftable model' do
       end
 
       it 'overwrites changes for properties in the draft' do
-        optional "Sometimes fails on travis" if ENV['TRAVIS']
         model.send("#{change_map.keys.last}=", ['I SHOULD BE DELETED'])
         model.apply_draft
         expect(model).to have_unordered_attributes(change_map)
@@ -143,7 +145,6 @@ RSpec.shared_examples 'a draftable model' do
 
   describe '#draft_saved?' do
     it 'does not exist before save' do
-      optional 'is optional on travis' if ENV['TRAVIS']
       expect(model).not_to be_draft_saved
     end
   end
