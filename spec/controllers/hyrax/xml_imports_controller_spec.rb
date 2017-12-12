@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Hyrax::XmlImportsController, type: :controller do
   let(:import) { FactoryGirl.create(:xml_import) }
 
+  before { import.batch.save }
+
   context 'as admin' do
     include_context 'as admin'
 
@@ -18,7 +20,7 @@ RSpec.describe Hyrax::XmlImportsController, type: :controller do
 
       it 'uploads the file' do
         post :create, params: { xml_import: { metadata_file: file_upload } }
-        expect(assigns(:import).metadata_file.filename).to eq 'mira_xml.xml'
+        expect(assigns(:import).metadata_file.filename).to be_a String
       end
 
       it 'creates a batch' do
