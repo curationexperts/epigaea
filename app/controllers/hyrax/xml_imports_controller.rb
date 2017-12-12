@@ -13,7 +13,8 @@ module Hyrax
         redirect_to main_app.xml_import_path(@import)
       else
         messages    = @import.errors.messages[:base].join("\n")
-        flash.alert = " Errors were found in #{@import.metadata_file.filename}:" \
+        flash.alert = ' Errors were found in ' \
+                      "#{@import.metadata_file.file.original_filename}:" \
                       "\n#{messages}"
         redirect_to main_app.new_xml_import_path
       end
