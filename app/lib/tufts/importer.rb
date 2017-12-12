@@ -55,6 +55,8 @@ module Tufts
       raise(ArgumentError, "file must be an IO, got a #{file.class}") unless
         file.respond_to? :read
 
+      check_for_well_formed_xml(file.read)
+
       @file = file
     end
 
@@ -144,6 +146,16 @@ module Tufts
     end
 
     private
+
+      # Use Nokogiri's XML parser to check that the file is well formed
+      # See http://www.nokogiri.org/tutorials/ensuring_well_formed_markup.html
+      # Create a new Importer::Error for each error found by the Nokogiri parser
+      def check_for_well_formed_xml(file)
+        doc = Nokogiri::XML file
+        doc.errors.each do |e|
+          errors << Importer::Error.new(e.line, type: :serious, message: e.message)
+        end
+      end
 
       ##
       # @private
