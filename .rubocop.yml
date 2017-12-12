@@ -17,12 +17,13 @@ Metrics/MethodLength:
    Exclude:
     - 'app/models/forms/contribution.rb'
     - 'app/models/forms/generic_tisch_deposit.rb'
+    - 'lib/tasks/import_test_file.rake'
 Performance/StringReplacement:
    Exclude:
     - 'app/controllers/tufts/works_controller.rb'
 Rails/TimeZone:
   Exclude:
-    - 'config/initializers/git_sha.rb'  
+    - 'config/initializers/git_sha.rb'
 RSpec/ExampleLength:
    Exclude:
     - 'spec/features/**/*'
