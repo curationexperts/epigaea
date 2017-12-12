@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/">
+  <ListRecords>
+    <record>
+      <metadata>
+        <mira_import xmlns:model="info:fedora/fedora-system:def/model#" xmlns:dc="http://purl.org/dc/terms/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:tufts="http://dl.tufts.edu/terms#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+          <technicalmetadata>
+            <file>
+              <file_title>This is a test PDF file</file_title>
+              <page_count>1</page_count>
+              <format_label>Portable Document Format</format_label>
+              <file_size>7945</file_size>
+              <file_name>pdf_sample3.pdf</file_name>
+              <well_formed>false</well_formed>
+              <original_checksum>fa7d7e650b2cec68f302b31ba28235d8</original_checksum>
+              <mime_type>a</mime_type>
+              <size>1</size>
+            </file>
+            <file>
+              <file_title>This is a test PDF file</file_title>
+              <page_count>1</page_count>
+              <format_label>Portable Document Format</format_label>
+              <file_size>7945</file_size>
+              <file_name>pdf_sample4.pdf</file_name>
+              <well_formed>false</well_formed>
+              <original_checksum>fa7d7e650b2cec68f302b31ba28235d8</original_checksum>
+              <mime_type>a</mime_type>
+              <size>1</size>
+            </file>
+            <file>
+              <file_title>This is a test PDF file</file_title>
+              <page_count>1</page_count>
+              <format_label>Portable Document Format</format_label>
+              <file_size>7945</file_size>
+              <file_name>pdf_sample2.pdf</file_name>
+              <well_formed>false</well_formed>
+              <original_checksum>fa7d7e650b2cec68f302b31ba28235d8</original_checksum>
+              <mime_type>a</mime_type>
+              <size>1</size>
+            </file>
+            <file>
+              <file_title>This is a test PDF file</file_title>
+              <page_count>1</page_count>
+              <format_label>Portable Document Format</format_label>
+              <file_size>7945</file_size>
+              <file_name>pdf_sample1.pdf</file_name>
+              <well_formed>false</well_formed>
+              <original_checksum>fa7d7e650b2cec68f302b31ba28235d8</original_checksum>
+              <mime_type>a</mime_type>
+              <size>1</size>
+            </file>
+            <file>
+              <file_title>This is a test PDF file</file_title>
+              <page_count>1</page_count>
+              <format_label>Portable Document Format</format_label>
+              <file_size>7945</file_size>
+              <file_name>pdf_sample0.pdf</file_name>
+              <well_formed>false</well_formed>
+              <original_checksum>fa7d7e650b2cec68f302b31ba28235d8</original_checksum>
+              <mime_type>a</mime_type>
+              <size>1</size>
+            </file>
+            <file>
+              <compression>Uncompressed</compression>
+              <width>568</width>
+              <height>1024</height>
+              <color_space>RGB</color_space>
+              <scanning_software>Picasa 3.0</scanning_software>
+              <format_label>JPEG File Interchange Format</format_label>
+              <file_size>200842</file_size>
+              <file_name>sonnet_thumbnail.jpg</file_name>
+              <original_checksum>509333030891f15390d450a10febb7b8</original_checksum>
+              <mime_type>i</mime_type>
+              <size>0</size>
+            </file>
+          </technicalmetadata>
+          <dc:dateSubmitted datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-12-12T22:22:13+00:00</dc:dateSubmitted>
+          <dc:modified datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-12-12T22:24:53+00:00</dc:modified>
+          <dc:title>Sonnets From the Portuguese</dc:title>
+          <dc:type>http://purl.org/dc/dcmitype/Text</dc:type>
+          <model:hasModel>GenericObject</model:hasModel>
+          <tufts:displays_in>dl</tufts:displays_in>
+          <tufts:id>g732d8963</tufts:id>
+          <tufts:filename type="thumbnail">sonnet_thumbnail.jpg</tufts:filename>
+          <tufts:filename>pdf_sample0.pdf</tufts:filename>
+          <tufts:filename>pdf_sample1.pdf</tufts:filename>
+          <tufts:filename>pdf_sample2.pdf</tufts:filename>
+          <tufts:filename>pdf_sample3.pdf</tufts:filename>
+          <tufts:filename>pdf_sample4.pdf</tufts:filename>
+        </mira_import>
+      </metadata>
+    </record>
+  </ListRecords>
+</OAI-PMH>
