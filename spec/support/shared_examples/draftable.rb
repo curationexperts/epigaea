@@ -143,6 +143,7 @@ RSpec.shared_examples 'a draftable model' do
 
   describe '#draft_saved?' do
     it 'does not exist before save' do
+      optional 'is optional on travis' if ENV['TRAVIS']
       expect(model).not_to be_draft_saved
     end
   end
