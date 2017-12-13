@@ -154,21 +154,34 @@ module Tufts
           e = doc.errors.first
           errors << Importer::Error.new(e.line, type: :serious, message: "Malformed XML error: #{e.message}")
         end
-        check_for_required_fields(doc)
-      end
-
-      # Given a record, check that it has all required fields
-      def check_for_required_fields(doc)
         doc.root.add_namespace("dc", "http://purl.org/dc/terms/")
         doc.root.add_namespace("tufts", "http://dl.tufts.edu/terms#")
         doc.root.add_namespace("model", "info:fedora/fedora-system:def/model#")
-        required_fields = ["dc:title", "tufts:displays_in", "model:hasModel"]
         doc.xpath("//xmlns:record/xmlns:metadata/xmlns:mira_import").each do |record|
-          required_fields.each do |field|
-            if record.xpath(field).text.empty?
-              filename = record.xpath('tufts:filename').text || "Unknown filename"
-              errors << Importer::Error.new(record.line, type: :serious, message: "Missing required field: #{filename} is missing #{field}")
-            end
+          check_for_required_fields(record)
+          check_that_collections_exist(record)
+        end
+      end
+
+      # Given a record, check that it has all required fields
+      def check_for_required_fields(record)
+        required_fields = ["dc:title", "tufts:displays_in", "model:hasModel"]
+        required_fields.each do |field|
+          if record.xpath(field).text.empty?
+            filename = record.xpath('tufts:filename').text || "Unknown filename"
+            errors << Importer::Error.new(record.line, type: :serious, message: "Missing required field: #{filename} is missing #{field}")
+          end
+        end
+      end
+
+      def check_that_collections_exist(record)
+        return unless record.xpath("tufts:memberOf") && !record.xpath("tufts:memberOf").text.empty?
+        record.xpath("tufts:memberOf").each do |collection_id|
+          begin
+            Collection.find(collection_id.text)
+          rescue ActiveFedora::ObjectNotFoundError
+            filename = record.xpath('tufts:filename').text || "Unknown filename"
+            errors << Importer::Error.new(record.line, type: :serious, message: "Cannot find collection with id #{collection_id.text} for filename #{filename}")
           end
         end
       end

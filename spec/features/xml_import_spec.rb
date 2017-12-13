@@ -9,6 +9,7 @@ RSpec.feature 'Create an XML Import', :clean, js: true do
   before { login_as user }
 
   scenario 'import records through a form upload' do
+    allow(Collection).to receive(:find).and_return(true)
     visit '/xml_imports/new'
 
     attach_file 'metadata_file', file
@@ -84,5 +85,14 @@ RSpec.feature 'Create an XML Import', :clean, js: true do
     click_button 'Next'
     expect(page).to have_content 'Missing required field'
     expect(page).to have_content "too many to display"
+  end
+
+  scenario 'importing into a non-existent collection' do
+    visit '/xml_imports/new'
+
+    attach_file 'metadata_file', File.join(fixture_path, 'files', 'malformed_files', 'nonexistent_collection.xml')
+
+    click_button 'Next'
+    expect(page).to have_content 'Cannot find collection'
   end
 end

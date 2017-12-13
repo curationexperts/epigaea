@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe XmlImport, :batch, type: :model do
   subject(:import) { FactoryGirl.build(:xml_import) }
 
+  before do
+    allow(Collection).to receive(:find).and_return(true)
+  end
+
   it_behaves_like 'a batchable' do
     subject(:batchable) do
       FactoryGirl.create(:xml_import, uploaded_file_ids: uploads.map(&:id))

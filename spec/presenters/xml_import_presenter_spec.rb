@@ -5,6 +5,10 @@ RSpec.describe XmlImportPresenter, :batch do
   let(:batch)         { FactoryGirl.build(:batch, ids: []) }
   let(:import)        { FactoryGirl.build(:xml_import, batch: batch) }
 
+  before do
+    allow(Collection).to receive(:find).and_return(true)
+  end
+
   it { is_expected.to delegate_method(:batch).to(:xml_import) }
 
   it { is_expected.to delegate_method(:creator).to(:batch_presenter) }

@@ -4,6 +4,10 @@ RSpec.describe Tufts::MiraXmlImporter do
   subject(:importer) { described_class.new(file: file) }
   let(:file)         { File.open(file_fixture('mira_xml.xml')) }
 
+  before do
+    allow(Collection).to receive(:find).and_return(true)
+  end
+
   it_behaves_like 'an importer'
 
   describe '#record?' do
