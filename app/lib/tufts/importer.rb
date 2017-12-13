@@ -177,8 +177,7 @@ module Tufts
       # @private
       def validate_filenames
         records.each_with_object(Set.new) do |record, files_touched|
-          errors << MissingFileError.new if record.files.empty?
-
+          errors << MissingFileError.new(record.metadata.line) if record.files.empty?
           record.files.each do |file|
             errors << DuplicateFileError.new(nil, file: file) unless
               files_touched.add?(file)
