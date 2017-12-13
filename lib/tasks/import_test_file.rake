@@ -38,6 +38,7 @@ namespace :import do
                   xml.send("tufts:visibility", "open")
                   xml.send("model:hasModel", "Pdf")
                   xml.send("dc:title", "Sample Data: #{FFaker::Book.title}")
+                  xml.send("tufts:displays_in", "dl")
                 end
               end
             end

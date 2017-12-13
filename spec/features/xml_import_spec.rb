@@ -63,4 +63,25 @@ RSpec.feature 'Create an XML Import', :clean, js: true do
     expect(page).to have_content 'Missing required field: Sonnet_1.pdf is missing dc:title'
     expect(page).to have_content 'Missing required field: Sonnet_1.pdf is missing model:hasModel'
   end
+
+  scenario 'importing a file with missing filename gives line number' do
+    visit '/xml_imports/new'
+
+    attach_file 'metadata_file', File.join(fixture_path, 'files', 'malformed_files', 'missing_filename.xml')
+
+    click_button 'Next'
+    expect(page).to have_content 'Missing required field: Sonnet_1.pdf is missing tufts:displays_in'
+    expect(page).not_to have_content 'Unknown Line'
+  end
+
+  # When we produce lots of errors we've been getting "Failure/Error: raise CookieOverflow if options[:value].bytesize > MAX_COOKIE_SIZE"
+  scenario 'importing a very large file with missing required fields' do
+    visit '/xml_imports/new'
+
+    attach_file 'metadata_file', File.join(fixture_path, 'files', 'malformed_files', '100_sample.xml')
+
+    click_button 'Next'
+    expect(page).to have_content 'Missing required field'
+    expect(page).to have_content "too many to display"
+  end
 end
