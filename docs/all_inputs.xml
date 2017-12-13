@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH
+  xmlns="http://www.openarchives.org/OAI/2.0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:model="info:fedora/fedora-system:def/model#"
+  xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#"
+  xmlns:iana="http://www.iana.org/assignments/relation/"
+  xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#"
+  xmlns:scholarsphere="http://scholarsphere.psu.edu/ns#"
+  xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/"
+  xmlns:bibframe="http://bibframe.org/vocab/"
+  xmlns:dc11="http://purl.org/dc/elements/1.1/"
+  xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#"
+  xmlns:premis="http://www.loc.gov/premis/rdf/v1#"
+  xmlns:mads="http://www.loc.gov/mads/rdf/v1#"
+  xmlns:tufts="http://dl.tufts.edu/terms#"
+  xmlns:edm="http://www.europeana.eu/schemas/edm/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <ListRecords>
+    <record>
+      <metadata>
+        <mira_import>
+          <dc:abstract> I thought once how Theocritus had sung Of the sweet years, the dear and wished-for years, Who each one in a gracious hand appears To bear a gift for mortals, old or young:</dc:abstract>
+          <dc:abstract>Abstract 2</dc:abstract>
+          <dc:accrualPolicy>Accrual Policy</dc:accrualPolicy>
+          <dc:alternative>Alt Title 1</dc:alternative>
+          <dc:alternative>Alt Title 2</dc:alternative>
+          <dc:audience>Audience</dc:audience>
+          <dc:bibliographicCitation>Biblio Citation 1</dc:bibliographicCitation>
+          <dc:bibliographicCitation>Biblio Citation 2</dc:bibliographicCitation>
+          <dc11:contributor>Contributor 1</dc11:contributor>
+          <dc11:contributor>Contributor 2</dc11:contributor>
+          <mads:CorporateName>PROJECT GUTENBERG</mads:CorporateName>
+          <mads:CorporateName>Corp Name 2</mads:CorporateName>
+          <dc11:creator>Browning, Elizabeth Barrett</dc11:creator>
+          <dc11:creator>Creator 2</dc11:creator>
+          <tufts:creator_department>Creator Dept 1</tufts:creator_department>
+          <tufts:creator_department>Creator Dept 2</tufts:creator_department>
+          <dc11:date>Primary date 1</dc11:date>
+          <dc11:date>Primary date 2</dc11:date>
+          <dc:dateAccepted>Date Accepted 1</dc:dateAccepted>
+          <dc:dateAccepted>Date Accepted 2</dc:dateAccepted>
+          <dc:available>Date Avail 1</dc:available>
+          <dc:available>Date Avail 2</dc:available>
+          <dc:dateCopyrighted>Date Copyrighted 1</dc:dateCopyrighted>
+          <dc:dateCopyrighted>Date Copyrighted 2</dc:dateCopyrighted>
+          <dc:created>Date Created 1</dc:created>
+          <dc:created>Date Created 2</dc:created>
+          <tufts:createdby>Created by 1</tufts:createdby>
+          <tufts:createdby>Created by 2</tufts:createdby>
+          <ebucore:dateIssued>Date Issued 1</ebucore:dateIssued>
+          <ebucore:dateIssued>Date Issued 2</ebucore:dateIssued>
+          <dc11:description> This eBook is for the use of anyone anywhere at no cost and with almost no restrictions whatsoever. You may copy it, give it away or re-use it under the terms of the Project Gutenberg License included with this eBook or online at www.gutenberg.net</dc11:description>
+          <dc11:description>Description 2</dc11:description>
+          <tufts:displays_in>dl</tufts:displays_in>
+          <tufts:displays_in>trove</tufts:displays_in>
+          <dc:extent>Extent 1</dc:extent>
+          <dc:extent>Extent 2</dc:extent>
+          <tufts:filename>pdf-sample.pdf</tufts:filename>
+          <tufts:filename>another-file.txt</tufts:filename>
+          <marcrelators:fnd>Funder 1</marcrelators:fnd>
+          <marcrelators:fnd>Funder 2</marcrelators:fnd>
+          <dc:format>application/pdf</dc:format>
+          <mads:GenreForm>Genre 1</mads:GenreForm>
+          <mads:GenreForm>Genre 2</mads:GenreForm>
+          <premis:hasEndDate>End Date</premis:hasEndDate>
+          <dc:hasFormat>Has Format 1</dc:hasFormat>
+          <dc:hasFormat>Has Format 2</dc:hasFormat>
+          <premis:hasFormatName>Format 1</premis:hasFormatName>
+          <premis:hasFormatName>Format 2</premis:hasFormatName>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:hasPart>Has Part 1</dc:hasPart>
+          <dc:hasPart>Has Part 2</dc:hasPart>
+          <bibframe:heldBy>Held By 1</bibframe:heldBy>
+          <bibframe:heldBy>Held By 2</bibframe:heldBy>
+          <tufts:id>The fedora ID of the existing record.  For use when updating existing records.</tufts:id>
+          <dc:identifier>Permanent URL 1</dc:identifier>
+          <dc:identifier>Permanent URL 2</dc:identifier>
+          <tufts:internal_note>Internal Note</tufts:internal_note>
+          <dc:isFormatOf>Is Format Of 1</dc:isFormatOf>
+          <dc:isFormatOf>Is Format Of 2</dc:isFormatOf>
+          <dc:isPartOf>Is Part Of 1</dc:isPartOf>
+          <dc:isPartOf>Is Part Of 2</dc:isPartOf>
+          <dc:isReplacedBy>Is Replaced By 1</dc:isReplacedBy>
+          <dc:isReplacedBy>Is Replaced By 2</dc:isReplacedBy>
+          <dc11:language>Language 1</dc11:language>
+          <dc11:language>Language 2</dc11:language>
+          <tufts:legacy_pid>Legacy PID</tufts:legacy_pid>
+          <dc:license>Tufts license 1</dc:license>
+          <dc:license>Tufts license 2</dc:license>
+          <mads:PersonalName>Browning, Elizabeth</mads:PersonalName>
+          <mads:PersonalName>Personal Name 2</mads:PersonalName>
+          <dc:provenance>Provenance 1</dc:provenance>
+          <dc:provenance>Provenance 2</dc:provenance>
+          <dc11:publisher>Caradoc Press</dc11:publisher>
+          <dc11:publisher>Another Publisher</dc11:publisher>
+          <tufts:qr_note>QR note 1</tufts:qr_note>
+          <tufts:qr_note>QR note 2</tufts:qr_note>
+          <tufts:rejection_reason>QR rejection reason 1</tufts:rejection_reason>
+          <tufts:rejection_reason>QR rejection reason 2</tufts:rejection_reason>
+          <tufts:qr_status>QR status 1</tufts:qr_status>
+          <tufts:qr_status>QR status 2</tufts:qr_status>
+          <dc:replaces>Replaces 1</dc:replaces>
+          <dc:replaces>Replaces 2</dc:replaces>
+          <tufts:retention_period>retention period 1</tufts:retention_period>
+          <tufts:retention_period>retention period 2</tufts:retention_period>
+          <dc:rights>License 1</dc:rights>
+          <dc:rights>License 2</dc:rights>
+          <edm:rights>http://creativecommons.org/licenses/by/2.0</edm:rights>
+          <dc11:rights>A Note about Rights</dc11:rights>
+          <dc:rightsHolder>Rights holder 1</dc:rightsHolder>
+          <dc:rightsHolder>Rights holder 2</dc:rightsHolder>
+          <dc:source>source 1</dc:source>
+          <dc:source>source 2</dc:source>
+          <dc:spatial>Geographic Name 1</dc:spatial>
+          <dc:spatial>Geographic Name 2</dc:spatial>
+          <tufts:startDate>Admin start date 1</tufts:startDate>
+          <tufts:startDate>Admin start date 2</tufts:startDate>
+          <tufts:steward>Steward</tufts:steward>
+          <dc11:subject>Poetry</dc11:subject>
+          <dc11:subject>Portuguese</dc11:subject>
+          <dc11:subject>Sonnets</dc11:subject>
+          <dc11:subject>Project Gutenberg</dc11:subject>
+          <dc:tableOfContents>toc 1</dc:tableOfContents>
+          <dc:tableOfContents>toc 2</dc:tableOfContents>
+          <dc:temporal>Temporal 1</dc:temporal>
+          <dc:temporal>Temporal 2</dc:temporal>
+          <premis:TermOfRestriction>Embargo Note</premis:TermOfRestriction>
+          <dc:title>The Project Gutenberg EBook of Sonnets from the Portuguese by Browning</dc:title>
+          <dc:type>http://purl.org/dc/dcmitype/Text</dc:type>
+          <tufts:visibility>open</tufts:visibility>
+        </mira_import>
+      </metadata>
+    </record>
+  </ListRecords>
+</OAI-PMH>
