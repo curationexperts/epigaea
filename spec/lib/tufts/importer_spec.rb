@@ -17,7 +17,7 @@ RSpec.describe Tufts::Importer do
     end
   end
 
-  describe '#initialize' do
+  describe '#validate!' do
     let(:badly_formed_xml) do
       File.open(File.join(fixture_path, 'files', 'malformed_files', 'stray_element.xml'), 'r')
     end
@@ -28,6 +28,7 @@ RSpec.describe Tufts::Importer do
 
     it "reports parsing errors if the document contains a stray element" do
       importer = described_class.new(file: badly_formed_xml)
+      importer.validate!
       expect(importer.errors).not_to be_empty
     end
   end

@@ -1,0 +1,1005 @@
+<?xml version="1.0"?>
+<OAIPMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="info:fedora/fedora-system:def/model#" xmlns:fcrepo4="http://fedora.info/definitions/v4/repository#" xmlns:iana="http://www.iana.org/assignments/relation/" xmlns:marcrelators="http://id.loc.gov/vocabulary/relators/" xmlns:dc="http://purl.org/dc/terms/" xmlns:fedoraresourcestatus="http://fedora.info/definitions/1/0/access/ObjState#" xmlns:scholarsphere="http://scholarsphere.psu.edu/ns" xmlns:opaquehydra="http://opaquenamespace.org/ns/hydra/" xmlns:bibframe="http://bibframe.org/vocab/" xmlns:dc11="http://purl.org/dc/elements/1.1/" xmlns:ebucore="http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#" xmlns:premis="http://www.loc.gov/premis/rdf/v1#" xmlns:mads="http://www.loc.gov/mads/rdf/v1#" xmlns:tufts="http://dl.tufts.edu/terms#" xmlns:edm="http://www.europeana.eu/schemas/edm/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <ListRecords>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample0.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Tokyo Men</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample1.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Case of the Missing Death Tears</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample2.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Killer Pickpocket</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample3.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Champagne Clash</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample4.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Legend of Dangerous Ninjas</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample5.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Season of the Blue Beast</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample6.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Champagne Cousins</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample7.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Journey of the Electric Thief</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample8.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Codename: Death Beast</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample9.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: War of the Nuclear Friday</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample10.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Season of the Electric Demon</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample11.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Season of the Fake Dreams</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample12.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Fake Cat</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample13.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Rise of the Flying City</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample14.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: War of the Tokyo Beast</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample15.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Red Rain</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample16.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Death Diaries</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample17.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Dangerous Clash</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample18.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Green Wizard</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample19.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Time of the Green Ninja</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample20.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Bloody Witch</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample21.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Planet of the Action Women</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample22.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Season of the Green Hills</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample23.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: American Wizard</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample24.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: I Married a Dangerous Blow</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample25.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Red Demon</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample26.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Killer Ninjas</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample27.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Blue Diaries</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample28.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Return of the American Dreams</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample29.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Rise of the Nuclear Dreams</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample30.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Killer Identity</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample31.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Return of the Hungry Woman</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample32.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Danger Witch</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample33.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Legend of Red Witch</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample34.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Planet of the Action Wizard</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample35.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Time of the Death Woman</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample36.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Ultra Identity</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample37.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Hungry Blow</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample38.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Action Cat</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample39.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Killer Brain</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample40.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Death Thief</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample41.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Electric Friday</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample42.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Blue Tears</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample43.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: American Diaries</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample44.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: I Married a Dangerous Jungle</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample45.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Action Cousins</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample46.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Action Women</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample47.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: War of the Danger Cousins</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample48.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Curse of the American Woman</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample49.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Hungry Man</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample50.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Case of the Missing Electric Wizard</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample51.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Champagne Monster</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample52.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Journey of the Nuclear Men</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample53.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Legend of Fake Wizard</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample54.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Day of the Danger World</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample55.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Red Fly</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample56.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Day of the American Rain</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample57.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Bloody Friday</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample58.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Nuclear Rain</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample59.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Curse of the Flying Man</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample60.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Death Diaries</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample61.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Rise of the American Ninja</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample62.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Ultra Ninjas</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample63.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Danger Cousins</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample64.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Flying Man</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample65.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: I am Green Men</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample66.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Killer Fly</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample67.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Codename: Dangerous Witch</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample68.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Tokyo Friday</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample69.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Journey of the Green Ninjas</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample70.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Rise of the American Brain</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample71.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Blonde Women</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample72.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Tokyo Wolf</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample73.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: I Married a Fake Hills</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample74.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: American Diaries</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample75.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: The Ultra Dreams</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample76.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Champagne World</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample77.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Nuclear Wizard</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample78.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Return of the Bloody Mutant</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample79.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: A Fistful of Champagne Identity</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample80.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Curse of the Flying Men</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample81.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: War of the Blue Fly</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample82.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: A Fistful of Nuclear Wolves</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample83.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Journey of the Forbidden Mutant</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample84.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Season of the Flying Dreams</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample85.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Journey of the Champagne Witch</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample86.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: War of the American Dreams</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample87.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Return of the Green Mutant</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample88.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: I Married a Electric Gypsy</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample89.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Curse of the Nuclear Brain</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample90.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Planet of the Killer Hills</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample91.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Rise of the Electric Wizard</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample92.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Champagne Friday</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample93.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Nuclear Rain</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample94.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Ultra Women</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample95.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Curse of the Action Tears</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample96.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Invasion of the Red Men</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample97.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Rise of the Bloody Thief</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample98.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: The Tokyo Brains</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:filename>pdf_sample99.pdf</tufts:filename>
+          <tufts:visibility>open</tufts:visibility>
+          <model:hasModel>Pdf</model:hasModel>
+          <dc:title>Sample Data: Tokyo Cat</dc:title>
+        </mira_import>
+      </metadata>
+    </record>
+  </ListRecords>
+</OAIPMH>

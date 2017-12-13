@@ -54,9 +54,6 @@ module Tufts
     def initialize(file:)
       raise(ArgumentError, "file must be an IO, got a #{file.class}") unless
         file.respond_to? :read
-
-      check_for_well_formed_xml(file.read)
-
       @file = file
     end
 
@@ -83,6 +80,7 @@ module Tufts
     # @return [Enumerable<Error>]
     # @see #errors
     def validate!
+      check_for_well_formed_xml(@file.read)
       validate_filenames
       errors
     end
@@ -152,8 +150,26 @@ module Tufts
       # Create a new Importer::Error for each error found by the Nokogiri parser
       def check_for_well_formed_xml(file)
         doc = Nokogiri::XML file
-        doc.errors.each do |e|
-          errors << Importer::Error.new(e.line, type: :serious, message: e.message)
+        if doc.errors.count > 0
+          e = doc.errors.first
+          errors << Importer::Error.new(e.line, type: :serious, message: "Malformed XML error: #{e.message}")
+        end
+        check_for_required_fields(doc)
+      end
+
+      # Given a record, check that it has all required fields
+      def check_for_required_fields(doc)
+        doc.root.add_namespace("dc", "http://purl.org/dc/terms/")
+        doc.root.add_namespace("tufts", "http://dl.tufts.edu/terms#")
+        doc.root.add_namespace("model", "info:fedora/fedora-system:def/model#")
+        required_fields = ["dc:title", "tufts:displays_in", "model:hasModel"]
+        doc.xpath("//xmlns:record/xmlns:metadata/xmlns:mira_import").each do |record|
+          required_fields.each do |field|
+            if record.xpath(field).text.empty?
+              filename = record.xpath('tufts:filename').text || "Unknown filename"
+              errors << Importer::Error.new(record.line, type: :serious, message: "Missing required field: #{filename} is missing #{field}")
+            end
+          end
         end
       end
 
@@ -161,8 +177,7 @@ module Tufts
       # @private
       def validate_filenames
         records.each_with_object(Set.new) do |record, files_touched|
-          errors << MissingFileError.new if record.files.empty?
-
+          errors << MissingFileError.new(record.metadata.line) if record.files.empty?
           record.files.each do |file|
             errors << DuplicateFileError.new(nil, file: file) unless
               files_touched.add?(file)

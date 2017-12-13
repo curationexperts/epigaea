@@ -18,6 +18,7 @@ Metrics/MethodLength:
     - 'app/models/forms/contribution.rb'
     - 'app/models/forms/generic_tisch_deposit.rb'
     - 'lib/tasks/import_test_file.rake'
+    - 'app/lib/tufts/importer.rb'
 Performance/StringReplacement:
    Exclude:
     - 'app/controllers/tufts/works_controller.rb'
