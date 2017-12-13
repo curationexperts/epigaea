@@ -17,6 +17,9 @@ RSpec.describe 'batch', :batch, type: :feature, js: true do
   describe 'publishing' do
     it 'has tufts-buttons on the page' do
       expect(page).to have_selector('.tufts-buttons')
+
+      # un-check all to reset page for remaining tests
+      check 'check_all'
     end
 
     it 'sends the user to the batch status page like on the catalog' do
