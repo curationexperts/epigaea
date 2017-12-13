@@ -22,6 +22,8 @@ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
           <tufts:visibility>open</tufts:visibility>
           <tufts:filename>3.pdf</tufts:filename>
           <model:hasModel>Pdf</model:hasModel>
+          <tufts:memberOf>a_collection_id</tufts:memberOf>
+          <tufts:memberOf>another_collection_id</tufts:memberOf>
           <dc:title>President Jean Mayer speaking
           at commencement, 1987</dc:title>
           <dc11:description>

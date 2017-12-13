@@ -3,10 +3,14 @@ require 'rails_helper'
 describe Tufts::ImportService, :workflow, :clean do
   subject(:service) { described_class.new(files: files, import: import, object_id: object_id) }
 
-  let(:files)  { [FactoryGirl.create(:hyrax_uploaded_file)] }
-  let(:import) { FactoryGirl.create(:xml_import, uploaded_file_ids: files.map(&:id)) }
-  let(:object) { FactoryGirl.build(:pdf, id: object_id) }
-  let(:object_id) { SecureRandom.uuid }
+  let(:files)          { [FactoryGirl.create(:hyrax_uploaded_file)] }
+  let(:import)         { FactoryGirl.create(:xml_import, uploaded_file_ids: files.map(&:id)) }
+  let(:object)         { FactoryGirl.build(:pdf, id: object_id) }
+  let(:object_id)      { SecureRandom.uuid }
+  let(:collections)    { collection_ids.map { |id| FactoryGirl.create(:collection, id: id) }.to_a }
+  let(:collection_ids) { import.records.first.collections }
+
+  before { collections }
 
   it 'has file, import and object_ids attributes' do
     is_expected.to have_attributes(file:      files.first,
@@ -36,6 +40,20 @@ describe Tufts::ImportService, :workflow, :clean do
       title = "President Jean Mayer speaking\n          at commencement, 1987"
 
       expect(service.import_object!).to have_attributes(title: [title])
+    end
+
+    it 'adds the file to a collection' do
+      expect(service.import_object!.member_of_collections.map(&:id))
+        .to contain_exactly(*collection_ids)
+    end
+
+    context 'with missing collections' do
+      let(:collections) { [] }
+
+      it 'errors out if the collection is not found' do
+        expect { service.import_object! }
+          .to raise_error ActiveFedora::ObjectNotFoundError
+      end
     end
 
     context 'when the object exists' do

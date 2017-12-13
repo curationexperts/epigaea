@@ -52,7 +52,8 @@ module Tufts
       object     = record.build_object(id: object_id)
       creator    = User.find(file.user_id)
       ability    = ::Ability.new(creator)
-      attributes = { uploaded_files: file_ids }
+      attributes = { uploaded_files: file_ids, member_of_collection_ids: record.collections }
+
       env        = Hyrax::Actors::Environment.new(object, ability, attributes)
 
       Hyrax::CurationConcern.actor.create(env) ||
