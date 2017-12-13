@@ -33,17 +33,17 @@
           <dc:abstract>
             I thought once how Theocritus had sung Of the sweet years, the dear and wished-for years, Who each one in a gracious hand appears To bear a gift for mortals, old or young:</dc:abstract>
           <dc11:creator>Browning, Elizabeth Barrett</dc11:creator>
-          <dc:publisher>Caradoc Press</dc:publisher>
+          <dc11:publisher>Caradoc Press</dc11:publisher>
           <dc:created>09/14/2002</dc:created>
           <dc:available>02/26/2017</dc:available>
           <dc:type>http://purl.org/dc/dcmitype/Text</dc:type>
           <dc:format>application/pdf</dc:format>
           <mads:PersonalName>Browning, Elizabeth</mads:PersonalName>
           <mads:CorporateName>PROJECT GUTENBERG</mads:CorporateName>
-          <dc:subject>Poetry</dc:subject>
-          <dc:subject>Portuguese</dc:subject>
-          <dc:subject>Sonnets</dc:subject>
-          <dc:subject>Project Gutenberg</dc:subject>
+          <dc11:subject>Poetry</dc11:subject>
+          <dc11:subject>Portuguese</dc11:subject>
+          <dc11:subject>Sonnets</dc11:subject>
+          <dc11:subject>Project Gutenberg</dc11:subject>
         </mira_import>
       </metadata>
     </record>
