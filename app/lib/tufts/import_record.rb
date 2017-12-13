@@ -61,7 +61,6 @@ module Tufts
     # @return [String]
     def file
       return '' if files.empty?
-
       files.first
     end
 
@@ -69,11 +68,7 @@ module Tufts
     # @return [Array<String>]
     def files
       return [] if metadata.nil?
-
-      metadata
-        .xpath('./tufts:filename', mapping.namespaces)
-        .children
-        .map(&:content)
+      metadata.xpath('./tufts:filename', mapping.namespaces).children.map(&:content)
     end
 
     ##
@@ -84,6 +79,13 @@ module Tufts
       @title ||=
         metadata.xpath('./dc:title', mapping.namespaces)
                 .children.map(&:content).first || file
+    end
+
+    ##
+    # @return [Array<String>]
+    def collections
+      return [] if metadata.nil?
+      metadata.xpath('./tufts:memberOf', mapping.namespaces).children.map(&:content)
     end
 
     ##

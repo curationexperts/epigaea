@@ -65,6 +65,21 @@ RSpec.describe Tufts::ImportRecord do
     end
   end
 
+  describe '#collections' do
+    it 'is empty by default' do
+      expect(record.collections).to be_empty
+    end
+
+    context 'with metadata' do
+      include_context 'with metadata'
+
+      it 'has a collection' do
+        expect(record.collections).to contain_exactly(an_instance_of(String),
+                                                      an_instance_of(String))
+      end
+    end
+  end
+
   describe '#metadata' do
     it 'is nil by default' do
       expect(record.metadata).to be_nil
