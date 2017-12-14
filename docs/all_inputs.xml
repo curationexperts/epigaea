@@ -60,7 +60,9 @@
           <tufts:displays_in>trove</tufts:displays_in>
           <dc:extent>Extent 1</dc:extent>
           <dc:extent>Extent 2</dc:extent>
-          <tufts:filename>pdf-sample.pdf</tufts:filename>
+          <tufts:filename type="representative">pdf-sample.pdf</tufts:filename>
+          <tufts:filename type="thumbnail">Hydra.tiff</tufts:filename>
+          <tufts:filename type="transcript">Transcript.tei</tufts:filename>
           <tufts:filename>another-file.txt</tufts:filename>
           <marcrelators:fnd>Funder 1</marcrelators:fnd>
           <marcrelators:fnd>Funder 2</marcrelators:fnd>
