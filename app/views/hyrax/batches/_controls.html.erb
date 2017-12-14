@@ -14,6 +14,6 @@
     <%= button_to "Purge Batch", main_app.batches_path, method: :post, params: { batch: { batchable_attributes: { batch_type: "Publish" } } }, class: "btn btn-primary", disabled: true %>
   </li>
   <li>
-    <%= button_to "Revert Batch", main_app.batches_path, method: :post, params: { batch: { batchable_attributes: { batch_type: "Publish" } } }, class: "btn btn-primary", disabled: true %>
+    <%= button_to "Revert Drafts", main_app.batches_path, method: :post, params: { batch: { ids: @batch.object.ids, batchable_attributes: { batch_type: "Revert" } } }, class: "btn btn-primary" %>
   </li>
 </ul>
