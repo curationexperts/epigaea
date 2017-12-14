@@ -152,6 +152,26 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  ##
+  # Use this example group when you want to perform jobs inline during testing.
+  #
+  # Limit to specific job classes with:
+  #
+  #   ActiveJob::Base.queue_adapter.filter = [JobClass]
+  config.before(perform_enqueued: true) do
+    ActiveJob::Base.queue_adapter = :test
+    ActiveJob::Base.queue_adapter.perform_enqueued_jobs    = true
+    ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs = true
+  end
+
+  config.after(perform_enqueued: true) do
+    ActiveJob::Base.queue_adapter.enqueued_jobs  = []
+    ActiveJob::Base.queue_adapter.performed_jobs = []
+
+    ActiveJob::Base.queue_adapter.perform_enqueued_jobs    = false
+    ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs = false
+  end
+
   Shoulda::Matchers.configure do |shoulda_config|
     shoulda_config.integrate do |with|
       # Choose a test framework:

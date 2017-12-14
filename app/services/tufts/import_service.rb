@@ -49,12 +49,10 @@ module Tufts
     #
     # @return [ActiveFedora::Core]
     def import_object!
-      object     = record.build_object(id: object_id)
-      creator    = User.find(file.user_id)
-      ability    = ::Ability.new(creator)
-      attributes = { uploaded_files: file_ids, member_of_collection_ids: record.collections }
-
-      env        = Hyrax::Actors::Environment.new(object, ability, attributes)
+      object  = record.build_object(id: object_id)
+      creator = User.find(file.user_id)
+      ability = ::Ability.new(creator)
+      env     = Hyrax::Actors::Environment.new(object, ability, attributes)
 
       Hyrax::CurationConcern.actor.create(env) ||
         raise(ImportError, "Failed to create object #{object.id}\n The actor stack returned `false`.")
@@ -71,6 +69,17 @@ module Tufts
     class ImportError < RuntimeError; end
 
     private
+
+      ##
+      # @private
+      # @return [HashWithIndifferentAccess]
+      def attributes
+        { uploaded_files:           file_ids,
+          member_of_collection_ids: record.collections,
+          thumbnail:                record.thumbnail,
+          transcript:               record.transcript,
+          representative:           record.representative }.with_indifferent_access
+      end
 
       ##
       # @private
