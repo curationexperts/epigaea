@@ -30,6 +30,7 @@ module Tufts
                 xml.metadata do
                   xml.mira_import(@mapping.namespaces) do
                     xml.parent << tm.to_s
+                    xml['tufts'].visibility { xml.text object.visibility }
                     @mapping.map_sorted do |field|
                       if field.property == :id
                         xml[field.namespace.to_s]
