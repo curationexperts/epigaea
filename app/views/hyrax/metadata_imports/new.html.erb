@@ -12,6 +12,9 @@
     </div>
   <% end %>
 
-  <%= f.file_field :metadata_file, id: 'metadata_file' %>
-  <%= f.submit 'Next' %>
+  <div class='well'>
+    <%= f.file_field :metadata_file, id: 'metadata_file' %>
+  </div>
+
+  <%= f.submit 'Next', { class: 'btn btn-primary' } %>
 <% end %>
