@@ -20,6 +20,7 @@ module Epigaea
     config.to_prepare do
       factory = Hyrax::CurationConcern.actor_factory
       factory.use(Hyrax::Actors::HandleAssuranceActor)
+      factory.swap(Hyrax::Actors::CreateWithFilesActor, Hyrax::Actors::CreateWithFilesAndPassTypesActor)
 
       # Hyrax's instructions don't work
       # https://github.com/samvera/hyrax/blame/a992e37fba805665e1587f40870bde5cd3826b3f/app/services/hyrax/curation_concern.rb#L3-L18

@@ -35,13 +35,6 @@ describe Tufts::ImportService, :workflow, :clean do
       expect(service.import_object!).to have_attributes(id: object_id)
     end
 
-    it 'adds the file' do
-      ActiveJob::Base.queue_adapter = :test
-
-      expect { service.import_object! }
-        .to enqueue_job(AttachFilesToWorkJob).once
-    end
-
     it 'has the title from the imported record' do
       title = "President Jean Mayer speaking\n          at commencement, 1987"
 
@@ -51,6 +44,43 @@ describe Tufts::ImportService, :workflow, :clean do
     it 'adds the file to a collection' do
       expect(service.import_object!.member_of_collections.map(&:id))
         .to contain_exactly(*collection_ids)
+    end
+
+    context 'when attaching uploaded files', :perform_enqueued do
+      before { ActiveJob::Base.queue_adapter.filter = [AttachTypedFilesToWorkJob] }
+
+      it 'adds a representative file' do
+        result = service.import_object!
+        result.reload
+
+        expect(result.representative)
+          .to have_attributes(title: ['pdf-sample.pdf'])
+      end
+
+      context 'with types' do
+        let(:object) { FactoryGirl.build(:pdf, id: object_id) }
+        let(:user)   { FactoryGirl.create(:admin) }
+
+        let(:import) do
+          FactoryGirl.create(:xml_import,
+                             metadata_file: File.open(file_fixture('mira_xml_file_types.xml')),
+                             uploaded_file_ids: files.map(&:id))
+        end
+
+        let(:files) do
+          [FactoryGirl.create(:hyrax_uploaded_file,  user: user),
+           FactoryGirl.create(:second_uploaded_file, user: user)]
+        end
+
+        it 'adds a representative and transcript' do
+          result = service.import_object!
+          result.reload
+
+          expect(result)
+            .to have_attributes(representative: have_attributes(title: ['pdf-sample.pdf']),
+                                transcript:     have_attributes(title: ['2.pdf']))
+        end
+      end
     end
 
     context 'when the object exists' do

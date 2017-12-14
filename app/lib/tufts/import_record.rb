@@ -11,6 +11,8 @@ module Tufts
   #   record      = ImportRecord.new
   #   record.file = 'filename.png'
   #
+  # @todo This class has gotten quite large. A refactor may be beneficial.
+  # rubocop:disable Metrics/ClassLength
   class ImportRecord
     include Tufts::Normalizer
 
@@ -20,6 +22,10 @@ module Tufts
        Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_LEASE,
        Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED,
        Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE].freeze
+
+    THUMBNAIL_VALUE      = 'thumbnail'.freeze
+    TRANSCRIPT_VALUE     = 'transcript'.freeze
+    REPRESENTATIVE_VALUE = 'representative'.freeze
 
     ##
     # @!attribute mapping [rw]
@@ -62,6 +68,24 @@ module Tufts
     def file
       return '' if files.empty?
       files.first
+    end
+
+    ##
+    # @return [String]
+    def thumbnail
+      file_by_type(THUMBNAIL_VALUE)
+    end
+
+    ##
+    # @return [String]
+    def transcript
+      file_by_type(TRANSCRIPT_VALUE)
+    end
+
+    ##
+    # @return [String]
+    def representative
+      file_by_type(REPRESENTATIVE_VALUE)
     end
 
     ##
@@ -145,6 +169,17 @@ module Tufts
 
     private
 
+      def file_by_type(type)
+        return '' if metadata.nil?
+
+        file_node =
+          metadata
+          .xpath("./tufts:filename[@type=\"#{type}\"]", mapping.namespaces)
+          .first
+
+        file_node.try(:content) || ''
+      end
+
       def singular_properties
         @singular_properties =
           GenericObject
@@ -165,4 +200,5 @@ module Tufts
         values
       end
   end
+  # rubocop:enable Metrics/ClassLength
 end
