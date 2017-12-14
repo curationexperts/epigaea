@@ -7,10 +7,16 @@ describe Tufts::ImportService, :workflow, :clean do
   let(:import)         { FactoryGirl.create(:xml_import, uploaded_file_ids: files.map(&:id)) }
   let(:object)         { FactoryGirl.build(:pdf, id: object_id) }
   let(:object_id)      { SecureRandom.uuid }
+  let(:collection1)     { FactoryGirl.create(:collection, id: 'a_collection_id') }
+  let(:collection2)     { FactoryGirl.create(:collection, id: 'another_collection_id') }
   let(:collections)    { collection_ids.map { |id| FactoryGirl.create(:collection, id: id) }.to_a }
   let(:collection_ids) { import.records.first.collections }
 
-  before { collections }
+  before do
+    collection1
+    collection2
+    collections
+  end
 
   it 'has file, import and object_ids attributes' do
     is_expected.to have_attributes(file:      files.first,
@@ -74,15 +80,6 @@ describe Tufts::ImportService, :workflow, :clean do
             .to have_attributes(representative: have_attributes(title: ['pdf-sample.pdf']),
                                 transcript:     have_attributes(title: ['2.pdf']))
         end
-      end
-    end
-
-    context 'with missing collections' do
-      let(:collections) { [] }
-
-      it 'errors out if the collection is not found' do
-        expect { service.import_object! }
-          .to raise_error ActiveFedora::ObjectNotFoundError
       end
     end
 

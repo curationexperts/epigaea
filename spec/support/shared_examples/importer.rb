@@ -2,6 +2,7 @@ shared_examples 'an importer' do
   subject(:importer) { described_class.new(file: file) }
 
   before do
+    allow(Collection).to receive(:find).and_return(true)
     raise "Define `file` with `let(:file) to use the shared examples" unless
       defined?(file)
   end

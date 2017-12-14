@@ -5,6 +5,10 @@ RSpec.describe Tufts::MetadataFileUploader do
   let(:file)         { StringIO.new('moomin') }
   let(:model)        { FactoryGirl.create(:xml_import) }
 
+  before do
+    allow(Collection).to receive(:find).and_return(true)
+  end
+
   it 'is a carrierwave uploader' do
     expect(uploader).to be_a CarrierWave::Uploader::Base
   end
