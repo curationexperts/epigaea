@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Tufts::MetadataImportService, :workflow do
+describe Tufts::MetadataImportService, :workflow, :clean do
   subject(:service) { described_class.new(import: import, object_id: object.id) }
   let(:import)      { FactoryGirl.create(:metadata_import) }
 
