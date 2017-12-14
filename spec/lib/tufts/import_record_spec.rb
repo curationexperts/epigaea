@@ -16,6 +16,18 @@ RSpec.describe Tufts::ImportRecord do
     end
   end
 
+  shared_context 'with file types' do
+    include_context 'with metadata'
+
+    let(:doc) { Nokogiri::XML(File.open(file_fixture('mira_xml_file_types.xml')).read) }
+
+    let(:thumbnail_record) { described_class.new(metadata: thumbnail_node) }
+
+    let(:thumbnail_node) do
+      doc.root.xpath('//xmlns:record/xmlns:metadata/xmlns:mira_import', doc.root.namespaces)[1]
+    end
+  end
+
   describe '#build_object' do
     it 'builds a GenericObject by default' do
       expect(record.build_object).to be_a GenericObject
@@ -138,6 +150,72 @@ RSpec.describe Tufts::ImportRecord do
       it 'uses specified visibility' do
         expect(record.visibility)
           .to eq Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+      end
+    end
+  end
+
+  describe '#transcript' do
+    it 'is empty by default' do
+      expect(record.transcript).to eq ''
+    end
+
+    context 'with no types' do
+      include_context 'with metadata'
+
+      it 'is empty' do
+        expect(record.transcript).to eq ''
+      end
+    end
+
+    context 'with file types' do
+      include_context 'with file types'
+
+      it 'has a transcript' do
+        expect(record.transcript).to eq '2.pdf'
+      end
+    end
+  end
+
+  describe '#thumbnail' do
+    it 'is empty by default' do
+      expect(record.thumbnail).to eq ''
+    end
+
+    context 'with no types' do
+      include_context 'with metadata'
+
+      it 'is empty' do
+        expect(record.thumbnail).to eq ''
+      end
+    end
+
+    context 'with file types' do
+      include_context 'with file types'
+
+      it 'has a thumbnail' do
+        expect(thumbnail_record.thumbnail).to eq 'fake.png'
+      end
+    end
+  end
+
+  describe '#representative' do
+    it 'is empty by default' do
+      expect(record.representative).to eq ''
+    end
+
+    context 'with no types' do
+      include_context 'with metadata'
+
+      it 'is empty' do
+        expect(record.representative).to eq ''
+      end
+    end
+
+    context 'with file types' do
+      include_context 'with file types'
+
+      it 'has a thumbnail' do
+        expect(record.representative).to eq 'pdf-sample.pdf'
       end
     end
   end
