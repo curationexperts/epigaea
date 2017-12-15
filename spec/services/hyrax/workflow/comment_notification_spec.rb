@@ -22,13 +22,13 @@ RSpec.describe Hyrax::Workflow::CommentNotification, :workflow, :clean do
   end
   it "can find depositor" do
     expect(notification.depositor).to be_instance_of(::User)
-    expect(notification.depositor.email).to eq depositor.user_key
+    expect(notification.depositor.user_key).to eq depositor.user_key
   end
   it "can find admins" do
     expect(notification.admins).to be_instance_of(Array)
     expect(notification.admins.pluck(:id)).to contain_exactly(admin.id)
   end
   it "sends notifications to the depositor, application admins and no one else" do
-    expect(notification.recipients["to"].pluck(:email)).to contain_exactly(depositor.user_key, admin.user_key)
+    expect(notification.recipients["to"].pluck(Hydra.config.user_key_field)).to contain_exactly(depositor.user_key, admin.user_key)
   end
 end
