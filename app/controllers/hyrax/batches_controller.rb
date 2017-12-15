@@ -3,7 +3,11 @@ module Hyrax
     before_action :check_permissions
 
     def index
-      @batches = Batch.all.map { |batch| BatchPresenter.for(object: batch) }
+      start = params[:start].to_i
+      length = params[:length].to_i
+
+      @batches = batch_query(start, length)
+      @batches_length = Batch.all.length
     end
 
     def create
@@ -37,6 +41,24 @@ module Hyrax
 
       def check_permissions
         authorize! :create, Batch
+      end
+
+      def batch_query(start, length)
+        Batch.order("#{columns[order]} #{direction}").offset(start).limit(length).map { |batch| BatchPresenter.for(object: batch) }
+      end
+
+      def columns
+        [:id, :batchable_type, :user_id, :created_at, :ids, :status]
+      end
+
+      def order
+        return 0 if params[:order].nil?
+        params[:order].to_unsafe_hash["0"]["column"].to_i
+      end
+
+      def direction
+        return 'asc' if params[:order].nil?
+        params[:order].to_unsafe_hash["0"]["dir"]
       end
   end
 end
