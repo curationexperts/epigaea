@@ -73,4 +73,10 @@ RSpec.describe User do
       expect(admin_user).to be_admin
     end
   end
+
+  describe '#username' do
+    it "has a username" do
+      expect(user.username).not_to be_blank
+    end
+  end
 end
