@@ -3,7 +3,10 @@ require 'factory_girl'
 FactoryGirl.define do
   factory :user do
     sequence :email do |n|
-      "person#{User.count}_#{n}@example.com"
+      "#{n}#{FFaker::Internet.email}"
+    end
+    sequence :username do |n|
+      "#{FFaker::Internet.user_name}#{n}"
     end
     password 'password'
     display_name FFaker::Name.name
