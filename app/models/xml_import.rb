@@ -13,7 +13,7 @@ class XmlImport < ApplicationRecord # rubocop:disable Metrics/ClassLength
   validate :file_is_correctly_formatted
   validate :uploaded_files_exist
 
-  NOID_SERVICE = ActiveFedora::Noid::Service.new.freeze
+  NOID_SERVICE = ActiveFedora::Noid::Service.new
   TYPE_STRING  = 'XML Import'.freeze
 
   ##
@@ -51,23 +51,18 @@ class XmlImport < ApplicationRecord # rubocop:disable Metrics/ClassLength
   ##
   # @return [Hash<String, String> a hash associating object ids with job ids
   def enqueue!
-    files = uploaded_files
-
-    object_ids.each_with_object({}) do |id, hsh|
-      next if item_processed?(id: id)
-
-      file = files.shift
-      next if file.nil?
-
+    uploaded_files.each_with_object({}) do |file, hsh|
       filename = file.file.file.filename
       next unless id_exists_for?(filename: filename)
+
+      id = record_ids[filename]
+      next unless item_processable?(id: id)
 
       record = record_for(file: filename)
       next unless record.file == filename && upload_completed?(record: record)
 
       files_for_import = uploaded_files.select { |f| record.files.include?(f.file.file.filename) }
-
-      hsh[id] = ImportJob.perform_later(self, files_for_import, record_ids[filename]).job_id
+      hsh[id] = ImportJob.perform_later(self, files_for_import, record_ids[record.file]).job_id
     end
   end
 
@@ -158,9 +153,11 @@ class XmlImport < ApplicationRecord # rubocop:disable Metrics/ClassLength
     # @note It's cheaper to check for job_ids first, and we don't want to equeue
     # multiple jobs inline. This order avoids an AF round trip in most cases,
     # in favor of a lookup on `Tufts::JobItemStore` (Redis).
-    def item_processed?(id:)
+    def item_processable?(id:)
+      return false unless object_ids.include?(id)
+
       item = batch.items.find { |i| i.id == id }
-      item.nil? ? false : item.job_id || item.object
+      item.nil? ? true : !(item.job_id || item.object)
     end
 
     ##

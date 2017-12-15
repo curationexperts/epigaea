@@ -5,6 +5,9 @@ RSpec.describe XmlImport, :batch, type: :model do
 
   before do
     allow(Collection).to receive(:find).and_return(true)
+    allow(described_class::NOID_SERVICE)
+      .to receive(:mint)
+      .and_return('123', '124', 'some', 'other', 'id', 'values')
   end
 
   it_behaves_like 'a batchable' do
@@ -13,11 +16,12 @@ RSpec.describe XmlImport, :batch, type: :model do
     end
 
     let(:uploads) do
-      [FactoryGirl.create(:hyrax_uploaded_file),
-       FactoryGirl.create(:hyrax_uploaded_file,
+      # run these in a different order from the xml to confirm looping logic
+      [FactoryGirl.create(:hyrax_uploaded_file,
                           file: File.open('spec/fixtures/files/2.pdf')),
        FactoryGirl.create(:hyrax_uploaded_file,
-                          file: File.open('spec/fixtures/files/3.pdf'))]
+                          file: File.open('spec/fixtures/files/3.pdf')),
+       FactoryGirl.create(:hyrax_uploaded_file)]
     end
   end
 
