@@ -94,6 +94,8 @@
           <tufts:legacy_pid>Legacy PID</tufts:legacy_pid>
           <dc:license>Tufts license 1</dc:license>
           <dc:license>Tufts license 2</dc:license>
+          <tufts:memberOf>The ID of a Collection</tufts:memberOf>
+          <tufts:memberOf>The ID of another Collection</tufts:memberOf>
           <mads:PersonalName>Browning, Elizabeth</mads:PersonalName>
           <mads:PersonalName>Personal Name 2</mads:PersonalName>
           <dc:provenance>Provenance 1</dc:provenance>
