@@ -57,22 +57,7 @@ class User < ApplicationRecord
   end
 
   def ldap_before_save
-    self.email = Devise::LDAP::Adapter.get_ldap_param(username, "mail").first
-    self.display_name = Devise::LDAP::Adapter.get_ldap_param(username, "tuftsEduDisplayNameLF").first
-  end
-end
-
-# Override a Hyrax class that expects to create system users with passwords
-module Hyrax::User
-  module ClassMethods
-    def find_or_create_system_user(user_key)
-      u = ::User.find_or_create_by(username: user_key)
-      u.display_name = user_key
-      u.email = "#{user_key}@example.com"
-      u.password = ('a'..'z').to_a.shuffle(random: Random.new).join
-      u.save
-      u
-    end
+    self.email = Devise::LDAP::Adapter.get_ldap_param(self.username,"mail").first
   end
 end
 
