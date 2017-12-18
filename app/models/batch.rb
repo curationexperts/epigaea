@@ -31,6 +31,9 @@ class Batch < ApplicationRecord
 
     id_map.each { |o, j| add_job_for_object(object_id: o, job_id: j) }
 
+    jobs = ActiveJobStatus::JobBatch.find(batch_id: id)
+    return jobs.add_jobs(job_ids: id_map.values) if jobs
+
     ActiveJobStatus::JobBatch.new(batch_id:   id,
                                   job_ids:    id_map.values,
                                   store_data: true)
@@ -60,7 +63,7 @@ class Batch < ApplicationRecord
     # @param id       [#to_s]
     # @param batch_id [#to_s]
     # @param store [#to_s]
-    def initialize(id, batch_id, store: Tufts::JobItemStore)
+    def initialize(id, batch_id, store: STATUS_STORE)
       @id       = id
       @batch_id = batch_id
       @store    = store
@@ -110,11 +113,11 @@ class Batch < ApplicationRecord
     # @private
     # @note Don't expose clients to `ActiveJobStatus::JobBatch`
     # @return [ActiveJobStatus::JobBatch]
-    def job_batch
+    def job_batch(writable: false)
       ActiveJobStatus::JobBatch.find(batch_id: id) ||
         ActiveJobStatus::JobBatch.new(batch_id:   id,
                                       job_ids:    [],
-                                      store_data: false)
+                                      store_data: writable)
     end
 
     ##

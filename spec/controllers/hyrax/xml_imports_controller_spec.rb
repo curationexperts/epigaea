@@ -8,6 +8,8 @@ RSpec.describe Hyrax::XmlImportsController, type: :controller do
     import.batch.save
   end
 
+  after { ActiveJobStatus.store.clear }
+
   context 'as admin' do
     include_context 'as admin'
 
@@ -102,7 +104,6 @@ RSpec.describe Hyrax::XmlImportsController, type: :controller do
       end
 
       it 'enqueues jobs only for matching files' do
-        skip "This test is giving a different answer on subsequent runs. Needs refactoring."
         expect { patch :update, params: params }
           .to enqueue_job(ImportJob)
           .with(import, uploads[0..1], an_instance_of(String))
@@ -128,22 +129,33 @@ RSpec.describe Hyrax::XmlImportsController, type: :controller do
       let(:uploads) do
         [FactoryGirl.create(:hyrax_uploaded_file),
          FactoryGirl.create(:hyrax_uploaded_file,
-                            file: File.open(file_fixture('3.pdf'))),
-         FactoryGirl.create(:hyrax_uploaded_file,
                             file: File.open(file_fixture('2.pdf')))]
       end
 
       it 'enqueues jobs for the matching file' do
-        skip "This test is giving a different answer on subsequent runs. Needs refactoring."
         expect { patch :update, params: params }
           .to enqueue_job(ImportJob)
-          .exactly(:twice)
+          .exactly(:once)
       end
 
       it 'updates file ids' do
         expect { patch :update, params: params }
           .to change { import.reload.uploaded_file_ids }
           .to contain_exactly(*file_ids)
+      end
+
+      context 'with a new batch' do
+        let(:new_file) do
+          FactoryGirl.create(:hyrax_uploaded_file, file: File.open(file_fixture('3.pdf')))
+        end
+
+        it 'adds new jobs to an existing batch' do
+          patch :update, params: params
+
+          expect { patch :update, params: { id: import.id, uploaded_files: [new_file.id] } }
+            .to change { import.batch.job_ids.count }
+            .to 2
+        end
       end
     end
   end

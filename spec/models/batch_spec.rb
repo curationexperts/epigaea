@@ -35,6 +35,21 @@ RSpec.describe Batch, type: :model, batch: true do
 
         it { is_expected.to have_attributes(job_ids: be_empty) }
       end
+
+      context 'when enqueued again with new jobs' do
+        let(:new_jobs) { { 'obj4' => 'job4', 'obj5' => 'job5' } }
+
+        before do
+          allow(batch.batchable).to receive(:enqueue!).and_return(job_hash, new_jobs)
+          batch.enqueue!
+        end
+
+        it 'adds the new job ids' do
+          expect { batch.enqueue! }
+            .to change { batch.job_ids.to_a }
+            .to contain_exactly(*(job_hash.values + new_jobs.values))
+        end
+      end
     end
   end
 
