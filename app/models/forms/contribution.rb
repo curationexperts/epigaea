@@ -40,9 +40,9 @@ class Contribution
       internal_note: note
     )
     copy_attributes
-<   add_to_collection
+    add_to_collection
     user = ::User.find_by_user_key(@depositor)
->   current_ability = ::Ability.new(user)
+    current_ability = ::Ability.new(user)
     uploaded_file = Hyrax::UploadedFile.create(user: user, file: @attachment)
     attributes = { uploaded_files: [uploaded_file.id] }
     env = Hyrax::Actors::Environment.new(@tufts_pdf, current_ability, attributes)

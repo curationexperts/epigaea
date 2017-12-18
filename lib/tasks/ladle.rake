@@ -8,6 +8,7 @@ task :ladle do
   server = Ladle::Server.new(
     port:  ldap_port,
     quiet: false,
+    custom_schemas: conf_path.join('tufts_schema.ldif').to_s,
     ldif:  conf_path.join('ldap_seed_users.ldif').to_s
   )
 
