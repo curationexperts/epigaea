@@ -57,7 +57,8 @@ class User < ApplicationRecord
   end
 
   def ldap_before_save
-    self.email = Devise::LDAP::Adapter.get_ldap_param(self.username,"mail").first
+    self.email = Devise::LDAP::Adapter.get_ldap_param(username, "mail").first
+    self.display_name = Devise::LDAP::Adapter.get_ldap_param(username, "tuftsEduDisplayNameLF").first
   end
 end
 
