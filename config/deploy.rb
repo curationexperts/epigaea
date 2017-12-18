@@ -26,6 +26,7 @@ set :deploy_to, "/opt/epigaea"
 # Default value for :linked_files is []
 append :linked_files, "config/database.yml"
 append :linked_files, "config/secrets.yml"
+append :linked_files, "config/epigaea_private_key.json"
 
 # Production secrets need to go in a file called .env.production on the server
 # in /opt/epigaea/shared

@@ -46,3 +46,24 @@ would work. If everything is working as expected, you should see:
 ```
 You can also check individual systems by adding their name to the end of the okcomputer url, e.g., `/okcomputer/smtp`.
 See [okcomputer on github](https://github.com/sportngin/okcomputer) for more configuration options.
+
+## Anayltics
+Hyrax has some built-in integration with Google analytics. Instructions for configuration are
+in the [Hyrax Management Guide](https://github.com/samvera/hyrax/wiki/Hyrax-Management-Guide#capturing-usage-and-download-counts). To track usage
+using google analytics:
+1. Follow the abovementioned guide and set up a google analytics account. Take note of the analytics tracking id you
+are assigned and the json key you are prompted to download.
+2. Put the .json key in `/opt/epigaea/shared/config` and call it `epigaea_private_key.json`
+3. Populate the `.env.production` file on the production server with the relevant values from `epigaea_private_key.json`:
+  ```
+  export GOOGLE_ANALYTICS_ID=UA-000000000-1
+  export GOOGLE_OAUTH_APP_NAME=epigaea (make up any value here)
+  export GOOGLE_OAUTH_APP_VERSION=2.0 (make up any value here)
+  export GOOGLE_OAUTH_PRIVATE_KEY_PATH=/opt/epigaea/config/epigaea_private_key.json
+  export GOOGLE_OAUTH_PRIVATE_KEY_SECRET=[key from your .json file]
+  export GOOGLE_OAUTH_CLIENT_EMAIL=epigaea@whatever.gserviceaccount.com (from your .json file)
+  ```
+
+**NOTE** The instructions above will allow you to track usage on the google analytics website.
+Integration into the Hyrax admin dashboard has not yet been completed but is expected
+eventually. See [Hyrax Analytics and Usage Statistics](https://github.com/samvera/hyrax/wiki/Hyrax-Management-Guide#analytics-and-usage-statistics) for more details.
