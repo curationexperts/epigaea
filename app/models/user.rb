@@ -55,6 +55,10 @@ class User < ApplicationRecord
   def preferred_locale
     'en'
   end
+
+  def ldap_before_save
+    self.email = Devise::LDAP::Adapter.get_ldap_param(self.username,"mail").first
+  end
 end
 
 # Override a Hyrax class that expects to create system users with passwords
