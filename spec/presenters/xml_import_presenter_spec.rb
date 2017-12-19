@@ -68,6 +68,7 @@ RSpec.describe XmlImportPresenter, :batch do
           .create(:hyrax_uploaded_file, file: File.open(file_fixture('2.pdf')))
       end
 
+      # 999 This spec is failing
       it 'changes to queued' do
         optional 'Sometimes fails on travis' if ENV['TRAVIS']
         expect { import.batch.enqueue! }
