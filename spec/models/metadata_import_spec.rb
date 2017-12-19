@@ -26,6 +26,7 @@ RSpec.describe MetadataImport, type: :model do
         end
       end
     end
+    # rubocop:enable RSpec/InstanceVariable
 
     before { batchable.parser = parser }
   end

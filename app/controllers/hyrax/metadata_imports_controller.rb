@@ -13,7 +13,7 @@ class Hyrax::MetadataImportsController < ApplicationController
       redirect_to main_app.batches_path(import.batch)
     else
       messages = import.errors.messages[:base].join("\n")
-      flash.alert = " Errors were found in #{@import.metadata_file.filename}:" \
+      flash.alert = " Errors were found in #{import.metadata_file.filename}:" \
                     "\n#{messages}"
       redirect_to main_app.new_metadata_import_path
     end

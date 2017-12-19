@@ -9,6 +9,9 @@ class MetadataImport < ApplicationRecord
   #   @see CarrierWave::Uploader::Base
   mount_uploader :metadata_file, Tufts::MetadataFileUploader
 
+  validates :metadata_file, presence: true
+  validate :file_is_correctly_formatted
+
   ##
   # @!attribute batch [rw]
   #   @return [Batch]
@@ -56,6 +59,16 @@ class MetadataImport < ApplicationRecord
   #
   # @return [Tufts::Importer]
   def parser
-    @parser ||= Tufts::MiraXmlImporter.new(file: metadata_file.file)
+    @parser || Tufts::MiraXmlImporter.new(file: metadata_file.file)
+  end
+
+  def file_is_correctly_formatted
+    return unless metadata_file_changed?
+    number_of_errors_to_display = 5
+    validation_errors = parser.validate!('metadata')
+    validation_errors_count = validation_errors.count
+    validation_errors = validation_errors.first(number_of_errors_to_display)
+    validation_errors.each { |err| errors.add(:base, err.message) }
+    errors.add(:base, "There were #{validation_errors_count} errors total, too many to display") if validation_errors_count > number_of_errors_to_display
   end
 end
