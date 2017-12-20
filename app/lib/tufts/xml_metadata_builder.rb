@@ -25,12 +25,16 @@ module Tufts
                  'xmlns' => 'http://www.openarchives.org/OAI/2.0/') do
           xml.ListRecords do
             @objects.each do |object|
-              tm = Tufts::TechnicalMetadata.new(object)
               xml.record do
                 xml.metadata do
                   xml.mira_import(@mapping.namespaces) do
-                    xml.parent << tm.to_s
+                    xml.parent << Tufts::TechnicalMetadata.new(object).to_s
                     xml['tufts'].visibility { xml.text object.visibility }
+
+                    object.member_of_collection_ids.each do |collection_id|
+                      xml['tufts'].memberOf(collection_id)
+                    end
+
                     @mapping.map_sorted do |field|
                       if field.property == :id
                         xml[field.namespace.to_s]
