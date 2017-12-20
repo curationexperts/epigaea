@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Hyrax::AdminAdminSetMemberSearchBuilder do
   let(:context) do
-    # rubocop:disable Rspec/VerifiedDoubles
+    # rubocop:disable RSpec/VerifiedDoubles
     double(
       blacklight_config: CatalogController.blacklight_config,
       current_ability: ability
     )
-    # rubocop:enable Rspec/VerifiedDoubles
+    # rubocop:enable RSpec/VerifiedDoubles
   end
   let(:user_groups) { [] }
   let(:ability) do

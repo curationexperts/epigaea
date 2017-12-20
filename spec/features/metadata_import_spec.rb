@@ -70,5 +70,35 @@ RSpec.feature 'Import Metadata', :clean, js: true, batch: true do
         expect(page).to have_content 'Only one id field can be specified per metadata import record'
       end
     end
+
+    context 'with collections' do
+      let(:file)             { file_fixture('mira_export_with_collections.xml') }
+      let(:collections)      { [collection_1, collection_2, collection_3] }
+      let(:collection_1)     { create(:collection, id: 'collection_1') }
+      let(:collection_2)     { create(:collection, id: 'collection_2') }
+      let(:collection_3)     { create(:collection, id: 'collection_3') }
+      let(:other_collection) { create(:collection) }
+
+      let(:pdf) do
+        create(:pdf, id: 'test_pdf_with_collections', member_of_collections: [other_collection])
+      end
+
+      before do
+        pdf         # create pdf
+        collections # create collections
+        ActiveJob::Base.queue_adapter.perform_enqueued_jobs = true
+        ActiveJob::Base.queue_adapter.filter = [MetadataImportJob]
+      end
+
+      scenario 'import into collections' do
+        visit '/metadata_imports/new'
+        attach_file 'metadata_file', file
+        click_button 'Next'
+
+        item = ActiveFedora::Base.find(find('.record_id').text)
+
+        expect(item.member_of_collections).to contain_exactly(*collections)
+      end
+    end
   end
 end
