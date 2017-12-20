@@ -142,7 +142,6 @@ module Tufts
           next
         else
           values = values_for(field: field)
-          next unless values
           yield [field.property, values]
         end
       end

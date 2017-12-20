@@ -119,7 +119,7 @@ RSpec.describe Tufts::ImportRecord do
       end
 
       it 'normalized metadata fields' do
-        expect(record.fields.to_a[1]).to eq([:abstract, ["Another long description with \n plenty\n of whitespace"]])
+        expect(record.fields.to_a).to include([:abstract, ["Another long description with \n plenty\n of whitespace"]])
       end
     end
   end

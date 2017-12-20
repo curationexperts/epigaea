@@ -62,6 +62,9 @@ module Tufts
 
     private
 
+      # Note: We don't need to call `file.close` here
+      # because carrierwave's `file.read` method will
+      # close it.
       def doc
         file.rewind if file.respond_to? :rewind
         Nokogiri::XML(file.read)

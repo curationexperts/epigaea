@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OAI-PMH
+  xmlns="http://www.openarchives.org/OAI/2.0/"
+  xmlns:model="info:fedora/fedora-system:def/model#"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:dc11="http://purl.org/dc/elements/1.1/"
+  xmlns:tufts="http://dl.tufts.edu/terms#">
+  <ListRecords>
+    <record>
+      <metadata>
+        <mira_import>
+          <tufts:displays_in>dl</tufts:displays_in>
+          <model:hasModel>Pdf</model:hasModel>
+          <tufts:id>123</tufts:id>
+          <dc11:subject>Poetry</dc11:subject>
+          <dc:title>Sonnets from the Portuguese</dc:title>
+          <tufts:visibility>open</tufts:visibility>
+        </mira_import>
+      </metadata>
+    </record>
+  </ListRecords>
+</OAI-PMH>
