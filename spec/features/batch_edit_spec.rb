@@ -3,10 +3,13 @@ require 'rails_helper'
 
 RSpec.describe 'batch', :batch, :clean, type: :feature, js: true do
   let(:current_user) { create(:admin) }
-  let!(:work_first) { create(:pdf) }
-  let!(:work_second) { create(:pdf) }
+  let(:work_first) { create(:pdf) }
+  let(:work_second) { create(:pdf) }
 
   before do
+    work_first
+    work_second
+
     login_as current_user
     visit '/dashboard/works'
 
