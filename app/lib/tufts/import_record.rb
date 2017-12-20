@@ -119,14 +119,17 @@ module Tufts
         attrs[field.first] = field.last
       end
 
-      return object_class.new(visibility: visibility, **attributes) unless id
+      attributes[:visibility] = visibility
+      attributes[:member_of_collections] = ActiveFedora::Base.find(collections)
+
+      return object_class.new(**attributes) unless id
 
       begin
         object = object_class.find(id)
         object.assign_attributes(attributes)
         object
       rescue ActiveFedora::ObjectNotFoundError
-        object_class.new(id: id, visibility: visibility, **attributes)
+        object_class.new(id: id, **attributes)
       end
     end
 

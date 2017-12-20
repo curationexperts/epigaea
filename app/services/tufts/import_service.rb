@@ -75,7 +75,6 @@ module Tufts
       # @return [HashWithIndifferentAccess]
       def attributes
         { uploaded_files:           file_ids,
-          member_of_collection_ids: record.collections,
           thumbnail:                record.thumbnail,
           transcript:               record.transcript,
           representative:           record.representative }.with_indifferent_access

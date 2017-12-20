@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Tufts::ImportRecord do
-  subject(:record) { described_class.new }
-  let(:id)         { 'IMPORT_RECORD_FAKE_ID' }
-  let(:title)      { "President Jean Mayer speaking\n          at commencement, 1987" }
+  subject(:record)   { described_class.new }
+  let(:id)           { 'IMPORT_RECORD_FAKE_ID' }
+  let(:title)        { "President Jean Mayer speaking\n          at commencement, 1987" }
+  let!(:collections) { record.collections.map { |id| create(:collection, id: id) } }
 
   shared_context 'with metadata' do
     subject(:record) { described_class.new(metadata: node) }
@@ -49,12 +50,17 @@ RSpec.describe Tufts::ImportRecord do
     context 'with metadata' do
       include_context 'with metadata'
 
+      let(:expected_attributes) do
+        { title:                 [title],
+          creator:               ['Unknown'],
+          personal_name:         ['Mayer, Jean'],
+          corporate_name:        ['Office of the President'],
+          visibility:            'open',
+          member_of_collections: collections }
+      end
+
       it 'assigns metadata' do
-        expect(record.build_object)
-          .to have_attributes(title:          [title],
-                              creator:        ['Unknown'],
-                              personal_name:  ['Mayer, Jean'],
-                              corporate_name: ['Office of the President'])
+        expect(record.build_object).to have_attributes(**expected_attributes)
       end
     end
   end
