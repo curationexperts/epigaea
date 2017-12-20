@@ -79,9 +79,10 @@ module Tufts
     #
     # @return [Enumerable<Error>]
     # @see #errors
-    def validate!
+    def validate!(import_type = 'xml')
+      @import_type = import_type
       check_for_well_formed_xml(@file.read)
-      validate_filenames
+      validate_filenames unless @import_type == 'metadata'
       errors
     end
 
@@ -160,29 +161,52 @@ module Tufts
         doc.xpath("//xmlns:record/xmlns:metadata/xmlns:mira_import").each do |record|
           check_for_required_fields(record)
           check_that_collections_exist(record)
+          check_for_one_and_only_one_id(record) if @import_type == 'metadata'
         end
       end
 
+      # Given a record, return the file or id that identifies it
+      def file_or_id(record)
+        return record.xpath('tufts:filename').text unless record.xpath('tufts:filename').text.blank?
+        return record.xpath('tufts:id').text unless record.xpath('tufts:id').text.blank?
+        "Unidentified record"
+      end
+
       # Given a record, check that it has all required fields
+      # @param [Nokogiri::XML::Element] record
       def check_for_required_fields(record)
+        identifier = file_or_id(record)
         required_fields = ["dc:title", "tufts:displays_in", "model:hasModel"]
         required_fields.each do |field|
           if record.xpath(field).text.empty?
-            filename = record.xpath('tufts:filename').text || "Unknown filename"
-            errors << Importer::Error.new(record.line, type: :serious, message: "Missing required field: #{filename} is missing #{field}")
+            errors << Importer::Error.new(record.line, type: :serious, message: "Missing required field: #{identifier} is missing #{field}")
           end
         end
       end
 
+      # For each collection referenced by tufts:memberOf, ensure that
+      # collection exists
+      # @param [Nokogiri::XML::Element] record
       def check_that_collections_exist(record)
         return unless record.xpath("tufts:memberOf") && !record.xpath("tufts:memberOf").text.empty?
+        identifier = file_or_id(record)
         record.xpath("tufts:memberOf").each do |collection_id|
           begin
             Collection.find(collection_id.text)
           rescue ActiveFedora::ObjectNotFoundError
-            filename = record.xpath('tufts:filename').text || "Unknown filename"
-            errors << Importer::Error.new(record.line, type: :serious, message: "Cannot find collection with id #{collection_id.text} for filename #{filename}")
+            errors << Importer::Error.new(record.line, type: :serious, message: "Cannot find collection with id #{collection_id.text} for #{identifier}")
           end
+        end
+      end
+
+      # Each metadata import record must have one and only one id
+      # @param [Nokogiri::XML::Element] record
+      def check_for_one_and_only_one_id(record)
+        ids = record.xpath('tufts:id')
+        if ids.count.zero?
+          errors << Importer::Error.new(record.line, type: :serious, message: "An id field is required for each metadata import record")
+        elsif ids.count > 1
+          errors << Importer::Error.new(record.line, type: :serious, message: "Only one id field can be specified per metadata import record")
         end
       end
 
