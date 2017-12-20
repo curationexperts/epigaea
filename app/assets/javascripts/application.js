@@ -30,5 +30,6 @@
 //= require almond
 //= require tufts/select_work_type
 //= require tufts/qr_status
+//= require tufts/ensure_upload_fade_in
 //= require tufts
 //= require app
