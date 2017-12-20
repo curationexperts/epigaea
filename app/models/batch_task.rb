@@ -11,7 +11,7 @@ class BatchTask < ApplicationRecord
   #   @return [Batch]
   # @!attribute batch_type [rw]
   #   @return [String]
-  has_one :batch, as: :batchable
+  has_one :batch, as: :batchable, inverse_of: :batchable
 
   BATCH_TYPES = {
     publish: PublishJob,
