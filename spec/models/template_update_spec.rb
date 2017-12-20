@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe TemplateUpdate, type: :model do
   subject(:batchable) { FactoryGirl.create(:template_update, batch: create(:batch)) }
-  let(:notification) { instance_double(Hyrax::Workflow::TemplateNotification) }
+  let(:notification) { instance_double(Hyrax::Workflow::BatchTemplateNotification) }
 
   it_behaves_like 'a batchable'
 
@@ -32,7 +32,7 @@ RSpec.describe TemplateUpdate, type: :model do
 
   describe '#enqueue!' do
     it 'sends a notification that the template has been applied' do
-      allow(Hyrax::Workflow::TemplateNotification).to receive(:new).and_return(notification)
+      allow(Hyrax::Workflow::BatchTemplateNotification).to receive(:new).and_return(notification)
       allow(notification).to receive(:call).and_return(nil)
       batchable.enqueue!
       expect(notification).to have_received(:call)

@@ -2,7 +2,7 @@ module Hyrax
   module Workflow
     # Notification of state change to "approved".
     # Should notify users with the approving role for the work's AdminSet, plus super users.
-    class UnpublishedNotification < MiraNotification
+    class UnpublishedNotification < MiraWorkflowNotification
       def workflow_recipients
         { "to" => admins }
       end

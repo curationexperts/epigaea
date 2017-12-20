@@ -3,6 +3,9 @@ inherit_gem:
 
 RSpec/NestedGroups:
   Max: 4
+Metrics/AbcSize:
+  Exclude:
+    - 'app/models/xml_import.rb'
 Metrics/BlockLength:
   Exclude:
     - 'config/**/*'

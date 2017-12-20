@@ -35,8 +35,19 @@ class BatchTask < ApplicationRecord
   def enqueue!
     job = self.class.job_for(batch_type)
 
-    ids.each_with_object({}) do |id, hsh|
+    return_hash = ids.each_with_object({}) do |id, hsh|
       hsh[id] = job.perform_later(id).job_id
+    end
+    send_notification(batch_type)
+    return_hash
+  end
+
+  def send_notification(batch_type)
+    case batch_type
+    when "Publish"
+      Hyrax::Workflow::BatchPublishNotification.new(batch).call
+    when "Unpublish"
+      Hyrax::Workflow::BatchUnpublishNotification.new(batch).call
     end
   end
 

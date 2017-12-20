@@ -31,10 +31,28 @@ module Tufts
     end
 
     ##
+    # batch publish a work (i.e., no per item notifications will be sent)
+    # and kick off a handle registration job if appropriate
+    def self.batch_publish(work:, current_user:, comment:)
+      subject = Hyrax::WorkflowActionInfo.new(work, current_user)
+      sipity_workflow_action = PowerConverter.convert_to_sipity_action("batch_publish", scope: subject.entity.workflow) { nil }
+      Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: comment)
+      Hyrax::Actors::HandleAssuranceActor.ensure_handle(object: work)
+    end
+
+    ##
     # unpublish a work
     def self.unpublish(work:, current_user:, comment:)
       subject = Hyrax::WorkflowActionInfo.new(work, current_user)
       sipity_workflow_action = PowerConverter.convert_to_sipity_action("unpublish", scope: subject.entity.workflow) { nil }
+      Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: comment)
+    end
+
+    ##
+    # unpublish a work
+    def self.batch_unpublish(work:, current_user:, comment:)
+      subject = Hyrax::WorkflowActionInfo.new(work, current_user)
+      sipity_workflow_action = PowerConverter.convert_to_sipity_action("batch_unpublish", scope: subject.entity.workflow) { nil }
       Hyrax::Workflow::WorkflowActionService.run(subject: subject, action: sipity_workflow_action, comment: comment)
     end
 
