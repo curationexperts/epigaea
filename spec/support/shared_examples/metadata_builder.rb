@@ -45,6 +45,18 @@ shared_examples 'a MetadataBuilder' do
         .to include('datatype=')
     end
 
+    context 'with collections' do
+      let(:collections) { create_list(:collection, 3) }
+
+      before { object.member_of_collections = collections }
+
+      it 'adds collections' do
+        expect { builder.add(object) }
+          .to change { builder.build }
+          .to include(*collections.map(&:id))
+      end
+    end
+
     context 'with uris' do
       before do
         object.replaces = objects
