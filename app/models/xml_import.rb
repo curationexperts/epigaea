@@ -19,7 +19,7 @@ class XmlImport < ApplicationRecord # rubocop:disable Metrics/ClassLength
   ##
   # @!attribute batch [rw]
   #   @return [Batch]
-  has_one :batch, as: :batchable
+  has_one :batch, as: :batchable, inverse_of: :batchable
 
   ##
   # @!method record?
