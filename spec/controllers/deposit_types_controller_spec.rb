@@ -184,13 +184,12 @@ describe DepositTypesController do
 
     describe 'update with bad inputs' do
       it 'renders the form' do
-        pending 'not sure why this is failing'
+        expect(dt.display_name).to eq('DT')
+
         # Make it fail to validate:
         allow_any_instance_of(DepositType)
           .to receive(:valid?)
           .and_return(false)
-
-        expect(dt.display_name).to eq('DT')
 
         put :update, params: {
           id:           dt.id,
