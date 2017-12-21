@@ -16,7 +16,7 @@ class TemplateUpdate < ApplicationRecord
   #   @return [Array<String>]
   # @!attribute template_name [rw]
   #   @return [String]
-  has_one :batch, as: :batchable
+  has_one :batch, as: :batchable, inverse_of: :batchable
 
   serialize :ids, Array
 
