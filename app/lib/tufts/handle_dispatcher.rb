@@ -75,7 +75,7 @@ module Tufts
     # @return [AciveFedora::Base] the object
     def assign_for(object:, attribute: :identifier)
       record = registrar.register!(object: object)
-      object.public_send("#{attribute}=".to_sym, [record.handle])
+      object.public_send("#{attribute}=".to_sym, handle_values(record: record))
       object
     end
 
@@ -87,5 +87,15 @@ module Tufts
       assign_for(object: object, attribute: attribute).save!
       object
     end
+
+    private
+
+      ##
+      # @private
+      # @param [#handle] record
+      # @return [Array<String>]
+      def handle_values(record:)
+        ["http://hdl.handle.net/#{record.handle}"]
+      end
   end
 end

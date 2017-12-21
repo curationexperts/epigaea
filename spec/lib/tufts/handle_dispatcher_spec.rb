@@ -4,6 +4,7 @@ describe Tufts::HandleDispatcher do
   subject(:dispatcher) { described_class.new(registrar: fake_registrar.new) }
   let(:object)         { build(:pdf) }
   let(:handle)         { 'hdl/tufts_1' }
+  let(:handle_url)     { "http://hdl.handle.net/#{handle}" }
 
   let(:fake_registrar) do
     Class.new do
@@ -24,12 +25,12 @@ describe Tufts::HandleDispatcher do
 
     it 'assigns to the identifier attribute by default' do
       dispatcher.public_send(method, object: object)
-      expect(object.identifier).to contain_exactly(handle)
+      expect(object.identifier).to contain_exactly(handle_url)
     end
 
     it 'assigns to specified attribute when requested' do
       dispatcher.public_send(method, object: object, attribute: :keyword)
-      expect(object.keyword).to contain_exactly(handle)
+      expect(object.keyword).to contain_exactly(handle_url)
     end
   end
 
