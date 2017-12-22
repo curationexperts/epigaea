@@ -2,7 +2,7 @@
 lock ">=3.9.0"
 
 # Restart options
-set :passenger_restart_wait, 20
+set :passenger_restart_wait, 60
 
 set :application, "epigaea"
 set :repo_url, "https://github.com/curationexperts/epigaea.git"
@@ -40,6 +40,25 @@ append :linked_dirs, "tmp/pids"
 append :linked_dirs, "tmp/cache"
 append :linked_dirs, "tmp/sockets"
 append :linked_dirs, "log"
+
+# Ensure workflows are loaded whenever we deploy. Otherwise, if you
+# forget to load the workflows, many features will not work as expected.
+task :load_workflows do
+  on roles(:app) do
+    within release_path do
+      execute :bundle, 'exec rake hyrax:workflow:load RAILS_ENV=production'
+    end
+  end
+end
+after 'deploy:restart', 'load_workflows'
+
+# Passenger is not consistently restarting, but the problem seems to
+# be fixed by making it restart twice.
+task :reenable_deploy_restart do
+  ::Rake.application['passenger:restart'].reenable
+  ::Rake.application['passenger:restart']
+end
+after 'deploy:restart', 'reenable_deploy_restart'
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
