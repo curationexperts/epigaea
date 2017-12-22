@@ -39,4 +39,8 @@ class SolrDocument
     types = resource_type || []
     Hyrax::ResourceTypesService.microdata_type(types.first)
   end
+
+  def ead
+    self[Solrizer.solr_name('ead')]
+  end
 end

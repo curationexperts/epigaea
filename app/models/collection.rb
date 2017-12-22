@@ -2,6 +2,10 @@
 class Collection < ActiveFedora::Base
   include ::Hyrax::CollectionBehavior
 
+  property :ead, predicate: ::Tufts::Vocab::Tufts.has_description do |index|
+    index.as :stored_searchable
+  end
+
   # Do not define any properties after OrderedFields
   # is included.  See ordered_fields.rb for more info.
   include ::Tufts::Metadata::OrderedFields
