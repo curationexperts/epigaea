@@ -16,7 +16,8 @@ class BatchTask < ApplicationRecord
   BATCH_TYPES = {
     publish: PublishJob,
     unpublish: UnpublishJob,
-    revert: RevertJob
+    revert: RevertJob,
+    purge: PurgeJob
   }.freeze
 
   validates :batch_type,
