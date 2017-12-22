@@ -24,6 +24,7 @@ class ContributeController < ApplicationController
 
     if @contribution.save
       flash[:notice] = "Your deposit has been submitted for approval."
+      Hyrax::Workflow::SelfDepositNotification.new(@contribution.tufts_pdf).call
       redirect_to contributions_path
     else
       render :new

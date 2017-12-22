@@ -10,13 +10,6 @@
                     "name": "deposit",
                     "from_states": [],
                     "transition_to": "unpublished",
-                    "notifications": [
-                        {
-                            "notification_type": "email",
-                            "name": "Hyrax::Workflow::SelfDepositNotification",
-                            "to": ["publishing"]
-                        }
-                    ],
                     "methods": [
                         "Hyrax::Workflow::DeactivateObject"
                     ]
@@ -35,6 +28,13 @@
                         "Hyrax::Workflow::DeactivateObject"
                     ]
                 }, {
+                    "name": "batch_unpublish",
+                    "from_states": [{"names": ["published"], "roles": ["publishing"]}],
+                    "transition_to": "unpublished",
+                    "methods": [
+                        "Hyrax::Workflow::DeactivateObject"
+                    ]
+                }, {
                     "name": "publish",
                     "from_states": [{"names": ["unpublished"], "roles": ["publishing"]}],
                     "transition_to": "published",
@@ -45,6 +45,15 @@
                             "to": ["publishing"]
                         }
                     ],
+                    "methods": [
+                        "Hyrax::Workflow::GrantReadToDepositor",
+                        "Hyrax::Workflow::RevokeEditFromDepositor",
+                        "Hyrax::Workflow::ActivateObject"
+                    ]
+                }, {
+                    "name": "batch_publish",
+                    "from_states": [{"names": ["unpublished"], "roles": ["publishing"]}],
+                    "transition_to": "published",
                     "methods": [
                         "Hyrax::Workflow::GrantReadToDepositor",
                         "Hyrax::Workflow::RevokeEditFromDepositor",

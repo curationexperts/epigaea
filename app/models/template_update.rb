@@ -47,7 +47,7 @@ class TemplateUpdate < ApplicationRecord
     jobs_and_objects = items.each_with_object({}) do |item, hsh|
       hsh[item.values[1]] = TemplateUpdateJob.perform_later(*item.values).job_id
     end
-    Hyrax::Workflow::TemplateNotification.new(template_name: template_name, count: ids.count, batch: batch, user: batch.user).call if batch.try(:ids).try(:count) > 0
+    Hyrax::Workflow::BatchTemplateNotification.new(batch, template_name).call
     jobs_and_objects
   end
 

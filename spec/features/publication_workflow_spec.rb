@@ -27,11 +27,6 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
         ).pluck(:name)
       expect(available_workflow_actions).to be_empty
 
-      # Check notifications for depositing user
-      login_as depositing_user
-      visit("/notifications")
-      expect(page).to have_content "#{work.title.first} (#{work.id}) has been deposited by #{depositing_user.display_name} (#{depositing_user.user_key}) and is awaiting publication."
-
       logout
       login_as publishing_user
 
@@ -43,10 +38,6 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       visit("/dashboard/works")
       expect(page).to have_content work.title.first
 
-      # Check notifications for publishing user
-      visit("/notifications")
-      expect(page).to have_content "#{work.title.first} (#{work.id}) has been deposited by #{depositing_user.display_name} (#{depositing_user.user_key}) and is awaiting publication."
-
       # Check workflow permissions for publishing user
       available_workflow_actions = Hyrax::Workflow::PermissionQuery.scope_permitted_workflow_actions_available_for_current_state(
         user: publishing_user,
@@ -54,6 +45,7 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       ).pluck(:name)
       expect(available_workflow_actions).to contain_exactly(
         "publish",
+        "batch_publish",
         "comment_only"
       )
 
@@ -70,10 +62,6 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       expect(page).not_to have_content work.title.first
       visit("/admin/workflows#published")
       expect(page).to have_content work.title.first
-
-      # Check notifications for publishing user
-      visit("/notifications")
-      expect(page).to have_content "#{work.title.first} (#{work.id}) has been published by #{publishing_user.display_name} (#{publishing_user.user_key}). Published in publication_workflow_spec.rb"
 
       # The admin user comments on the work
       subject = Hyrax::WorkflowActionInfo.new(work, publishing_user)

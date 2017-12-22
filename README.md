@@ -56,14 +56,37 @@ are assigned and the json key you are prompted to download.
 2. Put the .json key in `/opt/epigaea/shared/config` and call it `epigaea_private_key.json`
 3. Populate the `.env.production` file on the production server with the relevant values from `epigaea_private_key.json`:
   ```
-  export GOOGLE_ANALYTICS_ID=UA-000000000-1
-  export GOOGLE_OAUTH_APP_NAME=epigaea (make up any value here)
-  export GOOGLE_OAUTH_APP_VERSION=2.0 (make up any value here)
-  export GOOGLE_OAUTH_PRIVATE_KEY_PATH=/opt/epigaea/config/epigaea_private_key.json
-  export GOOGLE_OAUTH_PRIVATE_KEY_SECRET=[key from your .json file]
-  export GOOGLE_OAUTH_CLIENT_EMAIL=epigaea@whatever.gserviceaccount.com (from your .json file)
+    export GOOGLE_ANALYTICS_ID=UA-000000000-1
+    export GOOGLE_OAUTH_APP_NAME=epigaea (make up any value here)
+    export GOOGLE_OAUTH_APP_VERSION=2.0 (make up any value here)
+    export GOOGLE_OAUTH_PRIVATE_KEY_PATH=/opt/epigaea/config/epigaea_private_key.json
+    export GOOGLE_OAUTH_PRIVATE_KEY_SECRET=[key from your .json file]
+    export GOOGLE_OAUTH_CLIENT_EMAIL=epigaea@whatever.gserviceaccount.com (from your .json file)
   ```
 
 **NOTE** The instructions above will allow you to track usage on the google analytics website.
 Integration into the Hyrax admin dashboard has not yet been completed but is expected
 eventually. See [Hyrax Analytics and Usage Statistics](https://github.com/samvera/hyrax/wiki/Hyrax-Management-Guide#analytics-and-usage-statistics) for more details.
+
+## Notifications
+### Sending notifications by email
+All notifications use `Hyrax::MessengerService`, which in turn uses [Mailboxer](https://github.com/mailboxer/mailboxer). 
+Mailboxer can be configured to send notifications by email. You can configure it to
+use a different SMTP system by defining the appropriate values in a `.env.production` file. 
+Required variables are:
+```bash
+  export ACTION_MAILER_SMTP_DELIVERY_METHOD=smtp
+  export ACTION_MAILER_HOST=localhost
+  export ACTION_MAILER_SMTP_ADDRESS=**YOUR DATA HERE**
+  export ACTION_MAILER_PORT=**YOUR DATA HERE**
+  export ACTION_MAILER_USER_NAME=**YOUR DATA HERE**
+  export ACTION_MAILER_PASSWORD=**YOUR DATA HERE**
+```
+
+### Creating or editing notifications
+Notifications are defined in `app/services/hyrax/workflow`. There are three kinds of notifications.
+1. **MiraWorkflowNotification** -- These are subclasses of the Hyrax workflow notifications. They are triggered by Sipity workflow events, as defined in `config/workflows/mira_publication_workflow.json`. These include comment notifications, and publishing and unpublishing of single works.
+
+2. **MiraNotification** -- These are single-item notifications which are not triggered by a SipityWorkflow event. These are primarily used for notification of single-item deposits, either via the `/contribute` form or the `Create New Work` form on the admin dashboard.
+
+3. **MiraBatchNotification** -- These are batch notifications. They inherit some behavior from the `MiraNotification` class, but operate at a batch level instead of at an individual level. Examples include batch xml import, batch metadata update, batch publish, batch unpublish, and batch template application.

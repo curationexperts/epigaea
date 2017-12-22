@@ -7,6 +7,7 @@ module Tufts
     def create
       normalize_whitespace(params)
       super
+      Hyrax::Workflow::SelfDepositNotification.new(curation_concern).call
     end
 
     def update

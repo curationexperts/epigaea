@@ -51,7 +51,7 @@ class XmlImport < ApplicationRecord # rubocop:disable Metrics/ClassLength
   ##
   # @return [Hash<String, String> a hash associating object ids with job ids
   def enqueue!
-    uploaded_files.each_with_object({}) do |file, hsh|
+    return_hash = uploaded_files.each_with_object({}) do |file, hsh|
       filename = file.file.file.filename
       next unless id_exists_for?(filename: filename)
 
@@ -64,6 +64,8 @@ class XmlImport < ApplicationRecord # rubocop:disable Metrics/ClassLength
       files_for_import = uploaded_files.select { |f| record.files.include?(f.file.file.filename) }
       hsh[id] = ImportJob.perform_later(self, files_for_import, record_ids[record.file]).job_id
     end
+    Hyrax::Workflow::BatchImportNotification.new(batch).call
+    return_hash
   end
 
   ##

@@ -42,10 +42,12 @@ class MetadataImport < ApplicationRecord
   ##
   # @return [Hash<String, String>]
   def enqueue!
-    records.each_with_object({}) do |record, hsh|
+    return_hash = records.each_with_object({}) do |record, hsh|
       id      = record.id
       hsh[id] = MetadataImportJob.perform_later(self, id).job_id
     end
+    Hyrax::Workflow::BatchUpdateNotification.new(batch).call
+    return_hash
   end
 
   ##

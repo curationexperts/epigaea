@@ -1,14 +1,28 @@
 module Hyrax
   module Workflow
-    class MiraNotification < AbstractNotification
-      # regardless of what is passed in, set the recipients according to this notification's requirements
-      def initialize(entity, comment, user, recipients)
-        super
-        @recipients = workflow_recipients.with_indifferent_access
+    # A notification for a single item. Accepts an ActiveFedora::Base object
+    # at initialization.
+    class MiraNotification
+      include ActionView::Helpers::UrlHelper
+
+      attr_reader :depositor
+      attr_reader :work
+      attr_reader :title
+
+      def initialize(work)
+        @work = work
+        @depositor = ::User.find_by_user_key(work.depositor)
+        @title = @work.title.first
       end
 
-      def workflow_recipients
-        raise NotImplementedError, "Implement workflow_recipients in a child class"
+      def recipients
+        admins << @depositor
+      end
+
+      def call
+        recipients.uniq.each do |recipient|
+          Hyrax::MessengerService.deliver(::User.batch_user, recipient, message, subject)
+        end
       end
 
       # The Users who have an admin role
@@ -17,17 +31,11 @@ module Hyrax
         Role.where(name: 'admin').first_or_create.users.to_a
       end
 
-      # The Hyrax::User who desposited the work
-      # @return [Hyrax::User]
-      def depositor
-        ::User.find_by(email: document.depositor)
-      end
-
       ##
-      # A fully qualified url to the document
-      def document_url
-        key = document.model_name.singular_route_key
-        Rails.application.routes.url_helpers.send(key + "_url", document.id)
+      # A fully qualified url to the work
+      def work_url
+        key = @work.model_name.singular_route_key
+        Rails.application.routes.url_helpers.send(key + "_url", @work.id)
       end
     end
   end
