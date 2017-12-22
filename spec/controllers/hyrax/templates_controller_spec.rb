@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Hyrax::TemplatesController, type: :controller do
+RSpec.describe Hyrax::TemplatesController, :clean, type: :controller do
   let(:template) { templates.first }
 
   let(:templates) do

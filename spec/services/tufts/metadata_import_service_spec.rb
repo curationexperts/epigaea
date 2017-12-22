@@ -3,10 +3,20 @@ require 'rails_helper'
 describe Tufts::MetadataImportService, :workflow, :clean do
   subject(:service) { described_class.new(import: import, object_id: object.id) }
   let(:file) { File.open('spec/fixtures/files/mira_export.xml') }
-  let(:import) { FactoryGirl.create(:metadata_import, metadata_file: file) }
+  let(:mira_export_ids) { ['7s75dc36z', 'wm117n96b', 'pk02c9724', 'xs55mc046', 'j67313767'] }
+  let(:import) do
+    FactoryGirl.create(:metadata_import, metadata_file: file)
+  end
 
-  let!(:object) do
-    FactoryGirl.create(:pdf, id: import.ids.first, title: ['Moomin'])
+  let(:object) do
+    Pdf.find(mira_export_ids.first)
+  end
+
+  # All of the files we are updating must exist before the metadata import object can be created
+  before do
+    mira_export_ids.each do |id|
+      FactoryGirl.create(:pdf, id: id)
+    end
   end
 
   after do
@@ -30,7 +40,7 @@ describe Tufts::MetadataImportService, :workflow, :clean do
       let!(:object) do
         FactoryGirl.create(
           :pdf,
-          id: import.ids.first,
+          id: '123',
           title: ['Moomin'],
           abstract: ['existing abstract'],
           subject: ['Poetry', 'existing subject']

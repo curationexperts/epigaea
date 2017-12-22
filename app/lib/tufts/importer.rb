@@ -162,6 +162,7 @@ module Tufts
           check_for_required_fields(record)
           check_that_collections_exist(record)
           check_for_one_and_only_one_id(record) if @import_type == 'metadata'
+          check_for_valid_ids(record) if @import_type == 'metadata'
         end
       end
 
@@ -207,6 +208,18 @@ module Tufts
           errors << Importer::Error.new(record.line, type: :serious, message: "An id field is required for each metadata import record")
         elsif ids.count > 1
           errors << Importer::Error.new(record.line, type: :serious, message: "Only one id field can be specified per metadata import record")
+        end
+      end
+
+      # Each id in a metadata import record must refer to a real object
+      # @param [Nokogiri::XML::Element] record
+      def check_for_valid_ids(record)
+        return if record.xpath('tufts:id').empty?
+        id = record.xpath('tufts:id').first.text
+        begin
+          ActiveFedora::Base.find(id)
+        rescue ActiveFedora::ObjectNotFoundError
+          errors << Importer::Error.new(record.line, type: :serious, message: "#{id} is not a valid object id")
         end
       end
 

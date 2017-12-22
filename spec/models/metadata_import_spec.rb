@@ -1,7 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe MetadataImport, type: :model do
+RSpec.describe MetadataImport, :clean, type: :model do
   subject(:batchable) { FactoryGirl.create(:metadata_import) }
+  let(:mira_export_ids) { ['7s75dc36z', 'wm117n96b', 'pk02c9724', 'xs55mc046', 'j67313767'] }
+
+  before do
+    mira_export_ids.each do |id|
+      FactoryGirl.create(:pdf, id: id)
+    end
+  end
 
   it_behaves_like 'a batchable' do
     let(:parser) { parser_class.new(ids: ids) }
@@ -27,7 +34,6 @@ RSpec.describe MetadataImport, type: :model do
       end
     end
     # rubocop:enable RSpec/InstanceVariable
-
     before { batchable.parser = parser }
   end
 

@@ -13,6 +13,10 @@ Metrics/BlockLength:
     - 'spec/**/*'
     - 'app/models/concerns/tufts/**/*'
     - 'lib/tasks/**/*'
+Metrics/ClassLength:
+  Exclude:
+    - app/lib/tufts/importer.rb
+    - app/controllers/catalog_controller.rb
 Metrics/LineLength:
    Exclude:
     - 'spec/controllers/tufts/draft_controller_spec.rb'
@@ -53,6 +57,9 @@ RSpec/MultipleExpectations:
   - 'spec/jobs/**/*'
   - 'spec/lib/tufts/workflow_setup_spec.rb'
   - 'spec/services/**/*'
+RSpec/ScatteredSetup:
+  Exclude:
+    - 'spec/models/metadata_import_spec.rb'
 Style/FileName:
   Exclude:
     - '**/Capfile'
