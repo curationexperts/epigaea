@@ -75,12 +75,16 @@ protected
 
   def copy_attributes
     (self.class.attributes - self.class.ignore_attributes).each do |attribute|
+      value = send(attribute)
+      next if value.blank?
+      next if value.respond_to?(:all?) && value.all?(&:blank?)
       if @tufts_pdf.class.multiple?(attribute)
-        @tufts_pdf.public_send(attribute, [attribute])
+        @tufts_pdf.public_send("#{attribute}=", Array(value))
       else
-        @tufts_pdf.public_send(attribute, attribute)
+        @tufts_pdf.public_send("#{attribute}=", value)
       end
     end
+
     @tufts_pdf.tufts_license = license_data(@tufts_pdf)
     insert_embargo_date
   end

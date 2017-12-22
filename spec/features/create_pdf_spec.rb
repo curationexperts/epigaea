@@ -45,7 +45,13 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       fill_in 'Date Created', with: 'Date Created'
       fill_in 'Date Issued', with: 'Date Issued'
       fill_in 'Depositor', with: 'Depositor'
-      fill_in 'Description', with: 'Description'
+
+      fill_in 'Description', with: 'Description 1'
+      click_on 'Add another Description'
+      within '.pdf_description li:last-child' do
+        fill_in 'Description', with: 'Description 2'
+      end
+
       fill_in 'Embargo Note', with: 'Embargo Note'
       fill_in 'End Date', with: 'End Date'
       fill_in 'Extent', with: 'Extent'
@@ -113,7 +119,8 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       expect(page).to have_content 'Date Created'
       expect(page).to have_content 'Date Issued'
       expect(page).to have_content 'Depositor'
-      expect(page).to have_content 'Description'
+      # Description should be in the correct order
+      expect(page).to have_content 'Description 1 Description 2'
       expect(page).to have_content 'Embargo Note'
       expect(page).to have_content 'End Date'
       expect(page).to have_content 'Extent'
