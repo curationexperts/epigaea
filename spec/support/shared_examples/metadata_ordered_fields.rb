@@ -51,4 +51,38 @@ shared_examples 'a record with ordered fields' do
       end
     end
   end
+
+  describe 'ordered creators' do
+    let(:lancelot) { 'Sir Lancelot du Lac' }
+    let(:gawain) { 'Sir Gawain' }
+    let(:arthur) { 'King Arthur Pendragon' }
+    let(:expected_order) { [arthur, gawain, lancelot] }
+
+    context 'an unsaved record' do
+      before do
+        expect(work.persisted?).to eq false
+        work.creator = expected_order
+      end
+
+      it 'preserves the creator order' do
+        expect(work.creator).to eq expected_order
+      end
+
+      it 'indexes the ordered creators in solr' do
+        expect(work.to_solr['creator_tesim']).to eq expected_order
+      end
+    end
+
+    context 'saving a record' do
+      before do
+        work.creator = expected_order
+        work.save!
+        work.reload
+      end
+
+      it 'preserves the description order' do
+        expect(work.creator).to eq expected_order
+      end
+    end
+  end
 end

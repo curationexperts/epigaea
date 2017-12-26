@@ -2,9 +2,22 @@ module Tufts
   module Metadata
     module OrderedFields
       extend ActiveSupport::Concern
+
       included do
-        # A property to preserve the order of descriptions.  Don't set the value of this property directly.  It will be kept in sync by the setter method for the 'description' property.
+        # These properties are used to store the order for their corresponding (unordered) properties.
+        # Don't set the value of these properties directly.  The values will be kept in sync by the setter method for the corresponding property.
+        # For example, if you want to set the value for the 'description' property, you just use the setter as you normally would:
+        # work.description = ['Desc 1', 'Desc 2']
+        # and the corresponding 'ordered_descriptions'
+        # property will automatically get set.
+
+        # Stores the order for 'description' property
         property :ordered_descriptions, predicate: ::Tufts::Vocab::Tufts.ordered_descriptions, multiple: false do |index|
+          index.as :symbol
+        end
+
+        # Stores the order for 'creator' property
+        property :ordered_creators, predicate: ::Tufts::Vocab::Tufts.ordered_creators, multiple: false do |index|
           index.as :symbol
         end
 
@@ -29,6 +42,23 @@ module Tufts
             super
           else
             JSON.parse(ordered_descriptions)
+          end
+        end
+
+        # @param [Array] Ordered array of values
+        # Overrides setter method to preserve order in a second property.
+        def creator=(values)
+          self.ordered_creators = values.to_json
+          super
+        end
+
+        # @return [Array<String>]
+        # Overrides getter method to return the creators in the correct order.
+        def creator
+          if ordered_creators.blank?
+            super
+          else
+            JSON.parse(ordered_creators)
           end
         end
       end

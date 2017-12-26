@@ -37,7 +37,13 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       fill_in 'Contributor', with: 'Contributor'
       fill_in 'Corporate Name', with: 'Corporate Name'
       fill_in 'Created By', with: 'Created By'
-      fill_in 'Creator', with: 'Creator'
+
+      fill_in 'Creator', with: 'Creator 1'
+      click_on 'Add another Creator'
+      within '.pdf_creator li:last-child' do
+        fill_in 'Creator', with: 'Creator 2'
+      end
+
       fill_in 'Creator Department', with: 'Creator Department'
       fill_in 'Date Accepted', with: 'Date Accepted'
       fill_in 'Date Available', with: 'Date Available'
@@ -111,7 +117,8 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       expect(page).to have_content 'Contributor'
       expect(page).to have_content 'Corporate Name'
       expect(page).to have_content 'Created By'
-      expect(page).to have_content 'Creator'
+      # Creators should be in the correct order
+      expect(page).to have_content 'Creator 1 Creator 2'
       expect(page).to have_content 'Creator Department'
       expect(page).to have_content 'Date Accepted'
       expect(page).to have_content 'Date Available'
