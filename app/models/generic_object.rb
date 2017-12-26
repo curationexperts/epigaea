@@ -16,7 +16,8 @@ class GenericObject < ActiveFedora::Base
 
   include ::Tufts::Metadata::Descriptive
   include ::Tufts::Metadata::Adminstrative
-  # This must be included at the end, because it finalizes the metadata
-  # schema (by adding accepts_nested_attributes)
-  include ::Hyrax::BasicMetadata
+
+  # Do not define any properties after OrderedFields
+  # is included.  See ordered_fields.rb for more info.
+  include ::Tufts::Metadata::OrderedFields
 end
