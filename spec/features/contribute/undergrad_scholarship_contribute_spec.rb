@@ -37,6 +37,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"
       expect(created_pdf.visibility).to eq Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
       expect(created_pdf.description.first[0...10]).to eq short_description[0...10]
+      expect(created_pdf.member_of_collections.first.identifier.first).to eq("tufts:UA069.001.DO.PB")
       # Check notifications for depositing user
       login_as depositing_user
       visit("/notifications?locale=en")

@@ -15,6 +15,7 @@ puts
 # and load the mira_publication_workflow
 require 'tufts/workflow_setup'
 Tufts::WorkflowSetup.setup
+Tufts::ContributeCollections.create
 
 # DepositType.create!(display_name: 'Initial Seed', deposit_view: 'generic_deposit', license_name: 'N/A')
 importer = DepositTypeImporter.new('./config/deposit_type_seed.csv')

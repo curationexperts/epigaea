@@ -40,6 +40,7 @@ class Contribution
       internal_note: note
     )
     copy_attributes
+    add_to_collection
     user = User.find_by(email: @depositor)
     current_ability = ::Ability.new(user)
     uploaded_file = Hyrax::UploadedFile.create(user: user, file: @attachment)
@@ -47,6 +48,10 @@ class Contribution
     env = Hyrax::Actors::Environment.new(@tufts_pdf, current_ability, attributes)
     Hyrax::CurationConcern.actor.create(env)
     @tufts_pdf
+  end
+
+  def add_to_collection
+    @tufts_pdf.member_of_collections = Array(Tufts::ContributeCollections.collection_for_work_type(self.class))
   end
 
   def initialize(data = {})

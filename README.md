@@ -90,3 +90,8 @@ Notifications are defined in `app/services/hyrax/workflow`. There are three kind
 2. **MiraNotification** -- These are single-item notifications which are not triggered by a SipityWorkflow event. These are primarily used for notification of single-item deposits, either via the `/contribute` form or the `Create New Work` form on the admin dashboard.
 
 3. **MiraBatchNotification** -- These are batch notifications. They inherit some behavior from the `MiraNotification` class, but operate at a batch level instead of at an individual level. Examples include batch xml import, batch metadata update, batch publish, batch unpublish, and batch template application.
+
+### Contribute Collections
+The `/contribute` forms deposit works into specific collections. In order to ensure that the expected collections exist, they are 
+created at application deploy time and (if necessary) at deposit time via the `Tufts::ContributeCollections` class. To change the names or
+identifiers of these Collection objects, edit the `app/lib/tufts/contribute_collections.rb` file. To create the collections explicitly, run `rake tufts:create_contribute_collections`.

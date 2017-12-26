@@ -55,6 +55,8 @@ RSpec.feature 'Create a Faculty Scholarship self contribution', :clean, js: true
       expect(page).to have_content(created_pdf.title.first)
       expect(page).to have_content(abstract)
       expect(page).to have_content(bibliographic_citation)
+      expect(page).to have_content("In Collection")
+      expect(page).to have_content("Tufts Published Scholarship, 1987-2014")
       visit("/concern/pdfs/#{created_pdf.id}/edit")
       expect(find_by_id("pdf_description").value).to eq abstract
       expect(find_by_id("pdf_bibliographic_citation").value).to eq bibliographic_citation
