@@ -1,7 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe MetadataImportJob, type: :job do
+RSpec.describe MetadataImportJob, :clean, type: :job do
   subject(:job) { described_class }
+  let(:mira_export_ids) { ['7s75dc36z', 'wm117n96b', 'pk02c9724', 'xs55mc046', 'j67313767'] }
+
+  before do
+    mira_export_ids.each do |id|
+      FactoryGirl.create(:pdf, id: id)
+    end
+  end
 
   it_behaves_like 'an ActiveJob job'
 

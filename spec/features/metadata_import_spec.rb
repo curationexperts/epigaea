@@ -6,6 +6,7 @@ RSpec.feature 'Import Metadata', :clean, js: true, batch: true do
   let(:object)   { objects.first }
   let(:other)    { objects[1] }
   let(:user) { FactoryGirl.create(:admin) }
+  let(:mira_export_ids) { ['7s75dc36z', 'wm117n96b', 'pk02c9724', 'xs55mc046', 'j67313767'] }
 
   before { ActiveJob::Base.queue_adapter = :test }
 
@@ -13,6 +14,12 @@ RSpec.feature 'Import Metadata', :clean, js: true, batch: true do
     before { login_as user }
 
     context 'happy path' do
+      before do
+        # All of the files we are updating must exist before the metadata import object can be created
+        mira_export_ids.each do |id|
+          FactoryGirl.create(:pdf, id: id)
+        end
+      end
       let(:file) { file_fixture('mira_export.xml') }
       scenario 'import metadata from file' do
         visit '/metadata_imports/new'
@@ -68,6 +75,18 @@ RSpec.feature 'Import Metadata', :clean, js: true, batch: true do
         click_button 'Next'
         expect(page).to have_content 'Error'
         expect(page).to have_content 'Only one id field can be specified per metadata import record'
+      end
+    end
+
+    context 'when file has an invalid id' do
+      let(:file) { file_fixture('mira_export.xml') }
+      scenario 'inform the user that the id is invalid' do
+        allow(ActiveFedora::Base).to receive(:find).and_raise(ActiveFedora::ObjectNotFoundError)
+        visit '/metadata_imports/new'
+        attach_file 'metadata_file', file
+        click_button 'Next'
+        expect(page).to have_content 'Error'
+        expect(page).to have_content '7s75dc36z is not a valid object id'
       end
     end
 
