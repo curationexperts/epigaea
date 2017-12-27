@@ -7,25 +7,51 @@ A [MIRA](https://github.com/TuftsUniversity/MIRA) replacement running on [Hyrax]
 
 ## Development
 
-Get started by cloning the repository and installing the dependencies:
-
-```sh
-git clone https://github.com/curationexperts/epigaea.git
-cd epigaea
-
-cp .env.sample .env.development
-bundle install
-bundle exec rails db:setup
-bundle exec sidekiq -d -l tmp/sidekiq.log
-# open a separate session and run bundle exec rails hydra:server
-```
-Other services and settings required:
+### dependencies
 * MySQL
 * Redis
 * Path to [FITS](https://projects.iq.harvard.edu/fits/downloads) in the [Hyrax initializer](https://github.com/curationexperts/epigaea/blob/master/config/initializers/hyrax.rb)
 * sidekiq as queue adapter in [application.rb](https://github.com/curationexperts/epigaea/blob/master/config/):        `config.active_job.queue_adapter = :sidekiq`
 
-You can run CI with `rake` (or `rake ci`). Or start a server with `rake hydra:server`
+
+### initial setup
+Get started by cloning the repository, installing the dependencies, and ensuring the test suite runs:
+
+```sh
+git clone https://github.com/curationexperts/epigaea.git
+cd epigaea
+bundle install
+bundle exec sidekiq -d -l tmp/sidekiq.log
+
+# start each of the next services in their own terminal session
+bundle exec rake hydra:server 
+bundle exec rake hydra:test_server
+
+#back in your main terminal session
+bundle exec rails db:setup
+bundle exec rake spec
+```
+
+### making an admin user
+First, you'll need to start your development server and create a new user.  
+```sh
+bundle exec rails c
+>  u = User.create(email: 'admin@example.org', display_name: 'Admin, Example', password: 'password')
+> u.add_role('admin')
+> exit
+```
+Now you should be able to login as `admin@example.org` with access to the administator dashboard.
+
+### seeding deposit types
+MIRA supports a number of configurable deposit types. A seed configuration is checked into the repository at 
+`config/deposit_type_seed.csv`.  Load this seed file by running the following rake task:
+```sh
+bundle exec rake import:deposit_types[config/deposit_type_seed.csv]
+# then enter `yes` to complete the import
+```
+If you wish to make changes to the seeds, use the "Manage Self Deposit Types" option from the administrator dashboard. 
+Make any changes you want, export the configuration using the "Export Deposit Type Data" link at the bottom of the 
+"Manage Deposit Types" view, and then check the updated deposit type configuration CSV file into the repository.
 
 ## Re-create derivatives
 If you need to re-create derivatives, use these rake tasks:
@@ -49,8 +75,8 @@ See [okcomputer on github](https://github.com/sportngin/okcomputer) for more con
 
 ## Anayltics
 Hyrax has some built-in integration with Google analytics. Instructions for configuration are
-in the [Hyrax Management Guide](https://github.com/samvera/hyrax/wiki/Hyrax-Management-Guide#capturing-usage-and-download-counts). To track usage
-using google analytics:
+in the [Hyrax Management Guide](https://github.com/samvera/hyrax/wiki/Hyrax-Management-Guide#capturing-usage-and-download-counts). 
+To track usage using google analytics:
 1. Follow the abovementioned guide and set up a google analytics account. Take note of the analytics tracking id you
 are assigned and the json key you are prompted to download.
 2. Put the .json key in `/opt/epigaea/shared/config` and call it `epigaea_private_key.json`
@@ -91,7 +117,8 @@ Notifications are defined in `app/services/hyrax/workflow`. There are three kind
 
 3. **MiraBatchNotification** -- These are batch notifications. They inherit some behavior from the `MiraNotification` class, but operate at a batch level instead of at an individual level. Examples include batch xml import, batch metadata update, batch publish, batch unpublish, and batch template application.
 
-### Contribute Collections
+## Contribute Collections
 The `/contribute` forms deposit works into specific collections. In order to ensure that the expected collections exist, they are 
 created at application deploy time and (if necessary) at deposit time via the `Tufts::ContributeCollections` class. To change the names or
 identifiers of these Collection objects, edit the `app/lib/tufts/contribute_collections.rb` file. To create the collections explicitly, run `rake tufts:create_contribute_collections`.
+
