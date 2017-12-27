@@ -42,7 +42,7 @@ module Tufts
                         next
                       end
 
-                      values = object.resource.get_values(field.property)
+                      values = object.send(field.property)
                       values = field.filter.call(values) if field.filter
 
                       Array(values).each do |value|

@@ -59,6 +59,7 @@ RSpec/MultipleExpectations:
   - 'spec/features/**/*'
   - 'spec/jobs/**/*'
   - 'spec/lib/tufts/contribute_collections_spec.rb'
+  - 'spec/lib/tufts/metadata_exporter_spec.rb'
   - 'spec/lib/tufts/workflow_setup_spec.rb'
   - 'spec/services/**/*'
 Style/FileName:

@@ -15,6 +15,7 @@ module Tufts
     Field = Struct.new(:namespace, :name, :property, :filter)
 
     SKIP_FIELDS = [:head, :tail, :create_date, :modified_date,
+                   :ordered_creators, :ordered_descriptions,
                    :depositor, :proxy_depositor, :on_behalf_of,
                    :state, :arkivo_checksum, :owner].freeze
 

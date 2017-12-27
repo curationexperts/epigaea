@@ -78,4 +78,21 @@ RSpec.describe Tufts::MetadataExporter do
       end
     end
   end
+
+  context 'with ordered fields' do
+    let(:desc_list) { ['desc1', 'desc2', 'desc3'] }
+    let(:creator_list) { ['creator1', 'creator2', 'creator3'] }
+    let(:pdf) { FactoryGirl.create(:pdf, description: desc_list, creator: creator_list) }
+    let(:ids) { [pdf.id] }
+    let(:builder) { Tufts::XmlMetadataBuilder.new }
+    let(:namespaces) { { dc11: 'http://purl.org/dc/elements/1.1/' } }
+
+    before { exporter.export! }
+
+    it 'keeps the values in the correct order' do
+      doc = File.open(exporter.path) { |f| Nokogiri::XML(f) }
+      expect(doc.xpath('//dc11:description', namespaces).map(&:text)).to eq desc_list
+      expect(doc.xpath('//dc11:creator', namespaces).map(&:text)).to eq creator_list
+    end
+  end
 end
