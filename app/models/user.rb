@@ -28,7 +28,7 @@ class User < ApplicationRecord
   # user class to get a user-displayable login/identifier for
   # the account.
   def to_s
-    display_name
+    display_name || user_key
   end
 
   def add_role(name)

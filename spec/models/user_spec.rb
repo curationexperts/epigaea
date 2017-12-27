@@ -10,8 +10,13 @@ RSpec.describe User do
     expect(user.display_name).not_to be_empty
   end
 
-  it '#to_s yeilds the #display_name' do
+  it '#to_s yields the #display_name' do
     expect(user.to_s).to eq user.display_name
+  end
+
+  it "#to_s yields the user_key if display_name is blank" do
+    user.display_name = nil
+    expect(user.to_s).to eq user.user_key
   end
 
   describe '#name' do
