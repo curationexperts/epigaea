@@ -52,6 +52,17 @@ task :load_workflows do
 end
 after 'deploy:restart', 'load_workflows'
 
+# Ensure contribution collections are created whenever we deploy. Otherwise the
+# /contribute deposits won't have the right collections to go into
+task :create_contribute_collections do
+  on roles(:app) do
+    within release_path do
+      execute :bundle, 'exec rake tufts:create_contribute_collections RAILS_ENV=production'
+    end
+  end
+end
+after 'deploy:restart', 'create_contribute_collections'
+
 # Passenger is not consistently restarting, but the problem seems to
 # be fixed by making it restart twice.
 task :reenable_deploy_restart do

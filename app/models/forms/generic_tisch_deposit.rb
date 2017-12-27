@@ -19,6 +19,7 @@ class GenericTischDeposit < Contribution
       internal_note: note
     )
     copy_attributes
+    add_to_collection
     user = User.find_by(email: @depositor)
     current_ability = ::Ability.new(user)
     uploaded_file = Hyrax::UploadedFile.create(user: user, file: @attachment)
