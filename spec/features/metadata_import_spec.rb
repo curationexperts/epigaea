@@ -31,6 +31,28 @@ RSpec.feature 'Import Metadata', :clean, js: true, batch: true do
       end
     end
 
+    context 'date_modified field' do
+      let(:work_id) { 'date_testing_id' }
+      let(:work_title) { ['Original Title'] }
+      let(:work) { FactoryGirl.create(:pdf, id: work_id, title: work_title) }
+      let(:file) { file_fixture('metadata_import_date_testing.xml') }
+      scenario 'is updated after metadata import' do
+        ActiveJob::Base.queue_adapter = :inline
+        expect(work.title).to eq work_title
+        expect(work.date_modified).to be_nil
+        visit '/metadata_imports/new'
+        attach_file 'metadata_file', file
+        click_button 'Next'
+        expect(page).to have_content 'Batch'
+        expect(page).to have_content('Completed')
+        work.reload
+        expect(work.title).to eq ["Post Import Title"]
+        expect(work.date_modified).to be_instance_of(DateTime)
+        visit("/concern/pdfs/#{work_id}")
+        expect(page).to have_content "Modified #{work.date_modified.strftime('%Y-%m-%d')}"
+      end
+    end
+
     context 'when file is malformed' do
       let(:file) { file_fixture('malformed_files/metadata_update/metadata_stray_element.xml') }
       scenario 'inform the user of malformed xml errors' do

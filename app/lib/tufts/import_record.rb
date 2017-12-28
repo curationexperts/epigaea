@@ -136,12 +136,13 @@ module Tufts
     def fields
       return [].to_enum        unless metadata
       return enum_for(:fields) unless block_given?
-
       mapping.map do |field|
         case field.property
         when :title
           yield [:title, Array.wrap(title)]
-        when :id, :has_model, :date_uploaded, :modified_date, :head, :tail
+        when :date_modified
+          yield [:date_modified, Time.current]
+        when :id, :has_model, :date_uploaded, :create_date, :modified_date, :head, :tail
           next
         else
           values = values_for(field: field)

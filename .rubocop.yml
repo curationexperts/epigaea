@@ -29,6 +29,7 @@ Metrics/LineLength:
     - 'spec/controllers/tufts/draft_controller_spec.rb'
 Metrics/MethodLength:
    Exclude:
+    - 'app/lib/tufts/import_record.rb'
     - 'app/models/forms/contribution.rb'
     - 'app/models/forms/generic_tisch_deposit.rb'
     - 'lib/tasks/import_test_file.rake'
