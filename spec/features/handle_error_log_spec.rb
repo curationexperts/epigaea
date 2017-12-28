@@ -27,7 +27,7 @@ RSpec.feature 'Display Handle errors on the log page', js: true do
           handle_registrar.register!(object: Pdf.new)
         rescue; end # rubocop:disable Lint/HandleExceptions
         visit '/handle/log.html'
-        expect(page).to have_content 'not authorized'
+        expect(current_path).to eq "/contribute"
       end
     end
   end
