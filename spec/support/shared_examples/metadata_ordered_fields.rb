@@ -50,6 +50,14 @@ shared_examples 'a record with ordered fields' do
         end
       end
     end
+
+    describe '#description=' do
+      it 'marks both "description" and "ordered_descriptions" fields as dirty so they will both be updated in fedora' do
+        expect(work).to receive(:attribute_will_change!).with(:description)
+        expect(work).to receive(:attribute_will_change!).with(:ordered_descriptions)
+        work.description = expected_order
+      end
+    end
   end
 
   describe 'ordered creators' do
@@ -82,6 +90,14 @@ shared_examples 'a record with ordered fields' do
 
       it 'preserves the description order' do
         expect(work.creator).to eq expected_order
+      end
+    end
+
+    describe '#creator=' do
+      it 'marks both "creator" and "ordered_creators" fields as dirty so they will both be updated in fedora' do
+        expect(work).to receive(:attribute_will_change!).with(:creator)
+        expect(work).to receive(:attribute_will_change!).with(:ordered_creators)
+        work.creator = expected_order
       end
     end
   end
