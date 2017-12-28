@@ -23,14 +23,13 @@ FactoryGirl.define do
 
   factory :populated_pdf, class: Pdf do
     Pdf.properties.each_value do |property|
-      next if [:create_date, :modified_date, :has_model, :head, :tail].include? property.term
-
+      next if [:create_date, :date_modified, :modified_date, :date_uploaded, :has_model, :head, :tail].include? property.term
       if property.term == :title
         send(property.term, [FFaker::Book.title])
       elsif property.try(:multiple?)
-        send(property.term, (1..4).map { FFaker::BaconIpsum.phrase })
+        send(property.term, (1..4).map { FFaker::HipsterIpsum.phrase })
       else
-        send(property.term, FFaker::BaconIpsum.phrase)
+        send(property.term, FFaker::HipsterIpsum.phrase)
       end
     end
   end
