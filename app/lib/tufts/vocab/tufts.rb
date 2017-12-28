@@ -29,6 +29,7 @@ module Tufts
       term :admin_set_member
       term :ordered_creators
       term :ordered_descriptions
+      term :ead
     end
   end
 end
