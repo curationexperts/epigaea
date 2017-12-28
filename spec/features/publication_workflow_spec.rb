@@ -15,10 +15,6 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       # Upon submission, works are in the "unpublished" workflow state
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
 
-      # Upon submission, works are not visible to the public
-      visit("/concern/images/#{work.id}")
-      expect(page).to have_content "The work is not currently available because it has not yet completed the approval process"
-
       # A non-admin user cannot change the workflow state
       available_workflow_actions =
         Hyrax::Workflow::PermissionQuery.scope_permitted_workflow_actions_available_for_current_state(
@@ -79,12 +75,6 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       visit("/notifications")
       expect(page).to have_content "#{work.title.first} (#{work.id}) has been published by #{publishing_user.display_name} (#{publishing_user.user_key}). Published in publication_workflow_spec.rb"
 
-      # After publication, works are visible to the public
-      # Visit the ETD as a public user. It should be visible.
-      logout
-      visit("/concern/images/#{work.id}")
-      expect(page).not_to have_content "The work is not currently available"
-
       # After publication, an admin can unpublish a work.
       Tufts::WorkflowStatus.unpublish(work: work, current_user: publishing_user, comment: "Unpublished in publication_workflow_spec.rb")
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
@@ -93,11 +83,6 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       login_as publishing_user
       visit("/notifications")
       expect(page).to have_content "#{work.title.first} (#{work.id}) has been unpublished by #{publishing_user.display_name} (#{publishing_user.user_key}). Unpublished in publication_workflow_spec.rb"
-      logout
-
-      # After being unpublished, the work will no longer be visible to the public.
-      visit("/concern/images/#{work.id}")
-      expect(page).to have_content "The work is not currently available"
     end
   end
 end

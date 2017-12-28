@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   non_admin_constraint = lambda do |request|
     request.env['warden'].authenticate? && !request.env['warden'].user.admin?
   end
+  authenticated_constraint = lambda do |request|
+    request.env['warden'].authenticate?
+  end
 
   constraints admin_constraint do
     root to: 'hyrax/dashboard#show'
@@ -79,31 +82,34 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'contribute#redirect'
   end
 
-  devise_for :users
+  constraints authenticated_constraint do
+    # Mount Engines
+    mount Blacklight::Engine => '/'
+    mount Hydra::RoleManagement::Engine => '/'
+    mount Qa::Engine => '/authorities'
+    mount Hyrax::Engine, at: '/'
 
-  # Mount Engines
-  mount Blacklight::Engine => '/'
-  mount Hydra::RoleManagement::Engine => '/'
-  mount Qa::Engine => '/authorities'
-  mount Hyrax::Engine, at: '/'
+    # Home page for non-authenticated users
+    resources :welcome, only: 'index'
+    root 'hyrax/homepage#index'
 
-  # Home page for non-authenticated users
-  resources :welcome, only: 'index'
-  root 'hyrax/homepage#index'
+    curation_concerns_basic_routes
 
-  curation_concerns_basic_routes
+    resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
+      concerns :exportable
+    end
 
-  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
-    concerns :exportable
-  end
+    resources :bookmarks do
+      concerns :exportable
 
-  resources :bookmarks do
-    concerns :exportable
-
-    collection do
-      delete 'clear'
+      collection do
+        delete 'clear'
+      end
     end
   end
+
+  # Unauthenticated users should only be able to reach the /contribute controller and the log in page
+  devise_for :users
 
   resources :contribute, as: 'contributions', controller: :contribute, only: [:index, :new, :create, :redirect] do
     collection do
@@ -111,6 +117,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # needs to be last to redirect /bad/paths
-  get '*path' => redirect { |_, req| req.flash[:error] = "You are not authorized to access this page"; 'contribute#redirect' } # rubocop:disable  Style/Semicolon
+  root to: 'contribute#redirect'
+  get '*path' => redirect { 'contribute#redirect' }
 end
