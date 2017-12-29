@@ -1,5 +1,4 @@
 class Tei < Tufts::Curation::Tei
-  include ::Hyrax::WorkBehavior
   include ::Tufts::Draftable
 
   self.indexer = Tufts::Curation::Indexer

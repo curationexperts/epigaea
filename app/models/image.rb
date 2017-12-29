@@ -1,5 +1,4 @@
 class Image < Tufts::Curation::Image
-  include ::Hyrax::WorkBehavior
   include ::Tufts::Draftable
 
   self.indexer = Tufts::Curation::Indexer

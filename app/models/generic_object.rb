@@ -1,5 +1,4 @@
 class GenericObject < Tufts::Curation::GenericObject
-  include ::Hyrax::WorkBehavior
   include ::Tufts::Draftable
 
   self.indexer = Tufts::Curation::Indexer

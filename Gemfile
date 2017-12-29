@@ -42,7 +42,7 @@ gem 'whenever', require: false
 
 gem 'blacklight_advanced_search'
 
-gem 'tufts-curation', github: 'curationexperts/epigaea_models', tag: 'v0.3.0'
+gem 'tufts-curation', github: 'curationexperts/epigaea_models', tag: 'v0.4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
