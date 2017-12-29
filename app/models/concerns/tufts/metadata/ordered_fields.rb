@@ -31,8 +31,8 @@ module Tufts
         # @param [Array] Ordered array of values
         # Overrides setter method to preserve order in a second property.
         def description=(values)
-          self.ordered_descriptions = values.to_json
           super
+          self.ordered_descriptions = values.to_json
         end
 
         # @return [Array<String>]
@@ -48,8 +48,8 @@ module Tufts
         # @param [Array] Ordered array of values
         # Overrides setter method to preserve order in a second property.
         def creator=(values)
-          self.ordered_creators = values.to_json
           super
+          self.ordered_creators = values.to_json
         end
 
         # @return [Array<String>]
