@@ -1,0 +1,8 @@
+proxy_deposit:
+  enabled: false
+transfer_works:
+  enabled: false
+show_deposit_agreement:
+  enabled: false
+active_deposit_agreement_acceptance:
+  enabled: false
