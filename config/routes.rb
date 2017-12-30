@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     request.env['warden'].authenticate?
   end
 
+  # This needs to be firt, but *before* admin and user contrained routes are configured
+  devise_for :users
+
   constraints admin_constraint do
     root to: 'hyrax/dashboard#show'
 
@@ -83,6 +86,7 @@ Rails.application.routes.draw do
   end
 
   constraints authenticated_constraint do
+    resources :users
     # Mount Engines
     mount Blacklight::Engine => '/'
     mount Hydra::RoleManagement::Engine => '/'
@@ -109,8 +113,6 @@ Rails.application.routes.draw do
   end
 
   # Unauthenticated users should only be able to reach the /contribute controller and the log in page
-  devise_for :users
-
   resources :contribute, as: 'contributions', controller: :contribute, only: [:index, :new, :create, :redirect] do
     collection do
       get 'license'
