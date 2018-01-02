@@ -1,5 +1,4 @@
 class Ead < Tufts::Curation::Ead
-  include ::Hyrax::WorkBehavior
   include ::Tufts::Draftable
 
   self.indexer = Tufts::Curation::Indexer
