@@ -11,6 +11,7 @@ RSpec.feature 'submit an Undergraduate Honors Thesis contribution', js: true do
   let(:short_description) { FFaker::Book.description }
 
   before do
+    allow(CharacterizeJob).to receive(:perform_later).and_return(true) # Don't run fits
     login_as user
     importer.import_from_csv
   end
