@@ -45,11 +45,6 @@ RSpec.describe Hyrax::TemplateUpdatesController, type: :controller do
           .to enqueue_job(TemplateUpdateJob)
           .exactly(:twice)
       end
-
-      xit 'redirects to show' do
-        post :create, params: { template_update: update.attributes }
-        expect(response).to redirect_to :show
-      end
     end
   end
 end
