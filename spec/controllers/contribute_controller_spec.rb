@@ -84,7 +84,6 @@ describe ContributeController do
     end
 
     describe 'POST #create' do
-      pending('This working, but the test is not passing')
       let(:params) do
         { contribution: { title:       'Sample',
                           description: 'Description',
@@ -98,31 +97,28 @@ describe ContributeController do
       end
 
       describe 'with valid deposit_type' do
-        pending('This working, but the test is not passing')
         before { Pdf.destroy_all }
         let(:uploaded_file) do
           path = 'hello.pdf'
           fixture_file_upload(path, 'application/pdf')
         end
 
-        it 'succeeds and stores file attachments' do
-          pending('This working, but the test is not passing')
+        it 'succeeds and stores file attachments', :workflow do
           post :create, params: { contribution: { title: 'Sample', description: 'Description goes here',
-                                                  creator: 'Someone', attachment: uploaded_file }, deposit_type: deposit_type }
-          expect(Pdf.all.length).to eq(1)
+                                                  creator: 'Someone', attachment: uploaded_file },
+                                  deposit_type: deposit_type.id }
+          expect(Pdf.count).to eq(1)
         end
 
-        it 'automaticaly populates static fields' do
-          pending('This working, but the test is not passing')
+        it 'automaticaly populates static fields', :workflow do
           post :create, params: { contribution: { title: 'Sample', description: 'User supplied brief description',
-                                                  creator: 'John Doe', attachment: uploaded_file }, deposit_type: deposit_type }
+                                                  creator: 'John Doe', attachment: uploaded_file }, deposit_type: deposit_type.id }
 
-          contribution = Pdf.find(assigns[:contribution].id)
-          expect(contribution.steward).to eq ['dca']
-          expect(contribution.displays).to eq ['dl']
+          contribution = Pdf.find(assigns[:contribution].tufts_pdf.id)
+          expect(contribution.steward).to eq 'dca'
+          expect(contribution.displays_in).to eq ['dl']
           expect(contribution.publisher).to eq ['Tufts University. Digital Collections and Archives.']
-          expect(contribution.rights).to eq ['http://dca.tufts.edu/ua/access/rights-creator.html']
-          expect(contribution.format).to eq ['application/pdf']
+          expect(contribution.tufts_license).to eq [deposit_type.license_name]
         end
 
         it 'lists deposit_method as self deposit', :workflow do
