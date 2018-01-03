@@ -19,3 +19,5 @@ addons:
      - imagemagick
 services:
   - redis-server
+notifications:
+  email: false
