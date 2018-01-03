@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/curationexperts/epigaea_models.git
-  revision: b636553c840199764a62dbc3215707364082196c
-  tag: v0.4.0
+  revision: c4f3dd0686286220dee584b41f5d16376a7908df
+  tag: v1.0.0.rc1
   specs:
     tufts-curation (0.1.0)
       active-fedora (>= 11.5, <= 12.99)
