@@ -71,6 +71,10 @@ RSpec.feature 'Apply a Template', :clean, js: true do
 
       expect(Tufts::Template.for(name: template.name).changeset)
         .not_to be_empty
+
+      # Reload the form: the values I previously entered should be there
+      click_link 'Edit', id: "edit-#{template.name}"
+      expect(find_field('Title').value).to eq 'Moomin Title'
     end
 
     scenario 'edit a template name' do
