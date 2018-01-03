@@ -125,23 +125,23 @@ describe ContributeController do
           expect(contribution.format).to eq ['application/pdf']
         end
 
-        it 'lists deposit_method as self deposit' do
-          pending('This working, but the test is not passing')
+        it 'lists deposit_method as self deposit', :workflow do
           now = Time.zone.now
+          allow(Time.zone).to receive(:now).and_return(now)
 
           post :create, params: {
             contribution: { title:       'Sample',
                             description: 'Description of goes here',
                             creator:     'Mickey Mouse',
                             attachment:  uploaded_file },
-            deposit_type: deposit_type
+            deposit_type: deposit_type.id
           }
 
-          contribution = Pdf.find(assigns[:contribution].id)
+          contribution = Pdf.find(assigns[:contribution].tufts_pdf.id)
 
-          expect(contribution.note.first).to eq "Mickey Mouse self-deposited on #{now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
+          expect(contribution.internal_note).to eq "Mickey Mouse self-deposited on #{now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
           expect(contribution.date_available).to eq [now.to_s]
-          expect(contribution.date_submitted).to eq [now.to_s]
+          expect(contribution.date_uploaded).to eq now
           expect(contribution.createdby).to eq [Contribution::SELFDEP]
         end
 
