@@ -59,8 +59,6 @@ RSpec.describe Hyrax::TemplatesController, :clean, type: :controller do
 
         expect(assigns(:form)).to be_a Hyrax::TemplateForm
       end
-
-      it 'renders existing data'
     end
 
     describe 'GET #new' do
