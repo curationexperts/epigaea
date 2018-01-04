@@ -1,4 +1,9 @@
 Hyrax.config do |config|
+  # AdminSet Predicate
+  # Set this before setting up models to ensure inverse member relations work
+  # correctly
+  config.admin_set_predicate = Tufts::Vocab::Tufts.admin_set_member
+
   # Injected via `rails g hyrax:work Image`
   config.register_curation_concern :image
 
@@ -223,9 +228,6 @@ Hyrax.config do |config|
   rescue Errno::ENOENT
     config.browse_everything = nil
   end
-
-  # AdminSet Predicate
-  config.admin_set_predicate = Tufts::Vocab::Tufts.admin_set_member
 end
 
 Date::DATE_FORMATS[:standard] = "%m/%d/%Y"
