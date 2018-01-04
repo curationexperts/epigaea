@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Hyrax::MetadataImportsController, type: :controller do
+RSpec.describe Hyrax::MetadataImportsController, :clean, type: :controller do
   let(:import) { FactoryGirl.create(:metadata_import) }
   let(:mira_export_ids) { ['7s75dc36z', 'wm117n96b', 'pk02c9724', 'xs55mc046', 'j67313767'] }
   context 'as admin' do

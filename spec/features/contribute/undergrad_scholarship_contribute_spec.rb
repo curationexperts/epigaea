@@ -13,6 +13,7 @@ RSpec.feature 'Create a PDF', :clean, js: true do
     let(:title) { FFaker::Movie.title }
     let(:short_description) { FFaker::Lorem.paragraphs(6).join("\n") }
     before do
+      allow(CharacterizeJob).to receive(:perform_later).and_return(true) # Don't run fits
       admin
       importer = DepositTypeImporter.new('./config/deposit_type_seed.csv')
       importer.import_from_csv

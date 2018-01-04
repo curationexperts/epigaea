@@ -1,81 +1,80 @@
-inherit_gem:
+--- 
+inherit_gem: 
   bixby: bixby_default.yml
-
-AllCops:
-  Exclude:
-    - 'db/**/*'
-    - 'script/**/*'
-    - 'vendor/**/*'
-    - 'tmp/**/*'
-
-RSpec/NestedGroups:
-  Max: 4
-Metrics/AbcSize:
-  Exclude:
-    - 'app/models/xml_import.rb'
-Metrics/BlockLength:
-  Exclude:
-    - 'config/**/*'
-    - 'app/controllers/catalog_controller.rb'
-    - 'spec/**/*'
-    - 'app/models/concerns/tufts/**/*'
-    - 'lib/tasks/**/*'
-Metrics/ClassLength:
-  Exclude:
+AllCops: 
+  Exclude: 
+    - db/**/*
+    - script/**/*
+    - vendor/**/*
+    - tmp/**/*
+Metrics/AbcSize: 
+  Exclude: 
+    - app/models/xml_import.rb
+Metrics/BlockLength: 
+  Exclude: 
+    - config/**/*
+    - app/controllers/catalog_controller.rb
+    - spec/**/*
+    - app/models/concerns/tufts/**/*
+    - lib/tasks/**/*
+Metrics/ClassLength: 
+  Exclude: 
     - app/lib/tufts/importer.rb
     - app/controllers/catalog_controller.rb
-Metrics/LineLength:
-   Exclude:
-    - 'spec/controllers/tufts/draft_controller_spec.rb'
-Metrics/MethodLength:
-   Exclude:
-    - 'app/lib/tufts/import_record.rb'
-    - 'app/models/forms/contribution.rb'
-    - 'app/models/forms/generic_tisch_deposit.rb'
-    - 'lib/tasks/import_test_file.rake'
-    - 'app/lib/tufts/importer.rb'
-Performance/StringReplacement:
-   Exclude:
-    - 'app/controllers/tufts/works_controller.rb'
-Rails/TimeZone:
-  Exclude:
-    - 'config/initializers/git_sha.rb'
-RSpec/ExampleLength:
-   Exclude:
-    - 'spec/features/**/*'
-    - 'spec/controllers/tufts/draft_controller_spec.rb'
-    - 'spec/controllers/tufts/publication_status_controller_spec.rb'
-    - 'spec/controllers/hyrax/audios_controller_spec.rb'
-    - 'spec/lib/import_export/deposit_type_importer_spec.rb'
-    - 'spec/lib/import_export/deposit_type_exporter_spec.rb'
-    - 'spec/lib/deposit_types_controller_spec.rb'
-    - 'spec/lib/tufts/workflow_setup_spec.rb'
-    - 'spec/controllers/contribute_controller_spec.rb'
-    - 'spec/controllers/deposit_types_controller_spec.rb'
-RSpec/AnyInstance:
-  Exclude:
-   - 'spec/controllers/deposit_types_controller_spec.rb'
-   - 'spec/lib/deposit_types_controller_spec.rb'
-RSpec/MultipleExpectations:
-  Exclude:
-  - 'spec/controllers/contribute_controller_spec.rb'
-  - 'spec/controllers/tufts/publication_status_controller_spec.rb'
-  - 'spec/controllers/hyrax/audios_controller_spec.rb'
-  - 'spec/features/**/*'
-  - 'spec/jobs/**/*'
-  - 'spec/lib/tufts/contribute_collections_spec.rb'
-  - 'spec/lib/tufts/metadata_exporter_spec.rb'
-  - 'spec/lib/tufts/workflow_setup_spec.rb'
-  - 'spec/services/**/*'
-  - 'spec/support/shared_examples/metadata_ordered_fields.rb'
-RSpec/ScatteredSetup:
-  Exclude:
-    - 'spec/models/metadata_import_spec.rb'
-RSpec/MessageSpies:
+Metrics/LineLength: 
+  Exclude: 
+    - spec/controllers/tufts/draft_controller_spec.rb
+Metrics/MethodLength: 
+  Exclude: 
+    - app/lib/tufts/import_record.rb
+    - app/models/forms/contribution.rb
+    - app/models/forms/generic_tisch_deposit.rb
+    - lib/tasks/import_test_file.rake
+    - app/lib/tufts/importer.rb
+Performance/StringReplacement: 
+  Exclude: 
+    - app/controllers/tufts/works_controller.rb
+RSpec/AnyInstance: 
+  Exclude: 
+    - spec/controllers/deposit_types_controller_spec.rb
+    - spec/lib/deposit_types_controller_spec.rb
+RSpec/ExampleLength: 
+  Exclude: 
+    - spec/features/**/*
+    - spec/controllers/tufts/draft_controller_spec.rb
+    - spec/controllers/tufts/publication_status_controller_spec.rb
+    - spec/controllers/hyrax/audios_controller_spec.rb
+    - spec/lib/import_export/deposit_type_importer_spec.rb
+    - spec/lib/import_export/deposit_type_exporter_spec.rb
+    - spec/lib/deposit_types_controller_spec.rb
+    - spec/lib/tufts/workflow_setup_spec.rb
+    - spec/controllers/contribute_controller_spec.rb
+    - spec/controllers/deposit_types_controller_spec.rb
+RSpec/MessageSpies: 
   Enabled: false
-Style/FileName:
-  Exclude:
-    - '**/Capfile'
-    - '**/Gemfile'
-    - '**/*.rake'
-    - 'config/deploy/*'
+RSpec/MultipleExpectations: 
+  Exclude: 
+    - spec/controllers/contribute_controller_spec.rb
+    - spec/controllers/tufts/publication_status_controller_spec.rb
+    - spec/controllers/hyrax/audios_controller_spec.rb
+    - spec/features/**/*
+    - spec/jobs/**/*
+    - spec/lib/tufts/contribute_collections_spec.rb
+    - spec/lib/tufts/metadata_exporter_spec.rb
+    - spec/lib/tufts/workflow_setup_spec.rb
+    - spec/services/**/*
+    - spec/support/shared_examples/metadata_ordered_fields.rb
+RSpec/NestedGroups: 
+  Max: 4
+RSpec/ScatteredSetup: 
+  Exclude: 
+    - spec/models/metadata_import_spec.rb
+Rails/TimeZone: 
+  Exclude: 
+    - config/initializers/git_sha.rb
+Style/FileName: 
+  Exclude: 
+    - "**/Capfile"
+    - "**/Gemfile"
+    - "**/*.rake"
+    - config/deploy/*

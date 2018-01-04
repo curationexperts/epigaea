@@ -8,6 +8,7 @@ RSpec.feature 'submit a Fletcher School Capstone Project contribution' do
   let(:importer) { DepositTypeImporter.new(csv_path) }
   let(:pdf_path) { Rails.root.join('spec', 'fixtures', 'hello.pdf') }
   before do
+    allow(CharacterizeJob).to receive(:perform_later).and_return(true) # Don't run fits
     login_as user
     importer.import_from_csv
   end
