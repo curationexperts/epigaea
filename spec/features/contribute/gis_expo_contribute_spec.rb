@@ -15,6 +15,7 @@ RSpec.feature 'Contribute GIS Expo Student Winners', :clean, js: true do
     let(:abstract) { FFaker::Book.description }
     let(:other_author) { FFaker::Name.name }
     before do
+      allow(CharacterizeJob).to receive(:perform_later).and_return(true) # Don't run fits
       importer = DepositTypeImporter.new('./config/deposit_type_seed.csv')
       importer.import_from_csv
       Pdf.delete_all

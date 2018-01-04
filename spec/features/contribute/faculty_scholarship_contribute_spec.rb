@@ -16,6 +16,7 @@ RSpec.feature 'Create a Faculty Scholarship self contribution', :clean, js: true
     let(:coauthor1) { FFaker::Name.name }
     let(:coauthor2) { FFaker::Name.name }
     before do
+      allow(CharacterizeJob).to receive(:perform_later).and_return(true) # Don't run fits
       importer = DepositTypeImporter.new('./config/deposit_type_seed.csv')
       importer.import_from_csv
       Pdf.delete_all
