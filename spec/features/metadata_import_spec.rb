@@ -6,7 +6,7 @@ RSpec.feature 'Import Metadata', :clean, js: true, batch: true do
   let(:object)   { objects.first }
   let(:other)    { objects[1] }
   let(:user) { FactoryGirl.create(:admin) }
-  let(:mira_export_ids) { ['7s75dc36z', 'wm117n96b', 'pk02c9724', 'xs55mc046', 'j67313767'] }
+  let(:mira_export_ids) { ['sx61dm28w', '37720c723', 'cz30ps66x', 'hh63sv88v', 'k0698748f'] }
 
   before { ActiveJob::Base.queue_adapter = :test }
 
@@ -108,7 +108,7 @@ RSpec.feature 'Import Metadata', :clean, js: true, batch: true do
         attach_file 'metadata_file', file
         click_button 'Next'
         expect(page).to have_content 'Error'
-        expect(page).to have_content '7s75dc36z is not a valid object id'
+        expect(page).to have_content 'sx61dm28w is not a valid object id'
       end
     end
 

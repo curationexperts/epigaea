@@ -78,7 +78,7 @@ RSpec.describe Tufts::ImportRecord do
       end
 
       it 'has an id' do
-        expect(record.id).to eq '7s75dc36z'
+        expect(record.id).to eq 'sx61dm28w'
       end
     end
   end

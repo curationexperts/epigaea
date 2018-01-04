@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MetadataImportJob, :clean, type: :job do
   subject(:job) { described_class }
-  let(:mira_export_ids) { ['7s75dc36z', 'wm117n96b', 'pk02c9724', 'xs55mc046', 'j67313767'] }
+  let(:mira_export_ids) { ['sx61dm28w', '37720c723', 'cz30ps66x', 'hh63sv88v', 'k0698748f'] }
 
   before do
     mira_export_ids.each do |id|

@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Tufts::MetadataImportService, :workflow, :clean do
   subject(:service) { described_class.new(import: import, object_id: object.id) }
   let(:file) { File.open('spec/fixtures/files/mira_export.xml') }
-  let(:mira_export_ids) { ['7s75dc36z', 'wm117n96b', 'pk02c9724', 'xs55mc046', 'j67313767'] }
+  let(:mira_export_ids) { ['sx61dm28w', '37720c723', 'cz30ps66x', 'hh63sv88v', 'k0698748f'] }
   let(:import) do
     FactoryGirl.create(:metadata_import, metadata_file: file)
   end
