@@ -27,7 +27,7 @@ RSpec.feature 'redirection' do
     end
   end
 
-  context 'an authenticated user' do
+  context 'an authenticated user (non-admin user)' do
     let(:user) { FactoryGirl.create(:user) }
     before { login_as user }
 
@@ -47,8 +47,8 @@ RSpec.feature 'redirection' do
 
     describe 'getting redirected when you go to an item page' do
       scenario do
-        pending('this may not be needed because of the workflow tests')
         visit "/concern/pdfs/#{pdf.id}"
+        expect(page).to have_current_path(contributions_path)
         expect(page).to have_selector '#deposit_type'
       end
     end

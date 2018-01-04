@@ -4,6 +4,9 @@ module Tufts
     include Hyrax::BreadcrumbsForWorks
     include Tufts::Drafts::Editable
     include Tufts::Normalizer
+
+    before_action :redirect_non_admins
+
     def create
       normalize_whitespace(params)
       super
@@ -17,6 +20,10 @@ module Tufts
     end
 
     private
+
+      def redirect_non_admins
+        redirect_to root_url unless current_user && current_user.admin?
+      end
 
       def delete_draft(params)
         work = ActiveFedora::Base.find(params['id'])
