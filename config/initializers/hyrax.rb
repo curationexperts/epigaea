@@ -1,29 +1,12 @@
 Hyrax.config do |config|
-  # Injected via `rails g hyrax:work Image`
-  config.register_curation_concern :image
+  # AdminSet Predicate
+  # Set this before setting up models to ensure inverse member relations work
+  # correctly
+  config.admin_set_predicate = Tufts::Vocab::Tufts.admin_set_member
 
-  # Injected via `rails g hyrax:work GenericObject`
-  config.register_curation_concern :generic_object
-
-  # Injected via `rails g hyrax:work Pdf`
-  config.register_curation_concern :pdf
-
-  # Injected via `rails g hyrax:work Audio`
-  config.register_curation_concern :audio
-  # Injected via `rails g hyrax:work Tei`
-  config.register_curation_concern :tei
-
-  # Injected via `rails g hyrax:work Rcr`
-  config.register_curation_concern :rcr
-
-  # Injected via `rails g hyrax:work Ead`
-  config.register_curation_concern :ead
-
-  # Injected via `rails g hyrax:work Video`
-  config.register_curation_concern :video
-
-  # Injected via `rails g hyrax:work VotingRecord`
-  config.register_curation_concern :voting_record
+  Tufts::Curation.setup_models!(configuration: config) do |model|
+    model.include(Tufts::Draftable)
+  end
 
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
@@ -223,9 +206,6 @@ Hyrax.config do |config|
   rescue Errno::ENOENT
     config.browse_everything = nil
   end
-
-  # AdminSet Predicate
-  config.admin_set_predicate = Tufts::Vocab::Tufts.admin_set_member
 end
 
 Date::DATE_FORMATS[:standard] = "%m/%d/%Y"
