@@ -1,9 +1,4 @@
 Hyrax.config do |config|
-  # AdminSet Predicate
-  # Set this before setting up models to ensure inverse member relations work
-  # correctly
-  config.admin_set_predicate = Tufts::Vocab::Tufts.admin_set_member
-
   Tufts::Curation.setup_models!(configuration: config) do |model|
     model.include(Tufts::Draftable)
   end
