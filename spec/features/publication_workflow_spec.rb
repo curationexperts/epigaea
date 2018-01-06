@@ -88,12 +88,6 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       visit("/notifications")
       expect(page).to have_content "Comment about #{work.title.first}"
 
-      # Check notifications for depositor again
-      logout
-      login_as depositing_user
-      visit("/notifications")
-      expect(page).to have_content "#{work.title.first} (#{work.id}) has been published by #{publishing_user.display_name} (#{publishing_user.user_key}). Published in publication_workflow_spec.rb"
-
       # After publication, an admin can unpublish a work.
       Tufts::WorkflowStatus.unpublish(work: work, current_user: publishing_user, comment: "Unpublished in publication_workflow_spec.rb")
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"

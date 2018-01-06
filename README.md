@@ -44,22 +44,23 @@ bundle exec hydra:server    #start the development server, fedora, and solr in a
 # visit http://localhost:3000
 ```
 
-The applicaiton is configured to use LDAP for authentication.  The development and test 
+The application is configured to use LDAP for authentication.  The development and test 
 environments use the [ladle](https://github.com/NUBIC/ladle) gem to launch a self-contained LDAP server.
 LDAP users are seeded from the file at `config/ldap_seed_users.ldif`, so you can login
-using either `user@example.org` or `admin@example.org` with the password 'password'.
+using either `user` or `admin` with the password 'password'. Note that the system is configured to expect
+a username, not an email address.
 
 ### making an admin user
 First, you'll need to start your development server and login as one of the LDAP users.  
-We'll assume you logged in as `admin@example.org`
+We'll assume you logged in as `admin`
 ```sh
 bundle exec rails c
-> u = User.find_by(email: 'admin@example.org')
+> u = User.find_by_user_key('admin')
 > u.add_role('admin')
 > exit
 ```
-If you go back and refresh your browser where `admin@example.org` is logged in, you
-should now have access to the administator dashboard.
+If you go back and refresh your browser where `admin` is logged in, you
+should now have access to the administrator dashboard.
 
 ### seeding deposit types
 MIRA supports a number of configurable deposit types. A seed configuration is checked into the repository at 
@@ -141,4 +142,3 @@ Notifications are defined in `app/services/hyrax/workflow`. There are three kind
 The `/contribute` forms deposit works into specific collections. In order to ensure that the expected collections exist, they are 
 created at application deploy time and (if necessary) at deposit time via the `Tufts::ContributeCollections` class. To change the names or
 identifiers of these Collection objects, edit the `app/lib/tufts/contribute_collections.rb` file. To create the collections explicitly, run `rake tufts:create_contribute_collections`.
-
