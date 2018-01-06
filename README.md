@@ -44,7 +44,6 @@ bundle exec hydra:server    #start the development server, fedora, and solr in a
 # visit http://localhost:3000
 ```
 
-<<<<<<< HEAD
 The application is configured to use LDAP for authentication.  The development and test 
 environments use the [ladle](https://github.com/NUBIC/ladle) gem to launch a self-contained LDAP server.
 LDAP users are seeded from the file at `config/ldap_seed_users.ldif`, so you can login
@@ -62,24 +61,6 @@ bundle exec rails c
 ```
 If you go back and refresh your browser where `admin` is logged in, you
 should now have access to the administrator dashboard.
-=======
-The applicaiton is configured to use LDAP for authentication.  The development and test 
-environments use the [ladle](https://github.com/NUBIC/ladle) gem to launch a self-contained LDAP server.
-LDAP users are seeded from the file at `config/ldap_seed_users.ldif`, so you can login
-using either `user@example.org` or `admin@example.org` with the password 'password'.
-
-### making an admin user
-First, you'll need to start your development server and login as one of the LDAP users.  
-We'll assume you logged in as `admin@example.org`
-```sh
-bundle exec rails c
-> u = User.find_by(email: 'admin@example.org')
-> u.add_role('admin')
-> exit
-```
-If you go back and refresh your browser where `admin@example.org` is logged in, you
-should now have access to the administator dashboard.
->>>>>>> e0abbf30716417b193ffafd8c95c51fb30e14878
 
 ### seeding deposit types
 MIRA supports a number of configurable deposit types. A seed configuration is checked into the repository at 
