@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MetadataImport, :clean, type: :model do
   subject(:batchable) { FactoryGirl.create(:metadata_import) }
-  let(:mira_export_ids) { ['7s75dc36z', 'wm117n96b', 'pk02c9724', 'xs55mc046', 'j67313767'] }
+  let(:mira_export_ids) { ['sx61dm28w', '37720c723', 'cz30ps66x', 'hh63sv88v', 'k0698748f'] }
 
   before do
     mira_export_ids.each do |id|
@@ -52,8 +52,7 @@ RSpec.describe MetadataImport, :clean, type: :model do
   describe '#ids' do
     it 'has ids parsed from the file' do
       expect(batchable.ids)
-        .to contain_exactly('7s75dc36z', 'wm117n96b', 'pk02c9724',
-                            'xs55mc046', 'j67313767')
+        .to contain_exactly("37720c723", "cz30ps66x", "hh63sv88v", "k0698748f", "sx61dm28w")
     end
   end
 
