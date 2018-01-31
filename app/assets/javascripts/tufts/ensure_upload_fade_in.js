@@ -1,7 +1,5 @@
-$('#fileupload').bind('fileuploadstop', function (e, data) {
-  $('.template-download').addClass('in');
-  $('.template-upload').addClass('in')
-})
-
-$('.template-download').addClass('in')
-$('.template-upload').addClass('in')
+Blacklight.onLoad(function() {
+  $('#fileupload').bind('fileuploadadd', function (e, data) {
+    $('.template-upload').addClass('in');
+  });
+});
