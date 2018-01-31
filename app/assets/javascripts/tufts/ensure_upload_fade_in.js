@@ -1,3 +1,5 @@
-$('#fileupload').bind('fileuploadstop', function (e, data) {
-  $('.template-download').addClass('in')
-})
+Blacklight.onLoad(function() {
+  $('#fileupload').bind('fileuploadadd', function (e, data) {
+    $('.template-upload').addClass('in');
+  });
+});
