@@ -11,6 +11,7 @@ module Hyrax
       params['batch']['ids'] ||= params[:batch_document_ids]
 
       batch           = Batch.new(params.require(:batch).permit(ids: []))
+      batch.creator   = current_user if current_user
       batch.batchable = BatchTask.new(batchable_params)
       batch.save
 

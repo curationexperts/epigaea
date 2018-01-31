@@ -34,6 +34,11 @@ RSpec.describe Hyrax::BatchesController, type: :controller do
         expect { post :create, params: params }.to change { Batch.count }.by(1)
       end
 
+      it 'assigns the current user to the batch' do
+        post :create, params: params
+        expect(Batch.last.user).to be_a User
+      end
+
       it 'enqueues jobs' do
         ActiveJob::Base.queue_adapter = :test
 
