@@ -26,7 +26,11 @@ class SolrDocument
 
   Tufts::Terms.shared_terms.each do |term|
     define_method(term) do
-      self[Solrizer.solr_name(term.to_s)]
+      if [:date_uploaded, :date_modified].include?(term)
+        self[term.to_s + '_dtsi']
+      else
+        self[Solrizer.solr_name(term.to_s)]
+      end
     end
   end
 
