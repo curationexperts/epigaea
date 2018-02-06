@@ -48,6 +48,7 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       # Check it appears as waiting for review in the admin dashboard
       visit("/admin/workflows#under-review")
       expect(page).to have_content work.title.first
+      expect(page).to have_content work.date_modified.strftime('%Y-%m-%d')
 
       # The admin user approves the work, changing its status to "published"
       Tufts::WorkflowStatus.publish(work: work, current_user: publishing_user, comment: "Published in publication_workflow_spec.rb")
