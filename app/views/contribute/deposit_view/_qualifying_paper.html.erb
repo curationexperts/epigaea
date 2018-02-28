@@ -4,6 +4,12 @@
 
 <%= f.text_field :creator, label: 'Creator', value: @contribution.creator, required: true, readonly: 'readonly'  %>
 
+<% if params['contribution'] && params['contribution']['contributor'] %>
+  <%= react_component('ContributeOtherAuthors', {contributor: params['contribution']['contributor']}, {camelize_props: true}) %>
+<% else %>
+  <%= react_component('ContributeOtherAuthors', {contributor: []}, {camelize_props: true}) %>
+<% end %>
+
 <%= f.select :embargo_note, standard_embargos,  label: 'Embargo', help: 'An embargo will restrict all access to your work until the selected time has passed'  %>
 
 <%= f.text_area :description, label: 'Short Description', rows: 5, class: 'col-sm-8', required: true  %>
