@@ -152,6 +152,14 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('batch') do |field|
+      solr_name = solr_name('batch', :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
     config.add_search_field('title') do |field|
       solr_name = solr_name("title", :stored_searchable)
       field.solr_local_parameters = {

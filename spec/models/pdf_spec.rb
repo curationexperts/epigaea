@@ -13,4 +13,12 @@ RSpec.describe Pdf do
   end
 
   it { expect(described_class.human_readable_type).to eq 'PDF' }
+
+  context 'when it is in a batch' do
+    let!(:batch) { FactoryGirl.create(:batch, ids: [work.id]) }
+
+    it 'indexes the batches' do
+      expect(work.to_solr['batch_tesim']).to contain_exactly(batch.id)
+    end
+  end
 end
