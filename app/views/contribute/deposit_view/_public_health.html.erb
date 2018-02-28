@@ -4,6 +4,12 @@
 
 <%= f.text_field :creator, label: 'Creator', value: @contribution.creator, required: true, readonly: 'readonly'  %>
 
+<% if params['contribution'] && params['contribution']['contributor'] %>
+  <%= react_component('ContributeOtherAuthors', {contributor: params['contribution']['contributor']}, {camelize_props: true}) %>
+<% else %>
+  <%= react_component('ContributeOtherAuthors', {contributor: []}, {camelize_props: true}) %>
+<% end %>
+
 <%= f.select :degree, options_for_select(public_health_degrees), {prompt: 'Please select a degree', label: 'Degree'}, {required: true} %>
 
 <%= f.select :embargo_note, standard_embargos,  label: 'Embargo', help: 'An embargo will restrict all access to your work until the selected time has passed'  %>

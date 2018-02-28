@@ -7,6 +7,12 @@
 
 <%= f.text_field :creator, label: 'Creator', value: @contribution.creator, required: true, readonly: 'readonly'  %>
 
+<% if params['contribution'] && params['contribution']['contributor'] %>
+  <%= react_component('ContributeOtherAuthors', {contributor: params['contribution']['contributor']}, {camelize_props: true}) %>
+<% else %>
+  <%= react_component('ContributeOtherAuthors', {contributor: []}, {camelize_props: true}) %>
+<% end %>
+
 <div class="checkbox_container">
 <%= f.collection_check_boxes :degrees, GisHelper.degrees, :last, :last, help: 'Degree which you were persuing while working on this poster.' %>
 </div>
