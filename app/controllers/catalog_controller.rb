@@ -120,7 +120,7 @@ class CatalogController < ApplicationController
         retention_period_tesim rights_statement_tesim rights_holder_tesim
         rights_note_tesim source_tesim spatial_tesim admin_start_date_tesim
         steward_tesim subject_tesim table_of_contents_tesim temporal_tesim
-        legacy_pid_tesim resource_type_tesim tufts_is_part_of_tesim" ),
+        legacy_pid_tesim resource_type_tesim tufts_is_part_of_tesim batch_tesim" ),
         pf: title_name.to_s
       }
     end
