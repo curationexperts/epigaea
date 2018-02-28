@@ -1,6 +1,7 @@
 Hyrax.config do |config|
   Tufts::Curation.setup_models!(configuration: config) do |model|
     model.include(Tufts::Draftable)
+    model.indexer = MiraIndexer
   end
 
   # Register roles that are expected by your implementation.
