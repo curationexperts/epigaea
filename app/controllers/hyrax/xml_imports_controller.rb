@@ -103,6 +103,8 @@ module Hyrax
       # @private
       # @return [String]
       def added_notice(added, filenames)
+        return "Added #{added.count} files." if added.count > 10
+
         "Added files: #{added.map { |id| filenames[id] }.join(', ')}"
       end
 
@@ -110,6 +112,8 @@ module Hyrax
       # @private
       # @return [String]
       def unmatched_notice(unmatched, filenames)
+        return "#{unmatched.count} files did not match." if unmatched.count > 10
+
         'Files did not match: ' \
         "#{unmatched.map { |id| filenames[id] }.join(', ')};\n"
       end
