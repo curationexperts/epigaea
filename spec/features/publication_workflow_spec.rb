@@ -74,8 +74,9 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       # The admin user approves the batch work, changing its status to "published"
       Tufts::WorkflowStatus.publish(work: batch_work, current_user: publishing_user, comment: "Published in publication_workflow_spec.rb")
 
+      # Does not list non-selfdeposit items as published
       visit("/admin/workflows#published")
-      expect(page).to have_content batch_work.title.first
+      expect(page).not_to have_content batch_work.title.first
 
       # The admin user comments on the work
       subject = Hyrax::WorkflowActionInfo.new(work, publishing_user)
