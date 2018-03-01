@@ -5,7 +5,14 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
   let(:depositing_user)  { FactoryGirl.create(:user) }
   let!(:publishing_user) { FactoryGirl.create(:admin) }
 
-  let(:work) { FactoryGirl.actor_create(:image, user: depositing_user, displays_in: ['dl']) }
+  let(:work) do
+    FactoryGirl
+      .actor_create(:image, user: depositing_user, displays_in: ['dl'], createdby: [Contribution::SELFDEP])
+  end
+
+  let(:batch_work) do
+    FactoryGirl.actor_create(:image, title: ['A Batch Work'], user: depositing_user, displays_in: ['dl'])
+  end
 
   context 'a logged in user' do
     scenario "non-admin user deposits, admin publishes", js: true do
@@ -14,6 +21,7 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
 
       # Upon submission, works are in the "unpublished" workflow state
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
+      expect(batch_work.to_sipity_entity.reload.workflow_state_name).to eq "unpublished"
 
       # A non-admin user cannot change the workflow state
       available_workflow_actions =
@@ -50,6 +58,9 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       expect(page).to have_content work.title.first
       expect(page).to have_content work.date_modified.strftime('%Y-%m-%d')
 
+      # Check that non-selfdeposit items are excluded review
+      expect(page).not_to have_content batch_work.title.first
+
       # The admin user approves the work, changing its status to "published"
       Tufts::WorkflowStatus.publish(work: work, current_user: publishing_user, comment: "Published in publication_workflow_spec.rb")
       expect(work.to_sipity_entity.reload.workflow_state_name).to eq "published"
@@ -59,6 +70,12 @@ RSpec.feature 'deposit and publication', :clean, :workflow do
       expect(page).not_to have_content work.title.first
       visit("/admin/workflows#published")
       expect(page).to have_content work.title.first
+
+      # The admin user approves the batch work, changing its status to "published"
+      Tufts::WorkflowStatus.publish(work: batch_work, current_user: publishing_user, comment: "Published in publication_workflow_spec.rb")
+
+      visit("/admin/workflows#published")
+      expect(page).to have_content batch_work.title.first
 
       # The admin user comments on the work
       subject = Hyrax::WorkflowActionInfo.new(work, publishing_user)
