@@ -11,9 +11,9 @@ class Contribution
 
   class_attribute :ignore_attributes, :attributes
 
-  self.ignore_attributes = [:attachment]
+  self.ignore_attributes = [:attachment, :embargo]
 
-  self.attributes = [:title, :description, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :tufts_license, :embargo_note]
+  self.attributes = [:title, :description, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :tufts_license, :embargo]
 
   SELFDEP = 'selfdep'.freeze
 
@@ -106,7 +106,7 @@ protected
 
   def insert_embargo_date
     return unless @tufts_pdf
-    @tufts_pdf.embargo_note = (Time.zone.now + embargo_note.to_i.months).iso8601 unless (embargo_note || '0').eql? '0'
+    @tufts_pdf.embargo_note = (Time.zone.now + embargo.to_i.months).iso8601 unless (embargo || '0').eql? '0'
   end
 
   def attachment_has_valid_content_type
