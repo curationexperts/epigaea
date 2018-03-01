@@ -73,6 +73,7 @@ gem 'handle-system', '0.1.1'
 gem 'mysql2'
 gem 'react-rails'
 gem 'redis-activesupport', '~> 5.0.4'
+gem 'redis-rails' # Will install several other redis-* gems
 gem 'rsolr', '>= 1.0'
 gem 'sanitize'
 gem 'sidekiq'
