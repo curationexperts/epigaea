@@ -2,7 +2,7 @@ class GisPoster < GenericTischDeposit
   self.attributes = [:title, :degrees, :schools, :departments, :courses, :methodological_keywords, :geonames,
                      :term, :year, :topics, :geonames_placeholder,
                      :degree,
-                     :description, :creator, :contributor, :embargo_note,
+                     :description, :creator, :contributor,
                      :bibliographic_citation, :subject, :corpname, :attachment, :license]
   # def copy_attributes
   #  super
