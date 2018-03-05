@@ -538,7 +538,7 @@ GEM
     net-ssh (4.1.0)
     nio4r (2.1.0)
     noid (0.9.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     nokogumbo (1.4.13)
       nokogiri
@@ -579,8 +579,8 @@ GEM
       nokogiri (~> 1.6)
       rails (~> 5.0)
       rdf
-    rack (2.0.3)
-    rack-protection (2.0.0)
+    rack (2.0.4)
+    rack-protection (2.0.1)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -896,10 +896,11 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   mysql2
-  nokogiri (>= 1.8.1)
+  nokogiri (>= 1.8.2)
   okcomputer
   poltergeist
   puma (~> 3.0)
+  rack-protection (~> 2.0.1)
   rails (~> 5.0.4)
   rails-controller-testing
   react-rails
