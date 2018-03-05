@@ -11,8 +11,9 @@ gem 'dotenv-rails'
 gem 'honeybadger', '~> 3.1'
 gem 'hydra-role-management'
 gem 'hyrax', '2.0.0'
-gem 'nokogiri', '>=1.8.1' # 1.8.1 fixes security issue https://github.com/sparklemotion/nokogiri/issues/1673
+gem 'nokogiri', '>=1.8.2' # 1.8.2 fixes security issue https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-15412
 gem 'okcomputer'
+gem 'rack-protection', '~> 2.0.1' # 2.0.1 fixes security issue https://github.com/sinatra/sinatra/pull/1379
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.4'
 # Use sqlite3 as the database for Active Record
