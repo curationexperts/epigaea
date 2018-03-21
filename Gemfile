@@ -76,7 +76,7 @@ gem 'react-rails'
 gem 'redis-activesupport', '~> 5.0.4'
 gem 'redis-rails' # Will install several other redis-* gems
 gem 'rsolr', '>= 1.0'
-gem 'sanitize'
+gem 'sanitize', '~> 4.6', '>= 4.6.3'
 gem 'sidekiq'
 
 group :development, :test do
