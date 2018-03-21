@@ -104,7 +104,7 @@ describe ContributeController do
         end
 
         it 'succeeds and stores file attachments', :workflow do
-          post :create, params: { contribution: { title: 'Sample', description: 'Description goes here',
+          post :create, params: { contribution: { title: 'Sample', abstract: 'Description goes here',
                                                   creator: 'Someone', attachment: uploaded_file },
                                   deposit_type: deposit_type.id }
           expect(Pdf.count).to eq(1)

@@ -26,7 +26,7 @@ RSpec.feature 'Fletcher School Capstone ProjectF', :clean, js: true do
       click_button "Begin"
       attach_file('contribution_attachment', test_pdf)
       fill_in "contribution_title", with: title
-      fill_in "contribution_description", with: abstract
+      fill_in "contribution_abstract", with: abstract
       select 'Master of Arts', from: 'contribution_degree'
       click_button "Agree & Deposit"
       expect(page).to have_content 'Your deposit has been submitted for approval.'
@@ -35,6 +35,8 @@ RSpec.feature 'Fletcher School Capstone ProjectF', :clean, js: true do
       expect(created_pdf.title.first).to eq title
       expect(created_pdf.creator.first).to eq user.display_name
       expect(created_pdf.depositor).to eq user.user_key
+      expect(created_pdf.abstract.first).to eq abstract
+      expect(created_pdf.description.first).to eq "Submitted in partial fulfillment of the degree Master of Arts at the Fletcher School of Law and Diplomacy."
       expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"
       expect(created_pdf.visibility).to eq Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC

@@ -30,7 +30,6 @@ class GenericTischDeposit < Contribution
   end
 
   def copy_attributes
-    @tufts_pdf.description = [description] if description
     super
   end
 

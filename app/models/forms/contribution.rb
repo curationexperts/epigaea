@@ -4,7 +4,7 @@ class Contribution
   extend ActiveModel::Naming
 
   validates :title, presence: true
-  validates :description, presence: true
+  validates :abstract, presence: true
   validates :creator, presence: true
   validates :attachment, presence: true
   validate  :attachment_has_valid_content_type
@@ -13,7 +13,7 @@ class Contribution
 
   self.ignore_attributes = [:attachment, :embargo]
 
-  self.attributes = [:title, :description, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :tufts_license, :embargo]
+  self.attributes = [:title, :abstract, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :tufts_license, :embargo]
 
   SELFDEP = 'selfdep'.freeze
 

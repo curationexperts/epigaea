@@ -5,7 +5,6 @@ class FacultyScholarship < Contribution
 
     def copy_attributes
       super
-      @tufts_pdf.description = [description] if description
       @tufts_pdf.bibliographic_citation = [bibliographic_citation] if bibliographic_citation
       @tufts_pdf.contributor << contributor if contributor && contributor != [""]
     end

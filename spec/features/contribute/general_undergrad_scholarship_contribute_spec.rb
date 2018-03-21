@@ -12,7 +12,7 @@ RSpec.feature 'General Undergraduate Scholarship', :clean, js: true do
     let(:user) { FactoryGirl.create(:user) }
     let(:admin) { FactoryGirl.create(:admin) }
     let(:title) { FFaker::Movie.unique.title }
-    let(:short_description) { FFaker::Lorem.paragraphs(6).join("\n") }
+    let(:abstract) { FFaker::Lorem.paragraphs(6).join("\n") }
     before do
       allow(CharacterizeJob).to receive(:perform_later).and_return(true) # Don't run fits
       importer.import_from_csv
@@ -29,7 +29,7 @@ RSpec.feature 'General Undergraduate Scholarship', :clean, js: true do
       click_button "Begin"
       attach_file('contribution_attachment', test_pdf)
       fill_in "contribution_title", with: title
-      fill_in "contribution_description", with: short_description
+      fill_in "contribution_abstract", with: abstract
       click_button "Agree & Deposit"
       expect(page).to have_content 'Your deposit has been submitted for approval.'
 
@@ -40,7 +40,7 @@ RSpec.feature 'General Undergraduate Scholarship', :clean, js: true do
       expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"
       expect(created_pdf.visibility).to eq Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
-      expect(created_pdf.description.first[0...10]).to eq short_description[0...10]
+      expect(created_pdf.abstract.first[0...10]).to eq abstract[0...10]
       expect(created_pdf.member_of_collections.first.identifier.first).to eq("tufts:UA069.001.DO.PB")
 
       # Check notifications for depositing user
@@ -54,9 +54,9 @@ RSpec.feature 'General Undergraduate Scholarship', :clean, js: true do
       expect(page).to have_content "#{created_pdf.title.first} (#{created_pdf.id}) has been deposited by #{user.display_name} (#{user.user_key}) and is awaiting publication."
       visit("/concern/pdfs/#{created_pdf.id}")
       expect(page).to have_content(title)
-      expect(page).to have_content(short_description)
+      expect(page).to have_content(abstract)
       visit("/concern/pdfs/#{created_pdf.id}/edit")
-      expect(find_by_id("pdf_description").value[0...10]).to eq short_description[0...10]
+      expect(find_by_id("pdf_abstract").value[0...10]).to eq abstract[0...10]
     end
   end
 end

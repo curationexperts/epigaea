@@ -44,7 +44,7 @@ RSpec.feature 'GIS Expo Student Winners', :clean, js: true do
       expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"
       expect(created_pdf.visibility).to eq Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
-      expect(created_pdf.description).to include("Masters", "CEE 194A: Introduction to Remote Sensing")
+      expect(created_pdf.abstract).to include("Masters", "CEE 194A: Introduction to Remote Sensing")
       expect(created_pdf.member_of_collections.first.identifier.first).to eq("tufts:UA069.001.DO.PB")
       logout
 

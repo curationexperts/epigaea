@@ -32,7 +32,6 @@ RSpec.feature 'Faculty Scholarship', :clean, js: true do
       visit '/contribute'
       select 'Faculty Scholarship', from: 'deposit_type'
       click_button "Begin"
-      attach_file('contribution_attachment', File.absolute_path(file_fixture('pdf-sample.pdf')))
       attach_file('contribution_attachment', test_pdf)
       fill_in "contribution_title", with: title
       fill_in "contribution_bibliographic_citation", with: bibliographic_citation
@@ -42,7 +41,7 @@ RSpec.feature 'Faculty Scholarship', :clean, js: true do
       click_button "Add Another Author"
       page.all(:fillable_field, 'contribution[contributor][]')[1].set(coauthor2)
       select '6 months', from: 'contribution_embargo'
-      fill_in "contribution_description", with: abstract
+      fill_in "contribution_abstract", with: abstract
       click_button "Agree & Deposit"
       expect(page).to have_content 'Your deposit has been submitted for approval.'
 
@@ -54,7 +53,7 @@ RSpec.feature 'Faculty Scholarship', :clean, js: true do
       expect(created_pdf.admin_set.title.first).to eq "Default Admin Set"
       expect(created_pdf.active_workflow.name).to eq "mira_publication_workflow"
       expect(created_pdf.visibility).to eq Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
-      expect(created_pdf.description.first).to eq abstract
+      expect(created_pdf.abstract.first).to eq abstract
       expect(created_pdf.bibliographic_citation.first).to eq bibliographic_citation
       expect(created_pdf.embargo_note).to eq "2015-07-01T12:00:00Z"
 
@@ -68,7 +67,7 @@ RSpec.feature 'Faculty Scholarship', :clean, js: true do
       expect(page).to have_content("Tufts Published Scholarship, 1987-2014")
       expect(page).to have_content('Embargo Note')
       visit("/concern/pdfs/#{created_pdf.id}/edit")
-      expect(find_by_id("pdf_description").value).to eq abstract
+      expect(find_by_id("pdf_abstract").value).to eq abstract
       expect(find_by_id("pdf_bibliographic_citation").value).to eq bibliographic_citation
     end
 
@@ -78,13 +77,13 @@ RSpec.feature 'Faculty Scholarship', :clean, js: true do
       click_button "Begin"
       attach_file('contribution_attachment', test_pdf)
       fill_in "contribution_title", with: "\t Space   non normalized \n  title    "
-      fill_in "contribution_description", with: " A short   description    with  \t wonky spaces   "
+      fill_in "contribution_abstract", with: " A short   description    with  \t wonky spaces   "
       fill_in "contribution_bibliographic_citation", with: " bibliographic   citation  \n with     spaces    "
       click_button "Agree & Deposit"
       created_pdf = Pdf.last
       expect(created_pdf.title.first).to eq "Space non normalized title"
       expect(created_pdf.creator.first).to eq "Name with Spaces"
-      expect(created_pdf.description.first).to eq "A short description with wonky spaces"
+      expect(created_pdf.abstract.first).to eq "A short description with wonky spaces"
       expect(created_pdf.bibliographic_citation.first).to eq "bibliographic citation with spaces"
       expect(created_pdf.embargo_note).to be_nil
     end

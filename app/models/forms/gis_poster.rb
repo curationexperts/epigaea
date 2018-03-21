@@ -2,17 +2,17 @@ class GisPoster < GenericTischDeposit
   self.attributes = [:title, :degrees, :schools, :departments, :courses, :methodological_keywords, :geonames,
                      :term, :year, :topics, :geonames_placeholder,
                      :degree,
-                     :description, :creator, :contributor,
+                     :abstract, :creator, :contributor,
                      :bibliographic_citation, :subject, :corpname, :attachment, :license]
   # def copy_attributes
   #  super
-  #  @tufts_pdf.description = ["#{description}  Submitted in partial fulfillment of the grant requirement of the Tufts Summer Scholars Program."]
+  #  @tufts_pdf.abstract = ["#{abstract}  Submitted in partial fulfillment of the grant requirement of the Tufts Summer Scholars Program."]
   # end
 
   def copy_attributes
     self.class.attributes
     @tufts_pdf.title = [title]
-    @tufts_pdf.description = description
+    @tufts_pdf.abstract = abstract
     @tufts_pdf.creator = [(send(:creator) unless send(:creator).nil?)]
     @tufts_pdf.tufts_license = license_data(@tufts_pdf)
     @tufts_pdf.corporate_name = corpname
@@ -42,7 +42,7 @@ class GisPoster < GenericTischDeposit
       end
     end
 
-    def description
+    def abstract
       (send(:degrees).nil? ? [] : Array(send(:degrees))) + (send(:courses).nil? ? [] : Array(send(:courses)))
     end
 
