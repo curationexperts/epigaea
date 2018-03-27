@@ -287,7 +287,7 @@ GEM
       faraday
     fcrepo_wrapper (0.8.0)
       ruby-progressbar
-    ffaker (2.6.0)
+    ffaker (2.8.1)
     ffi (1.9.18)
     flipflop (2.3.1)
       activesupport (>= 4.0)
