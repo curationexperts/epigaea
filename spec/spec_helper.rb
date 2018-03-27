@@ -44,6 +44,13 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
+  # Ensure FFaker uses the same random seed as Rspec,
+  # including command line seeds passed in using --seed nnn,
+  # in order to return the same data every time the same seed is used
+  # see: https://github.com/ffaker/ffaker/blob/master/RANDOM.md#rspec
+  config.before(:all)  { FFaker::Random.seed = config.seed }
+  config.before(:each) { FFaker::Random.reset! }
+
   # The settings below are suggested to provide a good initial experience
   # with RSpec, but feel free to customize to your heart's content.
   #   # This allows you to limit a spec run to individual examples or groups
