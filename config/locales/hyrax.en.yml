@@ -188,6 +188,10 @@ en:
         note_html: ""
         text: "Private"
       restricted_title_attr: "Change the visibility of this resource"
+  search:
+    form:
+      option:
+        batch: "Batch"
   simple_form:
     labels:
       defaults:
