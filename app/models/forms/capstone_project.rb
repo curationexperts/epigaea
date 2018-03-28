@@ -8,7 +8,7 @@ class CapstoneProject < Contribution
 
     def copy_attributes
       super
-      @tufts_pdf.description = ["Submitted in partial fulfillment of the degree #{long_degree} at the Fletcher School of Law and Diplomacy. Abstract: #{description}"]
+      @tufts_pdf.description = ["Submitted in partial fulfillment of the degree #{long_degree} at the Fletcher School of Law and Diplomacy."]
       @tufts_pdf.subject = [degree]
     end
 

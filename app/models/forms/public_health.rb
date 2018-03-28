@@ -8,7 +8,7 @@ class PublicHealth < Contribution
 
     def copy_attributes
       super
-      @tufts_pdf.description = ["Submitted in partial fulfillment of the degree #{long_degree} at Tufts Public Health and Professional Degree Program. Abstract: #{description}"]
+      @tufts_pdf.description = ["Submitted in partial fulfillment of the degree #{long_degree} at Tufts Public Health and Professional Degree Program."]
       @tufts_pdf.subject = [long_degree]
       @tufts_pdf.creator_department = [creator_dept]
     end
