@@ -11,10 +11,11 @@ module AdvancedSearchFields
       adv_search_attrs -= already_included_attrs
 
       adv_search_attrs.each do |attr|
-        field_name = attr.to_s.underscore
+        field_name = Tufts::AdvancedSearchField.solr_suffix(attr.to_s.underscore)
+
         config.add_search_field(field_name) do |field|
           field.include_in_simple_select = false
-          field.solr_local_parameters = { qf: field_name + '_tesim' }
+          field.solr_local_parameters = { qf: field_name }
           # using :format_attr for :format because :format refers to the response
           # format in rails controllers
           if attr == :format
