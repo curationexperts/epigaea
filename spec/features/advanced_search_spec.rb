@@ -15,5 +15,12 @@ RSpec.feature 'perform an advanced search', :clean do
     click_on 'Search'
     expect(page).to have_content(pdf.title[0])
     expect(page).not_to have_content(another_pdf.title[0])
+
+    visit '/advanced'
+    expect(page).to have_content('More Search Options')
+    fill_in 'Date Created', with: pdf.date_created[0]
+    click_on 'Search'
+    expect(page).to have_content(pdf.title[0])
+    expect(page).not_to have_content(another_pdf.title[0])
   end
 end
