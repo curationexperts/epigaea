@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe XmlImport, :batch, :workflow, type: :model do
+RSpec.describe XmlImport, :batch, :clean, :workflow, type: :model do
   subject(:import) { FactoryGirl.build(:xml_import) }
 
   before do
