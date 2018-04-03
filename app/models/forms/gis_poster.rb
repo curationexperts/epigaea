@@ -12,7 +12,8 @@ class GisPoster < GenericTischDeposit
   def copy_attributes
     self.class.attributes
     @tufts_pdf.title = [title]
-    @tufts_pdf.abstract = abstract
+    @tufts_pdf.description = description
+    @tufts_pdf.abstract = nil
     @tufts_pdf.creator = [(send(:creator) unless send(:creator).nil?)]
     @tufts_pdf.tufts_license = license_data(@tufts_pdf)
     @tufts_pdf.corporate_name = corpname
@@ -42,7 +43,7 @@ class GisPoster < GenericTischDeposit
       end
     end
 
-    def abstract
+    def description
       (send(:degrees).nil? ? [] : Array(send(:degrees))) + (send(:courses).nil? ? [] : Array(send(:courses)))
     end
 
