@@ -7,6 +7,7 @@ FactoryGirl.define do
     visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
     displays_in ['nowhere']
     rights_statement ['http://bostonhistory.org/photorequest.html']
+    date_created ['1500']
     transient do
       user nil
     end
