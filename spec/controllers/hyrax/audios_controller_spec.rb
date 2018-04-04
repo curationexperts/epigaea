@@ -30,8 +30,8 @@ RSpec.describe Hyrax::AudiosController do
       expect(params["audio"]["accrual_policy"]).to eq nil
       expect(params["audio"]["bibliographic_citation"]).to contain_exactly("bibliographic citation with spaces")
       expect(params["audio"]["rights_holder"]).to contain_exactly("blah spaces")
-      expect(params["audio"]["description"]).to contain_exactly("A short description \n with wonky spaces.\n\nBut keep two newlines between paragraphs.")
-      expect(params["audio"]["abstract"]).to contain_exactly("A short description \n with wonky spaces.\n\nBut keep two newlines between paragraphs.")
+      expect(params["audio"]["description"]).to contain_exactly("A short description\n with wonky spaces.\n\nBut keep two newlines between paragraphs.")
+      expect(params["audio"]["abstract"]).to contain_exactly("A short description\n with wonky spaces.\n\nBut keep two newlines between paragraphs.")
     end
   end
 end

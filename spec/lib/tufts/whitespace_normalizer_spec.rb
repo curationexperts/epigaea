@@ -28,7 +28,7 @@ RSpec.describe Tufts::WhitespaceNormalizer do
         string = "moomin   \n\n\r\n \t moomin  \n\t\r"
 
         expect(normalizer.strip_whitespace(string, keep_newlines: true))
-          .to eq "moomin \n\n moomin"
+          .to eq "moomin\n\n moomin"
       end
     end
 
@@ -44,7 +44,7 @@ RSpec.describe Tufts::WhitespaceNormalizer do
         values = ["moomi \n\t n  \n ", 'moomin', '   moomin', '', nil, :moomin]
 
         expect(normalizer.strip_whitespace(values, keep_newlines: true))
-          .to contain_exactly "moomi \n n", 'moomin', 'moomin', :moomin
+          .to contain_exactly "moomi\n n", 'moomin', 'moomin', :moomin
       end
     end
   end
