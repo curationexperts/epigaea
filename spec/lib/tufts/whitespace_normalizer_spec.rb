@@ -34,17 +34,17 @@ RSpec.describe Tufts::WhitespaceNormalizer do
 
     context 'when value is enumerable' do
       it 'maps normalization over the values' do
-        values = ["moomi \n\t n  \n ", 'moomin', '   moomin', '']
+        values = ["moomi \n\t n  \n ", 'moomin', '   moomin', '', nil, :moomin]
 
         expect(normalizer.strip_whitespace(values))
-          .to contain_exactly "moomi n", 'moomin', 'moomin'
+          .to contain_exactly "moomi n", 'moomin', 'moomin', :moomin
       end
 
       it 'retains keep_newlines' do
-        values = ["moomi \n\t n  \n ", 'moomin', '   moomin', '']
+        values = ["moomi \n\t n  \n ", 'moomin', '   moomin', '', nil, :moomin]
 
         expect(normalizer.strip_whitespace(values, keep_newlines: true))
-          .to contain_exactly "moomi \n n", 'moomin', 'moomin'
+          .to contain_exactly "moomi \n n", 'moomin', 'moomin', :moomin
       end
     end
   end

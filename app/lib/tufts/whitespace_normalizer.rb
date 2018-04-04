@@ -11,7 +11,7 @@ module Tufts
         strip_string(value.to_str, keep_newlines: keep_newlines)
       elsif value.is_a?(Enumerable)
         value
-          .map { |str| strip_string(str.to_str, keep_newlines: keep_newlines) }
+          .map { |v| v.respond_to?(:to_str) ? strip_string(v.to_str, keep_newlines: keep_newlines) : v }
           .compact
       else
         value

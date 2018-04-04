@@ -74,8 +74,8 @@ RSpec.describe Tufts::Normalizer do
       it 'raises an error for non string values' do
         values = [Object.new]
 
-        expect { controller.strip_whitespace(values) }
-          .to raise_error NoMethodError
+        expect(controller.strip_whitespace(values))
+          .to contain_exactly(*values)
       end
     end
   end
@@ -121,8 +121,8 @@ RSpec.describe Tufts::Normalizer do
       it 'raises an error for non string values' do
         values = [Object.new]
 
-        expect { controller.strip_whitespace_keep_newlines(values) }
-          .to raise_error NoMethodError
+        expect(controller.strip_whitespace_keep_newlines(values))
+          .to contain_exactly(*values)
       end
     end
   end
