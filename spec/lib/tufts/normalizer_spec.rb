@@ -29,9 +29,9 @@ RSpec.describe Tufts::Normalizer do
     it 'edits the params with whitespace normalization' do
       expect { controller.normalize_whitespace(params) }
         .to change { params[:concern] }
-        .to include('string'           => 'moomin', 'description' => "moomin \n papa",
+        .to include('string'           => 'moomin', 'description' => "moomin\n papa",
                     'array_of_strings' => ['moomin', "moomin", "moomin"],
-                    'abstract'         => ['moomin', "moomin", "moomin \n papa"])
+                    'abstract'         => ['moomin', "moomin", "moomin\n papa"])
     end
   end
 
@@ -97,7 +97,7 @@ RSpec.describe Tufts::Normalizer do
 
       it 'turns extended whitespace into a single space' do
         expect(controller.strip_whitespace_keep_newlines("moomi \n\t n  \n "))
-          .to eq "moomi \n n"
+          .to eq "moomi\n n"
       end
     end
 
@@ -115,7 +115,7 @@ RSpec.describe Tufts::Normalizer do
         values = ["moomi \n\t n  \n ", 'moomin', '   moomin']
 
         expect(controller.strip_whitespace_keep_newlines(values))
-          .to contain_exactly "moomi \n n", 'moomin', 'moomin'
+          .to contain_exactly "moomi\n n", 'moomin', 'moomin'
       end
 
       it 'raises an error for non string values' do

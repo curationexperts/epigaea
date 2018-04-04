@@ -21,7 +21,11 @@ module Tufts
     def strip_string(string, keep_newlines: false)
       stripped =
         if keep_newlines
-          string.delete("\r").gsub(/[\n]{2,}/, "\n\n").gsub(/[ \t]+/, " ").strip
+          string.delete("\r")
+                .gsub(/[\n]{2,}/, "\n\n")
+                .gsub(/[ \t]+/, " ")
+                .gsub(/[ \t]$/, '')
+                .strip
         else
           string.gsub(/\s+/, " ").strip
         end
