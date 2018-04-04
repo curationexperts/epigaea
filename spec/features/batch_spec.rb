@@ -78,4 +78,12 @@ RSpec.feature 'Manage batches', :clean, js: true do
 
     expect(page).to have_content batch.creator
   end
+
+  scenario 'searching for a batch' do
+    visit '/'
+    find(:xpath, "//input[@id='search-field-header']").set batch.id
+    execute_script('$(".batch-search-dropdown-js").click()')
+    execute_script('$("#search-submit-header").click()')
+    expect(page).to have_content batch.creator
+  end
 end
