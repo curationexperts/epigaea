@@ -1,14 +1,13 @@
 module Tufts
   module Normalizer
     def strip_whitespace(param_value)
-      return nil if param_value.empty?
+      return nil if param_value.respond_to?(:empty?) && param_value.empty?
 
       normalizer.strip_whitespace(param_value)
     end
 
     def strip_whitespace_keep_newlines(param_value)
-      return nil if param_value.empty?
-
+      return nil if param_value.respond_to?(:empty?) && param_value.empty?
       normalizer.strip_whitespace(param_value, keep_newlines: true)
     end
 

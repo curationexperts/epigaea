@@ -25,7 +25,7 @@ RSpec.describe Tufts::WhitespaceNormalizer do
 
     context 'when keeping newlines' do
       it 'collapses whitespace into a single whitespace keeping \n' do
-        string = "moomin   \n\r\n moomin  \n\t\r"
+        string = "moomin   \n\n\r\n \t moomin  \n\t\r"
 
         expect(normalizer.strip_whitespace(string, keep_newlines: true))
           .to eq "moomin \n\n moomin"
