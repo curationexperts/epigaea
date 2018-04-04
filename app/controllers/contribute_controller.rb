@@ -1,5 +1,6 @@
 class ContributeController < ApplicationController
   include GisHelper
+  include Tufts::Normalizer
 
   before_action :load_deposit_type, only: [:new, :create]
 
@@ -31,24 +32,11 @@ class ContributeController < ApplicationController
     end
   end
 
-  # Go through the params hash and normalize whitespace before handing it off to
-  # object creation
-  # @param [ActionController::Parameters] params
-  def normalize_whitespace(params)
-    # For keep_newline_fields, keep single newlines, compress 2+ newlines to 2,
-    # and otherwise strip whitespace as usual
-    keep_newline_fields = ['description', 'abstract']
-    params["contribution"].keys.each do |key|
-      next unless params["contribution"][key].class == String
-      params["contribution"][key] = if keep_newline_fields.include?(key)
-                                      params["contribution"][key].gsub(/[ \t]+?[\n]{2,}[ \t]+?/, "\n\n").gsub(/[ \t]+/, " ").strip
-                                    else
-                                      params["contribution"][key].gsub(/\s+/, " ").strip
-                                    end
-    end
-  end
-
 protected
+
+  def hash_key_for_curation_concern
+    'contribution'
+  end
 
   def load_deposit_type
     @deposit_type = DepositType.where(id: params[:deposit_type]).first

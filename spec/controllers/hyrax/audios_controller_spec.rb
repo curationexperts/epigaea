@@ -14,7 +14,7 @@ RSpec.describe Hyrax::AudiosController do
           "accrual_policy" => "",
           "creator" => " Name   with  Spaces ",
           "bibliographic_citation" => [" bibliographic   citation   with     spaces    "],
-          "rights_holder" => ["blah     spaces   "],
+          "rights_holder" => ["blah     \nspaces   "],
           "publisher" => ["Publisher  "],
           "description" => [" A short   description \n   with  wonky spaces.\r\n\r\n\r\nBut keep two newlines between paragraphs. "],
           "abstract" => [" A short   description \n   with  wonky spaces.\r\n\r\n\r\nBut keep two newlines between paragraphs. "]

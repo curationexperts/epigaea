@@ -1,26 +1,14 @@
 module Tufts
   module Normalizer
     def strip_whitespace(param_value)
-      return nil if param_value.empty?
-      return strip_whitespace_transformation(param_value) if param_value.class == String
-      return param_value.map { |m| strip_whitespace_transformation(m) } if param_value.class == Array
-      param_value
+      return nil if param_value.respond_to?(:empty?) && param_value.empty?
+
+      normalizer.strip_whitespace(param_value)
     end
 
     def strip_whitespace_keep_newlines(param_value)
-      return nil if param_value.empty?
-      return strip_whitespace_keep_newlines_transformation(param_value) if param_value.class == String
-      return param_value.map { |m| strip_whitespace_keep_newlines_transformation(m) } if param_value.class == Array
-      param_value
-    end
-
-    def strip_whitespace_keep_newlines_transformation(string)
-      return nil if string.empty?
-      string.delete("\r").gsub(/[\n]{2,}/, "\n\n").gsub(/[ \t]+/, " ").strip
-    end
-
-    def strip_whitespace_transformation(string)
-      string.gsub(/\s+/, " ").strip
+      return nil if param_value.respond_to?(:empty?) && param_value.empty?
+      normalizer.strip_whitespace(param_value, keep_newlines: true)
     end
 
     def normalize_import_field(field, values)
@@ -46,6 +34,12 @@ module Tufts
                                                        strip_whitespace(params[hash_key_for_curation_concern][key])
                                                      end
       end
+    end
+
+    ##
+    # @api private
+    def normalizer
+      @normalizer ||= WhitespaceNormalizer.new
     end
   end
 end

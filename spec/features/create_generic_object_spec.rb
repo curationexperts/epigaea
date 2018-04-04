@@ -25,18 +25,18 @@ RSpec.feature 'Create a GenericObject', :clean, js: true do
       expect(page).to have_no_content('Location')
       # Fill out the form with everything
       within('.generic_object_title') do
-        fill_in "Title", with: "Example \nTitle   "
+        fill_in "Title", with: "Title \n with \t condensed   spaces  "
       end
       find(:xpath, '//option[contains(text(), "nowhere")]').select_option
-      fill_in 'Abstract', with: 'Abstract'
+      fill_in 'Abstract', with: " A short   description    with  \t wonky spaces   "
       fill_in 'Accrual Policy', with: 'Accrual Policy'
       fill_in 'Alternate Title', with: 'Alternate Title'
       fill_in 'Audience', with: 'Audience'
-      fill_in 'Bibliographic Citation', with: 'Bibliographic Citation'
+      fill_in 'Bibliographic Citation', with: " bibliographic   citation  \n with     spaces    "
       fill_in 'Contributor', with: 'Contributor'
       fill_in 'Corporate Name', with: 'Corporate Name'
       fill_in 'Created By', with: 'Created By'
-      fill_in 'Creator', with: 'Creator'
+      fill_in 'Creator', with: '     Name   with   Spaces   '
       fill_in 'Creator Department', with: 'Creator Department'
       fill_in 'Date Accepted', with: 'Date Accepted'
       fill_in 'Date Available', with: 'Date Available'
@@ -92,17 +92,17 @@ RSpec.feature 'Create a GenericObject', :clean, js: true do
       sleep(1)
       find('#with_files_submit').click
 
-      expect(page).to have_content 'Example Title'
+      expect(page).to have_content 'Title with condensed spaces'
       expect(page).to have_content 'nowhere'
-      expect(page).to have_content 'Abstract'
+      expect(page).to have_content 'A short description with wonky spaces'
       expect(page).to have_content 'Accrual Policy'
       expect(page).to have_content 'Alternate Title'
       expect(page).to have_content 'Audience'
-      expect(page).to have_content 'Bibliographic Citation'
+      expect(page).to have_content 'bibliographic citation with spaces'
       expect(page).to have_content 'Contributor'
       expect(page).to have_content 'Corporate Name'
       expect(page).to have_content 'Created By'
-      expect(page).to have_content 'Creator'
+      expect(page).to have_content 'Name with Spaces'
       expect(page).to have_content 'Creator Department'
       expect(page).to have_content 'Date Accepted'
       expect(page).to have_content 'Date Available'
