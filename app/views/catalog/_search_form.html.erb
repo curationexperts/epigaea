@@ -37,6 +37,7 @@
            <%= link_to t("hyrax.search.form.option.batch"), "#",
              data: { "search-option" => main_app.search_catalog_path, "search-label" => t("hyrax.search.form.option.batch") } %>
             <script>
+             BatchSelection.resetToAllFieldsOnTurboLinksLoad()
              BatchSelection.changeSearchFieldOnBatchSelect()
              BatchSelection.changeSearchFieldOnOtherSelect()
             </script>
