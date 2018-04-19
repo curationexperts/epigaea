@@ -32,15 +32,35 @@ bundle exec rails db:setup
 bundle exec rake spec
 ```
 
+### running the development environment LDAP server
+You need to start up the LDAP server using the `ladle` task and Solr, Fedora, and a webserver using the `hydra:server` task.
+It's usually best to run each service in it's own terminal session.
+```sh
+# if you checked out new code, run the next two commands
+# bundle install
+# bundle exec rake db:migrate
+bundle exec rake ladle      #start an LDAP server in a new window
+bundle exec hydra:server    #start the development server, fedora, and solr in a new window
+# visit http://localhost:3000
+```
+
+The application is configured to use LDAP for authentication.  The development and test 
+environments use the [ladle](https://github.com/NUBIC/ladle) gem to launch a self-contained LDAP server.
+LDAP users are seeded from the file at `config/ldap_seed_users.ldif`, so you can login
+using either `user` or `admin` with the password 'password'. Note that the system is configured to expect
+a username, not an email address.
+
 ### making an admin user
-First, you'll need to start your development server and create a new user.  
+First, you'll need to start your development server and login as one of the LDAP users.  
+We'll assume you logged in as `admin`
 ```sh
 bundle exec rails c
->  u = User.create(email: 'admin@example.org', display_name: 'Admin, Example', password: 'password')
+> u = User.find_by_user_key('admin')
 > u.add_role('admin')
 > exit
 ```
-Now you should be able to login as `admin@example.org` with access to the administator dashboard.
+If you go back and refresh your browser where `admin` is logged in, you
+should now have access to the administrator dashboard.
 
 ### seeding deposit types
 MIRA supports a number of configurable deposit types. A seed configuration is checked into the repository at 
@@ -52,6 +72,7 @@ bundle exec rake import:deposit_types[config/deposit_type_seed.csv]
 If you wish to make changes to the seeds, use the "Manage Self Deposit Types" option from the administrator dashboard. 
 Make any changes you want, export the configuration using the "Export Deposit Type Data" link at the bottom of the 
 "Manage Deposit Types" view, and then check the updated deposit type configuration CSV file into the repository.
+
 
 ## Re-create derivatives
 If you need to re-create derivatives, use these rake tasks:
@@ -121,4 +142,3 @@ Notifications are defined in `app/services/hyrax/workflow`. There are three kind
 The `/contribute` forms deposit works into specific collections. In order to ensure that the expected collections exist, they are 
 created at application deploy time and (if necessary) at deposit time via the `Tufts::ContributeCollections` class. To change the names or
 identifiers of these Collection objects, edit the `app/lib/tufts/contribute_collections.rb` file. To create the collections explicitly, run `rake tufts:create_contribute_collections`.
-

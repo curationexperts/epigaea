@@ -20,7 +20,7 @@ module Hyrax
       # The Hyrax::User who desposited the work
       # @return [Hyrax::User]
       def depositor
-        ::User.find_by(email: document.depositor)
+        ::User.find_by_user_key(document.depositor)
       end
 
       ##
